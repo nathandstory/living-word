@@ -2,6 +2,7 @@ package com.livingword;
 
 import com.livingword.config.LivingWordConfig;
 import com.livingword.items.LivingWordItems;
+import com.livingword.lectern.LecternEvents;
 import com.livingword.network.LivingWordNetwork;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
@@ -17,6 +18,7 @@ public final class LivingWord {
     public LivingWord(IEventBus modEventBus, ModContainer modContainer) {
         LivingWordConfig.register(modContainer);
         LivingWordItems.register(modEventBus);
+        LecternEvents.register(modEventBus);
         LivingWordNetwork.register(modEventBus);
     }
 }

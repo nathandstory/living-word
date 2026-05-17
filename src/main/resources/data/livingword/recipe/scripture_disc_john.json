@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " P ",
+    "PBP",
+    " P "
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "B": {
+      "item": "livingword:bible"
+    }
+  },
+  "result": {
+    "id": "livingword:scripture_disc_john",
+    "count": 1
+  }
+}
