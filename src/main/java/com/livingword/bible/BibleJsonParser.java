@@ -40,6 +40,11 @@ public final class BibleJsonParser {
         return new BibleTranslationIndex(requiredString(root, "translationId"), books);
     }
 
+    public List<String> parseTranslationRegistry(Reader reader) {
+        JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
+        return stringList(root, "translations");
+    }
+
     public ChapterData parseChapter(Reader reader) {
         JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
         JsonObject versesObject = requiredObject(root, "verses");

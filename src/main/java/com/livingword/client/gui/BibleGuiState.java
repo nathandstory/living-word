@@ -65,6 +65,22 @@ public final class BibleGuiState {
         this.searchQuery = searchQuery == null ? "" : searchQuery;
     }
 
+    public void setPassage(String translationId, String bookId, int chapter) {
+        if (isBlank(translationId)) {
+            throw new IllegalArgumentException("translationId is required");
+        }
+        if (isBlank(bookId)) {
+            throw new IllegalArgumentException("bookId is required");
+        }
+        if (chapter < 1) {
+            throw new IllegalArgumentException("chapter must be positive");
+        }
+        this.translationId = translationId;
+        this.bookId = bookId;
+        this.chapter = chapter;
+        this.selectedVerse = 1;
+    }
+
     public void addBookmark(BibleReference reference) {
         if (!bookmarks.contains(reference)) {
             bookmarks.add(reference);
@@ -78,5 +94,9 @@ public final class BibleGuiState {
 
     public BibleReference selectedReference() {
         return new BibleReference(translationId, bookId, chapter, selectedVerse);
+    }
+
+    private static boolean isBlank(String value) {
+        return value == null || value.isBlank();
     }
 }

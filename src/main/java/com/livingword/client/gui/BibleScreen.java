@@ -1,6 +1,10 @@
 package com.livingword.client.gui;
 
+import com.livingword.bible.BibleDataManager;
+import com.livingword.bible.BibleReference;
 import com.livingword.bible.ChapterData;
+import com.livingword.bible.TranslationManifest;
+import com.livingword.client.BibleClientRepository;
 import com.livingword.client.gui.widgets.VerseListWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -9,7 +13,9 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public final class BibleScreen extends Screen {
     private static final int BACKGROUND = 0xF0181510;
@@ -17,40 +23,61 @@ public final class BibleScreen extends Screen {
     private static final int BORDER = 0xFF8C6A3E;
     private static final int TEXT = 0xFFE8D7B5;
 
-    private final BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+    private final BibleDataManager dataManager;
+    private final BibleGuiState state;
     private final VerseListWidget verseList = new VerseListWidget();
-    private final ChapterData sampleChapter = new ChapterData(
-        "kjv",
-        "john",
-        3,
-        Map.of(
-            16,
-            "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life.",
-            17,
-            "For God sent not his Son into the world to condemn the world; but that the world through him might be saved."
-        )
-    );
     private EditBox searchBox;
+    private int verseListY;
 
     public BibleScreen() {
         super(Component.translatable("gui.livingword.bible.title"));
-        state.selectVerse(16);
-        state.recordHistory(state.selectedReference());
+        this.dataManager = BibleClientRepository.dataManager();
+        ChapterData initialChapter = dataManager.translations().stream()
+            .map(TranslationManifest::id)
+            .map(dataManager::firstChapter)
+            .flatMap(Optional::stream)
+            .findFirst()
+            .orElseGet(BibleScreen::emptyFallbackChapter);
+        this.state = BibleGuiState.initial(initialChapter.translationId(), initialChapter.bookId(), initialChapter.chapter());
+        selectFirstVerse(initialChapter);
+        recordCurrentHistory();
     }
 
     @Override
     protected void init() {
         int panelWidth = Math.min(360, this.width - 32);
+        int panelHeight = Math.min(280, this.height - 48);
         int left = (this.width - panelWidth) / 2;
         int top = 24;
+        int bottomButtonY = top + panelHeight - 28;
 
-        searchBox = new EditBox(this.font, left + 16, top + 34, panelWidth - 32, 20, Component.translatable("gui.livingword.bible.search"));
+        searchBox = new EditBox(this.font, left + 16, top + 34, panelWidth - 76, 20, Component.translatable("gui.livingword.bible.search"));
         searchBox.setResponder(state::setSearchQuery);
         searchBox.setHint(Component.translatable("gui.livingword.bible.search"));
         addRenderableWidget(searchBox);
 
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_go"), button -> jumpToFirstSearchResult())
+            .bounds(left + panelWidth - 54, top + 34, 38, 20)
+            .build());
+
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_book"), button -> navigateBook(-1))
+            .bounds(left + 16, top + 60, 78, 20)
+            .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_chapter"), button -> navigateChapter(-1))
+            .bounds(left + 100, top + 60, 48, 20)
+            .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_chapter"), button -> navigateChapter(1))
+            .bounds(left + panelWidth - 148, top + 60, 48, 20)
+            .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_book"), button -> navigateBook(1))
+            .bounds(left + panelWidth - 94, top + 60, 78, 20)
+            .build());
+
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.bookmark"), button -> state.addBookmark(state.selectedReference()))
+            .bounds(left + 16, bottomButtonY, 86, 20)
+            .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.copy"), button -> copySelectedVerse())
-            .bounds(left + panelWidth - 96, this.height - 40, 80, 20)
+            .bounds(left + panelWidth - 96, bottomButtonY, 80, 20)
             .build());
     }
 
@@ -58,7 +85,7 @@ public final class BibleScreen extends Screen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics, mouseX, mouseY, partialTick);
         int panelWidth = Math.min(360, this.width - 32);
-        int panelHeight = Math.min(240, this.height - 48);
+        int panelHeight = Math.min(280, this.height - 48);
         int left = (this.width - panelWidth) / 2;
         int top = 24;
 
@@ -70,15 +97,116 @@ public final class BibleScreen extends Screen {
         graphics.fill(left + panelWidth - 1, top, left + panelWidth, top + panelHeight, BORDER);
 
         graphics.drawCenteredString(this.font, this.title, this.width / 2, top + 10, TEXT);
-        graphics.drawString(this.font, "KJV / John 3", left + 16, top + 62, TEXT, false);
-        verseList.render(graphics, this.font, sampleChapter, state, left + 16, top + 82, panelWidth - 32);
+        graphics.drawCenteredString(this.font, currentHeading(), this.width / 2, top + 86, TEXT);
+        currentChapter().ifPresent(chapter -> {
+            verseListY = top + 106;
+            verseList.render(graphics, this.font, chapter, state, left + 16, verseListY, panelWidth - 32);
+        });
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (super.mouseClicked(mouseX, mouseY, button)) {
+            return true;
+        }
+        Optional<ChapterData> chapter = currentChapter();
+        if (chapter.isPresent()) {
+            var selectedVerse = verseList.verseAt(chapter.get(), verseListY, mouseY);
+            if (selectedVerse.isPresent()) {
+                state.selectVerse(selectedVerse.getAsInt());
+                recordCurrentHistory();
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void copySelectedVerse() {
-        sampleChapter.getVerse(state.selectedVerse()).ifPresent(text -> {
+        currentChapter().flatMap(chapter -> chapter.getVerse(state.selectedVerse())).ifPresent(text -> {
             Minecraft minecraft = Minecraft.getInstance();
-            minecraft.keyboardHandler.setClipboard("John 3:" + state.selectedVerse() + " " + text);
+            minecraft.keyboardHandler.setClipboard(formatBookId(state.bookId()) + " " + state.chapter() + ":" + state.selectedVerse() + " " + text);
         });
+    }
+
+    private void jumpToFirstSearchResult() {
+        List<BibleReference> results = dataManager.search(state.translationId(), state.searchQuery(), 1);
+        if (!results.isEmpty()) {
+            navigateTo(results.getFirst());
+        }
+    }
+
+    private void navigateBook(int direction) {
+        List<String> books = dataManager.bookIds(state.translationId());
+        if (books.isEmpty()) {
+            return;
+        }
+        int currentIndex = Math.max(0, books.indexOf(state.bookId()));
+        int nextIndex = Math.floorMod(currentIndex + direction, books.size());
+        String nextBookId = books.get(nextIndex);
+        List<Integer> chapters = dataManager.chapters(state.translationId(), nextBookId);
+        if (!chapters.isEmpty()) {
+            setPassage(state.translationId(), nextBookId, chapters.getFirst());
+        }
+    }
+
+    private void navigateChapter(int direction) {
+        List<Integer> chapters = dataManager.chapters(state.translationId(), state.bookId());
+        if (chapters.isEmpty()) {
+            return;
+        }
+        int currentIndex = Math.max(0, chapters.indexOf(state.chapter()));
+        int nextIndex = Math.floorMod(currentIndex + direction, chapters.size());
+        setPassage(state.translationId(), state.bookId(), chapters.get(nextIndex));
+    }
+
+    private void navigateTo(BibleReference reference) {
+        setPassage(reference.translationId(), reference.bookId(), reference.chapter());
+        state.selectVerse(reference.verse());
+        recordCurrentHistory();
+    }
+
+    private void setPassage(String translationId, String bookId, int chapter) {
+        state.setPassage(translationId, bookId, chapter);
+        currentChapter().ifPresent(this::selectFirstVerse);
+        recordCurrentHistory();
+    }
+
+    private Optional<ChapterData> currentChapter() {
+        return dataManager.getChapter(state.translationId(), state.bookId(), state.chapter());
+    }
+
+    private String currentHeading() {
+        String translationName = dataManager.getTranslation(state.translationId())
+            .map(TranslationManifest::displayName)
+            .orElse(state.translationId().toUpperCase(java.util.Locale.ROOT));
+        return translationName + " / " + formatBookId(state.bookId()) + " " + state.chapter();
+    }
+
+    private void recordCurrentHistory() {
+        state.recordHistory(state.selectedReference());
+    }
+
+    private void selectFirstVerse(ChapterData chapter) {
+        chapter.verses().keySet().stream().min(Integer::compareTo).ifPresentOrElse(state::selectVerse, () -> state.selectVerse(1));
+    }
+
+    private static String formatBookId(String bookId) {
+        String[] words = bookId.replace('_', ' ').split(" ");
+        StringBuilder formatted = new StringBuilder();
+        for (String word : words) {
+            if (word.isBlank()) {
+                continue;
+            }
+            if (!formatted.isEmpty()) {
+                formatted.append(' ');
+            }
+            formatted.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
+        }
+        return formatted.toString();
+    }
+
+    private static ChapterData emptyFallbackChapter() {
+        return new ChapterData("kjv", "john", 1, Map.of(1, "No Bible data is loaded."));
     }
 }

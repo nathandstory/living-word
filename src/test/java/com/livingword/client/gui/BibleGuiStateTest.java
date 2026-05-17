@@ -22,4 +22,14 @@ final class BibleGuiStateTest {
         assertTrue(state.bookmarks().contains(reference));
         assertEquals(reference, state.recentHistory().getFirst());
     }
+
+    @Test
+    void changingPassageResetsVerseSelection() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+
+        state.selectVerse(16);
+        state.setPassage("web", "psalms", 23);
+
+        assertEquals(new BibleReference("web", "psalms", 23, 1), state.selectedReference());
+    }
 }

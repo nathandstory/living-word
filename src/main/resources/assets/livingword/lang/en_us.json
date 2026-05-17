@@ -3,8 +3,14 @@
   "item.livingword.scripture_disc.tooltip": "Scripture listening disc foundation",
   "item.livingword.scripture_disc_john": "Gospel of John Disc",
   "item.livingword.scripture_disc_john.desc": "KJV / Gospel of John",
+  "gui.livingword.bible.bookmark": "Bookmark",
   "gui.livingword.bible.copy": "Copy",
+  "gui.livingword.bible.next_book": "Book >",
+  "gui.livingword.bible.next_chapter": ">",
+  "gui.livingword.bible.previous_book": "< Book",
+  "gui.livingword.bible.previous_chapter": "<",
   "gui.livingword.bible.search": "Search verses",
+  "gui.livingword.bible.search_go": "Go",
   "gui.livingword.bible.title": "Living Word",
   "message.livingword.bible.nearby_listening_unavailable": "Nearby listening sessions are not available in this build."
 }

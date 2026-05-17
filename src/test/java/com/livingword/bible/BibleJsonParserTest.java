@@ -54,6 +54,17 @@ final class BibleJsonParserTest {
     }
 
     @Test
+    void parsesTranslationRegistry() {
+        String json = """
+            {
+              "translations": ["kjv", "web"]
+            }
+            """;
+
+        assertEquals(List.of("kjv", "web"), parser.parseTranslationRegistry(new StringReader(json)));
+    }
+
+    @Test
     void parsesChapterVerseKeysAsIntegers() {
         String json = """
             {

@@ -28,7 +28,10 @@ public final class BibleResourceLoader {
     }
 
     public void reload() {
-        reload(List.of("kjv"));
+        List<String> translationIds = read("data/livingword/bible/translations.json", parser::parseTranslationRegistry)
+            .filter(ids -> !ids.isEmpty())
+            .orElse(List.of("kjv"));
+        reload(translationIds);
     }
 
     public void reload(List<String> translationIds) {
