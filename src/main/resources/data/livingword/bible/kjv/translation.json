@@ -1,0 +1,10 @@
+{
+  "id": "kjv",
+  "displayName": "King James Version",
+  "language": "en_us",
+  "license": "Public Domain",
+  "attribution": "King James Version, 1769 Oxford edition",
+  "textDirection": "ltr",
+  "bookOrder": ["genesis", "exodus", "john", "psalms"],
+  "audioManifestId": "kjv-default"
+}
