@@ -1,0 +1,7 @@
+.worktrees
+.worktrees/
+build/
+.gradle/
+run/
+out/
+*.class
