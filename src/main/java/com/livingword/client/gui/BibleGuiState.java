@@ -87,9 +87,27 @@ public final class BibleGuiState {
         }
     }
 
+    public void replaceBookmarks(List<BibleReference> references) {
+        bookmarks.clear();
+        if (references != null) {
+            for (BibleReference reference : references) {
+                addBookmark(reference);
+            }
+        }
+    }
+
     public void recordHistory(BibleReference reference) {
         recentHistory.remove(reference);
         recentHistory.addFirst(reference);
+    }
+
+    public void replaceRecentHistory(List<BibleReference> references) {
+        recentHistory.clear();
+        if (references != null) {
+            for (int index = references.size() - 1; index >= 0; index--) {
+                recordHistory(references.get(index));
+            }
+        }
     }
 
     public BibleReference selectedReference() {

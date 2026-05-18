@@ -32,4 +32,17 @@ final class BibleGuiStateTest {
 
         assertEquals(new BibleReference("web", "psalms", 23, 1), state.selectedReference());
     }
+
+    @Test
+    void restoresBookmarksAndHistory() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        BibleReference bookmark = new BibleReference("webp", "john", 3, 16);
+        BibleReference recent = new BibleReference("kjv", "genesis", 1, 1);
+
+        state.replaceBookmarks(java.util.List.of(bookmark));
+        state.replaceRecentHistory(java.util.List.of(recent));
+
+        assertEquals(bookmark, state.bookmarks().getFirst());
+        assertEquals(recent, state.recentHistory().getFirst());
+    }
 }

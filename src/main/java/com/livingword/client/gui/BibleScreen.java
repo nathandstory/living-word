@@ -4,6 +4,7 @@ import com.livingword.bible.BibleDataManager;
 import com.livingword.bible.BibleReference;
 import com.livingword.bible.ChapterData;
 import com.livingword.bible.TranslationManifest;
+import com.livingword.client.BibleClientPreferences;
 import com.livingword.client.BibleClientRepository;
 import com.livingword.client.gui.widgets.VerseListWidget;
 import net.minecraft.client.Minecraft;
@@ -13,6 +14,7 @@ import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,6 +27,7 @@ public final class BibleScreen extends Screen {
 
     private final BibleDataManager dataManager;
     private final BibleGuiState state;
+    private final Path preferencesPath;
     private final VerseListWidget verseList = new VerseListWidget();
     private EditBox searchBox;
     private int verseListX;
@@ -36,6 +39,7 @@ public final class BibleScreen extends Screen {
     public BibleScreen() {
         super(Component.translatable("gui.livingword.bible.title"));
         this.dataManager = BibleClientRepository.dataManager();
+        this.preferencesPath = Minecraft.getInstance().gameDirectory.toPath().resolve("livingword").resolve("bible_state.json");
         ChapterData initialChapter = dataManager.translations().stream()
             .map(TranslationManifest::id)
             .map(dataManager::firstChapter)
@@ -45,6 +49,7 @@ public final class BibleScreen extends Screen {
         this.state = BibleGuiState.initial(initialChapter.translationId(), initialChapter.bookId(), initialChapter.chapter());
         selectFirstVerse(initialChapter);
         recordCurrentHistory();
+        restoreStoredState();
     }
 
     @Override
@@ -77,7 +82,10 @@ public final class BibleScreen extends Screen {
             .bounds(left + panelWidth - 94, top + 60, 78, 20)
             .build());
 
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.bookmark"), button -> state.addBookmark(state.selectedReference()))
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.bookmark"), button -> {
+                state.addBookmark(state.selectedReference());
+                persistState();
+            })
             .bounds(left + 16, bottomButtonY, 86, 20)
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.version"), button -> navigateTranslation(1))
@@ -144,6 +152,12 @@ public final class BibleScreen extends Screen {
             return true;
         }
         return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
+    }
+
+    @Override
+    public void onClose() {
+        persistState();
+        super.onClose();
     }
 
     private void copySelectedVerse() {
@@ -224,6 +238,22 @@ public final class BibleScreen extends Screen {
 
     private void recordCurrentHistory() {
         state.recordHistory(state.selectedReference());
+    }
+
+    private void restoreStoredState() {
+        BibleClientPreferences.StoredBibleState storedState = BibleClientPreferences.load(preferencesPath);
+        state.replaceBookmarks(storedState.bookmarks());
+        state.replaceRecentHistory(storedState.recentHistory());
+        storedState.lastReference()
+            .filter(reference -> dataManager.getChapter(reference.translationId(), reference.bookId(), reference.chapter()).isPresent())
+            .ifPresent(this::navigateTo);
+    }
+
+    private void persistState() {
+        BibleClientPreferences.save(
+            preferencesPath,
+            new BibleClientPreferences.StoredBibleState(Optional.of(state.selectedReference()), state.bookmarks(), state.recentHistory())
+        );
     }
 
     private void selectFirstVerse(ChapterData chapter) {
