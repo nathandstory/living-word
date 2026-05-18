@@ -25,6 +25,14 @@ public record DownloadState(AudioChapterId chapterId, Status status, double prog
         return new DownloadState(chapterId, Status.CACHED, 1.0D, "");
     }
 
+    public static DownloadState hashMismatch(AudioChapterId chapterId) {
+        return new DownloadState(chapterId, Status.HASH_MISMATCH, 1.0D, "Downloaded chapter failed integrity validation.");
+    }
+
+    public static DownloadState failed(AudioChapterId chapterId, String message) {
+        return new DownloadState(chapterId, Status.FAILED, 0.0D, message);
+    }
+
     public static DownloadState notImplemented(AudioChapterId chapterId) {
         return new DownloadState(chapterId, Status.NOT_IMPLEMENTED, 0.0D, "Audio downloading is not implemented in this build.");
     }
