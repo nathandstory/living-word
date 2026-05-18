@@ -4,7 +4,6 @@ import com.livingword.LivingWord;
 import com.livingword.audio.AudioCacheManager;
 import com.livingword.audio.AudioManifest;
 import com.livingword.audio.AudioManifestRepository;
-import com.livingword.audio.AudioPlaybackService;
 import com.livingword.audio.CachedAudioDownloadService;
 import com.livingword.audio.DownloadState;
 import com.livingword.client.gui.BibleScreen;
@@ -73,11 +72,12 @@ public final class LivingWordClient {
         if (audioSessionController == null) {
             Minecraft minecraft = Minecraft.getInstance();
             Path cacheRoot = minecraft.gameDirectory.toPath().resolve("livingword").resolve("cache").resolve("audio");
-            CachedAudioDownloadService downloadService = new CachedAudioDownloadService(new AudioCacheManager(cacheRoot), AUDIO_DOWNLOAD_EXECUTOR);
+            AudioCacheManager cacheManager = new AudioCacheManager(cacheRoot);
+            CachedAudioDownloadService downloadService = new CachedAudioDownloadService(cacheManager, AUDIO_DOWNLOAD_EXECUTOR);
             audioSessionController = new ClientAudioSessionController(
                 LivingWordClient::manifestFor,
                 downloadService,
-                AudioPlaybackService.noop(),
+                new MinecraftAudioPlaybackService(cacheManager),
                 LivingWordConfig.AUTOPLAY_JOINED_SESSIONS.get(),
                 false,
                 LivingWordConfig.SYNC_TOLERANCE_MILLIS.get()
