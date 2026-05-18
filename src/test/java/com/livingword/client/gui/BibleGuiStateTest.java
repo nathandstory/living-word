@@ -45,4 +45,32 @@ final class BibleGuiStateTest {
         assertEquals(bookmark, state.bookmarks().getFirst());
         assertEquals(recent, state.recentHistory().getFirst());
     }
+
+    @Test
+    void cyclesSearchResults() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        BibleReference first = new BibleReference("kjv", "john", 3, 16);
+        BibleReference second = new BibleReference("kjv", "1_john", 4, 8);
+
+        state.replaceSearchResults(java.util.List.of(first, second));
+
+        assertEquals(first, state.currentSearchResult().orElseThrow());
+        assertEquals("1 / 2", state.searchResultSummary());
+
+        state.advanceSearchResult(1);
+
+        assertEquals(second, state.currentSearchResult().orElseThrow());
+        assertEquals("2 / 2", state.searchResultSummary());
+    }
+
+    @Test
+    void changingSearchQueryClearsPreviousResults() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        state.replaceSearchResults(java.util.List.of(new BibleReference("kjv", "john", 3, 16)));
+
+        state.setSearchQuery("peace");
+
+        assertTrue(state.currentSearchResult().isEmpty());
+        assertEquals("", state.searchResultSummary());
+    }
 }

@@ -4,6 +4,7 @@ import com.livingword.bible.BibleReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public final class BibleGuiState {
     private String translationId;
@@ -11,6 +12,8 @@ public final class BibleGuiState {
     private int chapter;
     private int selectedVerse;
     private String searchQuery;
+    private final List<BibleReference> searchResults = new ArrayList<>();
+    private int searchResultIndex;
     private final List<BibleReference> recentHistory = new ArrayList<>();
     private final List<BibleReference> bookmarks = new ArrayList<>();
 
@@ -62,7 +65,40 @@ public final class BibleGuiState {
     }
 
     public void setSearchQuery(String searchQuery) {
-        this.searchQuery = searchQuery == null ? "" : searchQuery;
+        String normalized = searchQuery == null ? "" : searchQuery;
+        if (!this.searchQuery.equals(normalized)) {
+            searchResults.clear();
+            searchResultIndex = 0;
+        }
+        this.searchQuery = normalized;
+    }
+
+    public void replaceSearchResults(List<BibleReference> references) {
+        searchResults.clear();
+        if (references != null) {
+            searchResults.addAll(references);
+        }
+        searchResultIndex = 0;
+    }
+
+    public Optional<BibleReference> currentSearchResult() {
+        if (searchResults.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(searchResults.get(searchResultIndex));
+    }
+
+    public void advanceSearchResult(int direction) {
+        if (!searchResults.isEmpty()) {
+            searchResultIndex = Math.floorMod(searchResultIndex + direction, searchResults.size());
+        }
+    }
+
+    public String searchResultSummary() {
+        if (searchResults.isEmpty()) {
+            return "";
+        }
+        return (searchResultIndex + 1) + " / " + searchResults.size();
     }
 
     public void setPassage(String translationId, String bookId, int chapter) {

@@ -60,13 +60,16 @@ public final class BibleScreen extends Screen {
         int top = 24;
         int bottomButtonY = top + panelHeight - 28;
 
-        searchBox = new EditBox(this.font, left + 16, top + 34, panelWidth - 76, 20, Component.translatable("gui.livingword.bible.search"));
+        searchBox = new EditBox(this.font, left + 16, top + 34, panelWidth - 134, 20, Component.translatable("gui.livingword.bible.search"));
         searchBox.setResponder(state::setSearchQuery);
         searchBox.setHint(Component.translatable("gui.livingword.bible.search"));
         addRenderableWidget(searchBox);
 
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_go"), button -> jumpToFirstSearchResult())
-            .bounds(left + panelWidth - 54, top + 34, 38, 20)
+            .bounds(left + panelWidth - 112, top + 34, 42, 20)
+            .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_next"), button -> jumpToNextSearchResult())
+            .bounds(left + panelWidth - 66, top + 34, 50, 20)
             .build());
 
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_book"), button -> navigateBook(-1))
@@ -113,6 +116,9 @@ public final class BibleScreen extends Screen {
 
         graphics.drawCenteredString(this.font, this.title, this.width / 2, top + 10, TEXT);
         graphics.drawCenteredString(this.font, currentHeading(), this.width / 2, top + 86, TEXT);
+        if (!state.searchResultSummary().isEmpty()) {
+            graphics.drawString(this.font, state.searchResultSummary(), left + panelWidth - 16 - this.font.width(state.searchResultSummary()), top + 88, 0xFFC8A978, false);
+        }
         currentChapter().ifPresent(chapter -> {
             verseListX = left + 16;
             verseListY = top + 106;
@@ -168,10 +174,18 @@ public final class BibleScreen extends Screen {
     }
 
     private void jumpToFirstSearchResult() {
-        List<BibleReference> results = dataManager.search(state.translationId(), state.searchQuery(), 1);
-        if (!results.isEmpty()) {
-            navigateTo(results.getFirst());
+        List<BibleReference> results = dataManager.search(state.translationId(), state.searchQuery(), 100);
+        state.replaceSearchResults(results);
+        state.currentSearchResult().ifPresent(this::navigateTo);
+    }
+
+    private void jumpToNextSearchResult() {
+        if (state.currentSearchResult().isEmpty()) {
+            jumpToFirstSearchResult();
+            return;
         }
+        state.advanceSearchResult(1);
+        state.currentSearchResult().ifPresent(this::navigateTo);
     }
 
     private void navigateBook(int direction) {
