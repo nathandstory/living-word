@@ -19,7 +19,7 @@ public final class LivingWord {
     public LivingWord(IEventBus modEventBus, ModContainer modContainer) {
         LivingWordConfig.register(modContainer);
         LivingWordItems.register(modEventBus);
-        LecternEvents.register(modEventBus);
+        LecternEvents.register();
         LivingWordNetwork.register(modEventBus);
         DailyVerseEvents.register();
     }
