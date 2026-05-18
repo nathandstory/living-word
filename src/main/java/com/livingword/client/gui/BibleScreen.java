@@ -6,6 +6,7 @@ import com.livingword.bible.ChapterData;
 import com.livingword.bible.TranslationManifest;
 import com.livingword.client.BibleClientPreferences;
 import com.livingword.client.BibleClientRepository;
+import com.livingword.client.LivingWordClient;
 import com.livingword.client.gui.widgets.VerseListWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -93,6 +94,9 @@ public final class BibleScreen extends Screen {
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.version"), button -> navigateTranslation(1))
             .bounds(left + 112, bottomButtonY, 80, 20)
+            .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.listen"), button -> LivingWordClient.playLocalChapter(state.translationId(), state.bookId(), state.chapter()))
+            .bounds(left + 202, bottomButtonY, 54, 20)
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.copy"), button -> copySelectedVerse())
             .bounds(left + panelWidth - 96, bottomButtonY, 80, 20)

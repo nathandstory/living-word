@@ -11,12 +11,14 @@ import com.livingword.config.LivingWordConfig;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
 import com.livingword.network.payload.PlaybackControlPayload;
 import com.livingword.network.payload.TimestampCorrectionPayload;
+import com.livingword.sync.PlaybackState;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 
 import java.net.URI;
 import java.nio.file.Path;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -62,6 +64,19 @@ public final class LivingWordClient {
 
     public static void handleTimestampCorrection(TimestampCorrectionPayload payload) {
         controller().handleTimestampCorrection(payload);
+    }
+
+    public static void playLocalChapter(String translationId, String bookId, int chapter) {
+        handleSessionSync(new ListeningSessionSyncPayload(
+            UUID.randomUUID(),
+            translationId,
+            bookId,
+            chapter,
+            PlaybackState.PLAYING,
+            0L,
+            System.currentTimeMillis(),
+            1
+        ));
     }
 
     public static ListeningSessionSyncPayload activeSession() {
