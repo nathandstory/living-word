@@ -1,6 +1,7 @@
 package com.livingword;
 
 import com.livingword.config.LivingWordConfig;
+import com.livingword.daily.DailyVerseEvents;
 import com.livingword.items.LivingWordItems;
 import com.livingword.lectern.LecternEvents;
 import com.livingword.network.LivingWordNetwork;
@@ -20,5 +21,6 @@ public final class LivingWord {
         LivingWordItems.register(modEventBus);
         LecternEvents.register(modEventBus);
         LivingWordNetwork.register(modEventBus);
+        DailyVerseEvents.register();
     }
 }
