@@ -59,6 +59,10 @@ public record ListeningSession(
         return new ListeningSession(id, translationId, bookId, chapter, state, startMillis, clamped, participants);
     }
 
+    public ListeningSession stopAt() {
+        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.STOPPED, startServerMillis, 0L, participants);
+    }
+
     public ListeningSession withParticipant(UUID playerId) {
         LinkedHashSet<UUID> next = new LinkedHashSet<>(participants);
         next.add(playerId);

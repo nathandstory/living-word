@@ -44,6 +44,17 @@ public final class ListeningSessionManager {
         update(sessionId, session -> session.seekTo(positionMillis, serverMillis));
     }
 
+    public void control(UUID sessionId, PlaybackState state, long positionMillis, long serverMillis) {
+        update(sessionId, session -> {
+            ListeningSession positioned = session.seekTo(positionMillis, serverMillis);
+            return switch (state) {
+                case PLAYING -> positioned.playAt(serverMillis);
+                case PAUSED -> positioned.pauseAt(serverMillis);
+                case STOPPED -> positioned.seekTo(0L, serverMillis).stopAt();
+            };
+        });
+    }
+
     private void update(UUID sessionId, java.util.function.Function<ListeningSession, ListeningSession> updater) {
         ListeningSession session = sessions.get(sessionId);
         if (session != null) {

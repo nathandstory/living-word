@@ -1,7 +1,9 @@
 package com.livingword.items;
 
 import com.livingword.LivingWord;
+import com.livingword.network.LivingWordNetwork;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -20,8 +22,9 @@ public final class BibleItem extends Item {
         if (level.isClientSide()) {
             openClientScreen();
         } else {
-            if (player.isShiftKeyDown()) {
-                player.displayClientMessage(Component.translatable("message.livingword.bible.nearby_listening_unavailable"), true);
+            if (player.isShiftKeyDown() && player instanceof ServerPlayer serverPlayer) {
+                LivingWordNetwork.startNearbyListeningSession(serverPlayer, "kjv", "john", 3, 32.0D);
+                player.displayClientMessage(Component.translatable("message.livingword.bible.nearby_listening_started"), true);
             }
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
