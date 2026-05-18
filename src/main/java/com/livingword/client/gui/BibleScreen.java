@@ -27,7 +27,11 @@ public final class BibleScreen extends Screen {
     private final BibleGuiState state;
     private final VerseListWidget verseList = new VerseListWidget();
     private EditBox searchBox;
+    private int verseListX;
     private int verseListY;
+    private int verseListWidth;
+    private int verseListHeight;
+    private int verseScrollOffset;
 
     public BibleScreen() {
         super(Component.translatable("gui.livingword.bible.title"));
@@ -99,8 +103,13 @@ public final class BibleScreen extends Screen {
         graphics.drawCenteredString(this.font, this.title, this.width / 2, top + 10, TEXT);
         graphics.drawCenteredString(this.font, currentHeading(), this.width / 2, top + 86, TEXT);
         currentChapter().ifPresent(chapter -> {
+            verseListX = left + 16;
             verseListY = top + 106;
-            verseList.render(graphics, this.font, chapter, state, left + 16, verseListY, panelWidth - 32);
+            verseListWidth = panelWidth - 32;
+            verseListHeight = Math.max(48, panelHeight - 142);
+            verseScrollOffset = clampScroll(chapter, verseScrollOffset);
+            verseList.render(graphics, this.font, chapter, state, verseListX, verseListY, verseListWidth, verseListHeight, verseScrollOffset);
+            renderScrollBar(graphics, chapter);
         });
         super.render(graphics, mouseX, mouseY, partialTick);
     }
@@ -111,8 +120,8 @@ public final class BibleScreen extends Screen {
             return true;
         }
         Optional<ChapterData> chapter = currentChapter();
-        if (chapter.isPresent()) {
-            var selectedVerse = verseList.verseAt(chapter.get(), verseListY, mouseY);
+        if (chapter.isPresent() && isInsideVerseList(mouseX, mouseY)) {
+            var selectedVerse = verseList.verseAt(chapter.get(), verseListY, mouseY, verseScrollOffset);
             if (selectedVerse.isPresent()) {
                 state.selectVerse(selectedVerse.getAsInt());
                 recordCurrentHistory();
@@ -120,6 +129,18 @@ public final class BibleScreen extends Screen {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
+        if (isInsideVerseList(mouseX, mouseY)) {
+            currentChapter().ifPresent(chapter -> {
+                int nextOffset = verseScrollOffset - (int) Math.round(scrollY * 28);
+                verseScrollOffset = clampScroll(chapter, nextOffset);
+            });
+            return true;
+        }
+        return super.mouseScrolled(mouseX, mouseY, scrollX, scrollY);
     }
 
     private void copySelectedVerse() {
@@ -168,6 +189,7 @@ public final class BibleScreen extends Screen {
 
     private void setPassage(String translationId, String bookId, int chapter) {
         state.setPassage(translationId, bookId, chapter);
+        verseScrollOffset = 0;
         currentChapter().ifPresent(this::selectFirstVerse);
         recordCurrentHistory();
     }
@@ -189,6 +211,28 @@ public final class BibleScreen extends Screen {
 
     private void selectFirstVerse(ChapterData chapter) {
         chapter.verses().keySet().stream().min(Integer::compareTo).ifPresentOrElse(state::selectVerse, () -> state.selectVerse(1));
+    }
+
+    private boolean isInsideVerseList(double mouseX, double mouseY) {
+        return mouseX >= verseListX && mouseX <= verseListX + verseListWidth && mouseY >= verseListY && mouseY <= verseListY + verseListHeight;
+    }
+
+    private int clampScroll(ChapterData chapter, int scrollOffset) {
+        int maxScroll = verseList.maxScroll(chapter, verseListHeight);
+        return Math.max(0, Math.min(scrollOffset, maxScroll));
+    }
+
+    private void renderScrollBar(GuiGraphics graphics, ChapterData chapter) {
+        int maxScroll = verseList.maxScroll(chapter, verseListHeight);
+        if (maxScroll <= 0) {
+            return;
+        }
+        int barX = verseListX + verseListWidth - 4;
+        int trackHeight = verseListHeight;
+        int thumbHeight = Math.max(16, trackHeight * trackHeight / (trackHeight + maxScroll));
+        int thumbY = verseListY + (trackHeight - thumbHeight) * verseScrollOffset / maxScroll;
+        graphics.fill(barX, verseListY, barX + 2, verseListY + trackHeight, 0x664D3B27);
+        graphics.fill(barX, thumbY, barX + 2, thumbY + thumbHeight, BORDER);
     }
 
     private static String formatBookId(String bookId) {
