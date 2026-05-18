@@ -3,6 +3,7 @@ package com.livingword.client;
 import com.livingword.LivingWord;
 import com.livingword.audio.AudioCacheManager;
 import com.livingword.audio.AudioManifest;
+import com.livingword.audio.AudioManifestRepository;
 import com.livingword.audio.AudioPlaybackService;
 import com.livingword.audio.CachedAudioDownloadService;
 import com.livingword.audio.DownloadState;
@@ -17,7 +18,6 @@ import net.minecraft.network.chat.Component;
 
 import java.net.URI;
 import java.nio.file.Path;
-import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -30,6 +30,7 @@ public final class LivingWordClient {
 
     private static ListeningSessionSyncPayload activeSession;
     private static ClientAudioSessionController audioSessionController;
+    private static AudioManifestRepository audioManifestRepository;
 
     private LivingWordClient() {
     }
@@ -88,12 +89,14 @@ public final class LivingWordClient {
     private static AudioManifest manifestFor(String translationId) {
         String baseUrl = LivingWordConfig.CDN_BASE_URL.get();
         String normalized = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
-        return new AudioManifest(
-            translationId + "-default",
-            translationId,
-            URI.create(normalized).resolve(translationId + "/"),
-            Map.of()
-        );
+        return audioManifestRepository().manifestOrFallback(translationId, "default", URI.create(normalized).resolve(translationId + "/"));
+    }
+
+    private static AudioManifestRepository audioManifestRepository() {
+        if (audioManifestRepository == null) {
+            audioManifestRepository = new AudioManifestRepository(LivingWordClient.class.getClassLoader());
+        }
+        return audioManifestRepository;
     }
 
     private static void reportDownloadState(DownloadState state) {
