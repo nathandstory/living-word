@@ -8,4 +8,24 @@ public interface AudioPlaybackService {
     void seek(AudioChapterId chapterId, long positionMillis);
 
     void stop(AudioChapterId chapterId);
+
+    static AudioPlaybackService noop() {
+        return new AudioPlaybackService() {
+            @Override
+            public void play(AudioChapterId chapterId, long positionMillis, boolean spatial) {
+            }
+
+            @Override
+            public void pause(AudioChapterId chapterId) {
+            }
+
+            @Override
+            public void seek(AudioChapterId chapterId, long positionMillis) {
+            }
+
+            @Override
+            public void stop(AudioChapterId chapterId) {
+            }
+        };
+    }
 }
