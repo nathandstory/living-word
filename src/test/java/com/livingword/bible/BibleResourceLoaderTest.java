@@ -30,6 +30,23 @@ final class BibleResourceLoaderTest {
     }
 
     @Test
+    void reloadUsesBundledTranslationRegistry() {
+        BibleDataManager manager = new BibleDataManager();
+        BibleResourceLoader loader = new BibleResourceLoader(manager, BibleResourceLoaderTest.class.getClassLoader());
+
+        loader.reload();
+
+        assertTrue(manager.getTranslation("kjv").isPresent());
+        assertTrue(manager.getTranslation("webp").isPresent());
+        assertEquals(66, manager.bookIds("webp").size());
+        assertEquals(1189, manager.bookIds("webp").stream().mapToInt(bookId -> manager.chapters("webp", bookId).size()).sum());
+        assertEquals("For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+            manager.getVerse(new BibleReference("webp", "john", 3, 16)).orElseThrow());
+        assertEquals("The grace of the Lord Jesus Christ be with all the saints. Amen.",
+            manager.getVerse(new BibleReference("webp", "revelation", 22, 21)).orElseThrow());
+    }
+
+    @Test
     void searchesLoadedVersesDeterministically() {
         BibleDataManager manager = new BibleDataManager();
         BibleResourceLoader loader = new BibleResourceLoader(manager, BibleResourceLoaderTest.class.getClassLoader());

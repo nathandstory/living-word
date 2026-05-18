@@ -80,6 +80,9 @@ public final class BibleScreen extends Screen {
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.bookmark"), button -> state.addBookmark(state.selectedReference()))
             .bounds(left + 16, bottomButtonY, 86, 20)
             .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.version"), button -> navigateTranslation(1))
+            .bounds(left + 112, bottomButtonY, 80, 20)
+            .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.copy"), button -> copySelectedVerse())
             .bounds(left + panelWidth - 96, bottomButtonY, 80, 20)
             .build());
@@ -179,6 +182,20 @@ public final class BibleScreen extends Screen {
         int currentIndex = Math.max(0, chapters.indexOf(state.chapter()));
         int nextIndex = Math.floorMod(currentIndex + direction, chapters.size());
         setPassage(state.translationId(), state.bookId(), chapters.get(nextIndex));
+    }
+
+    private void navigateTranslation(int direction) {
+        List<String> translationIds = dataManager.translations().stream().map(TranslationManifest::id).toList();
+        if (translationIds.isEmpty()) {
+            return;
+        }
+        int currentIndex = Math.max(0, translationIds.indexOf(state.translationId()));
+        String nextTranslationId = translationIds.get(Math.floorMod(currentIndex + direction, translationIds.size()));
+        if (dataManager.getChapter(nextTranslationId, state.bookId(), state.chapter()).isPresent()) {
+            setPassage(nextTranslationId, state.bookId(), state.chapter());
+            return;
+        }
+        dataManager.firstChapter(nextTranslationId).ifPresent(chapter -> setPassage(chapter.translationId(), chapter.bookId(), chapter.chapter()));
     }
 
     private void navigateTo(BibleReference reference) {
