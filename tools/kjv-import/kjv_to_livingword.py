@@ -88,8 +88,10 @@ for book_id, (display_name, aliases) in BOOKS.items():
         ALIASES[alias] = book_id
 
 VERSE_LINE = re.compile(r"^\s*(\d{1,3}):(\d{1,3})\s+(.*)$")
+GUTENBERG_NUMERIC_VERSE_LINE = re.compile(r"^\s*(\d{2}):(\d{3}):(\d{3})\s+(.*)$")
 PG_START = "*** START OF"
 PG_END = "*** END OF"
+GUTENBERG_BOOK_IDS = dict(enumerate(BOOKS.keys(), start=1))
 
 
 def main() -> int:
@@ -110,16 +112,20 @@ def main() -> int:
 
 
 def parse_source(source: Path) -> OrderedDict[str, OrderedDict[int, OrderedDict[int, str]]]:
+    return parse_text(source.read_text(encoding="utf-8"))
+
+
+def parse_text(source: str) -> OrderedDict[str, OrderedDict[int, OrderedDict[int, str]]]:
     data: OrderedDict[str, OrderedDict[int, OrderedDict[int, str]]] = OrderedDict((book_id, OrderedDict()) for book_id in BOOKS)
     current_book = None
     current_chapter = None
     current_verse = None
     in_body = False
 
-    for raw_line in source.read_text(encoding="utf-8").splitlines():
+    for raw_line in source.splitlines():
         line = raw_line.strip()
         if not in_body:
-            in_body = PG_START in line or bool(looks_like_book_heading(line))
+            in_body = PG_START in line or bool(looks_like_book_heading(line)) or bool(GUTENBERG_NUMERIC_VERSE_LINE.match(line))
             if not in_body:
                 continue
         if PG_END in line:
@@ -132,6 +138,20 @@ def parse_source(source: Path) -> OrderedDict[str, OrderedDict[int, OrderedDict[
             current_book = heading_book
             current_chapter = None
             current_verse = None
+            continue
+
+        numeric_verse_match = GUTENBERG_NUMERIC_VERSE_LINE.match(line)
+        if numeric_verse_match:
+            current_book = GUTENBERG_BOOK_IDS.get(int(numeric_verse_match.group(1)))
+            if current_book is None:
+                current_chapter = None
+                current_verse = None
+                continue
+            current_chapter = int(numeric_verse_match.group(2))
+            current_verse = int(numeric_verse_match.group(3))
+            text = clean_text(numeric_verse_match.group(4))
+            chapter = data[current_book].setdefault(current_chapter, OrderedDict())
+            chapter[current_verse] = text
             continue
 
         verse_match = VERSE_LINE.match(line)
@@ -178,7 +198,15 @@ def normalize_heading(line: str) -> str:
 
 
 def clean_text(value: str) -> str:
-    return re.sub(r"\s+", " ", value).strip()
+    replacements = {
+        "\u2014": "--",
+        "\u2013": "-",
+        "\u00e2\u20ac\u201d": "--",
+    }
+    text = re.sub(r"\s+", " ", value).strip()
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+    return text
 
 
 def write_translation(args: argparse.Namespace, records: OrderedDict[str, OrderedDict[int, OrderedDict[int, str]]]) -> None:
