@@ -10,6 +10,7 @@ import com.livingword.client.LivingWordClient;
 import com.livingword.client.gui.widgets.VerseListWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -147,7 +148,7 @@ public final class BibleScreen extends Screen {
             verseList.render(graphics, this.font, chapter, state, verseListX, verseListY, verseListWidth, verseListHeight, verseScrollOffset);
             renderScrollBar(graphics, chapter);
         });
-        super.render(graphics, mouseX, mouseY, partialTick);
+        renderBibleWidgets(graphics, mouseX, mouseY, partialTick);
     }
 
     @Override
@@ -332,6 +333,12 @@ public final class BibleScreen extends Screen {
 
     private static ChapterData emptyFallbackChapter() {
         return new ChapterData("kjv", "john", 1, Map.of(1, "No Bible data is loaded."));
+    }
+
+    private void renderBibleWidgets(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
+        for (Renderable renderable : this.renderables) {
+            renderable.render(graphics, mouseX, mouseY, partialTick);
+        }
     }
 
     private int panelWidth() {
