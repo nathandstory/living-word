@@ -59,91 +59,80 @@ public final class BibleScreen extends Screen {
 
     @Override
     protected void init() {
-        int panelWidth = panelWidth();
-        int panelHeight = panelHeight();
-        int left = (this.width - panelWidth) / 2;
-        int top = (this.height - panelHeight) / 2;
-        int bottomButtonY = top + panelHeight - 28;
-        int searchY = top + 30;
-        int navY = top + 56;
-        int searchWidth = Math.max(92, panelWidth - 184);
-        int navButtonWidth = Math.max(44, (panelWidth - 40 - 18) / 4);
-        int bottomButtonWidth = Math.max(54, (panelWidth - 40 - 18) / 4);
+        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height);
 
-        searchBox = new EditBox(this.font, left + 20, searchY, searchWidth, 20, Component.translatable("gui.livingword.bible.search"));
+        searchBox = new EditBox(this.font, layout.searchBox().x(), layout.searchBox().y(), layout.searchBox().width(), layout.searchBox().height(), Component.translatable("gui.livingword.bible.search"));
         searchBox.setResponder(state::setSearchQuery);
         searchBox.setHint(Component.translatable("gui.livingword.bible.search"));
         addRenderableWidget(searchBox);
 
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_go"), button -> jumpToFirstSearchResult())
-            .bounds(left + 26 + searchWidth, searchY, 42, 20)
+            .bounds(layout.searchGo().x(), layout.searchGo().y(), layout.searchGo().width(), layout.searchGo().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_next"), button -> jumpToNextSearchResult())
-            .bounds(left + 74 + searchWidth, searchY, 50, 20)
+            .bounds(layout.searchNext().x(), layout.searchNext().y(), layout.searchNext().width(), layout.searchNext().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.close"), button -> onClose())
-            .bounds(left + panelWidth - 62, top + 8, 42, 20)
+            .bounds(layout.close().x(), layout.close().y(), layout.close().width(), layout.close().height())
             .build());
 
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_book"), button -> navigateBook(-1))
-            .bounds(left + 20, navY, navButtonWidth, 20)
+            .bounds(layout.previousBook().x(), layout.previousBook().y(), layout.previousBook().width(), layout.previousBook().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_chapter"), button -> navigateChapter(-1))
-            .bounds(left + 26 + navButtonWidth, navY, navButtonWidth, 20)
+            .bounds(layout.previousChapter().x(), layout.previousChapter().y(), layout.previousChapter().width(), layout.previousChapter().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_chapter"), button -> navigateChapter(1))
-            .bounds(left + 32 + navButtonWidth * 2, navY, navButtonWidth, 20)
+            .bounds(layout.nextChapter().x(), layout.nextChapter().y(), layout.nextChapter().width(), layout.nextChapter().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_book"), button -> navigateBook(1))
-            .bounds(left + 38 + navButtonWidth * 3, navY, navButtonWidth, 20)
+            .bounds(layout.nextBook().x(), layout.nextBook().y(), layout.nextBook().width(), layout.nextBook().height())
             .build());
 
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.bookmark"), button -> {
                 state.addBookmark(state.selectedReference());
                 persistState();
             })
-            .bounds(left + 20, bottomButtonY, bottomButtonWidth, 20)
+            .bounds(layout.bookmark().x(), layout.bookmark().y(), layout.bookmark().width(), layout.bookmark().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.version"), button -> navigateTranslation(1))
-            .bounds(left + 26 + bottomButtonWidth, bottomButtonY, bottomButtonWidth, 20)
+            .bounds(layout.version().x(), layout.version().y(), layout.version().width(), layout.version().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.listen"), button -> LivingWordClient.playLocalChapter(state.translationId(), state.bookId(), state.chapter()))
-            .bounds(left + 32 + bottomButtonWidth * 2, bottomButtonY, bottomButtonWidth, 20)
+            .bounds(layout.listen().x(), layout.listen().y(), layout.listen().width(), layout.listen().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.copy"), button -> copySelectedVerse())
-            .bounds(left + 38 + bottomButtonWidth * 3, bottomButtonY, bottomButtonWidth, 20)
+            .bounds(layout.copy().x(), layout.copy().y(), layout.copy().width(), layout.copy().height())
             .build());
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics, mouseX, mouseY, partialTick);
-        int panelWidth = panelWidth();
-        int panelHeight = panelHeight();
-        int left = (this.width - panelWidth) / 2;
-        int top = (this.height - panelHeight) / 2;
+        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height);
+        BibleScreenLayout.Rect panel = layout.panel();
 
         graphics.fill(0, 0, this.width, this.height, BACKGROUND);
-        graphics.fill(left, top, left + panelWidth, top + panelHeight, PANEL);
-        graphics.fill(left + 8, top + 8, left + panelWidth - 8, top + panelHeight - 8, PAGE_DARK);
-        graphics.fill(left + 14, top + 14, left + panelWidth - 14, top + panelHeight - 14, PAGE);
-        int spineX = left + panelWidth / 2;
-        graphics.fill(spineX - 1, top + 14, spineX + 1, top + panelHeight - 14, 0x55815F32);
-        graphics.fill(left, top, left + panelWidth, top + 1, BORDER);
-        graphics.fill(left, top + panelHeight - 1, left + panelWidth, top + panelHeight, BORDER);
-        graphics.fill(left, top, left + 1, top + panelHeight, BORDER);
-        graphics.fill(left + panelWidth - 1, top, left + panelWidth, top + panelHeight, BORDER);
+        graphics.fill(panel.x(), panel.y(), panel.right(), panel.bottom(), PANEL);
+        graphics.fill(panel.x() + 8, panel.y() + 8, panel.right() - 8, panel.bottom() - 8, PAGE_DARK);
+        graphics.fill(panel.x() + 14, panel.y() + 14, panel.right() - 14, panel.bottom() - 14, PAGE);
+        int spineX = panel.x() + panel.width() / 2;
+        graphics.fill(spineX - 1, panel.y() + 14, spineX + 1, panel.bottom() - 14, 0x55815F32);
+        graphics.fill(panel.x(), panel.y(), panel.right(), panel.y() + 1, BORDER);
+        graphics.fill(panel.x(), panel.bottom() - 1, panel.right(), panel.bottom(), BORDER);
+        graphics.fill(panel.x(), panel.y(), panel.x() + 1, panel.bottom(), BORDER);
+        graphics.fill(panel.right() - 1, panel.y(), panel.right(), panel.bottom(), BORDER);
 
-        graphics.drawCenteredString(this.font, this.title, this.width / 2, top + 10, TITLE_TEXT);
-        graphics.drawCenteredString(this.font, currentHeading(), this.width / 2, top + 84, TEXT);
+        graphics.drawCenteredString(this.font, this.title, this.width / 2, panel.y() + 10, TITLE_TEXT);
+        graphics.drawCenteredString(this.font, currentHeading(), this.width / 2, panel.y() + 88, TEXT);
         if (!state.searchResultSummary().isEmpty()) {
-            graphics.drawString(this.font, state.searchResultSummary(), left + panelWidth - 24 - this.font.width(state.searchResultSummary()), top + 84, 0xFF7C5426, false);
+            graphics.drawString(this.font, state.searchResultSummary(), panel.right() - 24 - this.font.width(state.searchResultSummary()), panel.y() + 88, 0xFF7C5426, false);
         }
         currentChapter().ifPresent(chapter -> {
-            verseListX = left + 24;
-            verseListY = top + 104;
-            verseListWidth = panelWidth - 48;
-            verseListHeight = Math.max(32, panelHeight - 144);
+            verseListX = layout.verseList().x();
+            verseListY = layout.verseList().y();
+            verseListWidth = layout.verseList().width();
+            verseListHeight = layout.verseList().height();
             verseScrollOffset = clampScroll(chapter, verseScrollOffset);
             verseList.render(graphics, this.font, chapter, state, verseListX, verseListY, verseListWidth, verseListHeight, verseScrollOffset);
             renderScrollBar(graphics, chapter);
@@ -341,11 +330,4 @@ public final class BibleScreen extends Screen {
         }
     }
 
-    private int panelWidth() {
-        return Math.min(640, Math.max(240, this.width - 16));
-    }
-
-    private int panelHeight() {
-        return Math.min(420, Math.max(180, this.height - 16));
-    }
 }
