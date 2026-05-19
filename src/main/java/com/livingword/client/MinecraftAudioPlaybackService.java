@@ -48,8 +48,8 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
             if (previous != null) {
                 minecraft.getSoundManager().stop(previous.sound());
             }
-            Path path = cacheManager.chapterAudioPath(chapterId);
-            if (!Files.isRegularFile(path)) {
+            Path path = cacheManager.cachedChapterAudioPath(chapterId).orElse(null);
+            if (path == null || !Files.isRegularFile(path)) {
                 return;
             }
             CachedChapterSoundInstance sound = new CachedChapterSoundInstance(chapterId, path, Math.max(0L, positionMillis), spatial, playbackPosition(minecraft));
@@ -187,13 +187,17 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
             return CompletableFuture.supplyAsync(() -> {
                 try {
                     InputStream inputStream = Files.newInputStream(path);
-                    JOrbisAudioStream stream = new JOrbisAudioStream(inputStream);
+                    AudioStream stream = isMp3(path) ? new Mp3AudioStream(inputStream) : new JOrbisAudioStream(inputStream);
                     skipTo(stream, positionMillis);
                     return stream;
                 } catch (IOException exception) {
                     throw new CompletionException(exception);
                 }
             }, Util.nonCriticalIoPool());
+        }
+
+        private static boolean isMp3(Path path) {
+            return path.getFileName().toString().toLowerCase(java.util.Locale.ROOT).endsWith(".mp3");
         }
 
         private static void skipTo(AudioStream stream, long positionMillis) throws IOException {

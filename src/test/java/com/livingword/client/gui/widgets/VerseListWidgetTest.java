@@ -10,6 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class VerseListWidgetTest {
     @Test
+    void wrapsLongVersesIntoReadableVisualLines() {
+        ChapterData chapter = new ChapterData("kjv", "john", 3, Map.of(
+            16, "For God so loved the world, that he gave his only begotten Son."
+        ));
+
+        var lines = WrappedVerseLayout.wrap(chapter, 24, String::length);
+
+        assertTrue(lines.size() > 1);
+        assertTrue(lines.stream().allMatch(line -> line.text().length() <= 24));
+        assertEquals(16, lines.getFirst().verseNumber());
+        assertEquals(16, lines.getLast().verseNumber());
+    }
+
+    @Test
     void hitTestingAccountsForScrollOffset() {
         VerseListWidget widget = new VerseListWidget();
         ChapterData chapter = new ChapterData("kjv", "psalms", 119, Map.of(

@@ -57,6 +57,21 @@ configurations {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
+    jarJar(implementation(group: 'com.googlecode.soundlibs', name: 'mp3spi', version: '1.9.5.4')) {
+        version {
+            prefer '1.9.5.4'
+        }
+    }
+    jarJar(implementation(group: 'com.googlecode.soundlibs', name: 'tritonus-share', version: '0.3.7.4')) {
+        version {
+            prefer '0.3.7.4'
+        }
+    }
+    jarJar(implementation(group: 'javazoom', name: 'jlayer', version: '1.0.1')) {
+        version {
+            prefer '1.0.1'
+        }
+    }
     testImplementation platform('org.junit:junit-bom:5.11.4')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

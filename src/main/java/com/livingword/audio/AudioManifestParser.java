@@ -14,16 +14,25 @@ public final class AudioManifestParser {
         JsonObject root = JsonParser.parseReader(reader).getAsJsonObject();
         String translationId = requiredString(root, "translationId");
         Map<AudioChapterId, String> hashes = new HashMap<>();
+        Map<AudioChapterId, String> chapterPaths = new HashMap<>();
         if (root.has("chapters") && root.get("chapters").isJsonObject()) {
             for (Map.Entry<String, JsonElement> entry : root.getAsJsonObject("chapters").entrySet()) {
                 hashes.put(parseChapterKey(translationId, entry.getKey()), entry.getValue().getAsString());
+            }
+        }
+        if (root.has("chapterPaths") && root.get("chapterPaths").isJsonObject()) {
+            for (Map.Entry<String, JsonElement> entry : root.getAsJsonObject("chapterPaths").entrySet()) {
+                chapterPaths.put(parseChapterKey(translationId, entry.getKey()), entry.getValue().getAsString());
             }
         }
         return new AudioManifest(
             requiredString(root, "id"),
             translationId,
             URI.create(requiredString(root, "baseUri")),
-            hashes
+            optionalString(root, "fileExtension", "ogg"),
+            optionalString(root, "pathStrategy", "direct"),
+            hashes,
+            chapterPaths
         );
     }
 
@@ -38,6 +47,13 @@ public final class AudioManifestParser {
     private static String requiredString(JsonObject root, String name) {
         if (!root.has(name) || root.get(name).isJsonNull()) {
             throw new IllegalArgumentException("Missing required string: " + name);
+        }
+        return root.get(name).getAsString();
+    }
+
+    private static String optionalString(JsonObject root, String name, String fallback) {
+        if (!root.has(name) || root.get(name).isJsonNull()) {
+            return fallback;
         }
         return root.get(name).getAsString();
     }

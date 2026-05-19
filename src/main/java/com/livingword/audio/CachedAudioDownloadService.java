@@ -13,10 +13,16 @@ import java.util.concurrent.Executor;
 
 public final class CachedAudioDownloadService implements AudioDownloadService {
     private final AudioCacheManager cacheManager;
+    private final AudioChapterUriResolver chapterUriResolver;
     private final Executor executor;
 
     public CachedAudioDownloadService(AudioCacheManager cacheManager, Executor executor) {
+        this(cacheManager, new DefaultAudioChapterUriResolver(), executor);
+    }
+
+    public CachedAudioDownloadService(AudioCacheManager cacheManager, AudioChapterUriResolver chapterUriResolver, Executor executor) {
         this.cacheManager = Objects.requireNonNull(cacheManager, "cacheManager");
+        this.chapterUriResolver = Objects.requireNonNull(chapterUriResolver, "chapterUriResolver");
         this.executor = Objects.requireNonNull(executor, "executor");
     }
 
@@ -24,18 +30,18 @@ public final class CachedAudioDownloadService implements AudioDownloadService {
     public CompletableFuture<DownloadState> requestChapter(AudioManifest manifest, AudioChapterId chapterId) {
         Objects.requireNonNull(manifest, "manifest");
         Objects.requireNonNull(chapterId, "chapterId");
-        if (cacheManager.isCached(chapterId)) {
+        if (cacheManager.isCached(chapterId, manifest.fileExtension())) {
             return CompletableFuture.completedFuture(DownloadState.cached(chapterId));
         }
         return CompletableFuture.supplyAsync(() -> downloadChapter(manifest, chapterId), executor);
     }
 
     private DownloadState downloadChapter(AudioManifest manifest, AudioChapterId chapterId) {
-        Path temporaryPath = cacheManager.temporaryDownloadPath(chapterId);
-        Path finalPath = cacheManager.chapterAudioPath(chapterId);
+        Path temporaryPath = cacheManager.temporaryDownloadPath(chapterId, manifest.fileExtension());
+        Path finalPath = cacheManager.chapterAudioPath(chapterId, manifest.fileExtension());
         try {
             Files.createDirectories(finalPath.getParent());
-            URI chapterUri = manifest.chapterUri(chapterId);
+            URI chapterUri = chapterUriResolver.resolve(manifest, chapterId);
             try (InputStream inputStream = chapterUri.toURL().openStream()) {
                 Files.copy(inputStream, temporaryPath, StandardCopyOption.REPLACE_EXISTING);
             }

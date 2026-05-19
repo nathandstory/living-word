@@ -14,7 +14,15 @@ public record AudioChapterId(String translationId, String bookId, int chapter) {
     }
 
     public String fileName() {
-        return "%s_%03d.ogg".formatted(bookId, chapter);
+        return fileName("ogg");
+    }
+
+    public String fileName(String extension) {
+        if (extension == null || extension.isBlank()) {
+            throw new IllegalArgumentException("extension is required");
+        }
+        String normalizedExtension = extension.startsWith(".") ? extension.substring(1) : extension;
+        return "%s_%03d.%s".formatted(bookId, chapter, normalizedExtension.toLowerCase(java.util.Locale.ROOT));
     }
 
     public String timestampsFileName() {

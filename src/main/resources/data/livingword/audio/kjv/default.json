@@ -1,0 +1,10 @@
+{
+  "id": "kjv-default",
+  "translationId": "kjv",
+  "baseUri": "https://ebible.org/eng-web/audio/",
+  "fileExtension": "mp3",
+  "pathStrategy": "ebible-web-directory",
+  "sourceName": "eBible World English Bible Audio",
+  "license": "Public Domain",
+  "attribution": "World English Bible audio from eBible.org; used as a human narration fallback for KJV passages"
+}

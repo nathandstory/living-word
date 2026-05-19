@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class AudioManifestRepositoryTest {
     @TempDir
@@ -28,7 +29,7 @@ final class AudioManifestRepositoryTest {
               }
             }
             """);
-        try (URLClassLoader classLoader = new URLClassLoader(new java.net.URL[]{tempDir.toUri().toURL()})) {
+        try (URLClassLoader classLoader = new URLClassLoader(new java.net.URL[]{tempDir.toUri().toURL()}, null)) {
             AudioManifest manifest = new AudioManifestRepository(classLoader)
                 .manifestOrFallback("webp", "default", URI.create("https://fallback.example.test/webp/"));
 
@@ -40,9 +41,33 @@ final class AudioManifestRepositoryTest {
     @Test
     void createsFallbackManifestWhenResourceIsMissing() {
         AudioManifest manifest = new AudioManifestRepository(getClass().getClassLoader())
-            .manifestOrFallback("kjv", "default", URI.create("https://fallback.example.test/kjv/"));
+            .manifestOrFallback("missing", "default", URI.create("https://fallback.example.test/missing/"));
+
+        assertEquals("missing-default", manifest.id());
+        assertEquals(URI.create("https://fallback.example.test/missing/john/john_003.ogg"), manifest.chapterUri(new AudioChapterId("missing", "john", 3)));
+    }
+
+    @Test
+    void includesBundledWebpHumanAudioManifest() {
+        AudioManifest manifest = new AudioManifestRepository(getClass().getClassLoader())
+            .find("webp", "default")
+            .orElseThrow();
+
+        assertEquals("webp-default", manifest.id());
+        assertEquals("mp3", manifest.fileExtension());
+        assertEquals("ebible-web-directory", manifest.pathStrategy());
+        assertTrue(manifest.baseUri().toString().startsWith("https://ebible.org/eng-web/audio/"));
+    }
+
+    @Test
+    void includesBundledKjvHumanAudioFallbackManifest() {
+        AudioManifest manifest = new AudioManifestRepository(getClass().getClassLoader())
+            .find("kjv", "default")
+            .orElseThrow();
 
         assertEquals("kjv-default", manifest.id());
-        assertEquals(URI.create("https://fallback.example.test/kjv/john/john_003.ogg"), manifest.chapterUri(new AudioChapterId("kjv", "john", 3)));
+        assertEquals("kjv", manifest.translationId());
+        assertEquals("mp3", manifest.fileExtension());
+        assertEquals("ebible-web-directory", manifest.pathStrategy());
     }
 }

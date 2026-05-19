@@ -6,12 +6,11 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 
 import java.util.List;
-import java.util.Map;
 import java.util.OptionalInt;
 
 public final class VerseListWidget {
-    private static final int TEXT = 0xFFE8D7B5;
-    private static final int SELECTED = 0xFFFFD37A;
+    private static final int TEXT = 0xFF3B2A18;
+    private static final int SELECTED = 0xFF7C3F08;
     private static final int LINE_HEIGHT = 14;
 
     public void render(GuiGraphics graphics, Font font, ChapterData chapter, BibleGuiState state, int x, int y, int width) {
@@ -22,11 +21,10 @@ public final class VerseListWidget {
         graphics.enableScissor(x, y, x + width, y + height);
         int lineY = y;
         lineY -= scrollOffset;
-        for (Map.Entry<Integer, String> verse : sortedVerses(chapter)) {
-            int color = verse.getKey() == state.selectedVerse() ? SELECTED : TEXT;
-            String line = verse.getKey() + ". " + verse.getValue();
+        for (WrappedVerseLayout.VisualLine line : wrappedLines(chapter, font, width)) {
+            int color = line.verseNumber() == state.selectedVerse() ? SELECTED : TEXT;
             if (lineY + LINE_HEIGHT >= y && lineY <= y + height) {
-                graphics.drawString(font, font.plainSubstrByWidth(line, width), x, lineY, color, false);
+                graphics.drawString(font, line.text(), x, lineY, color, false);
             }
             lineY += LINE_HEIGHT;
         }
@@ -38,23 +36,38 @@ public final class VerseListWidget {
     }
 
     public OptionalInt verseAt(ChapterData chapter, int y, double mouseY, int scrollOffset) {
+        return verseAt(WrappedVerseLayout.wrap(chapter, 80, String::length), y, mouseY, scrollOffset);
+    }
+
+    public OptionalInt verseAt(ChapterData chapter, Font font, int width, int y, double mouseY, int scrollOffset) {
+        return verseAt(wrappedLines(chapter, font, width), y, mouseY, scrollOffset);
+    }
+
+    private OptionalInt verseAt(List<WrappedVerseLayout.VisualLine> lines, int y, double mouseY, int scrollOffset) {
         int index = (((int) mouseY - y) + scrollOffset) / LINE_HEIGHT;
-        List<Map.Entry<Integer, String>> verses = sortedVerses(chapter);
-        if (index < 0 || index >= verses.size()) {
+        if (index < 0 || index >= lines.size()) {
             return OptionalInt.empty();
         }
-        return OptionalInt.of(verses.get(index).getKey());
+        return OptionalInt.of(lines.get(index).verseNumber());
     }
 
     public int maxScroll(ChapterData chapter, int height) {
         return Math.max(0, contentHeight(chapter) - height);
     }
 
-    private static int contentHeight(ChapterData chapter) {
-        return sortedVerses(chapter).size() * LINE_HEIGHT;
+    public int maxScroll(ChapterData chapter, Font font, int width, int height) {
+        return Math.max(0, contentHeight(chapter, font, width) - height);
     }
 
-    private static List<Map.Entry<Integer, String>> sortedVerses(ChapterData chapter) {
-        return chapter.verses().entrySet().stream().sorted(Map.Entry.comparingByKey()).toList();
+    private static int contentHeight(ChapterData chapter) {
+        return WrappedVerseLayout.wrap(chapter, 80, String::length).size() * LINE_HEIGHT;
+    }
+
+    private static int contentHeight(ChapterData chapter, Font font, int width) {
+        return wrappedLines(chapter, font, width).size() * LINE_HEIGHT;
+    }
+
+    private static List<WrappedVerseLayout.VisualLine> wrappedLines(ChapterData chapter, Font font, int width) {
+        return WrappedVerseLayout.wrap(chapter, Math.max(24, width - 8), font::width);
     }
 }
