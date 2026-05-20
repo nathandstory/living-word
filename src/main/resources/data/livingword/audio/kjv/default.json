@@ -1,10 +1,10 @@
 {
-  "id": "kjv-default",
+  "id": "kjv-audiotreasure-voice",
   "translationId": "kjv",
-  "baseUri": "https://ebible.org/eng-web/audio/",
+  "baseUri": "https://www.audiotreasure.com/content/KJV_AT/",
   "fileExtension": "mp3",
-  "pathStrategy": "ebible-web-directory",
-  "sourceName": "eBible World English Bible Audio",
-  "license": "Public Domain",
-  "attribution": "World English Bible audio from eBible.org; used as a human narration fallback for KJV passages"
+  "pathStrategy": "audiotreasure-kjv",
+  "sourceName": "AudioTreasure KJV voice-only narration",
+  "license": "Free legal audio; Rev Dan Wagner recording used by AudioTreasure by permission",
+  "attribution": "KJV voice-only narration from AudioTreasure.com"
 }

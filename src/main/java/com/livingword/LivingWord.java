@@ -2,6 +2,8 @@ package com.livingword;
 
 import com.livingword.config.LivingWordConfig;
 import com.livingword.daily.DailyVerseEvents;
+import com.livingword.discs.ScriptureDiscEvents;
+import com.livingword.items.BibleItemEntityProtection;
 import com.livingword.items.LivingWordItems;
 import com.livingword.lectern.LecternEvents;
 import com.livingword.network.LivingWordNetwork;
@@ -19,7 +21,9 @@ public final class LivingWord {
     public LivingWord(IEventBus modEventBus, ModContainer modContainer) {
         LivingWordConfig.register(modContainer);
         LivingWordItems.register(modEventBus);
+        BibleItemEntityProtection.register();
         LecternEvents.register();
+        ScriptureDiscEvents.register();
         LivingWordNetwork.register(modEventBus);
         DailyVerseEvents.register();
     }

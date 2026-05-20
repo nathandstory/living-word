@@ -2,23 +2,32 @@ package com.livingword.client;
 
 import com.livingword.LivingWord;
 import com.livingword.audio.AudioCacheManager;
+import com.livingword.audio.AudioChapterId;
 import com.livingword.audio.AudioManifest;
 import com.livingword.audio.AudioManifestRepository;
 import com.livingword.audio.CachedAudioDownloadService;
 import com.livingword.audio.DownloadState;
 import com.livingword.client.gui.BibleScreen;
+import com.livingword.client.gui.ScriptureDiscSelectionScreen;
 import com.livingword.config.LivingWordConfig;
+import com.livingword.discs.ScriptureDiscSelection;
+import com.livingword.network.payload.ConfigureScriptureDiscPayload;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
 import com.livingword.network.payload.PlaybackControlPayload;
 import com.livingword.network.payload.TimestampCorrectionPayload;
 import com.livingword.sync.PlaybackState;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.net.URI;
 import java.nio.file.Path;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,18 +41,47 @@ public final class LivingWordClient {
     private static ListeningSessionSyncPayload activeSession;
     private static ClientAudioSessionController audioSessionController;
     private static AudioManifestRepository audioManifestRepository;
+    private static final Map<AudioChapterId, Long> LOCAL_RESUME_POSITIONS = new ConcurrentHashMap<>();
+    private static final long BIBLE_OPEN_ANIMATION_DELAY_MILLIS = 180L;
+    private static final long BIBLE_OPEN_HELD_MILLIS = 650L;
+    private static long bibleOpenUntilMillis;
+    private static long pendingBibleOpenAtMillis;
 
     private LivingWordClient() {
     }
 
     public static void openBibleScreen() {
+        pendingBibleOpenAtMillis = 0L;
         Minecraft.getInstance().setScreen(new BibleScreen());
     }
 
+    public static boolean isBibleScreenOpen() {
+        return Minecraft.getInstance().screen instanceof BibleScreen;
+    }
+
+    public static void beginBibleOpenAnimation() {
+        long now = Util.getMillis();
+        bibleOpenUntilMillis = now + BIBLE_OPEN_HELD_MILLIS;
+        pendingBibleOpenAtMillis = now + BIBLE_OPEN_ANIMATION_DELAY_MILLIS;
+    }
+
+    public static void tickBibleOpenAnimation() {
+        if (pendingBibleOpenAtMillis == 0L) {
+            return;
+        }
+        if (Util.getMillis() >= pendingBibleOpenAtMillis) {
+            openBibleScreen();
+        }
+    }
+
+    public static boolean isBibleOpenInHand() {
+        return isBibleScreenOpen() || Util.getMillis() < bibleOpenUntilMillis;
+    }
+
     public static void handleSessionSync(ListeningSessionSyncPayload payload) {
-        activeSession = payload;
+        activeSession = payload.state() == PlaybackState.STOPPED ? null : payload;
         Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.player != null) {
+        if (minecraft.player != null && payload.state() != PlaybackState.STOPPED) {
             minecraft.player.displayClientMessage(
                 Component.translatable(
                     "message.livingword.session.synced",
@@ -67,16 +105,51 @@ public final class LivingWordClient {
     }
 
     public static void playLocalChapter(String translationId, String bookId, int chapter) {
+        AudioChapterId chapterId = new AudioChapterId(translationId, bookId, chapter);
+        playLocalChapter(translationId, bookId, chapter, LOCAL_RESUME_POSITIONS.getOrDefault(chapterId, 0L));
+    }
+
+    public static void playLocalChapter(String translationId, String bookId, int chapter, long positionMillis) {
         handleSessionSync(new ListeningSessionSyncPayload(
             UUID.randomUUID(),
             translationId,
             bookId,
             chapter,
             PlaybackState.PLAYING,
-            0L,
+            Math.max(0L, positionMillis),
             System.currentTimeMillis(),
             1
         ));
+    }
+
+    public static void toggleLocalChapter(String translationId, String bookId, int chapter) {
+        if (isActiveChapter(translationId, bookId, chapter)) {
+            AudioChapterId chapterId = new AudioChapterId(translationId, bookId, chapter);
+            long positionMillis = controller().pauseActive();
+            LOCAL_RESUME_POSITIONS.put(chapterId, positionMillis);
+            activeSession = null;
+            return;
+        }
+        playLocalChapter(translationId, bookId, chapter);
+    }
+
+    public static void stopLocalPlayback() {
+        long positionMillis = controller().stopActive();
+        if (activeSession != null) {
+            LOCAL_RESUME_POSITIONS.put(
+                new AudioChapterId(activeSession.translationId(), activeSession.bookId(), activeSession.chapter()),
+                positionMillis
+            );
+        }
+        activeSession = null;
+    }
+
+    public static void openScriptureDiscSelection(InteractionHand hand) {
+        Minecraft.getInstance().setScreen(new ScriptureDiscSelectionScreen(hand));
+    }
+
+    public static void configureScriptureDisc(InteractionHand hand, ScriptureDiscSelection selection) {
+        PacketDistributor.sendToServer(new ConfigureScriptureDiscPayload(hand, selection.translationId(), selection.bookId(), selection.chapter()));
     }
 
     public static ListeningSessionSyncPayload activeSession() {
@@ -114,6 +187,14 @@ public final class LivingWordClient {
         return audioManifestRepository;
     }
 
+    private static boolean isActiveChapter(String translationId, String bookId, int chapter) {
+        return activeSession != null
+            && activeSession.state() == PlaybackState.PLAYING
+            && activeSession.translationId().equals(translationId)
+            && activeSession.bookId().equals(bookId)
+            && activeSession.chapter() == chapter;
+    }
+
     private static void reportDownloadState(DownloadState state) {
         if (state.status() == DownloadState.Status.CACHED || state.status() == DownloadState.Status.UNAVAILABLE) {
             return;
@@ -122,7 +203,7 @@ public final class LivingWordClient {
         minecraft.execute(() -> {
             if (minecraft.player != null) {
                 minecraft.player.displayClientMessage(
-                    Component.literal(state.message().isBlank() ? "Internet required for first playback." : state.message())
+                    Component.literal(playerFacingAudioFailure(state))
                         .withStyle(ChatFormatting.RED),
                     true
                 );
@@ -131,5 +212,13 @@ public final class LivingWordClient {
         if (state.status() == DownloadState.Status.FAILED) {
             LivingWord.LOGGER.warn("Living Word audio download failed for {}: {}", state.chapterId(), state.message());
         }
+    }
+
+    private static String playerFacingAudioFailure(DownloadState state) {
+        return switch (state.status()) {
+            case HASH_MISMATCH -> "Downloaded chapter audio was corrupted. Trying again may repair it.";
+            case FAILED -> "Unable to download chapter audio. Internet is required for first playback.";
+            default -> state.message().isBlank() ? "Internet required for first playback." : state.message();
+        };
     }
 }

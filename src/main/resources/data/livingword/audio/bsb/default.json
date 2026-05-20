@@ -1,0 +1,10 @@
+{
+  "id": "bsb-helloao-david",
+  "translationId": "bsb",
+  "baseUri": "https://audio.bible.helloao.org/api/BSB/",
+  "fileExtension": "mp3",
+  "pathStrategy": "helloao-bsb-david",
+  "sourceName": "Berean Standard Bible narrated by David",
+  "license": "Free-use BSB audio served by HelloAO/OpenBible; stream and cache on demand, do not mirror without reviewing provider terms",
+  "attribution": "Berean Standard Bible audio via HelloAO Free Use Bible API"
+}

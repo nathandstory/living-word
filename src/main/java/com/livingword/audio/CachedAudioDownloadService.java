@@ -1,20 +1,26 @@
 package com.livingword.audio;
 
+import com.livingword.LivingWord;
+
 import java.io.InputStream;
 import java.net.URI;
 import java.nio.file.Files;
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.util.HexFormat;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executor;
 
 public final class CachedAudioDownloadService implements AudioDownloadService {
     private final AudioCacheManager cacheManager;
     private final AudioChapterUriResolver chapterUriResolver;
     private final Executor executor;
+    private final ConcurrentMap<DownloadRequestKey, CompletableFuture<DownloadState>> inFlight = new ConcurrentHashMap<>();
 
     public CachedAudioDownloadService(AudioCacheManager cacheManager, Executor executor) {
         this(cacheManager, new DefaultAudioChapterUriResolver(), executor);
@@ -30,15 +36,34 @@ public final class CachedAudioDownloadService implements AudioDownloadService {
     public CompletableFuture<DownloadState> requestChapter(AudioManifest manifest, AudioChapterId chapterId) {
         Objects.requireNonNull(manifest, "manifest");
         Objects.requireNonNull(chapterId, "chapterId");
-        if (cacheManager.isCached(chapterId, manifest.fileExtension())) {
+        String sourceSignature = sourceSignature(manifest);
+        if (isUsableCached(chapterId, manifest.fileExtension(), sourceSignature)) {
             return CompletableFuture.completedFuture(DownloadState.cached(chapterId));
         }
-        return CompletableFuture.supplyAsync(() -> downloadChapter(manifest, chapterId), executor);
+        DownloadRequestKey key = new DownloadRequestKey(chapterId, manifest.fileExtension(), sourceSignature);
+        CompletableFuture<DownloadState> future = inFlight.computeIfAbsent(key, ignored ->
+            CompletableFuture.supplyAsync(() -> downloadChapter(manifest, chapterId, sourceSignature), executor)
+        );
+        future.whenComplete((state, exception) -> inFlight.remove(key, future));
+        return future;
     }
 
-    private DownloadState downloadChapter(AudioManifest manifest, AudioChapterId chapterId) {
+    private boolean isUsableCached(AudioChapterId chapterId, String extension, String sourceSignature) {
+        if (!cacheManager.isCached(chapterId, extension)) {
+            return false;
+        }
+        Path markerPath = cacheManager.sourceMarkerPath(chapterId, extension);
+        try {
+            return Files.isRegularFile(markerPath) && sourceSignature.equals(Files.readString(markerPath));
+        } catch (Exception exception) {
+            return false;
+        }
+    }
+
+    private DownloadState downloadChapter(AudioManifest manifest, AudioChapterId chapterId, String sourceSignature) {
         Path temporaryPath = cacheManager.temporaryDownloadPath(chapterId, manifest.fileExtension());
         Path finalPath = cacheManager.chapterAudioPath(chapterId, manifest.fileExtension());
+        Path sourceMarkerPath = cacheManager.sourceMarkerPath(chapterId, manifest.fileExtension());
         try {
             Files.createDirectories(finalPath.getParent());
             URI chapterUri = chapterUriResolver.resolve(manifest, chapterId);
@@ -49,7 +74,8 @@ public final class CachedAudioDownloadService implements AudioDownloadService {
                 Files.deleteIfExists(temporaryPath);
                 return DownloadState.hashMismatch(chapterId);
             }
-            Files.move(temporaryPath, finalPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+            moveIntoCache(temporaryPath, finalPath);
+            Files.writeString(sourceMarkerPath, sourceSignature);
             return DownloadState.cached(chapterId);
         } catch (Exception exception) {
             try {
@@ -57,8 +83,26 @@ public final class CachedAudioDownloadService implements AudioDownloadService {
             } catch (java.io.IOException ignored) {
                 // Best-effort cleanup; the failure state below is the useful signal.
             }
-            return DownloadState.failed(chapterId, exception.getMessage());
+            LivingWord.LOGGER.warn("Living Word audio download failed for {}", chapterId, exception);
+            return DownloadState.failed(chapterId, "Unable to download chapter audio. Internet is required for first playback.");
         }
+    }
+
+    private static void moveIntoCache(Path temporaryPath, Path finalPath) throws java.io.IOException {
+        try {
+            Files.move(temporaryPath, finalPath, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+        } catch (AtomicMoveNotSupportedException exception) {
+            Files.move(temporaryPath, finalPath, StandardCopyOption.REPLACE_EXISTING);
+        }
+    }
+
+    private static String sourceSignature(AudioManifest manifest) {
+        return "%s|%s|%s|%s".formatted(
+            manifest.id(),
+            manifest.baseUri(),
+            manifest.fileExtension(),
+            manifest.pathStrategy()
+        );
     }
 
     private static String sha256(Path path) throws Exception {
@@ -71,5 +115,8 @@ public final class CachedAudioDownloadService implements AudioDownloadService {
             }
         }
         return HexFormat.of().formatHex(digest.digest());
+    }
+
+    private record DownloadRequestKey(AudioChapterId chapterId, String extension, String sourceSignature) {
     }
 }

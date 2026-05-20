@@ -20,7 +20,7 @@ public final class BibleItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (level.isClientSide()) {
-            openClientScreen();
+            beginClientOpenAnimation();
         } else {
             if (player.isShiftKeyDown() && player instanceof ServerPlayer serverPlayer) {
                 LivingWordNetwork.startNearbyListeningSession(serverPlayer, "kjv", "john", 3, 32.0D);
@@ -30,10 +30,10 @@ public final class BibleItem extends Item {
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 
-    private static void openClientScreen() {
+    private static void beginClientOpenAnimation() {
         try {
             Class<?> client = Class.forName("com.livingword.client.LivingWordClient");
-            client.getMethod("openBibleScreen").invoke(null);
+            client.getMethod("beginBibleOpenAnimation").invoke(null);
         } catch (ReflectiveOperationException exception) {
             LivingWord.LOGGER.warn("Unable to open Living Word Bible screen", exception);
         }

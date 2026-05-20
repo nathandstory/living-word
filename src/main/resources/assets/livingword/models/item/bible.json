@@ -1,6 +1,70 @@
 {
-  "parent": "minecraft:item/generated",
+  "gui_light": "front",
   "textures": {
-    "layer0": "livingword:item/bible"
-  }
+    "front": "livingword:item/bible/closed/front_cover",
+    "back": "livingword:item/bible/closed/back_cover",
+    "spine": "livingword:item/bible/closed/spine",
+    "page_right": "livingword:item/bible/closed/page_right_edge",
+    "page_top": "livingword:item/bible/closed/page_top_edge",
+    "page_bottom": "livingword:item/bible/closed/page_bottom_edge"
+  },
+  "elements": [
+    {
+      "from": [3.5, 1.25, 5.5],
+      "to": [12.5, 14.75, 8.5],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#back"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#front"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#page_right"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#spine"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#page_top"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#page_bottom"}
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [28, 45, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.95, 0.95, 0.95]
+    },
+    "ground": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 3, 0],
+      "scale": [0.45, 0.45, 0.45]
+    },
+    "fixed": {
+      "rotation": [0, 180, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.9, 0.9, 0.9]
+    },
+    "thirdperson_righthand": {
+      "rotation": [64, -34, 5],
+      "translation": [0, 3.2, 1],
+      "scale": [0.74, 0.74, 0.74]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [64, 34, -5],
+      "translation": [0, 3.2, 1],
+      "scale": [0.74, 0.74, 0.74]
+    },
+    "firstperson_righthand": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 0, 0],
+      "scale": [1.0, 1.0, 1.0]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 0, 0],
+      "scale": [1.0, 1.0, 1.0]
+    }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "livingword:open": 1.0
+      },
+      "model": "livingword:item/bible_open"
+    }
+  ]
 }

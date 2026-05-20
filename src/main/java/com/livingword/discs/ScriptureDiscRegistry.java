@@ -7,6 +7,6 @@ public final class ScriptureDiscRegistry {
     }
 
     public static ScriptureDisc johnDisc(Item.Properties properties) {
-        return new ScriptureDisc(properties, "item.livingword.scripture_disc_john.desc", "kjv", "john", 1, 21, "kjv-default");
+        return new ScriptureDisc(properties, "item.livingword.scripture_disc_john.desc", "kjv", "john", 1, 21, "kjv-audiotreasure-voice");
     }
 }

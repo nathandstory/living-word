@@ -14,9 +14,11 @@ import java.net.URI;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicLong;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 final class ClientAudioSessionControllerTest {
     @Test
@@ -60,6 +62,111 @@ final class ClientAudioSessionControllerTest {
     }
 
     @Test
+    void startingPlaybackStopsAnyPreviousLocalChapter() {
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            ClientAudioSessionControllerTest::manifest,
+            new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3))),
+            playback,
+            true,
+            false,
+            250L
+        );
+
+        controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 0L)).join();
+
+        assertEquals(1, playback.stopAllCount);
+        assertEquals(new AudioChapterId("webp", "john", 3), playback.playedChapter);
+    }
+
+    @Test
+    void stopActiveStopsCurrentChapter() {
+        FakePlaybackService playback = new FakePlaybackService();
+        AtomicLong clock = new AtomicLong(1_000L);
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            ClientAudioSessionControllerTest::manifest,
+            new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3))),
+            playback,
+            true,
+            false,
+            250L,
+            clock::get
+        );
+        controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 0L)).join();
+        clock.set(3_500L);
+
+        long stoppedPositionMillis = controller.stopActive();
+
+        assertEquals(new AudioChapterId("webp", "john", 3), playback.stoppedChapter);
+        assertEquals(2_500L, stoppedPositionMillis);
+    }
+
+    @Test
+    void currentPositionAdvancesWhilePlayingAndFreezesWhenPaused() {
+        AtomicLong clock = new AtomicLong(10_000L);
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            ClientAudioSessionControllerTest::manifest,
+            new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3))),
+            new FakePlaybackService(),
+            true,
+            false,
+            250L,
+            clock::get
+        );
+
+        controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 4_000L)).join();
+        clock.set(12_250L);
+
+        assertEquals(6_250L, controller.currentPositionMillis());
+        assertEquals(6_250L, controller.pauseActive());
+        clock.set(15_000L);
+        assertEquals(6_250L, controller.currentPositionMillis());
+    }
+
+    @Test
+    void manifestFailuresReturnFailedStateInsteadOfThrowingFromListenButton() {
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            translationId -> {
+                throw new IllegalStateException("manifest unavailable");
+            },
+            new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3))),
+            playback,
+            true,
+            false,
+            250L
+        );
+
+        DownloadState state = controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 0L)).join();
+
+        assertEquals(DownloadState.Status.FAILED, state.status());
+        assertTrue(state.message().contains("manifest unavailable"));
+        assertNull(playback.playedChapter);
+    }
+
+    @Test
+    void downloaderFailuresReturnFailedStateInsteadOfCrashingListenButton() {
+        FakeDownloadService downloader = new FakeDownloadService(
+            CompletableFuture.failedFuture(new IllegalStateException("download exploded"))
+        );
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            ClientAudioSessionControllerTest::manifest,
+            downloader,
+            playback,
+            true,
+            false,
+            250L
+        );
+
+        DownloadState state = controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 0L)).join();
+
+        assertEquals(DownloadState.Status.FAILED, state.status());
+        assertTrue(state.message().contains("download exploded"));
+        assertNull(playback.playedChapter);
+    }
+
+    @Test
     void timestampCorrectionSeeksWhenOutsideTolerance() {
         UUID sessionId = UUID.randomUUID();
         FakePlaybackService playback = new FakePlaybackService();
@@ -92,17 +199,21 @@ final class ClientAudioSessionControllerTest {
     }
 
     private static final class FakeDownloadService implements AudioDownloadService {
-        private final DownloadState state;
+        private final CompletableFuture<DownloadState> future;
         private AudioChapterId requestedChapter;
 
         private FakeDownloadService(DownloadState state) {
-            this.state = state;
+            this(CompletableFuture.completedFuture(state));
+        }
+
+        private FakeDownloadService(CompletableFuture<DownloadState> future) {
+            this.future = future;
         }
 
         @Override
         public CompletableFuture<DownloadState> requestChapter(AudioManifest manifest, AudioChapterId chapterId) {
             requestedChapter = chapterId;
-            return CompletableFuture.completedFuture(state);
+            return future;
         }
     }
 
@@ -112,6 +223,8 @@ final class ClientAudioSessionControllerTest {
         private boolean playedSpatial;
         private AudioChapterId seekedChapter;
         private long seekedPositionMillis;
+        private AudioChapterId stoppedChapter;
+        private int stopAllCount;
 
         @Override
         public void play(AudioChapterId chapterId, long positionMillis, boolean spatial) {
@@ -132,6 +245,12 @@ final class ClientAudioSessionControllerTest {
 
         @Override
         public void stop(AudioChapterId chapterId) {
+            stoppedChapter = chapterId;
+        }
+
+        @Override
+        public void stopAll() {
+            stopAllCount++;
         }
     }
 }

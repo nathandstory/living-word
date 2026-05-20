@@ -1,5 +1,6 @@
 package com.livingword.client.gui.widgets;
 
+import com.livingword.bible.BibleReference;
 import com.livingword.bible.ChapterData;
 import com.livingword.client.gui.BibleGuiState;
 import net.minecraft.client.gui.Font;
@@ -11,6 +12,7 @@ import java.util.OptionalInt;
 public final class VerseListWidget {
     private static final int TEXT = 0xFF3B2A18;
     private static final int SELECTED = 0xFF7C3F08;
+    private static final int BOOKMARK = 0xFFC08A2E;
     private static final int LINE_HEIGHT = 14;
 
     public void render(GuiGraphics graphics, Font font, ChapterData chapter, BibleGuiState state, int x, int y, int width) {
@@ -21,11 +23,17 @@ public final class VerseListWidget {
         graphics.enableScissor(x, y, x + width, y + height);
         int lineY = y;
         lineY -= scrollOffset;
+        int lastVerse = -1;
         for (WrappedVerseLayout.VisualLine line : wrappedLines(chapter, font, width)) {
             int color = line.verseNumber() == state.selectedVerse() ? SELECTED : TEXT;
             if (lineY + LINE_HEIGHT >= y && lineY <= y + height) {
-                graphics.drawString(font, line.text(), x, lineY, color, false);
+                boolean firstLineOfVerse = line.verseNumber() != lastVerse;
+                if (firstLineOfVerse && state.isBookmarked(new BibleReference(chapter.translationId(), chapter.bookId(), chapter.chapter(), line.verseNumber()))) {
+                    graphics.drawString(font, "*", x, lineY, BOOKMARK, false);
+                }
+                graphics.drawString(font, line.text(), x + 10, lineY, color, false);
             }
+            lastVerse = line.verseNumber();
             lineY += LINE_HEIGHT;
         }
         graphics.disableScissor();
@@ -68,6 +76,6 @@ public final class VerseListWidget {
     }
 
     private static List<WrappedVerseLayout.VisualLine> wrappedLines(ChapterData chapter, Font font, int width) {
-        return WrappedVerseLayout.wrap(chapter, Math.max(24, width - 8), font::width);
+        return WrappedVerseLayout.wrap(chapter, Math.max(24, width - 18), font::width);
     }
 }

@@ -31,6 +31,10 @@ public final class AudioCacheManager {
         return chapterAudioPath(chapterId, extension).resolveSibling(chapterId.fileName(extension) + ".part");
     }
 
+    public Path sourceMarkerPath(AudioChapterId chapterId, String extension) {
+        return chapterAudioPath(chapterId, extension).resolveSibling(chapterId.fileName(extension) + ".source");
+    }
+
     public boolean isCached(AudioChapterId chapterId) {
         return Files.isRegularFile(chapterAudioPath(chapterId));
     }

@@ -6,7 +6,7 @@ This repository contains the first-build foundation for the mod:
 
 - a craftable Bible item
 - a first-pass Bible reading screen
-- data-driven Bible translation metadata and chapter samples
+- data-driven bundled Bible translations
 - multiplayer listening session models and packet payloads
 - audio cache/download/playback service foundations
 - lectern and Scripture Disc extension points
@@ -31,7 +31,7 @@ Run Gradle through the checked-in wrapper:
 
 ## Content Notes
 
-KJV sample text is bundled because it is public domain. The code is not KJV-only: translations are data-driven and can be supplied by datapacks or other mods. Only distribute translations or audio recordings that are public domain or that you have permission to redistribute.
+Bundled text currently includes public-domain BSB, KJV, and WEB resources. The code is not KJV-only: translations are data-driven and can be supplied by datapacks or other mods. Only distribute translations or audio recordings that are public domain or that you have permission to redistribute.
 
 See:
 

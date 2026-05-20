@@ -123,6 +123,26 @@ public final class BibleGuiState {
         }
     }
 
+    public void toggleBookmark(BibleReference reference) {
+        if (bookmarks.contains(reference)) {
+            bookmarks.remove(reference);
+            return;
+        }
+        bookmarks.add(reference);
+    }
+
+    public boolean isBookmarked(BibleReference reference) {
+        return bookmarks.contains(reference);
+    }
+
+    public boolean isSelectedVerseBookmarked() {
+        return isBookmarked(selectedReference());
+    }
+
+    public int bookmarkCount() {
+        return bookmarks.size();
+    }
+
     public void replaceBookmarks(List<BibleReference> references) {
         bookmarks.clear();
         if (references != null) {

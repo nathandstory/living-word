@@ -9,6 +9,9 @@ public interface AudioPlaybackService {
 
     void stop(AudioChapterId chapterId);
 
+    default void stopAll() {
+    }
+
     static AudioPlaybackService noop() {
         return new AudioPlaybackService() {
             @Override

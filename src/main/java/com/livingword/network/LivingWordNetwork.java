@@ -1,6 +1,9 @@
 package com.livingword.network;
 
 import com.livingword.LivingWord;
+import com.livingword.discs.ScriptureDisc;
+import com.livingword.discs.ScriptureDiscSelection;
+import com.livingword.network.payload.ConfigureScriptureDiscPayload;
 import com.livingword.network.payload.JoinListeningSessionPayload;
 import com.livingword.network.payload.LeaveListeningSessionPayload;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
@@ -11,6 +14,8 @@ import com.livingword.sync.ListeningSession;
 import com.livingword.sync.ListeningSessionManager;
 import net.minecraft.Util;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -66,11 +71,30 @@ public final class LivingWordNetwork {
         registrar.playToClient(TimestampCorrectionPayload.TYPE, TimestampCorrectionPayload.STREAM_CODEC, (payload, context) -> {
             context.enqueueWork(() -> invokeClient("handleTimestampCorrection", TimestampCorrectionPayload.class, payload));
         });
+        registrar.playToServer(ConfigureScriptureDiscPayload.TYPE, ConfigureScriptureDiscPayload.STREAM_CODEC, (payload, context) -> {
+            context.enqueueWork(() -> {
+                if (context.player() instanceof ServerPlayer player) {
+                    ItemStack stack = player.getItemInHand(payload.hand());
+                    if (stack.getItem() instanceof ScriptureDisc) {
+                        ScriptureDiscSelection.write(stack, new ScriptureDiscSelection(payload.translationId(), payload.bookId(), payload.chapter()));
+                        player.displayClientMessage(Component.translatable("message.livingword.disc.configured"), true);
+                    }
+                }
+            });
+        });
     }
 
     public static ListeningSession startNearbyListeningSession(ServerPlayer source, String translationId, String bookId, int chapter, double radius) {
+        return startNearbyListeningSession(source, translationId, bookId, chapter, radius, 0L);
+    }
+
+    public static ListeningSession startNearbyListeningSession(ServerPlayer source, String translationId, String bookId, int chapter, double radius, long startPositionMillis) {
         long now = Util.getMillis();
         ListeningSession created = LISTENING_SESSIONS.create(translationId, bookId, chapter, now);
+        if (startPositionMillis > 0L) {
+            LISTENING_SESSIONS.seek(created.id(), startPositionMillis, now);
+            LISTENING_SESSIONS.play(created.id(), now);
+        }
         double radiusSquared = radius * radius;
         for (ServerPlayer candidate : source.serverLevel().players()) {
             if (candidate.distanceToSqr(source) <= radiusSquared) {
@@ -79,6 +103,17 @@ public final class LivingWordNetwork {
         }
         syncSessionToParticipants(created.id(), now);
         return LISTENING_SESSIONS.get(created.id()).orElse(created);
+    }
+
+    public static java.util.Optional<ListeningSession> stopListeningSession(UUID sessionId) {
+        long now = Util.getMillis();
+        java.util.Optional<ListeningSession> existing = LISTENING_SESSIONS.get(sessionId);
+        if (existing.isEmpty()) {
+            return java.util.Optional.empty();
+        }
+        LISTENING_SESSIONS.control(sessionId, com.livingword.sync.PlaybackState.STOPPED, existing.orElseThrow().positionMillisAt(now), now);
+        syncSessionToParticipants(sessionId, now);
+        return LISTENING_SESSIONS.remove(sessionId);
     }
 
     private static void syncSessionToParticipants(UUID sessionId, long serverMillis) {

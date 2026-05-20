@@ -1,10 +1,10 @@
 {
-  "id": "webp-default",
+  "id": "webp-david-williams",
   "translationId": "webp",
-  "baseUri": "https://ebible.org/eng-web/audio/",
+  "baseUri": "https://publicdomainaudiobibles.com/content/mp3/WEBD/",
   "fileExtension": "mp3",
-  "pathStrategy": "ebible-web-directory",
-  "sourceName": "eBible World English Bible Audio",
+  "pathStrategy": "public-domain-audio-bibles",
+  "sourceName": "World English Bible narrated by David Williams",
   "license": "Public Domain",
-  "attribution": "World English Bible audio from eBible.org"
+  "attribution": "World English Bible narration by David Williams from PublicDomainAudioBibles.com"
 }

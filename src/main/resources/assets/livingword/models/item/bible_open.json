@@ -1,0 +1,61 @@
+{
+  "gui_light": "front",
+  "textures": {
+    "open": "livingword:item/bible/open/open",
+    "left_edge": "livingword:item/bible/open/open_left_edge",
+    "right_edge": "livingword:item/bible/open/open_right_edge",
+    "top_edge": "livingword:item/bible/open/open_top_edge",
+    "bottom_edge": "livingword:item/bible/open/open_bottom_edge"
+  },
+  "elements": [
+    {
+      "from": [1.0, 3.5, 6.35],
+      "to": [15.0, 12.5, 7.95],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#open"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#open"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#right_edge"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#left_edge"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#top_edge"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#bottom_edge"}
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [28, 0, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.9, 0.9, 0.9]
+    },
+    "ground": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 3, 0],
+      "scale": [0.55, 0.55, 0.55]
+    },
+    "fixed": {
+      "rotation": [0, 180, 0],
+      "translation": [0, 0, 0],
+      "scale": [0.9, 0.9, 0.9]
+    },
+    "thirdperson_righthand": {
+      "rotation": [70, -18, 4],
+      "translation": [0, 3.8, 0.5],
+      "scale": [0.82, 0.82, 0.82]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [70, 18, -4],
+      "translation": [0, 3.8, 0.5],
+      "scale": [0.82, 0.82, 0.82]
+    },
+    "firstperson_righthand": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 0, 0],
+      "scale": [1.0, 1.0, 1.0]
+    },
+    "firstperson_lefthand": {
+      "rotation": [0, 0, 0],
+      "translation": [0, 0, 0],
+      "scale": [1.0, 1.0, 1.0]
+    }
+  }
+}

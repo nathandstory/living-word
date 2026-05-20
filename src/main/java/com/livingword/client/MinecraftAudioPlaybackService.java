@@ -19,6 +19,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantFloat;
 import net.minecraft.world.phys.Vec3;
+import org.lwjgl.BufferUtils;
 
 import javax.annotation.Nullable;
 import javax.sound.sampled.AudioFormat;
@@ -29,7 +30,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class MinecraftAudioPlaybackService implements AudioPlaybackService {
@@ -44,15 +44,12 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
     public void play(AudioChapterId chapterId, long positionMillis, boolean spatial) {
         Minecraft minecraft = Minecraft.getInstance();
         minecraft.execute(() -> {
-            ActiveSound previous = activeSounds.remove(chapterId);
-            if (previous != null) {
-                minecraft.getSoundManager().stop(previous.sound());
-            }
+            stopAllNow(minecraft.getSoundManager());
             Path path = cacheManager.cachedChapterAudioPath(chapterId).orElse(null);
             if (path == null || !Files.isRegularFile(path)) {
                 return;
             }
-            CachedChapterSoundInstance sound = new CachedChapterSoundInstance(chapterId, path, Math.max(0L, positionMillis), spatial, playbackPosition(minecraft));
+            CachedChapterSoundInstance sound = new CachedChapterSoundInstance(chapterId, path, Math.max(0L, positionMillis), spatial, playbackPosition(minecraft, spatial));
             activeSounds.put(chapterId, new ActiveSound(sound, spatial));
             minecraft.getSoundManager().play(sound);
         });
@@ -80,8 +77,28 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         });
     }
 
-    private static Vec3 playbackPosition(Minecraft minecraft) {
-        return minecraft.player == null ? Vec3.ZERO : minecraft.player.position();
+    @Override
+    public void stopAll() {
+        Minecraft minecraft = Minecraft.getInstance();
+        minecraft.execute(() -> stopAllNow(minecraft.getSoundManager()));
+    }
+
+    private void stopAllNow(SoundManager soundManager) {
+        for (ActiveSound activeSound : activeSounds.values()) {
+            soundManager.stop(activeSound.sound());
+        }
+        activeSounds.clear();
+    }
+
+    private static Vec3 playbackPosition(Minecraft minecraft, boolean spatial) {
+        return playbackPositionFor(spatial, minecraft.player == null ? Vec3.ZERO : minecraft.player.position());
+    }
+
+    static Vec3 playbackPositionFor(boolean spatial, Vec3 playerPosition) {
+        if (!spatial) {
+            return Vec3.ZERO;
+        }
+        return playerPosition == null ? Vec3.ZERO : playerPosition;
     }
 
     private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial) {
@@ -184,41 +201,101 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
 
         @Override
         public CompletableFuture<AudioStream> getStream(SoundBufferLibrary soundBuffers, Sound sound, boolean looping) {
-            return CompletableFuture.supplyAsync(() -> {
-                try {
-                    InputStream inputStream = Files.newInputStream(path);
-                    AudioStream stream = isMp3(path) ? new Mp3AudioStream(inputStream) : new JOrbisAudioStream(inputStream);
-                    skipTo(stream, positionMillis);
-                    return stream;
-                } catch (IOException exception) {
-                    throw new CompletionException(exception);
-                }
-            }, Util.nonCriticalIoPool());
-        }
-
-        private static boolean isMp3(Path path) {
-            return path.getFileName().toString().toLowerCase(java.util.Locale.ROOT).endsWith(".mp3");
-        }
-
-        private static void skipTo(AudioStream stream, long positionMillis) throws IOException {
-            if (positionMillis <= 0L) {
-                return;
-            }
-            AudioFormat format = stream.getFormat();
-            long bytesToSkip = (long) ((positionMillis / 1000.0D) * format.getFrameRate() * format.getFrameSize());
-            while (bytesToSkip > 0L) {
-                ByteBuffer skipped = stream.read((int) Math.min(bytesToSkip, 65_536L));
-                int skippedBytes = skipped.remaining();
-                if (skippedBytes <= 0) {
-                    return;
-                }
-                bytesToSkip -= skippedBytes;
-            }
+            return openCachedAudioStream(path, positionMillis);
         }
 
         @Override
         public String toString() {
             return "CachedChapterSoundInstance[" + chapterId + "]";
+        }
+    }
+
+    static CompletableFuture<AudioStream> openCachedAudioStream(Path path, long positionMillis) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                return openAudioStream(path, positionMillis);
+            } catch (IOException exception) {
+                LivingWord.LOGGER.warn("Unable to open cached Living Word audio {}", path, exception);
+                deleteInvalidCachedAudio(path);
+                return new EmptyAudioStream();
+            }
+        }, Util.nonCriticalIoPool());
+    }
+
+    private static AudioStream openAudioStream(Path path, long positionMillis) throws IOException {
+        InputStream inputStream = Files.newInputStream(path);
+        AudioStream stream;
+        try {
+            stream = isMp3(path) ? new Mp3AudioStream(inputStream) : new JOrbisAudioStream(inputStream);
+        } catch (IOException exception) {
+            inputStream.close();
+            throw exception;
+        }
+
+        try {
+            skipTo(stream, positionMillis);
+            return stream;
+        } catch (IOException exception) {
+            try {
+                stream.close();
+            } catch (IOException suppressed) {
+                exception.addSuppressed(suppressed);
+            }
+            throw exception;
+        }
+    }
+
+    private static boolean isMp3(Path path) {
+        return path.getFileName().toString().toLowerCase(java.util.Locale.ROOT).endsWith(".mp3");
+    }
+
+    private static void deleteInvalidCachedAudio(Path path) {
+        try {
+            Files.deleteIfExists(path);
+        } catch (IOException exception) {
+            LivingWord.LOGGER.warn("Unable to delete invalid Living Word cached audio {}", path, exception);
+        }
+    }
+
+    private static void skipTo(AudioStream stream, long positionMillis) throws IOException {
+        if (positionMillis <= 0L) {
+            return;
+        }
+        AudioFormat format = stream.getFormat();
+        long bytesToSkip = (long) ((positionMillis / 1000.0D) * format.getFrameRate() * format.getFrameSize());
+        while (bytesToSkip > 0L) {
+            ByteBuffer skipped = stream.read((int) Math.min(bytesToSkip, 65_536L));
+            int skippedBytes = skipped.remaining();
+            if (skippedBytes <= 0) {
+                return;
+            }
+            bytesToSkip -= skippedBytes;
+        }
+    }
+
+    private static final class EmptyAudioStream implements AudioStream {
+        private static final AudioFormat FORMAT = new AudioFormat(
+            AudioFormat.Encoding.PCM_SIGNED,
+            44_100.0F,
+            16,
+            2,
+            4,
+            44_100.0F,
+            false
+        );
+
+        @Override
+        public AudioFormat getFormat() {
+            return FORMAT;
+        }
+
+        @Override
+        public ByteBuffer read(int size) {
+            return BufferUtils.createByteBuffer(0);
+        }
+
+        @Override
+        public void close() {
         }
     }
 }

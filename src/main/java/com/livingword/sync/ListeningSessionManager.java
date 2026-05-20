@@ -24,6 +24,10 @@ public final class ListeningSessionManager {
         return List.copyOf(sessions.values());
     }
 
+    public Optional<ListeningSession> remove(UUID sessionId) {
+        return Optional.ofNullable(sessions.remove(sessionId));
+    }
+
     public void join(UUID sessionId, UUID playerId) {
         update(sessionId, session -> session.withParticipant(playerId));
     }
@@ -50,7 +54,7 @@ public final class ListeningSessionManager {
             return switch (state) {
                 case PLAYING -> positioned.playAt(serverMillis);
                 case PAUSED -> positioned.pauseAt(serverMillis);
-                case STOPPED -> positioned.seekTo(0L, serverMillis).stopAt();
+                case STOPPED -> positioned.stopAt();
             };
         });
     }

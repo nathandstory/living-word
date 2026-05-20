@@ -47,6 +47,28 @@ final class BibleGuiStateTest {
     }
 
     @Test
+    void togglesBookmarksAndReportsCurrentSelection() {
+        BibleGuiState state = BibleGuiState.initial("bsb", "john", 3);
+        BibleReference reference = new BibleReference("bsb", "john", 3, 16);
+
+        state.selectVerse(16);
+
+        assertTrue(!state.isBookmarked(reference));
+        assertTrue(!state.isSelectedVerseBookmarked());
+
+        state.toggleBookmark(reference);
+
+        assertTrue(state.isBookmarked(reference));
+        assertTrue(state.isSelectedVerseBookmarked());
+        assertEquals(1, state.bookmarkCount());
+
+        state.toggleBookmark(reference);
+
+        assertTrue(!state.isBookmarked(reference));
+        assertEquals(0, state.bookmarkCount());
+    }
+
+    @Test
     void cyclesSearchResults() {
         BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
         BibleReference first = new BibleReference("kjv", "john", 3, 16);

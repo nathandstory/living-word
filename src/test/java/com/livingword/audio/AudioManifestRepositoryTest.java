@@ -53,10 +53,10 @@ final class AudioManifestRepositoryTest {
             .find("webp", "default")
             .orElseThrow();
 
-        assertEquals("webp-default", manifest.id());
+        assertEquals("webp-david-williams", manifest.id());
         assertEquals("mp3", manifest.fileExtension());
-        assertEquals("ebible-web-directory", manifest.pathStrategy());
-        assertTrue(manifest.baseUri().toString().startsWith("https://ebible.org/eng-web/audio/"));
+        assertEquals("public-domain-audio-bibles", manifest.pathStrategy());
+        assertTrue(manifest.baseUri().toString().startsWith("https://publicdomainaudiobibles.com/content/mp3/WEBD/"));
     }
 
     @Test
@@ -65,9 +65,22 @@ final class AudioManifestRepositoryTest {
             .find("kjv", "default")
             .orElseThrow();
 
-        assertEquals("kjv-default", manifest.id());
+        assertEquals("kjv-audiotreasure-voice", manifest.id());
         assertEquals("kjv", manifest.translationId());
         assertEquals("mp3", manifest.fileExtension());
-        assertEquals("ebible-web-directory", manifest.pathStrategy());
+        assertEquals("audiotreasure-kjv", manifest.pathStrategy());
+    }
+
+    @Test
+    void includesBundledBsbDavidAudioManifest() {
+        AudioManifest manifest = new AudioManifestRepository(getClass().getClassLoader())
+            .find("bsb", "default")
+            .orElseThrow();
+
+        assertEquals("bsb-helloao-david", manifest.id());
+        assertEquals("bsb", manifest.translationId());
+        assertEquals("mp3", manifest.fileExtension());
+        assertEquals("helloao-bsb-david", manifest.pathStrategy());
+        assertEquals(URI.create("https://audio.bible.helloao.org/api/BSB/"), manifest.baseUri());
     }
 }

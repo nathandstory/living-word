@@ -1,7 +1,7 @@
 package com.livingword.discs;
 
-import com.livingword.LivingWord;
 import com.livingword.network.LivingWordNetwork;
+import com.livingword.sync.ListeningSession;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -81,16 +81,30 @@ public final class ScriptureDisc extends Item {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
+        ItemStack stack = context.getItemInHand();
         if (!handlesBlockUse(level.getBlockState(context.getClickedPos()))) {
             return InteractionResult.PASS;
         }
         Player player = context.getPlayer();
         if (level.isClientSide()) {
-            playLocalChapter();
             return InteractionResult.SUCCESS;
         }
         if (player instanceof ServerPlayer serverPlayer) {
-            LivingWordNetwork.startNearbyListeningSession(serverPlayer, translationId, bookId, startChapter, 48.0D);
+            if (ScriptureDiscEvents.stopJukeboxSession(level.dimension().location(), context.getClickedPos())) {
+                serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_stopped"), true);
+                return InteractionResult.CONSUME;
+            }
+            ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
+            long resumePositionMillis = ScriptureDiscEvents.resumePosition(level.dimension().location(), context.getClickedPos(), selection);
+            ListeningSession session = LivingWordNetwork.startNearbyListeningSession(
+                serverPlayer,
+                selection.translationId(),
+                selection.bookId(),
+                selection.chapter(),
+                48.0D,
+                resumePositionMillis
+            );
+            ScriptureDiscEvents.rememberJukeboxSession(level.dimension().location(), context.getClickedPos(), selection, session.id(), resumePositionMillis);
             serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started"), true);
         }
         return InteractionResult.CONSUME;
@@ -100,9 +114,10 @@ public final class ScriptureDisc extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (level.isClientSide()) {
-            playLocalChapter();
+            openSelectionScreen(hand);
         } else if (player.isShiftKeyDown() && player instanceof ServerPlayer serverPlayer) {
-            LivingWordNetwork.startNearbyListeningSession(serverPlayer, translationId, bookId, startChapter, 48.0D);
+            ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
+            LivingWordNetwork.startNearbyListeningSession(serverPlayer, selection.translationId(), selection.bookId(), selection.chapter(), 48.0D);
             serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started"), true);
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
@@ -111,15 +126,36 @@ public final class ScriptureDisc extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Component.translatable(displayKey).withStyle(ChatFormatting.GOLD));
+        ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
+        tooltip.add(Component.literal(formatSelection(selection)).withStyle(ChatFormatting.YELLOW));
         tooltip.add(Component.translatable("item.livingword.scripture_disc.tooltip").withStyle(ChatFormatting.GRAY));
     }
 
-    private void playLocalChapter() {
+    private static String formatSelection(ScriptureDiscSelection selection) {
+        return selection.translationId().toUpperCase(java.util.Locale.ROOT) + " / " + formatBookId(selection.bookId()) + " " + selection.chapter();
+    }
+
+    private static String formatBookId(String bookId) {
+        String[] words = bookId.replace('_', ' ').split(" ");
+        StringBuilder formatted = new StringBuilder();
+        for (String word : words) {
+            if (word.isBlank()) {
+                continue;
+            }
+            if (!formatted.isEmpty()) {
+                formatted.append(' ');
+            }
+            formatted.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
+        }
+        return formatted.toString();
+    }
+
+    private static void openSelectionScreen(InteractionHand hand) {
         try {
             Class<?> client = Class.forName("com.livingword.client.LivingWordClient");
-            client.getMethod("playLocalChapter", String.class, String.class, int.class).invoke(null, translationId, bookId, startChapter);
+            client.getMethod("openScriptureDiscSelection", InteractionHand.class).invoke(null, hand);
         } catch (ReflectiveOperationException exception) {
-            LivingWord.LOGGER.warn("Unable to play local Scripture Disc chapter", exception);
+            // Dedicated servers never call this path; a warning is enough if client wiring is missing.
         }
     }
 }

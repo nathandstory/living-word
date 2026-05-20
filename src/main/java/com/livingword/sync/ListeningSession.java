@@ -60,7 +60,11 @@ public record ListeningSession(
     }
 
     public ListeningSession stopAt() {
-        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.STOPPED, startServerMillis, 0L, participants);
+        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.STOPPED, startServerMillis, pausedPositionMillis, participants);
+    }
+
+    public ListeningSession stopAt(long serverMillis) {
+        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.STOPPED, startServerMillis, positionMillisAt(serverMillis), participants);
     }
 
     public ListeningSession withParticipant(UUID playerId) {

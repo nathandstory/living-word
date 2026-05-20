@@ -1,6 +1,6 @@
 # Translation Packs
 
-Living Word ships with public-domain KJV sample data, but translations are intended to be data-driven.
+Living Word ships with public-domain BSB, KJV, and WEB data, but translations are intended to be data-driven.
 
 Example layout:
 
@@ -43,4 +43,4 @@ Bookmarks, history, and playback references use stable identifiers:
 translation_id + book_id + chapter + verse
 ```
 
-This allows KJV, WEB, ASV, or separately licensed translations to coexist without changing player data.
+This allows BSB, KJV, WEB, ASV, or separately licensed translations to coexist without changing player data.

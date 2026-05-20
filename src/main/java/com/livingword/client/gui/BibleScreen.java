@@ -34,7 +34,18 @@ public final class BibleScreen extends Screen {
     private final BibleGuiState state;
     private final Path preferencesPath;
     private final VerseListWidget verseList = new VerseListWidget();
+    private boolean searchExpanded;
+    private boolean toolsExpanded;
     private EditBox searchBox;
+    private Button searchGoButton;
+    private Button searchNextButton;
+    private Button previousBookButton;
+    private Button previousChapterButton;
+    private Button nextChapterButton;
+    private Button nextBookButton;
+    private Button versionButton;
+    private Button listenButton;
+    private Button copyButton;
     private int verseListX;
     private int verseListY;
     private int verseListWidth;
@@ -59,57 +70,71 @@ public final class BibleScreen extends Screen {
 
     @Override
     protected void init() {
-        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height);
+        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height, searchExpanded, toolsExpanded);
 
-        searchBox = new EditBox(this.font, layout.searchBox().x(), layout.searchBox().y(), layout.searchBox().width(), layout.searchBox().height(), Component.translatable("gui.livingword.bible.search"));
-        searchBox.setResponder(state::setSearchQuery);
-        searchBox.setHint(Component.translatable("gui.livingword.bible.search"));
-        addRenderableWidget(searchBox);
-
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_go"), button -> jumpToFirstSearchResult())
-            .bounds(layout.searchGo().x(), layout.searchGo().y(), layout.searchGo().width(), layout.searchGo().height())
+        addRenderableWidget(Button.builder(Component.translatable(searchExpanded
+                ? "gui.livingword.bible.hide_search"
+                : "gui.livingword.bible.show_search"), button -> {
+                searchExpanded = !searchExpanded;
+                rebuildWidgets();
+            })
+            .bounds(layout.searchToggle().x(), layout.searchToggle().y(), layout.searchToggle().width(), layout.searchToggle().height())
             .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_next"), button -> jumpToNextSearchResult())
-            .bounds(layout.searchNext().x(), layout.searchNext().y(), layout.searchNext().width(), layout.searchNext().height())
+        addRenderableWidget(Button.builder(Component.translatable(toolsExpanded
+                ? "gui.livingword.bible.hide_tools"
+                : "gui.livingword.bible.show_tools"), button -> {
+                toolsExpanded = !toolsExpanded;
+                rebuildWidgets();
+            })
+            .bounds(layout.toolsToggle().x(), layout.toolsToggle().y(), layout.toolsToggle().width(), layout.toolsToggle().height())
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.close"), button -> onClose())
             .bounds(layout.close().x(), layout.close().y(), layout.close().width(), layout.close().height())
             .build());
 
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_book"), button -> navigateBook(-1))
-            .bounds(layout.previousBook().x(), layout.previousBook().y(), layout.previousBook().width(), layout.previousBook().height())
+        searchBox = new EditBox(this.font, layout.searchBox().x(), layout.searchBox().y(), layout.searchBox().width(), layout.searchBox().height(), Component.translatable("gui.livingword.bible.search"));
+        searchBox.setResponder(state::setSearchQuery);
+        searchBox.setHint(Component.translatable("gui.livingword.bible.search"));
+        searchBox.setValue(state.searchQuery());
+        addRenderableWidget(searchBox);
+
+        searchGoButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_go"), button -> jumpToFirstSearchResult())
+            .bounds(layout.searchGo().x(), layout.searchGo().y(), layout.searchGo().width(), layout.searchGo().height())
             .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_chapter"), button -> navigateChapter(-1))
-            .bounds(layout.previousChapter().x(), layout.previousChapter().y(), layout.previousChapter().width(), layout.previousChapter().height())
-            .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_chapter"), button -> navigateChapter(1))
-            .bounds(layout.nextChapter().x(), layout.nextChapter().y(), layout.nextChapter().width(), layout.nextChapter().height())
-            .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_book"), button -> navigateBook(1))
-            .bounds(layout.nextBook().x(), layout.nextBook().y(), layout.nextBook().width(), layout.nextBook().height())
+        searchNextButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_next"), button -> jumpToNextSearchResult())
+            .bounds(layout.searchNext().x(), layout.searchNext().y(), layout.searchNext().width(), layout.searchNext().height())
             .build());
 
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.bookmark"), button -> {
-                state.addBookmark(state.selectedReference());
-                persistState();
-            })
-            .bounds(layout.bookmark().x(), layout.bookmark().y(), layout.bookmark().width(), layout.bookmark().height())
-            .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.version"), button -> navigateTranslation(1))
+        versionButton = addRenderableWidget(Button.builder(Component.empty(), button -> navigateTranslation(1))
             .bounds(layout.version().x(), layout.version().y(), layout.version().width(), layout.version().height())
             .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.listen"), button -> LivingWordClient.playLocalChapter(state.translationId(), state.bookId(), state.chapter()))
+        previousBookButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_book"), button -> navigateBook(-1))
+            .bounds(layout.previousBook().x(), layout.previousBook().y(), layout.previousBook().width(), layout.previousBook().height())
+            .build());
+        previousChapterButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.previous_chapter"), button -> navigateChapter(-1))
+            .bounds(layout.previousChapter().x(), layout.previousChapter().y(), layout.previousChapter().width(), layout.previousChapter().height())
+            .build());
+        nextChapterButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_chapter"), button -> navigateChapter(1))
+            .bounds(layout.nextChapter().x(), layout.nextChapter().y(), layout.nextChapter().width(), layout.nextChapter().height())
+            .build());
+        nextBookButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_book"), button -> navigateBook(1))
+            .bounds(layout.nextBook().x(), layout.nextBook().y(), layout.nextBook().width(), layout.nextBook().height())
+            .build());
+        listenButton = addRenderableWidget(Button.builder(Component.empty(), button -> LivingWordClient.toggleLocalChapter(state.translationId(), state.bookId(), state.chapter()))
             .bounds(layout.listen().x(), layout.listen().y(), layout.listen().width(), layout.listen().height())
             .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.copy"), button -> copySelectedVerse())
+        copyButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.copy"), button -> copySelectedVerse())
             .bounds(layout.copy().x(), layout.copy().y(), layout.copy().width(), layout.copy().height())
             .build());
+        setSearchControlsVisible(searchExpanded);
+        setToolControlsVisible(toolsExpanded);
+        refreshActionLabels();
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics, mouseX, mouseY, partialTick);
-        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height);
+        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height, searchExpanded, toolsExpanded);
         BibleScreenLayout.Rect panel = layout.panel();
 
         graphics.fill(0, 0, this.width, this.height, BACKGROUND);
@@ -124,9 +149,9 @@ public final class BibleScreen extends Screen {
         graphics.fill(panel.right() - 1, panel.y(), panel.right(), panel.bottom(), BORDER);
 
         graphics.drawCenteredString(this.font, this.title, this.width / 2, panel.y() + 10, TITLE_TEXT);
-        graphics.drawCenteredString(this.font, currentHeading(), this.width / 2, panel.y() + 88, TEXT);
+        renderPassageHeading(graphics, layout);
         if (!state.searchResultSummary().isEmpty()) {
-            graphics.drawString(this.font, state.searchResultSummary(), panel.right() - 24 - this.font.width(state.searchResultSummary()), panel.y() + 88, 0xFF7C5426, false);
+            drawCenteredTrimmed(graphics, state.searchResultSummary(), this.width / 2, layout.statusY(), panel.width() - 80, 0xFF7C5426);
         }
         currentChapter().ifPresent(chapter -> {
             verseListX = layout.verseList().x();
@@ -151,6 +176,7 @@ public final class BibleScreen extends Screen {
             if (selectedVerse.isPresent()) {
                 state.selectVerse(selectedVerse.getAsInt());
                 recordCurrentHistory();
+                refreshActionLabels();
                 return true;
             }
         }
@@ -239,6 +265,7 @@ public final class BibleScreen extends Screen {
         setPassage(reference.translationId(), reference.bookId(), reference.chapter());
         state.selectVerse(reference.verse());
         recordCurrentHistory();
+        refreshActionLabels();
     }
 
     private void setPassage(String translationId, String bookId, int chapter) {
@@ -246,17 +273,28 @@ public final class BibleScreen extends Screen {
         verseScrollOffset = 0;
         currentChapter().ifPresent(this::selectFirstVerse);
         recordCurrentHistory();
+        refreshActionLabels();
     }
 
     private Optional<ChapterData> currentChapter() {
         return dataManager.getChapter(state.translationId(), state.bookId(), state.chapter());
     }
 
-    private String currentHeading() {
+    private void renderPassageHeading(GuiGraphics graphics, BibleScreenLayout layout) {
+        BibleScreenLayout.Rect panel = layout.panel();
+        drawCenteredTrimmed(graphics, currentBookChapterHeading(), this.width / 2, layout.headingBookY(), panel.width() - 80, TEXT);
+        drawCenteredTrimmed(graphics, currentTranslationHeading(), this.width / 2, layout.headingTranslationY(), panel.width() - 100, 0xFF7C5426);
+    }
+
+    private String currentBookChapterHeading() {
+        return formatBookId(state.bookId()) + " " + state.chapter();
+    }
+
+    private String currentTranslationHeading() {
         String translationName = dataManager.getTranslation(state.translationId())
             .map(TranslationManifest::displayName)
             .orElse(state.translationId().toUpperCase(java.util.Locale.ROOT));
-        return translationName + " / " + formatBookId(state.bookId()) + " " + state.chapter();
+        return translationName;
     }
 
     private void recordCurrentHistory() {
@@ -281,6 +319,58 @@ public final class BibleScreen extends Screen {
 
     private void selectFirstVerse(ChapterData chapter) {
         chapter.verses().keySet().stream().min(Integer::compareTo).ifPresentOrElse(state::selectVerse, () -> state.selectVerse(1));
+    }
+
+    private void refreshActionLabels() {
+        if (versionButton != null) {
+            versionButton.setMessage(Component.literal(state.translationId().toUpperCase(java.util.Locale.ROOT)));
+        }
+        if (listenButton != null) {
+            listenButton.setMessage(Component.translatable("gui.livingword.bible.listen"));
+        }
+    }
+
+    private void setSearchControlsVisible(boolean visible) {
+        if (searchBox != null) {
+            searchBox.visible = visible;
+            searchBox.active = visible;
+            if (!visible && getFocused() == searchBox) {
+                setFocused(null);
+            }
+        }
+        setButtonVisible(searchGoButton, visible);
+        setButtonVisible(searchNextButton, visible);
+    }
+
+    private void setToolControlsVisible(boolean visible) {
+        setButtonVisible(versionButton, visible);
+        setButtonVisible(previousBookButton, visible);
+        setButtonVisible(previousChapterButton, visible);
+        setButtonVisible(nextChapterButton, visible);
+        setButtonVisible(nextBookButton, visible);
+        setButtonVisible(listenButton, visible);
+        setButtonVisible(copyButton, visible);
+    }
+
+    private static void setButtonVisible(Button button, boolean visible) {
+        if (button != null) {
+            button.visible = visible;
+            button.active = visible;
+        }
+    }
+
+    private void drawCenteredTrimmed(GuiGraphics graphics, String text, int centerX, int y, int maxWidth, int color) {
+        String rendered = trimToWidth(text, maxWidth);
+        graphics.drawString(this.font, rendered, centerX - this.font.width(rendered) / 2, y, color, false);
+    }
+
+    private String trimToWidth(String text, int maxWidth) {
+        if (this.font.width(text) <= maxWidth) {
+            return text;
+        }
+        String suffix = "...";
+        int available = Math.max(0, maxWidth - this.font.width(suffix));
+        return this.font.plainSubstrByWidth(text, available) + suffix;
     }
 
     private boolean isInsideVerseList(double mouseX, double mouseY) {
