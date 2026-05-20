@@ -22,4 +22,15 @@ final class ScriptureDiscTest {
 
         assertFalse(source.contains("if (level.isClientSide()) {\n            playLocalChapter();"));
     }
+
+    @Test
+    void tooltipDocumentsConfigureJukeboxAndResetControls() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDisc.java"));
+
+        assertTrue(source.contains("item.livingword.scripture_disc.tooltip.configure"));
+        assertTrue(source.contains("item.livingword.scripture_disc.tooltip.jukebox"));
+        assertTrue(source.contains("item.livingword.scripture_disc.tooltip.stop"));
+        assertTrue(source.contains("message.livingword.disc.session_paused"));
+        assertTrue(source.contains("message.livingword.disc.session_reset"));
+    }
 }

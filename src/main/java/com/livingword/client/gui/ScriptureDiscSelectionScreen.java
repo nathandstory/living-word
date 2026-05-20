@@ -4,15 +4,20 @@ import com.livingword.bible.BibleDataManager;
 import com.livingword.bible.TranslationManifest;
 import com.livingword.client.BibleClientRepository;
 import com.livingword.client.LivingWordClient;
+import com.livingword.discs.ScriptureDiscAudioSource;
+import com.livingword.discs.ScriptureDiscPlaybackMode;
 import com.livingword.discs.ScriptureDiscSelection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
+import org.lwjgl.glfw.GLFW;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -20,8 +25,10 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     private static final int BACKGROUND = 0xF0181510;
     private static final int PANEL = 0xF02B2118;
     private static final int PAGE = 0xFFE6D0A3;
+    private static final int PAGE_DARK = 0xFFD8B97C;
     private static final int BORDER = 0xFF8C6A3E;
     private static final int TEXT = 0xFF3B2A18;
+    private static final int MUTED_TEXT = 0xFF7C5426;
     private static final int TITLE_TEXT = 0xFFFFE3AD;
 
     private final InteractionHand hand;
@@ -30,10 +37,16 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     private String translationId;
     private String bookId;
     private int chapter;
+    private String audioManifestId;
+    private ScriptureDiscPlaybackMode playbackMode;
+    private String statusLine = "";
 
+    private EditBox bookSearchBox;
     private Button translationButton;
     private Button bookButton;
     private Button chapterButton;
+    private Button sourceButton;
+    private Button modeButton;
 
     public ScriptureDiscSelectionScreen(InteractionHand hand) {
         super(Component.translatable("gui.livingword.disc.title"));
@@ -42,54 +55,73 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         this.translationId = selection.translationId();
         this.bookId = selection.bookId();
         this.chapter = selection.chapter();
+        this.audioManifestId = selection.audioManifestId();
+        this.playbackMode = selection.playbackMode();
     }
 
     @Override
     protected void init() {
-        int panelWidth = Math.min(360, this.width - 24);
-        int panelHeight = Math.min(210, this.height - 24);
+        int panelWidth = Math.min(430, this.width - 24);
+        int panelHeight = Math.min(284, this.height - 24);
         int left = (this.width - panelWidth) / 2;
         int top = (this.height - panelHeight) / 2;
-        int buttonWidth = Math.min(140, panelWidth - 40);
         int centerX = left + panelWidth / 2;
+        int controlWidth = Math.min(260, panelWidth - 48);
+        int controlLeft = centerX - controlWidth / 2;
 
-        translationButton = addRenderableWidget(Button.builder(Component.empty(), button -> navigateTranslation(1))
-            .bounds(centerX - buttonWidth / 2, top + 52, buttonWidth, 20)
-            .build());
-        bookButton = addRenderableWidget(Button.builder(Component.empty(), button -> navigateBook(1))
-            .bounds(centerX - buttonWidth / 2, top + 82, buttonWidth, 20)
-            .build());
-        chapterButton = addRenderableWidget(Button.builder(Component.empty(), button -> navigateChapter(1))
-            .bounds(centerX - buttonWidth / 2, top + 112, buttonWidth, 20)
-            .build());
+        bookSearchBox = new EditBox(this.font, controlLeft, top + 48, controlWidth, 20, Component.translatable("gui.livingword.disc.search_book"));
+        bookSearchBox.setHint(Component.translatable("gui.livingword.disc.search_book"));
+        bookSearchBox.setResponder(query -> statusLine = query.isBlank() ? "" : Component.translatable("gui.livingword.disc.search_status").getString());
+        addRenderableWidget(bookSearchBox);
 
+        translationButton = addCycleButton(controlLeft, top + 76, controlWidth, button -> navigateTranslation(1));
+        bookButton = addCycleButton(controlLeft, top + 102, controlWidth, button -> navigateBook(1));
+        chapterButton = addCycleButton(controlLeft, top + 128, controlWidth, button -> navigateChapter(1));
+        sourceButton = addCycleButton(controlLeft, top + 154, controlWidth, button -> navigateSource(1));
+        modeButton = addCycleButton(controlLeft, top + 180, controlWidth, button -> navigateMode(1));
+
+        int bottomY = top + panelHeight - 52;
+        int splitWidth = (controlWidth - 6) / 2;
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.preview"), button -> previewSelection())
+            .bounds(controlLeft, bottomY, splitWidth, 20)
+            .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.save"), button -> saveAndClose())
-            .bounds(centerX - buttonWidth / 2, top + panelHeight - 54, buttonWidth, 20)
+            .bounds(controlLeft + splitWidth + 6, bottomY, splitWidth, 20)
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.close"), button -> onClose())
-            .bounds(centerX - buttonWidth / 2, top + panelHeight - 28, buttonWidth, 20)
+            .bounds(controlLeft, bottomY + 26, controlWidth, 20)
             .build());
         refreshLabels();
+    }
+
+    private Button addCycleButton(int x, int y, int width, Button.OnPress onPress) {
+        return addRenderableWidget(Button.builder(Component.empty(), onPress)
+            .bounds(x, y, width, 20)
+            .build());
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics, mouseX, mouseY, partialTick);
-        int panelWidth = Math.min(360, this.width - 24);
-        int panelHeight = Math.min(210, this.height - 24);
+        int panelWidth = Math.min(430, this.width - 24);
+        int panelHeight = Math.min(284, this.height - 24);
         int left = (this.width - panelWidth) / 2;
         int top = (this.height - panelHeight) / 2;
 
         graphics.fill(0, 0, this.width, this.height, BACKGROUND);
         graphics.fill(left, top, left + panelWidth, top + panelHeight, PANEL);
-        graphics.fill(left + 10, top + 10, left + panelWidth - 10, top + panelHeight - 10, PAGE);
+        graphics.fill(left + 8, top + 8, left + panelWidth - 8, top + panelHeight - 8, PAGE_DARK);
+        graphics.fill(left + 14, top + 14, left + panelWidth - 14, top + panelHeight - 14, PAGE);
         graphics.fill(left, top, left + panelWidth, top + 1, BORDER);
         graphics.fill(left, top + panelHeight - 1, left + panelWidth, top + panelHeight, BORDER);
         graphics.fill(left, top, left + 1, top + panelHeight, BORDER);
         graphics.fill(left + panelWidth - 1, top, left + panelWidth, top + panelHeight, BORDER);
 
-        graphics.drawCenteredString(this.font, this.title, this.width / 2, top + 18, TITLE_TEXT);
-        graphics.drawCenteredString(this.font, formatSelection(), this.width / 2, top + 36, TEXT);
+        graphics.drawCenteredString(this.font, this.title, this.width / 2, top + 14, TITLE_TEXT);
+        drawCenteredTrimmed(graphics, formatSelection(), this.width / 2, top + 30, panelWidth - 56, TEXT);
+        if (!statusLine.isBlank()) {
+            drawCenteredTrimmed(graphics, statusLine, this.width / 2, top + panelHeight - 76, panelWidth - 56, MUTED_TEXT);
+        }
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
@@ -105,8 +137,23 @@ public final class ScriptureDiscSelectionScreen extends Screen {
             if (reverseClick(chapterButton, mouseX, mouseY, () -> navigateChapter(-1))) {
                 return true;
             }
+            if (reverseClick(sourceButton, mouseX, mouseY, () -> navigateSource(-1))) {
+                return true;
+            }
+            if (reverseClick(modeButton, mouseX, mouseY, () -> navigateMode(-1))) {
+                return true;
+            }
         }
         return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if ((keyCode == GLFW.GLFW_KEY_ENTER || keyCode == GLFW.GLFW_KEY_KP_ENTER) && bookSearchBox != null && bookSearchBox.isFocused()) {
+            applyBookSearch();
+            return true;
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
     private boolean reverseClick(Button button, double mouseX, double mouseY, Runnable action) {
@@ -120,49 +167,120 @@ public final class ScriptureDiscSelectionScreen extends Screen {
 
     private void navigateTranslation(int direction) {
         List<String> translations = dataManager.translations().stream().map(TranslationManifest::id).toList();
-        SelectionCycle.next(translations, translationId, direction).ifPresent(nextTranslationId -> translationId = nextTranslationId);
-        if (dataManager.getChapter(translationId, bookId, chapter).isEmpty()) {
-            dataManager.firstChapter(translationId).ifPresent(first -> {
-                bookId = first.bookId();
-                chapter = first.chapter();
-            });
-        }
+        SelectionCycle.next(translations, translationId, direction).ifPresent(nextTranslationId -> {
+            translationId = nextTranslationId;
+            audioManifestId = ScriptureDiscAudioSource.defaultFor(translationId).manifestId();
+        });
+        ensureSelectedChapterExists();
+        statusLine = "";
         refreshLabels();
     }
 
     private void navigateBook(int direction) {
         List<String> books = dataManager.bookIds(translationId);
         SelectionCycle.next(books, bookId, direction).ifPresent(nextBookId -> bookId = nextBookId);
-        List<Integer> chapters = dataManager.chapters(translationId, bookId);
-        chapter = chapters.isEmpty() ? 1 : chapters.getFirst();
+        chapter = firstChapterOrOne(translationId, bookId);
+        statusLine = "";
         refreshLabels();
     }
 
     private void navigateChapter(int direction) {
         List<Integer> chapters = dataManager.chapters(translationId, bookId);
         SelectionCycle.next(chapters, chapter, direction).ifPresent(nextChapter -> chapter = nextChapter);
+        statusLine = "";
         refreshLabels();
     }
 
+    private void navigateSource(int direction) {
+        audioManifestId = ScriptureDiscAudioSource.cycle(translationId, audioManifestId, direction).manifestId();
+        statusLine = "";
+        refreshLabels();
+    }
+
+    private void navigateMode(int direction) {
+        List<ScriptureDiscPlaybackMode> modes = Arrays.asList(ScriptureDiscPlaybackMode.values());
+        SelectionCycle.next(modes, playbackMode, direction).ifPresent(nextMode -> playbackMode = nextMode);
+        statusLine = "";
+        refreshLabels();
+    }
+
+    private void applyBookSearch() {
+        String query = bookSearchBox == null ? "" : bookSearchBox.getValue().strip().toLowerCase(Locale.ROOT);
+        if (query.isBlank()) {
+            statusLine = Component.translatable("gui.livingword.disc.search_empty").getString();
+            return;
+        }
+        for (String candidateBookId : dataManager.bookIds(translationId)) {
+            String displayName = formatBookId(candidateBookId).toLowerCase(Locale.ROOT);
+            String compactId = candidateBookId.replace("_", "").toLowerCase(Locale.ROOT);
+            String spacedId = candidateBookId.replace('_', ' ').toLowerCase(Locale.ROOT);
+            if (displayName.contains(query) || compactId.contains(query.replace(" ", "")) || spacedId.contains(query)) {
+                bookId = candidateBookId;
+                chapter = firstChapterOrOne(translationId, bookId);
+                statusLine = Component.translatable("gui.livingword.disc.search_found", formatBookId(bookId)).getString();
+                refreshLabels();
+                return;
+            }
+        }
+        statusLine = Component.translatable("gui.livingword.disc.search_none").getString();
+    }
+
+    private void previewSelection() {
+        LivingWordClient.playLocalChapter(translationId, bookId, chapter, audioManifestId, 0L);
+        statusLine = Component.translatable("gui.livingword.disc.previewing", formatSelection()).getString();
+    }
+
     private void saveAndClose() {
-        LivingWordClient.configureScriptureDisc(hand, new ScriptureDiscSelection(translationId, bookId, chapter));
+        LivingWordClient.configureScriptureDisc(hand, new ScriptureDiscSelection(translationId, bookId, chapter, audioManifestId, playbackMode));
         onClose();
     }
 
     private void refreshLabels() {
         if (translationButton != null) {
-            translationButton.setMessage(Component.literal(translationId.toUpperCase(Locale.ROOT)));
+            translationButton.setMessage(Component.literal("Translation: " + translationId.toUpperCase(Locale.ROOT)));
         }
         if (bookButton != null) {
-            bookButton.setMessage(Component.literal(formatBookId(bookId)));
+            bookButton.setMessage(Component.literal("Book: " + formatBookId(bookId)));
         }
         if (chapterButton != null) {
-            chapterButton.setMessage(Component.literal("Chapter " + chapter));
+            chapterButton.setMessage(Component.literal("Chapter: " + chapter));
+        }
+        if (sourceButton != null) {
+            sourceButton.setMessage(Component.literal("Narrator: " + ScriptureDiscAudioSource.byManifestId(translationId, audioManifestId).displayName()));
+        }
+        if (modeButton != null) {
+            modeButton.setMessage(Component.literal("Mode: " + playbackMode.displayName()));
         }
     }
 
+    private void ensureSelectedChapterExists() {
+        if (dataManager.getChapter(translationId, bookId, chapter).isEmpty()) {
+            dataManager.firstChapter(translationId).ifPresent(first -> {
+                bookId = first.bookId();
+                chapter = first.chapter();
+            });
+        }
+    }
+
+    private int firstChapterOrOne(String selectedTranslationId, String selectedBookId) {
+        List<Integer> chapters = dataManager.chapters(selectedTranslationId, selectedBookId);
+        return chapters.isEmpty() ? 1 : chapters.getFirst();
+    }
+
     private String formatSelection() {
-        return translationId.toUpperCase(Locale.ROOT) + " / " + formatBookId(bookId) + " " + chapter;
+        ScriptureDiscAudioSource source = ScriptureDiscAudioSource.byManifestId(translationId, audioManifestId);
+        return translationId.toUpperCase(Locale.ROOT)
+            + " / "
+            + formatBookId(bookId)
+            + " "
+            + chapter
+            + " / "
+            + source.displayName();
+    }
+
+    private void drawCenteredTrimmed(GuiGraphics graphics, String text, int centerX, int y, int maxWidth, int color) {
+        String trimmed = this.font.plainSubstrByWidth(text, maxWidth);
+        graphics.drawCenteredString(this.font, trimmed, centerX, y, color);
     }
 
     private static ScriptureDiscSelection currentSelection(InteractionHand hand) {

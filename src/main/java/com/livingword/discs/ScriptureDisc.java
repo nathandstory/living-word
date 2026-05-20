@@ -90,8 +90,12 @@ public final class ScriptureDisc extends Item {
             return InteractionResult.SUCCESS;
         }
         if (player instanceof ServerPlayer serverPlayer) {
-            if (ScriptureDiscEvents.stopJukeboxSession(level.dimension().location(), context.getClickedPos())) {
-                serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_stopped"), true);
+            if (player.isShiftKeyDown() && ScriptureDiscEvents.stopAndForgetJukeboxSession(level.dimension().location(), context.getClickedPos())) {
+                serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_reset"), true);
+                return InteractionResult.CONSUME;
+            }
+            if (ScriptureDiscEvents.pauseJukeboxSession(level.dimension().location(), context.getClickedPos())) {
+                serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_paused"), true);
                 return InteractionResult.CONSUME;
             }
             ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
@@ -101,11 +105,12 @@ public final class ScriptureDisc extends Item {
                 selection.translationId(),
                 selection.bookId(),
                 selection.chapter(),
+                selection.audioManifestId(),
                 48.0D,
                 resumePositionMillis
             );
             ScriptureDiscEvents.rememberJukeboxSession(level.dimension().location(), context.getClickedPos(), selection, session.id(), resumePositionMillis);
-            serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started"), true);
+            serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started", formatSelection(selection)), true);
         }
         return InteractionResult.CONSUME;
     }
@@ -117,8 +122,15 @@ public final class ScriptureDisc extends Item {
             openSelectionScreen(hand);
         } else if (player.isShiftKeyDown() && player instanceof ServerPlayer serverPlayer) {
             ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
-            LivingWordNetwork.startNearbyListeningSession(serverPlayer, selection.translationId(), selection.bookId(), selection.chapter(), 48.0D);
-            serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started"), true);
+            LivingWordNetwork.startNearbyListeningSession(
+                serverPlayer,
+                selection.translationId(),
+                selection.bookId(),
+                selection.chapter(),
+                selection.audioManifestId(),
+                48.0D
+            );
+            serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started", formatSelection(selection)), true);
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
@@ -128,11 +140,22 @@ public final class ScriptureDisc extends Item {
         tooltip.add(Component.translatable(displayKey).withStyle(ChatFormatting.GOLD));
         ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
         tooltip.add(Component.literal(formatSelection(selection)).withStyle(ChatFormatting.YELLOW));
-        tooltip.add(Component.translatable("item.livingword.scripture_disc.tooltip").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("item.livingword.scripture_disc.tooltip.configure").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("item.livingword.scripture_disc.tooltip.jukebox").withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("item.livingword.scripture_disc.tooltip.stop").withStyle(ChatFormatting.DARK_GRAY));
     }
 
     private static String formatSelection(ScriptureDiscSelection selection) {
-        return selection.translationId().toUpperCase(java.util.Locale.ROOT) + " / " + formatBookId(selection.bookId()) + " " + selection.chapter();
+        ScriptureDiscAudioSource audioSource = ScriptureDiscAudioSource.byManifestId(selection.translationId(), selection.audioManifestId());
+        return selection.translationId().toUpperCase(java.util.Locale.ROOT)
+            + " / "
+            + formatBookId(selection.bookId())
+            + " "
+            + selection.chapter()
+            + " / "
+            + audioSource.displayName()
+            + " / "
+            + selection.playbackMode().displayName();
     }
 
     private static String formatBookId(String bookId) {

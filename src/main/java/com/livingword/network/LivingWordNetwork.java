@@ -76,7 +76,13 @@ public final class LivingWordNetwork {
                 if (context.player() instanceof ServerPlayer player) {
                     ItemStack stack = player.getItemInHand(payload.hand());
                     if (stack.getItem() instanceof ScriptureDisc) {
-                        ScriptureDiscSelection.write(stack, new ScriptureDiscSelection(payload.translationId(), payload.bookId(), payload.chapter()));
+                        ScriptureDiscSelection.write(stack, new ScriptureDiscSelection(
+                            payload.translationId(),
+                            payload.bookId(),
+                            payload.chapter(),
+                            payload.audioManifestId(),
+                            payload.playbackMode()
+                        ));
                         player.displayClientMessage(Component.translatable("message.livingword.disc.configured"), true);
                     }
                 }
@@ -89,8 +95,16 @@ public final class LivingWordNetwork {
     }
 
     public static ListeningSession startNearbyListeningSession(ServerPlayer source, String translationId, String bookId, int chapter, double radius, long startPositionMillis) {
+        return startNearbyListeningSession(source, translationId, bookId, chapter, "default", radius, startPositionMillis);
+    }
+
+    public static ListeningSession startNearbyListeningSession(ServerPlayer source, String translationId, String bookId, int chapter, String audioManifestId, double radius) {
+        return startNearbyListeningSession(source, translationId, bookId, chapter, audioManifestId, radius, 0L);
+    }
+
+    public static ListeningSession startNearbyListeningSession(ServerPlayer source, String translationId, String bookId, int chapter, String audioManifestId, double radius, long startPositionMillis) {
         long now = Util.getMillis();
-        ListeningSession created = LISTENING_SESSIONS.create(translationId, bookId, chapter, now);
+        ListeningSession created = LISTENING_SESSIONS.create(translationId, bookId, chapter, audioManifestId, now);
         if (startPositionMillis > 0L) {
             LISTENING_SESSIONS.seek(created.id(), startPositionMillis, now);
             LISTENING_SESSIONS.play(created.id(), now);

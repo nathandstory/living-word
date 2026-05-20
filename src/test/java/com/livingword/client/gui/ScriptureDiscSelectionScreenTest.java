@@ -16,5 +16,19 @@ final class ScriptureDiscSelectionScreenTest {
         assertTrue(source.contains("navigateTranslation(-1)"));
         assertTrue(source.contains("navigateBook(-1)"));
         assertTrue(source.contains("navigateChapter(-1)"));
+        assertTrue(source.contains("navigateSource(-1)"));
+        assertTrue(source.contains("navigateMode(-1)"));
+    }
+
+    @Test
+    void screenSupportsNarratorModeSearchAndPreviewControls() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/ScriptureDiscSelectionScreen.java"));
+
+        assertTrue(source.contains("ScriptureDiscAudioSource"));
+        assertTrue(source.contains("ScriptureDiscPlaybackMode"));
+        assertTrue(source.contains("bookSearchBox"));
+        assertTrue(source.contains("applyBookSearch"));
+        assertTrue(source.contains("previewSelection"));
+        assertTrue(source.contains("new ScriptureDiscSelection(translationId, bookId, chapter, audioManifestId, playbackMode)"));
     }
 }

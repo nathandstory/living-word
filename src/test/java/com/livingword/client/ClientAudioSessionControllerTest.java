@@ -23,11 +23,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 final class ClientAudioSessionControllerTest {
     @Test
     void playingSyncDownloadsChapterThenStartsPlaybackAtServerPosition() {
-        AudioManifest manifest = manifest("webp");
+        FakeManifestProvider manifests = new FakeManifestProvider();
         FakeDownloadService downloader = new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3)));
         FakePlaybackService playback = new FakePlaybackService();
         ClientAudioSessionController controller = new ClientAudioSessionController(
-            translationId -> manifest,
+            manifests::manifest,
             downloader,
             playback,
             true,
@@ -38,9 +38,40 @@ final class ClientAudioSessionControllerTest {
         controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 28_600L)).join();
 
         assertEquals(new AudioChapterId("webp", "john", 3), downloader.requestedChapter);
+        assertEquals("default", manifests.requestedManifestId);
         assertEquals(new AudioChapterId("webp", "john", 3), playback.playedChapter);
         assertEquals(28_600L, playback.playedPositionMillis);
         assertEquals(true, playback.playedSpatial);
+    }
+
+    @Test
+    void sessionSyncRequestsSelectedAudioManifest() {
+        FakeManifestProvider manifests = new FakeManifestProvider();
+        FakeDownloadService downloader = new FakeDownloadService(DownloadState.cached(new AudioChapterId("bsb", "john", 3)));
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            manifests::manifest,
+            downloader,
+            playback,
+            true,
+            false,
+            250L
+        );
+
+        controller.handleSessionSync(new ListeningSessionSyncPayload(
+            UUID.randomUUID(),
+            "bsb",
+            "john",
+            3,
+            "hays",
+            PlaybackState.PLAYING,
+            0L,
+            15_000L,
+            2
+        )).join();
+
+        assertEquals("bsb", manifests.requestedTranslationId);
+        assertEquals("hays", manifests.requestedManifestId);
     }
 
     @Test
@@ -191,11 +222,22 @@ final class ClientAudioSessionControllerTest {
     }
 
     private static ListeningSessionSyncPayload syncPayload(UUID sessionId, PlaybackState state, long positionMillis) {
-        return new ListeningSessionSyncPayload(sessionId, "webp", "john", 3, state, positionMillis, 15_000L, 2);
+        return new ListeningSessionSyncPayload(sessionId, "webp", "john", 3, "default", state, positionMillis, 15_000L, 2);
     }
 
     private static AudioManifest manifest(String translationId) {
         return new AudioManifest(translationId + "-default", translationId, URI.create("https://cdn.example.test/" + translationId + "/"), Map.of());
+    }
+
+    private static final class FakeManifestProvider {
+        private String requestedTranslationId;
+        private String requestedManifestId;
+
+        private AudioManifest manifest(String translationId, String manifestId) {
+            requestedTranslationId = translationId;
+            requestedManifestId = manifestId;
+            return new AudioManifest(translationId + "-" + manifestId, translationId, URI.create("https://cdn.example.test/" + translationId + "/"), Map.of());
+        }
     }
 
     private static final class FakeDownloadService implements AudioDownloadService {

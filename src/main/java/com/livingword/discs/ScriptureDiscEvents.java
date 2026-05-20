@@ -32,7 +32,7 @@ public final class ScriptureDiscEvents {
         return JUKEBOX_SESSIONS.resumePosition(dimension, pos, selection);
     }
 
-    public static boolean stopJukeboxSession(ResourceLocation dimension, BlockPos pos) {
+    public static boolean pauseJukeboxSession(ResourceLocation dimension, BlockPos pos) {
         return JUKEBOX_SESSIONS.get(dimension, pos)
             .flatMap(LivingWordNetwork::stopListeningSession)
             .map(stopped -> {
@@ -41,8 +41,16 @@ public final class ScriptureDiscEvents {
             }).orElse(false);
     }
 
-    public static void stopAndForgetJukeboxSession(ResourceLocation dimension, BlockPos pos) {
-        JUKEBOX_SESSIONS.remove(dimension, pos).ifPresent(LivingWordNetwork::stopListeningSession);
+    public static boolean stopJukeboxSession(ResourceLocation dimension, BlockPos pos) {
+        return pauseJukeboxSession(dimension, pos);
+    }
+
+    public static boolean stopAndForgetJukeboxSession(ResourceLocation dimension, BlockPos pos) {
+        return JUKEBOX_SESSIONS.remove(dimension, pos)
+            .map(sessionId -> {
+                LivingWordNetwork.stopListeningSession(sessionId);
+                return true;
+            }).orElse(false);
     }
 
     private static void onBlockBreak(BlockEvent.BreakEvent event) {

@@ -14,11 +14,12 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.LongSupplier;
 
 public final class ClientAudioSessionController {
-    private final Function<String, AudioManifest> manifestProvider;
+    private final BiFunction<String, String, AudioManifest> manifestProvider;
     private final AudioDownloadService downloadService;
     private final AudioPlaybackService playbackService;
     private final boolean autoplay;
@@ -28,6 +29,7 @@ public final class ClientAudioSessionController {
 
     private UUID activeSessionId;
     private AudioChapterId activeChapter;
+    private String activeAudioManifestId = "default";
     private long lastCommandedPositionMillis;
     private PlaybackState activeState = PlaybackState.STOPPED;
     private long positionAnchorMillis;
@@ -41,11 +43,34 @@ public final class ClientAudioSessionController {
         boolean spatial,
         long syncToleranceMillis
     ) {
+        this((translationId, ignored) -> manifestProvider.apply(translationId), downloadService, playbackService, autoplay, spatial, syncToleranceMillis, System::currentTimeMillis);
+    }
+
+    public ClientAudioSessionController(
+        BiFunction<String, String, AudioManifest> manifestProvider,
+        AudioDownloadService downloadService,
+        AudioPlaybackService playbackService,
+        boolean autoplay,
+        boolean spatial,
+        long syncToleranceMillis
+    ) {
         this(manifestProvider, downloadService, playbackService, autoplay, spatial, syncToleranceMillis, System::currentTimeMillis);
     }
 
     ClientAudioSessionController(
         Function<String, AudioManifest> manifestProvider,
+        AudioDownloadService downloadService,
+        AudioPlaybackService playbackService,
+        boolean autoplay,
+        boolean spatial,
+        long syncToleranceMillis,
+        LongSupplier clock
+    ) {
+        this((translationId, ignored) -> manifestProvider.apply(translationId), downloadService, playbackService, autoplay, spatial, syncToleranceMillis, clock);
+    }
+
+    ClientAudioSessionController(
+        BiFunction<String, String, AudioManifest> manifestProvider,
         AudioDownloadService downloadService,
         AudioPlaybackService playbackService,
         boolean autoplay,
@@ -67,6 +92,7 @@ public final class ClientAudioSessionController {
         AudioChapterId chapterId = new AudioChapterId(payload.translationId(), payload.bookId(), payload.chapter());
         activeSessionId = payload.sessionId();
         activeChapter = chapterId;
+        activeAudioManifestId = payload.audioManifestId();
         markPosition(payload.positionMillis(), payload.state());
 
         return switch (payload.state()) {
@@ -122,7 +148,7 @@ public final class ClientAudioSessionController {
     private CompletableFuture<DownloadState> downloadThenPlay(AudioChapterId chapterId, long positionMillis) {
         AudioManifest manifest;
         try {
-            manifest = manifestProvider.apply(chapterId.translationId());
+            manifest = manifestProvider.apply(chapterId.translationId(), activeAudioManifestId);
         } catch (RuntimeException exception) {
             return CompletableFuture.completedFuture(failed(chapterId, exception));
         }
@@ -168,6 +194,7 @@ public final class ClientAudioSessionController {
         markPosition(positionMillis, PlaybackState.STOPPED);
         activeChapter = null;
         activeSessionId = null;
+        activeAudioManifestId = "default";
         return positionMillis;
     }
 

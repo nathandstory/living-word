@@ -102,6 +102,27 @@ final class DefaultAudioChapterUriResolverTest {
     }
 
     @Test
+    void resolvesHelloAoBsbAlternateNarratorChapterPaths() throws Exception {
+        DefaultAudioChapterUriResolver resolver = new DefaultAudioChapterUriResolver(uri -> {
+            throw new AssertionError("HelloAO strategy should not read directory listings");
+        });
+        AudioChapterId chapterId = new AudioChapterId("bsb", "psalms", 23);
+        AudioManifest manifest = new AudioManifest(
+            "bsb-helloao-hays",
+            "bsb",
+            URI.create("https://audio.bible.helloao.org/api/BSB/"),
+            "mp3",
+            "helloao-bsb-hays",
+            Map.of(),
+            Map.of()
+        );
+
+        URI uri = resolver.resolve(manifest, chapterId);
+
+        assertEquals(URI.create("https://audio.bible.helloao.org/api/BSB/PSA/23/audio/hays.mp3"), uri);
+    }
+
+    @Test
     void rejectsRestrictedLicensedProviderWithoutConfiguredSource() {
         DefaultAudioChapterUriResolver resolver = new DefaultAudioChapterUriResolver(uri -> {
             throw new AssertionError("Restricted strategy should not read directory listings");

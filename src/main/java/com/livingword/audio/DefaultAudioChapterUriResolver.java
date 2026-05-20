@@ -38,8 +38,8 @@ public final class DefaultAudioChapterUriResolver implements AudioChapterUriReso
         if ("public-domain-audio-bibles".equals(manifest.pathStrategy())) {
             return publicDomainAudioBiblesUri(manifest.baseUri(), chapterId);
         }
-        if ("helloao-bsb-david".equals(manifest.pathStrategy())) {
-            return helloAoBsbDavidUri(manifest.baseUri(), chapterId);
+        if (manifest.pathStrategy().startsWith("helloao-bsb-")) {
+            return helloAoBsbUri(manifest.baseUri(), chapterId, manifest.pathStrategy().substring("helloao-bsb-".length()));
         }
         if ("restricted-licensed-provider".equals(manifest.pathStrategy())) {
             throw new IOException("This audio source requires a licensed or bring-your-own provider configuration.");
@@ -61,10 +61,13 @@ public final class DefaultAudioChapterUriResolver implements AudioChapterUriReso
         return baseUri.resolve(path.webFolder() + "/" + fileName);
     }
 
-    private static URI helloAoBsbDavidUri(URI baseUri, AudioChapterId chapterId) {
+    private static URI helloAoBsbUri(URI baseUri, AudioChapterId chapterId, String narratorId) {
+        if (!narratorId.matches("[a-z0-9_-]+")) {
+            throw new IllegalArgumentException("Unsupported HelloAO narrator id: " + narratorId);
+        }
         String bookCode = Optional.ofNullable(HELLO_AO_BOOK_CODES.get(chapterId.bookId()))
             .orElseThrow(() -> new IllegalArgumentException("Unsupported HelloAO audio Bible book: " + chapterId.bookId()));
-        return baseUri.resolve("%s/%d/audio/david.mp3".formatted(bookCode, chapterId.chapter()));
+        return baseUri.resolve("%s/%d/audio/%s.mp3".formatted(bookCode, chapterId.chapter(), narratorId));
     }
 
     private static AudioBookPath pathFor(AudioChapterId chapterId) {

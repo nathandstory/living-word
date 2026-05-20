@@ -11,7 +11,11 @@ public final class ListeningSessionManager {
     private final Map<UUID, ListeningSession> sessions = new HashMap<>();
 
     public ListeningSession create(String translationId, String bookId, int chapter, long serverMillis) {
-        ListeningSession session = ListeningSession.started(translationId, bookId, chapter, serverMillis);
+        return create(translationId, bookId, chapter, "default", serverMillis);
+    }
+
+    public ListeningSession create(String translationId, String bookId, int chapter, String audioManifestId, long serverMillis) {
+        ListeningSession session = ListeningSession.started(translationId, bookId, chapter, audioManifestId, serverMillis);
         sessions.put(session.id(), session);
         return session;
     }

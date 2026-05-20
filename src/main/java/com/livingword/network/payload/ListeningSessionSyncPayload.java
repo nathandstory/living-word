@@ -18,6 +18,7 @@ public record ListeningSessionSyncPayload(
     String translationId,
     String bookId,
     int chapter,
+    String audioManifestId,
     PlaybackState state,
     long positionMillis,
     long serverTimeMillis,
@@ -43,11 +44,25 @@ public record ListeningSessionSyncPayload(
         if (chapter < 1) {
             throw new IllegalArgumentException("chapter must be positive");
         }
+        audioManifestId = audioManifestId == null || audioManifestId.isBlank() ? "default" : audioManifestId;
         if (state == null) {
             throw new IllegalArgumentException("state is required");
         }
         positionMillis = Math.max(0L, positionMillis);
         participantCount = Math.max(0, participantCount);
+    }
+
+    public ListeningSessionSyncPayload(
+        UUID sessionId,
+        String translationId,
+        String bookId,
+        int chapter,
+        PlaybackState state,
+        long positionMillis,
+        long serverTimeMillis,
+        int participantCount
+    ) {
+        this(sessionId, translationId, bookId, chapter, "default", state, positionMillis, serverTimeMillis, participantCount);
     }
 
     public static ListeningSessionSyncPayload fromSession(ListeningSession session, long serverMillis) {
@@ -56,6 +71,7 @@ public record ListeningSessionSyncPayload(
             session.translationId(),
             session.bookId(),
             session.chapter(),
+            session.audioManifestId(),
             session.state(),
             session.positionMillisAt(serverMillis),
             serverMillis,
@@ -73,6 +89,7 @@ public record ListeningSessionSyncPayload(
         ByteBufCodecs.STRING_UTF8.encode(buffer, payload.translationId);
         ByteBufCodecs.STRING_UTF8.encode(buffer, payload.bookId);
         ByteBufCodecs.VAR_INT.encode(buffer, payload.chapter);
+        ByteBufCodecs.STRING_UTF8.encode(buffer, payload.audioManifestId);
         PLAYBACK_STATE_CODEC.encode(buffer, payload.state);
         ByteBufCodecs.VAR_LONG.encode(buffer, payload.positionMillis);
         ByteBufCodecs.VAR_LONG.encode(buffer, payload.serverTimeMillis);
@@ -85,6 +102,7 @@ public record ListeningSessionSyncPayload(
             ByteBufCodecs.STRING_UTF8.decode(buffer),
             ByteBufCodecs.STRING_UTF8.decode(buffer),
             ByteBufCodecs.VAR_INT.decode(buffer),
+            ByteBufCodecs.STRING_UTF8.decode(buffer),
             PLAYBACK_STATE_CODEC.decode(buffer),
             ByteBufCodecs.VAR_LONG.decode(buffer),
             ByteBufCodecs.VAR_LONG.decode(buffer),

@@ -8,7 +8,7 @@ final class ListeningSessionManagerTest {
     @Test
     void controlAppliesClientRequestedPausePlayAndSeek() {
         ListeningSessionManager manager = new ListeningSessionManager();
-        ListeningSession session = manager.create("kjv", "psalms", 23, 1_000L);
+        ListeningSession session = manager.create("kjv", "psalms", 23, "default", 1_000L);
 
         manager.control(session.id(), PlaybackState.PAUSED, 2_400L, 5_000L);
         ListeningSession paused = manager.get(session.id()).orElseThrow();
@@ -31,5 +31,14 @@ final class ListeningSessionManagerTest {
         ListeningSession stopped = manager.get(session.id()).orElseThrow();
         assertEquals(PlaybackState.STOPPED, stopped.state());
         assertEquals(12_000L, stopped.positionMillisAt(40_000L));
+    }
+
+    @Test
+    void createCanCarryNonDefaultAudioManifest() {
+        ListeningSessionManager manager = new ListeningSessionManager();
+
+        ListeningSession session = manager.create("bsb", "john", 3, "souer", 1_000L);
+
+        assertEquals("souer", session.audioManifestId());
     }
 }

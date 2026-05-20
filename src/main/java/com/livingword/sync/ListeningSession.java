@@ -9,6 +9,7 @@ public record ListeningSession(
     String translationId,
     String bookId,
     int chapter,
+    String audioManifestId,
     PlaybackState state,
     long startServerMillis,
     long pausedPositionMillis,
@@ -27,6 +28,7 @@ public record ListeningSession(
         if (chapter < 1) {
             throw new IllegalArgumentException("chapter must be positive");
         }
+        audioManifestId = audioManifestId == null || audioManifestId.isBlank() ? "default" : audioManifestId;
         if (state == null) {
             throw new IllegalArgumentException("state is required");
         }
@@ -34,7 +36,11 @@ public record ListeningSession(
     }
 
     public static ListeningSession started(String translationId, String bookId, int chapter, long serverMillis) {
-        return new ListeningSession(UUID.randomUUID(), translationId, bookId, chapter, PlaybackState.PLAYING, serverMillis, 0L, Set.of());
+        return started(translationId, bookId, chapter, "default", serverMillis);
+    }
+
+    public static ListeningSession started(String translationId, String bookId, int chapter, String audioManifestId, long serverMillis) {
+        return new ListeningSession(UUID.randomUUID(), translationId, bookId, chapter, audioManifestId, PlaybackState.PLAYING, serverMillis, 0L, Set.of());
     }
 
     public long positionMillisAt(long serverMillis) {
@@ -45,37 +51,37 @@ public record ListeningSession(
     }
 
     public ListeningSession pauseAt(long serverMillis) {
-        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.PAUSED, startServerMillis, positionMillisAt(serverMillis), participants);
+        return new ListeningSession(id, translationId, bookId, chapter, audioManifestId, PlaybackState.PAUSED, startServerMillis, positionMillisAt(serverMillis), participants);
     }
 
     public ListeningSession playAt(long serverMillis) {
         long startMillis = serverMillis - pausedPositionMillis;
-        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.PLAYING, startMillis, pausedPositionMillis, participants);
+        return new ListeningSession(id, translationId, bookId, chapter, audioManifestId, PlaybackState.PLAYING, startMillis, pausedPositionMillis, participants);
     }
 
     public ListeningSession seekTo(long positionMillis, long serverMillis) {
         long clamped = Math.max(0L, positionMillis);
         long startMillis = state == PlaybackState.PLAYING ? serverMillis - clamped : startServerMillis;
-        return new ListeningSession(id, translationId, bookId, chapter, state, startMillis, clamped, participants);
+        return new ListeningSession(id, translationId, bookId, chapter, audioManifestId, state, startMillis, clamped, participants);
     }
 
     public ListeningSession stopAt() {
-        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.STOPPED, startServerMillis, pausedPositionMillis, participants);
+        return new ListeningSession(id, translationId, bookId, chapter, audioManifestId, PlaybackState.STOPPED, startServerMillis, pausedPositionMillis, participants);
     }
 
     public ListeningSession stopAt(long serverMillis) {
-        return new ListeningSession(id, translationId, bookId, chapter, PlaybackState.STOPPED, startServerMillis, positionMillisAt(serverMillis), participants);
+        return new ListeningSession(id, translationId, bookId, chapter, audioManifestId, PlaybackState.STOPPED, startServerMillis, positionMillisAt(serverMillis), participants);
     }
 
     public ListeningSession withParticipant(UUID playerId) {
         LinkedHashSet<UUID> next = new LinkedHashSet<>(participants);
         next.add(playerId);
-        return new ListeningSession(id, translationId, bookId, chapter, state, startServerMillis, pausedPositionMillis, next);
+        return new ListeningSession(id, translationId, bookId, chapter, audioManifestId, state, startServerMillis, pausedPositionMillis, next);
     }
 
     public ListeningSession withoutParticipant(UUID playerId) {
         LinkedHashSet<UUID> next = new LinkedHashSet<>(participants);
         next.remove(playerId);
-        return new ListeningSession(id, translationId, bookId, chapter, state, startServerMillis, pausedPositionMillis, next);
+        return new ListeningSession(id, translationId, bookId, chapter, audioManifestId, state, startServerMillis, pausedPositionMillis, next);
     }
 }

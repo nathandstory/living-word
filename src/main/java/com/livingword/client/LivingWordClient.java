@@ -106,15 +106,20 @@ public final class LivingWordClient {
 
     public static void playLocalChapter(String translationId, String bookId, int chapter) {
         AudioChapterId chapterId = new AudioChapterId(translationId, bookId, chapter);
-        playLocalChapter(translationId, bookId, chapter, LOCAL_RESUME_POSITIONS.getOrDefault(chapterId, 0L));
+        playLocalChapter(translationId, bookId, chapter, "default", LOCAL_RESUME_POSITIONS.getOrDefault(chapterId, 0L));
     }
 
     public static void playLocalChapter(String translationId, String bookId, int chapter, long positionMillis) {
+        playLocalChapter(translationId, bookId, chapter, "default", positionMillis);
+    }
+
+    public static void playLocalChapter(String translationId, String bookId, int chapter, String audioManifestId, long positionMillis) {
         handleSessionSync(new ListeningSessionSyncPayload(
             UUID.randomUUID(),
             translationId,
             bookId,
             chapter,
+            audioManifestId,
             PlaybackState.PLAYING,
             Math.max(0L, positionMillis),
             System.currentTimeMillis(),
@@ -149,7 +154,14 @@ public final class LivingWordClient {
     }
 
     public static void configureScriptureDisc(InteractionHand hand, ScriptureDiscSelection selection) {
-        PacketDistributor.sendToServer(new ConfigureScriptureDiscPayload(hand, selection.translationId(), selection.bookId(), selection.chapter()));
+        PacketDistributor.sendToServer(new ConfigureScriptureDiscPayload(
+            hand,
+            selection.translationId(),
+            selection.bookId(),
+            selection.chapter(),
+            selection.audioManifestId(),
+            selection.playbackMode()
+        ));
     }
 
     public static ListeningSessionSyncPayload activeSession() {
@@ -174,10 +186,10 @@ public final class LivingWordClient {
         return audioSessionController;
     }
 
-    private static AudioManifest manifestFor(String translationId) {
+    private static AudioManifest manifestFor(String translationId, String audioManifestId) {
         String baseUrl = LivingWordConfig.CDN_BASE_URL.get();
         String normalized = baseUrl.endsWith("/") ? baseUrl : baseUrl + "/";
-        return audioManifestRepository().manifestOrFallback(translationId, "default", URI.create(normalized).resolve(translationId + "/"));
+        return audioManifestRepository().manifestOrFallback(translationId, audioManifestId, URI.create(normalized).resolve(translationId + "/"));
     }
 
     private static AudioManifestRepository audioManifestRepository() {

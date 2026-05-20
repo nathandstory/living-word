@@ -83,4 +83,19 @@ final class AudioManifestRepositoryTest {
         assertEquals("helloao-bsb-david", manifest.pathStrategy());
         assertEquals(URI.create("https://audio.bible.helloao.org/api/BSB/"), manifest.baseUri());
     }
+
+    @Test
+    void includesBundledBsbAlternateNarratorManifests() {
+        AudioManifest hays = new AudioManifestRepository(getClass().getClassLoader())
+            .find("bsb", "hays")
+            .orElseThrow();
+        AudioManifest souer = new AudioManifestRepository(getClass().getClassLoader())
+            .find("bsb", "souer")
+            .orElseThrow();
+
+        assertEquals("bsb-helloao-hays", hays.id());
+        assertEquals("helloao-bsb-hays", hays.pathStrategy());
+        assertEquals("bsb-helloao-souer", souer.id());
+        assertEquals("helloao-bsb-souer", souer.pathStrategy());
+    }
 }
