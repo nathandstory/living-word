@@ -75,6 +75,42 @@ final class ClientAudioSessionControllerTest {
     }
 
     @Test
+    void playbackUsesDownloadedManifestFileExtension() {
+        FakeDownloadService downloader = new FakeDownloadService(DownloadState.cached(new AudioChapterId("bsb", "john", 3)));
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            (translationId, manifestId) -> new AudioManifest(
+                translationId + "-" + manifestId,
+                translationId,
+                URI.create("https://cdn.example.test/" + translationId + "/"),
+                "mp3",
+                "direct",
+                Map.of(),
+                Map.of()
+            ),
+            downloader,
+            playback,
+            true,
+            false,
+            250L
+        );
+
+        controller.handleSessionSync(new ListeningSessionSyncPayload(
+            UUID.randomUUID(),
+            "bsb",
+            "john",
+            3,
+            "hays",
+            PlaybackState.PLAYING,
+            0L,
+            15_000L,
+            2
+        )).join();
+
+        assertEquals("mp3", playback.playedFileExtension);
+    }
+
+    @Test
     void failedDownloadDoesNotStartPlayback() {
         FakeDownloadService downloader = new FakeDownloadService(DownloadState.hashMismatch(new AudioChapterId("webp", "john", 3)));
         FakePlaybackService playback = new FakePlaybackService();
@@ -267,12 +303,18 @@ final class ClientAudioSessionControllerTest {
         private long seekedPositionMillis;
         private AudioChapterId stoppedChapter;
         private int stopAllCount;
+        private String playedFileExtension;
 
         @Override
         public void play(AudioChapterId chapterId, long positionMillis, boolean spatial) {
             playedChapter = chapterId;
             playedPositionMillis = positionMillis;
             playedSpatial = spatial;
+        }
+
+        public void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension) {
+            play(chapterId, positionMillis, spatial);
+            playedFileExtension = fileExtension;
         }
 
         @Override

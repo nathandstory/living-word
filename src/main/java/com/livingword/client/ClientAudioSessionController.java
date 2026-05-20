@@ -30,6 +30,7 @@ public final class ClientAudioSessionController {
     private UUID activeSessionId;
     private AudioChapterId activeChapter;
     private String activeAudioManifestId = "default";
+    private String activeFileExtension = "ogg";
     private long lastCommandedPositionMillis;
     private PlaybackState activeState = PlaybackState.STOPPED;
     private long positionAnchorMillis;
@@ -140,7 +141,7 @@ public final class ClientAudioSessionController {
         }
         long driftMillis = Math.abs(payload.positionMillis() - currentPositionMillis());
         if (driftMillis > syncToleranceMillis) {
-            playbackService.seek(activeChapter, payload.positionMillis());
+            playbackService.seek(activeChapter, payload.positionMillis(), activeFileExtension);
             markPosition(payload.positionMillis(), PlaybackState.PLAYING);
         }
     }
@@ -149,6 +150,7 @@ public final class ClientAudioSessionController {
         AudioManifest manifest;
         try {
             manifest = manifestProvider.apply(chapterId.translationId(), activeAudioManifestId);
+            activeFileExtension = manifest.fileExtension();
         } catch (RuntimeException exception) {
             return CompletableFuture.completedFuture(failed(chapterId, exception));
         }
@@ -167,7 +169,7 @@ public final class ClientAudioSessionController {
             if (state.status() == DownloadState.Status.CACHED) {
                 try {
                     playbackService.stopAll();
-                    playbackService.play(chapterId, positionMillis, spatial);
+                    playbackService.play(chapterId, positionMillis, spatial, manifest.fileExtension());
                     markPosition(positionMillis, PlaybackState.PLAYING);
                 } catch (RuntimeException playbackException) {
                     return failed(chapterId, playbackException);
@@ -195,6 +197,7 @@ public final class ClientAudioSessionController {
         activeChapter = null;
         activeSessionId = null;
         activeAudioManifestId = "default";
+        activeFileExtension = "ogg";
         return positionMillis;
     }
 

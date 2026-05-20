@@ -120,17 +120,6 @@ public final class ScriptureDisc extends Item {
         ItemStack stack = player.getItemInHand(hand);
         if (level.isClientSide()) {
             openSelectionScreen(hand);
-        } else if (player.isShiftKeyDown() && player instanceof ServerPlayer serverPlayer) {
-            ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
-            LivingWordNetwork.startNearbyListeningSession(
-                serverPlayer,
-                selection.translationId(),
-                selection.bookId(),
-                selection.chapter(),
-                selection.audioManifestId(),
-                48.0D
-            );
-            serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started", formatSelection(selection)), true);
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }

@@ -66,7 +66,7 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         int left = (this.width - panelWidth) / 2;
         int top = (this.height - panelHeight) / 2;
         int centerX = left + panelWidth / 2;
-        int controlWidth = Math.min(260, panelWidth - 48);
+        int controlWidth = Math.min(300, panelWidth - 48);
         int controlLeft = centerX - controlWidth / 2;
 
         bookSearchBox = new EditBox(this.font, controlLeft, top + 48, controlWidth, 20, Component.translatable("gui.livingword.disc.search_book"));
@@ -81,12 +81,15 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         modeButton = addCycleButton(controlLeft, top + 180, controlWidth, button -> navigateMode(1));
 
         int bottomY = top + panelHeight - 52;
-        int splitWidth = (controlWidth - 6) / 2;
+        int splitWidth = (controlWidth - 12) / 3;
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.preview"), button -> previewSelection())
             .bounds(controlLeft, bottomY, splitWidth, 20)
             .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.save"), button -> saveAndClose())
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.stop_preview"), button -> stopPreview())
             .bounds(controlLeft + splitWidth + 6, bottomY, splitWidth, 20)
+            .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.save"), button -> saveAndClose())
+            .bounds(controlLeft + (splitWidth + 6) * 2, bottomY, splitWidth, 20)
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.close"), button -> onClose())
             .bounds(controlLeft, bottomY + 26, controlWidth, 20)
@@ -228,6 +231,11 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     private void previewSelection() {
         LivingWordClient.playLocalChapter(translationId, bookId, chapter, audioManifestId, 0L);
         statusLine = Component.translatable("gui.livingword.disc.previewing", formatSelection()).getString();
+    }
+
+    private void stopPreview() {
+        LivingWordClient.stopLocalPlayback();
+        statusLine = Component.translatable("gui.livingword.disc.preview_stopped").getString();
     }
 
     private void saveAndClose() {

@@ -29,6 +29,8 @@ final class ScriptureDiscSelectionScreenTest {
         assertTrue(source.contains("bookSearchBox"));
         assertTrue(source.contains("applyBookSearch"));
         assertTrue(source.contains("previewSelection"));
+        assertTrue(source.contains("stopPreview"));
+        assertTrue(source.contains("LivingWordClient.stopLocalPlayback()"));
         assertTrue(source.contains("new ScriptureDiscSelection(translationId, bookId, chapter, audioManifestId, playbackMode)"));
     }
 }

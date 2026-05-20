@@ -33,4 +33,15 @@ final class ScriptureDiscTest {
         assertTrue(source.contains("message.livingword.disc.session_paused"));
         assertTrue(source.contains("message.livingword.disc.session_reset"));
     }
+
+    @Test
+    void discInHandDoesNotHaveHiddenSneakStartSessionShortcut() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDisc.java"));
+        int useMethodStart = source.indexOf("public InteractionResultHolder<ItemStack> use(");
+        int tooltipStart = source.indexOf("public void appendHoverText", useMethodStart);
+        String useMethod = source.substring(useMethodStart, tooltipStart);
+
+        assertFalse(useMethod.contains("player.isShiftKeyDown()"));
+        assertFalse(useMethod.contains("startNearbyListeningSession"));
+    }
 }

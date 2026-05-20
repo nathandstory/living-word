@@ -42,15 +42,21 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
 
     @Override
     public void play(AudioChapterId chapterId, long positionMillis, boolean spatial) {
+        play(chapterId, positionMillis, spatial, "ogg");
+    }
+
+    @Override
+    public void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension) {
         Minecraft minecraft = Minecraft.getInstance();
+        String normalizedExtension = normalizeAudioExtension(fileExtension);
         minecraft.execute(() -> {
             stopAllNow(minecraft.getSoundManager());
-            Path path = cacheManager.cachedChapterAudioPath(chapterId).orElse(null);
-            if (path == null || !Files.isRegularFile(path)) {
+            Path path = cacheManager.chapterAudioPath(chapterId, normalizedExtension);
+            if (!Files.isRegularFile(path)) {
                 return;
             }
             CachedChapterSoundInstance sound = new CachedChapterSoundInstance(chapterId, path, Math.max(0L, positionMillis), spatial, playbackPosition(minecraft, spatial));
-            activeSounds.put(chapterId, new ActiveSound(sound, spatial));
+            activeSounds.put(chapterId, new ActiveSound(sound, spatial, normalizedExtension));
             minecraft.getSoundManager().play(sound);
         });
     }
@@ -63,7 +69,13 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
     @Override
     public void seek(AudioChapterId chapterId, long positionMillis) {
         ActiveSound activeSound = activeSounds.get(chapterId);
-        play(chapterId, positionMillis, activeSound != null && activeSound.spatial());
+        play(chapterId, positionMillis, activeSound != null && activeSound.spatial(), activeSound == null ? "ogg" : activeSound.fileExtension());
+    }
+
+    @Override
+    public void seek(AudioChapterId chapterId, long positionMillis, String fileExtension) {
+        ActiveSound activeSound = activeSounds.get(chapterId);
+        play(chapterId, positionMillis, activeSound != null && activeSound.spatial(), fileExtension);
     }
 
     @Override
@@ -101,7 +113,16 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         return playerPosition == null ? Vec3.ZERO : playerPosition;
     }
 
-    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial) {
+    private static String normalizeAudioExtension(String fileExtension) {
+        if (fileExtension == null || fileExtension.isBlank()) {
+            return "ogg";
+        }
+        String normalized = fileExtension.startsWith(".") ? fileExtension.substring(1) : fileExtension;
+        normalized = normalized.toLowerCase(java.util.Locale.ROOT);
+        return normalized.matches("[a-z0-9]+") ? normalized : "ogg";
+    }
+
+    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial, String fileExtension) {
     }
 
     private static final class CachedChapterSoundInstance implements SoundInstance {
