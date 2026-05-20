@@ -283,15 +283,35 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
             return;
         }
         AudioFormat format = stream.getFormat();
-        long bytesToSkip = (long) ((positionMillis / 1000.0D) * format.getFrameRate() * format.getFrameSize());
+        int frameSize = frameSize(format);
+        long bytesToSkip = frameAlignedBytesToSkip(format, positionMillis, frameSize);
+        int maxReadBytes = frameAlignedReadLimit(frameSize);
         while (bytesToSkip > 0L) {
-            ByteBuffer skipped = stream.read((int) Math.min(bytesToSkip, 65_536L));
+            ByteBuffer skipped = stream.read((int) Math.min(bytesToSkip, maxReadBytes));
             int skippedBytes = skipped.remaining();
             if (skippedBytes <= 0) {
                 return;
             }
             bytesToSkip -= skippedBytes;
         }
+    }
+
+    private static long frameAlignedBytesToSkip(AudioFormat format, long positionMillis, int frameSize) {
+        long rawBytes = (long) ((positionMillis / 1000.0D) * format.getFrameRate() * frameSize);
+        return rawBytes - Math.floorMod(rawBytes, frameSize);
+    }
+
+    private static int frameAlignedReadLimit(int frameSize) {
+        int aligned = 65_536 - Math.floorMod(65_536, frameSize);
+        return aligned > 0 ? aligned : frameSize;
+    }
+
+    private static int frameSize(AudioFormat format) {
+        if (format.getFrameSize() > 0) {
+            return format.getFrameSize();
+        }
+        int bytesPerSample = Math.max(1, format.getSampleSizeInBits() / 8);
+        return Math.max(1, bytesPerSample * Math.max(1, format.getChannels()));
     }
 
     private static final class EmptyAudioStream implements AudioStream {
