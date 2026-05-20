@@ -6,3 +6,5 @@ run/
 out/
 logs/
 *.class
+__pycache__/
+*.pyc
