@@ -12,6 +12,7 @@ import com.livingword.sync.AudioSourcePosition;
 import com.livingword.sync.PlaybackState;
 
 import java.util.Optional;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -39,6 +40,9 @@ public final class ClientAudioSessionController {
     private PlaybackState activeState = PlaybackState.STOPPED;
     private long positionAnchorMillis;
     private long clockAnchorMillis;
+
+    public record CompletedPlayback(UUID sessionId, AudioChapterId chapterId) {
+    }
 
     public ClientAudioSessionController(
         Function<String, AudioManifest> manifestProvider,
@@ -239,6 +243,24 @@ public final class ClientAudioSessionController {
         activeFileExtension = "ogg";
         activeSourcePosition = Optional.empty();
         return positionMillis;
+    }
+
+    public Optional<CompletedPlayback> drainCompletedPlayback() {
+        List<AudioChapterId> completedChapters = playbackService.drainCompletedChapters();
+        if (activeSessionId == null || activeChapter == null || activeState != PlaybackState.PLAYING) {
+            return Optional.empty();
+        }
+        if (!completedChapters.contains(activeChapter)) {
+            return Optional.empty();
+        }
+        CompletedPlayback completed = new CompletedPlayback(activeSessionId, activeChapter);
+        markPosition(currentPositionMillis(), PlaybackState.STOPPED);
+        activeSessionId = null;
+        activeChapter = null;
+        activeAudioManifestId = "default";
+        activeFileExtension = "ogg";
+        activeSourcePosition = Optional.empty();
+        return Optional.of(completed);
     }
 
     public long currentPositionMillis() {

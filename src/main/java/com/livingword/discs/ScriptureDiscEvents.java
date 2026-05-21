@@ -1,8 +1,12 @@
 package com.livingword.discs;
 
+import com.livingword.bible.BibleDataManager;
+import com.livingword.bible.BibleResourceLoader;
 import com.livingword.network.LivingWordNetwork;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,6 +24,7 @@ import java.util.UUID;
 
 public final class ScriptureDiscEvents {
     private static final JukeboxListeningSessionRegistry JUKEBOX_SESSIONS = new JukeboxListeningSessionRegistry();
+    private static BibleDataManager bibleDataManager;
 
     private ScriptureDiscEvents() {
     }
@@ -60,6 +65,37 @@ public final class ScriptureDiscEvents {
                 LivingWordNetwork.stopListeningSession(sessionId);
                 return true;
             }).orElse(false);
+    }
+
+    public static boolean completeJukeboxChapter(ServerPlayer player, UUID sessionId) {
+        return JUKEBOX_SESSIONS.findPlaying(sessionId)
+            .map(snapshot -> {
+                ServerLevel level = player.server.getLevel(ResourceKey.create(Registries.DIMENSION, snapshot.dimension()));
+                if (level == null) {
+                    return false;
+                }
+                LivingWordNetwork.stopListeningSession(sessionId);
+                var nextSelection = ScriptureDiscPlaybackSequencer.nextSelection(dataManager(), snapshot.selection());
+                if (nextSelection.isEmpty()) {
+                    JUKEBOX_SESSIONS.pause(snapshot.dimension(), snapshot.pos(), 0L);
+                    return true;
+                }
+                ScriptureDiscSelection next = nextSelection.orElseThrow();
+                updateInsertedDiscSelection(level, snapshot.pos(), next);
+                var nextSession = LivingWordNetwork.startPositionedListeningSession(
+                    level,
+                    snapshot.pos(),
+                    next.translationId(),
+                    next.bookId(),
+                    next.chapter(),
+                    next.audioManifestId(),
+                    48.0D,
+                    0L
+                );
+                rememberJukeboxSession(snapshot.dimension(), snapshot.pos(), next, nextSession.id(), 0L);
+                return true;
+            })
+            .orElse(false);
     }
 
     private static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
@@ -129,5 +165,20 @@ public final class ScriptureDiscEvents {
             + selection.bookId().replace('_', ' ')
             + " "
             + selection.chapter();
+    }
+
+    private static void updateInsertedDiscSelection(ServerLevel level, BlockPos pos, ScriptureDiscSelection selection) {
+        if (level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox && jukebox.getTheItem().getItem() instanceof ScriptureDisc) {
+            ScriptureDiscSelection.write(jukebox.getTheItem(), selection);
+            jukebox.setChanged();
+        }
+    }
+
+    private static BibleDataManager dataManager() {
+        if (bibleDataManager == null) {
+            bibleDataManager = new BibleDataManager();
+            new BibleResourceLoader(bibleDataManager, ScriptureDiscEvents.class.getClassLoader()).reload();
+        }
+        return bibleDataManager;
     }
 }

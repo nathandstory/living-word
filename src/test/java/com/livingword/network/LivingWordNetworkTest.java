@@ -17,4 +17,13 @@ final class LivingWordNetworkTest {
         assertTrue(source.contains("TimestampCorrectionPayload"));
         assertTrue(source.contains("sendTimestampCorrection"));
     }
+
+    @Test
+    void serverHandlesClientChapterFinishedPayloadForDiscSequencing() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/network/LivingWordNetwork.java"));
+
+        assertTrue(source.contains("ChapterFinishedPayload.TYPE"));
+        assertTrue(source.contains("handleChapterFinished"));
+        assertTrue(source.contains("completeJukeboxChapter"));
+    }
 }

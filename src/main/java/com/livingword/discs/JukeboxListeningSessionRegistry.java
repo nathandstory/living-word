@@ -20,6 +20,17 @@ final class JukeboxListeningSessionRegistry {
         return entry != null && entry.playing() ? Optional.of(entry.sessionId()) : Optional.empty();
     }
 
+    Optional<SessionSnapshot> findPlaying(UUID sessionId) {
+        for (Map.Entry<Key, Entry> entry : sessions.entrySet()) {
+            Entry session = entry.getValue();
+            if (session.playing() && session.sessionId().equals(sessionId)) {
+                Key key = entry.getKey();
+                return Optional.of(new SessionSnapshot(key.dimension(), key.pos(), session.selection()));
+            }
+        }
+        return Optional.empty();
+    }
+
     long resumePosition(ResourceLocation dimension, BlockPos pos, ScriptureDiscSelection selection) {
         Entry entry = sessions.get(new Key(dimension, pos.immutable()));
         if (entry == null || !entry.selection().equals(selection)) {
@@ -44,5 +55,8 @@ final class JukeboxListeningSessionRegistry {
     }
 
     private record Entry(ScriptureDiscSelection selection, UUID sessionId, long resumePositionMillis, boolean playing) {
+    }
+
+    record SessionSnapshot(ResourceLocation dimension, BlockPos pos, ScriptureDiscSelection selection) {
     }
 }

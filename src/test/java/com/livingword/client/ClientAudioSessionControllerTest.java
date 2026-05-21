@@ -301,6 +301,28 @@ final class ClientAudioSessionControllerTest {
         assertEquals(1_400L, playback.seekedPositionMillis);
     }
 
+    @Test
+    void completedActiveSoundReportsCompletedSessionOnce() {
+        UUID sessionId = UUID.randomUUID();
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            ClientAudioSessionControllerTest::manifest,
+            new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3))),
+            playback,
+            true,
+            false,
+            250L
+        );
+        controller.handleSessionSync(syncPayload(sessionId, PlaybackState.PLAYING, 0L)).join();
+        playback.completedChapters.add(new AudioChapterId("webp", "john", 3));
+
+        assertEquals(
+            Optional.of(new ClientAudioSessionController.CompletedPlayback(sessionId, new AudioChapterId("webp", "john", 3))),
+            controller.drainCompletedPlayback()
+        );
+        assertEquals(Optional.empty(), controller.drainCompletedPlayback());
+    }
+
     private static ListeningSessionSyncPayload syncPayload(PlaybackState state, long positionMillis) {
         return syncPayload(UUID.randomUUID(), state, positionMillis);
     }
@@ -353,6 +375,7 @@ final class ClientAudioSessionControllerTest {
         private int stopAllCount;
         private String playedFileExtension;
         private Optional<AudioSourcePosition> playedSourcePosition = Optional.empty();
+        private final java.util.List<AudioChapterId> completedChapters = new java.util.ArrayList<>();
 
         @Override
         public void play(AudioChapterId chapterId, long positionMillis, boolean spatial) {
@@ -390,6 +413,13 @@ final class ClientAudioSessionControllerTest {
         @Override
         public void stopAll() {
             stopAllCount++;
+        }
+
+        @Override
+        public java.util.List<AudioChapterId> drainCompletedChapters() {
+            java.util.List<AudioChapterId> drained = java.util.List.copyOf(completedChapters);
+            completedChapters.clear();
+            return drained;
         }
     }
 }

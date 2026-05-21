@@ -81,6 +81,7 @@ public final class LivingWordClientEvents {
 
     private static void onClientTick(ClientTickEvent.Post event) {
         LivingWordClient.tickBibleOpenAnimation();
+        LivingWordClient.tickAudioSessions();
     }
 
     private static void onRenderHand(RenderHandEvent event) {

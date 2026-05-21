@@ -2,6 +2,7 @@ package com.livingword.audio;
 
 import com.livingword.sync.AudioSourcePosition;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface AudioPlaybackService {
@@ -30,6 +31,10 @@ public interface AudioPlaybackService {
     void stop(AudioChapterId chapterId);
 
     default void stopAll() {
+    }
+
+    default List<AudioChapterId> drainCompletedChapters() {
+        return List.of();
     }
 
     static AudioPlaybackService noop() {

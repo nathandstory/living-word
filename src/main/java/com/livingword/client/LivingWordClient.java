@@ -11,6 +11,7 @@ import com.livingword.client.gui.BibleScreen;
 import com.livingword.client.gui.ScriptureDiscSelectionScreen;
 import com.livingword.config.LivingWordConfig;
 import com.livingword.discs.ScriptureDiscSelection;
+import com.livingword.network.payload.ChapterFinishedPayload;
 import com.livingword.network.payload.ConfigureScriptureDiscPayload;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
 import com.livingword.network.payload.PlaybackControlPayload;
@@ -40,7 +41,9 @@ public final class LivingWordClient {
 
     private static ListeningSessionSyncPayload activeSession;
     private static ClientAudioSessionController audioSessionController;
+    private static ClientAudioSessionController bibleAudioController;
     private static ClientAudioSessionController scriptureDiscPreviewController;
+    private static ListeningSessionSyncPayload localBibleSession;
     private static AudioManifestRepository audioManifestRepository;
     private static final Map<AudioChapterId, Long> LOCAL_RESUME_POSITIONS = new ConcurrentHashMap<>();
     private static final long BIBLE_OPEN_ANIMATION_DELAY_MILLIS = 180L;
@@ -73,6 +76,18 @@ public final class LivingWordClient {
         if (Util.getMillis() >= pendingBibleOpenAtMillis) {
             openBibleScreen();
         }
+    }
+
+    public static void tickAudioSessions() {
+        if (audioSessionController == null) {
+            return;
+        }
+        audioSessionController.drainCompletedPlayback().ifPresent(completed -> {
+            if (activeSession != null && activeSession.sessionId().equals(completed.sessionId())) {
+                activeSession = null;
+            }
+            PacketDistributor.sendToServer(new ChapterFinishedPayload(completed.sessionId()));
+        });
     }
 
     public static boolean isBibleOpenInHand() {
@@ -119,7 +134,7 @@ public final class LivingWordClient {
 
     public static void playLocalChapter(String translationId, String bookId, int chapter, String audioManifestId, long positionMillis) {
         stopScriptureDiscPreview();
-        handleSessionSync(new ListeningSessionSyncPayload(
+        localBibleSession = new ListeningSessionSyncPayload(
             UUID.randomUUID(),
             translationId,
             bookId,
@@ -129,7 +144,8 @@ public final class LivingWordClient {
             Math.max(0L, positionMillis),
             System.currentTimeMillis(),
             1
-        ));
+        );
+        bibleAudioController().handleSessionSync(localBibleSession).thenAccept(LivingWordClient::reportDownloadState);
     }
 
     public static void previewScriptureDiscChapter(String translationId, String bookId, int chapter, String audioManifestId) {
@@ -153,25 +169,25 @@ public final class LivingWordClient {
     }
 
     public static void toggleLocalChapter(String translationId, String bookId, int chapter) {
-        if (isActiveChapter(translationId, bookId, chapter)) {
+        if (isLocalBibleChapterActive(translationId, bookId, chapter)) {
             AudioChapterId chapterId = new AudioChapterId(translationId, bookId, chapter);
-            long positionMillis = controller().pauseActive();
+            long positionMillis = bibleAudioController().pauseActive();
             LOCAL_RESUME_POSITIONS.put(chapterId, positionMillis);
-            activeSession = null;
+            localBibleSession = null;
             return;
         }
         playLocalChapter(translationId, bookId, chapter);
     }
 
     public static void stopLocalPlayback() {
-        long positionMillis = controller().stopActive();
-        if (activeSession != null) {
+        long positionMillis = bibleAudioController().stopActive();
+        if (localBibleSession != null) {
             LOCAL_RESUME_POSITIONS.put(
-                new AudioChapterId(activeSession.translationId(), activeSession.bookId(), activeSession.chapter()),
+                new AudioChapterId(localBibleSession.translationId(), localBibleSession.bookId(), localBibleSession.chapter()),
                 positionMillis
             );
         }
-        activeSession = null;
+        localBibleSession = null;
     }
 
     public static void openScriptureDiscSelection(InteractionHand hand) {
@@ -211,6 +227,24 @@ public final class LivingWordClient {
         return audioSessionController;
     }
 
+    private static ClientAudioSessionController bibleAudioController() {
+        if (bibleAudioController == null) {
+            Minecraft minecraft = Minecraft.getInstance();
+            Path cacheRoot = minecraft.gameDirectory.toPath().resolve("livingword").resolve("cache").resolve("audio");
+            AudioCacheManager cacheManager = new AudioCacheManager(cacheRoot);
+            CachedAudioDownloadService downloadService = new CachedAudioDownloadService(cacheManager, AUDIO_DOWNLOAD_EXECUTOR);
+            bibleAudioController = new ClientAudioSessionController(
+                LivingWordClient::manifestFor,
+                downloadService,
+                new MinecraftAudioPlaybackService(cacheManager),
+                true,
+                false,
+                LivingWordConfig.SYNC_TOLERANCE_MILLIS.get()
+            );
+        }
+        return bibleAudioController;
+    }
+
     private static ClientAudioSessionController scriptureDiscPreviewController() {
         if (scriptureDiscPreviewController == null) {
             Minecraft minecraft = Minecraft.getInstance();
@@ -246,6 +280,14 @@ public final class LivingWordClient {
             && activeSession.translationId().equals(translationId)
             && activeSession.bookId().equals(bookId)
             && activeSession.chapter() == chapter;
+    }
+
+    private static boolean isLocalBibleChapterActive(String translationId, String bookId, int chapter) {
+        return localBibleSession != null
+            && localBibleSession.state() == PlaybackState.PLAYING
+            && localBibleSession.translationId().equals(translationId)
+            && localBibleSession.bookId().equals(bookId)
+            && localBibleSession.chapter() == chapter;
     }
 
     private static void reportDownloadState(DownloadState state) {

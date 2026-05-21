@@ -30,6 +30,8 @@ import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
@@ -70,7 +72,7 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
                 spatial,
                 playbackPosition(minecraft, spatial, normalizedSourcePosition)
             );
-            activeSounds.put(chapterId, new ActiveSound(sound, spatial, normalizedExtension, normalizedSourcePosition));
+            activeSounds.put(chapterId, new ActiveSound(sound, spatial, normalizedExtension, normalizedSourcePosition, Util.getMillis()));
             minecraft.getSoundManager().play(sound);
         });
     }
@@ -136,6 +138,26 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         }
     }
 
+    @Override
+    public List<AudioChapterId> drainCompletedChapters() {
+        Minecraft minecraft = Minecraft.getInstance();
+        SoundManager soundManager = minecraft.getSoundManager();
+        long now = Util.getMillis();
+        List<AudioChapterId> completed = new ArrayList<>();
+        for (Map.Entry<AudioChapterId, ActiveSound> entry : activeSounds.entrySet()) {
+            ActiveSound activeSound = entry.getValue();
+            if (now - activeSound.startedAtMillis() < 1_000L) {
+                continue;
+            }
+            if (!soundManager.isActive(activeSound.sound())) {
+                if (activeSounds.remove(entry.getKey(), activeSound)) {
+                    completed.add(entry.getKey());
+                }
+            }
+        }
+        return List.copyOf(completed);
+    }
+
     private static Vec3 playbackPosition(Minecraft minecraft, boolean spatial) {
         return playbackPosition(minecraft, spatial, Optional.empty());
     }
@@ -168,7 +190,7 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         return normalized.matches("[a-z0-9]+") ? normalized : "ogg";
     }
 
-    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
+    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition, long startedAtMillis) {
     }
 
     private static final class CachedChapterSoundInstance implements SoundInstance {

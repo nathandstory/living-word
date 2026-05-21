@@ -2,7 +2,9 @@ package com.livingword.network;
 
 import com.livingword.LivingWord;
 import com.livingword.discs.ScriptureDisc;
+import com.livingword.discs.ScriptureDiscEvents;
 import com.livingword.discs.ScriptureDiscSelection;
+import com.livingword.network.payload.ChapterFinishedPayload;
 import com.livingword.network.payload.ConfigureScriptureDiscPayload;
 import com.livingword.network.payload.JoinListeningSessionPayload;
 import com.livingword.network.payload.LeaveListeningSessionPayload;
@@ -16,6 +18,7 @@ import com.livingword.sync.ListeningSessionManager;
 import com.livingword.sync.PlaybackState;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -97,6 +100,13 @@ public final class LivingWordNetwork {
                 }
             });
         });
+        registrar.playToServer(ChapterFinishedPayload.TYPE, ChapterFinishedPayload.STREAM_CODEC, (payload, context) -> {
+            context.enqueueWork(() -> {
+                if (context.player() instanceof ServerPlayer player) {
+                    handleChapterFinished(player, payload);
+                }
+            });
+        });
     }
 
     public static ListeningSession startNearbyListeningSession(ServerPlayer source, String translationId, String bookId, int chapter, double radius) {
@@ -139,7 +149,29 @@ public final class LivingWordNetwork {
         long startPositionMillis
     ) {
         return startPositionedListeningSession(
-            source,
+            source.serverLevel(),
+            sourcePos,
+            translationId,
+            bookId,
+            chapter,
+            audioManifestId,
+            radius,
+            startPositionMillis
+        );
+    }
+
+    public static ListeningSession startPositionedListeningSession(
+        ServerLevel level,
+        BlockPos sourcePos,
+        String translationId,
+        String bookId,
+        int chapter,
+        String audioManifestId,
+        double radius,
+        long startPositionMillis
+    ) {
+        return startPositionedListeningSession(
+            level,
             new AudioSourcePosition(sourcePos.getX() + 0.5D, sourcePos.getY() + 0.5D, sourcePos.getZ() + 0.5D),
             translationId,
             bookId,
@@ -160,6 +192,19 @@ public final class LivingWordNetwork {
         double radius,
         long startPositionMillis
     ) {
+        return startPositionedListeningSession(source.serverLevel(), sourcePosition, translationId, bookId, chapter, audioManifestId, radius, startPositionMillis);
+    }
+
+    public static ListeningSession startPositionedListeningSession(
+        ServerLevel level,
+        AudioSourcePosition sourcePosition,
+        String translationId,
+        String bookId,
+        int chapter,
+        String audioManifestId,
+        double radius,
+        long startPositionMillis
+    ) {
         long now = Util.getMillis();
         Optional<AudioSourcePosition> sourcePositionOptional = Optional.of(sourcePosition);
         ListeningSession created = LISTENING_SESSIONS.create(translationId, bookId, chapter, audioManifestId, sourcePositionOptional, now);
@@ -168,13 +213,17 @@ public final class LivingWordNetwork {
             LISTENING_SESSIONS.play(created.id(), now);
         }
         double radiusSquared = radius * radius;
-        for (ServerPlayer candidate : source.serverLevel().players()) {
+        for (ServerPlayer candidate : level.players()) {
             if (candidate.distanceToSqr(sourcePosition.x(), sourcePosition.y(), sourcePosition.z()) <= radiusSquared) {
                 LISTENING_SESSIONS.join(created.id(), candidate.getUUID());
             }
         }
         syncSessionToParticipants(created.id(), now);
         return LISTENING_SESSIONS.get(created.id()).orElse(created);
+    }
+
+    private static void handleChapterFinished(ServerPlayer player, ChapterFinishedPayload payload) {
+        ScriptureDiscEvents.completeJukeboxChapter(player, payload.sessionId());
     }
 
     public static java.util.Optional<ListeningSession> stopListeningSession(UUID sessionId) {

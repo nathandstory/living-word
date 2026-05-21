@@ -39,4 +39,17 @@ final class JukeboxListeningSessionRegistryTest {
         assertEquals(42_000L, registry.resumePosition(dimension, pos, selection));
         assertEquals(0L, registry.resumePosition(dimension, pos, new ScriptureDiscSelection("kjv", "romans", 8)));
     }
+
+    @Test
+    void canFindActiveJukeboxSessionBySessionIdForChapterCompletion() {
+        JukeboxListeningSessionRegistry registry = new JukeboxListeningSessionRegistry();
+        ResourceLocation dimension = ResourceLocation.withDefaultNamespace("overworld");
+        BlockPos pos = new BlockPos(1, 64, 2);
+        ScriptureDiscSelection selection = new ScriptureDiscSelection("kjv", "john", 3);
+        UUID sessionId = UUID.randomUUID();
+
+        registry.remember(dimension, pos, selection, sessionId, 0L);
+
+        assertEquals(Optional.of(new JukeboxListeningSessionRegistry.SessionSnapshot(dimension, pos, selection)), registry.findPlaying(sessionId));
+    }
 }
