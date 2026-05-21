@@ -59,26 +59,24 @@ final class BibleScreenRenderContractTest {
     void screenHasHighlightedVerseViewAndHighlightAction() throws Exception {
         String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
 
-        assertTrue(source.contains("readerView"));
+        assertTrue(source.contains("highlightedView"));
         assertTrue(source.contains("highlightButton"));
         assertTrue(source.contains("renderHighlightedVerses"));
-        assertTrue(source.contains("state.showHighlighted"));
         assertTrue(source.contains("state.toggleHighlight"));
         assertTrue(source.contains("state.highlights()"));
     }
 
     @Test
-    void screenHasStudyViewsForSearchNotesAndCollections() throws Exception {
+    void screenShowsSearchResultsAsClickableListWithoutStudyToolViews() throws Exception {
         String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
 
+        assertTrue(source.contains("searchResultsView"));
         assertTrue(source.contains("renderSearchResults"));
-        assertTrue(source.contains("renderNotes"));
-        assertTrue(source.contains("renderCollections"));
-        assertTrue(source.contains("gui.livingword.bible.notes"));
-        assertTrue(source.contains("gui.livingword.bible.collections"));
-        assertTrue(source.contains("state.showSearchResults"));
-        assertTrue(source.contains("state.showNotes"));
-        assertTrue(source.contains("state.showCollections"));
+        assertTrue(source.contains("searchResultAt"));
+        assertTrue(source.contains("state.searchResults()"));
+        assertFalse(source.contains("renderNotes"));
+        assertFalse(source.contains("renderCollections"));
+        assertFalse(source.contains("previousAudioButton"));
     }
 
     @Test
@@ -89,20 +87,5 @@ final class BibleScreenRenderContractTest {
         assertTrue(screenSource.contains("gui.livingword.bible.stop_listen"));
         assertTrue(screenSource.contains("LivingWordClient.isLocalBibleChapterActive"));
         assertTrue(clientSource.contains("public static boolean isLocalBibleChapterActive"));
-    }
-
-    @Test
-    void screenHasExplicitAudioQueueControls() throws Exception {
-        String screenSource = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
-        String clientSource = Files.readString(Path.of("src/main/java/com/livingword/client/LivingWordClient.java"));
-
-        assertTrue(screenSource.contains("previousAudioButton"));
-        assertTrue(screenSource.contains("nextAudioButton"));
-        assertTrue(screenSource.contains("stopAudioButton"));
-        assertTrue(screenSource.contains("playQueuedAudio"));
-        assertTrue(screenSource.contains("previousQueuedAudio"));
-        assertTrue(screenSource.contains("nextQueuedAudio"));
-        assertTrue(clientSource.contains("public static void playLocalChapter"));
-        assertTrue(clientSource.contains("public static void stopLocalPlayback"));
     }
 }
