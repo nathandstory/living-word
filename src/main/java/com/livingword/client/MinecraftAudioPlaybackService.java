@@ -30,7 +30,6 @@ import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -39,6 +38,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class MinecraftAudioPlaybackService implements AudioPlaybackService {
     private final AudioCacheManager cacheManager;
     private final Map<AudioChapterId, ActiveSound> activeSounds = new ConcurrentHashMap<>();
+    private final AudioPlaybackCompletionTracker completionTracker = new AudioPlaybackCompletionTracker();
 
     public MinecraftAudioPlaybackService(AudioCacheManager cacheManager) {
         this.cacheManager = cacheManager;
@@ -72,7 +72,8 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
                 spatial,
                 playbackPosition(minecraft, spatial, normalizedSourcePosition)
             );
-            activeSounds.put(chapterId, new ActiveSound(sound, spatial, normalizedExtension, normalizedSourcePosition, Util.getMillis()));
+            activeSounds.put(chapterId, new ActiveSound(sound, spatial, normalizedExtension, normalizedSourcePosition));
+            completionTracker.track(chapterId, Util.getMillis());
             minecraft.getSoundManager().play(sound);
         });
     }
@@ -129,10 +130,12 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
             soundManager.stop(activeSound.sound());
         }
         activeSounds.clear();
+        completionTracker.clear();
     }
 
     private void stopNow(AudioChapterId chapterId, SoundManager soundManager) {
         ActiveSound activeSound = activeSounds.remove(chapterId);
+        completionTracker.forget(chapterId);
         if (activeSound != null) {
             soundManager.stop(activeSound.sound());
         }
@@ -143,16 +146,14 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         Minecraft minecraft = Minecraft.getInstance();
         SoundManager soundManager = minecraft.getSoundManager();
         long now = Util.getMillis();
-        List<AudioChapterId> completed = new ArrayList<>();
-        for (Map.Entry<AudioChapterId, ActiveSound> entry : activeSounds.entrySet()) {
-            ActiveSound activeSound = entry.getValue();
-            if (now - activeSound.startedAtMillis() < 1_000L) {
-                continue;
-            }
-            if (!soundManager.isActive(activeSound.sound())) {
-                if (activeSounds.remove(entry.getKey(), activeSound)) {
-                    completed.add(entry.getKey());
-                }
+        List<AudioChapterId> completed = completionTracker.drainCompleted(now, chapterId -> {
+            ActiveSound activeSound = activeSounds.get(chapterId);
+            return activeSound != null && soundManager.isActive(activeSound.sound());
+        });
+        for (AudioChapterId chapterId : completed) {
+            ActiveSound activeSound = activeSounds.remove(chapterId);
+            if (activeSound != null) {
+                soundManager.stop(activeSound.sound());
             }
         }
         return List.copyOf(completed);
@@ -190,7 +191,7 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         return normalized.matches("[a-z0-9]+") ? normalized : "ogg";
     }
 
-    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition, long startedAtMillis) {
+    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
     }
 
     private static final class CachedChapterSoundInstance implements SoundInstance {

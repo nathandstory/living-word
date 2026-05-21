@@ -67,12 +67,25 @@ public final class ScriptureDiscEvents {
             }).orElse(false);
     }
 
+    public static boolean stopActiveJukeboxSession(ResourceLocation dimension, BlockPos pos) {
+        return JUKEBOX_SESSIONS.removePlaying(dimension, pos)
+            .map(sessionId -> {
+                LivingWordNetwork.stopListeningSession(sessionId);
+                return true;
+            }).orElse(false);
+    }
+
     public static boolean completeJukeboxChapter(ServerPlayer player, UUID sessionId) {
         return JUKEBOX_SESSIONS.findPlaying(sessionId)
             .map(snapshot -> {
                 ServerLevel level = player.server.getLevel(ResourceKey.create(Registries.DIMENSION, snapshot.dimension()));
                 if (level == null) {
                     return false;
+                }
+                if (!hasMatchingInsertedDisc(level, snapshot.pos(), snapshot.selection())) {
+                    LivingWordNetwork.stopListeningSession(sessionId);
+                    JUKEBOX_SESSIONS.remove(snapshot.dimension(), snapshot.pos());
+                    return true;
                 }
                 LivingWordNetwork.stopListeningSession(sessionId);
                 var nextSelection = ScriptureDiscPlaybackSequencer.nextSelection(dataManager(), snapshot.selection());
@@ -172,6 +185,14 @@ public final class ScriptureDiscEvents {
             ScriptureDiscSelection.write(jukebox.getTheItem(), selection);
             jukebox.setChanged();
         }
+    }
+
+    private static boolean hasMatchingInsertedDisc(ServerLevel level, BlockPos pos, ScriptureDiscSelection selection) {
+        if (!(level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox)) {
+            return false;
+        }
+        ItemStack inserted = jukebox.getTheItem();
+        return inserted.getItem() instanceof ScriptureDisc && ScriptureDiscSelection.from(inserted).equals(selection);
     }
 
     private static BibleDataManager dataManager() {

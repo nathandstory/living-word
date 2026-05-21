@@ -20,6 +20,15 @@ final class JukeboxListeningSessionRegistry {
         return entry != null && entry.playing() ? Optional.of(entry.sessionId()) : Optional.empty();
     }
 
+    Optional<UUID> removePlaying(ResourceLocation dimension, BlockPos pos) {
+        Key key = new Key(dimension, pos.immutable());
+        Entry entry = sessions.get(key);
+        if (entry == null || !entry.playing()) {
+            return Optional.empty();
+        }
+        return sessions.remove(key, entry) ? Optional.of(entry.sessionId()) : Optional.empty();
+    }
+
     Optional<SessionSnapshot> findPlaying(UUID sessionId) {
         for (Map.Entry<Key, Entry> entry : sessions.entrySet()) {
             Entry session = entry.getValue();

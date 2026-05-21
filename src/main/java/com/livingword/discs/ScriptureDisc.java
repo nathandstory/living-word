@@ -105,11 +105,8 @@ public final class ScriptureDisc extends Item {
                 serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_reset"), true);
                 return InteractionResult.CONSUME;
             }
-            if (ScriptureDiscEvents.pauseJukeboxSession(level.dimension().location(), pos)) {
-                serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_paused"), true);
-                return InteractionResult.CONSUME;
-            }
             ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
+            ScriptureDiscEvents.stopActiveJukeboxSession(level.dimension().location(), pos);
             insertIntoJukebox(level, pos, level.getBlockState(pos), serverPlayer, stack, jukebox);
             long resumePositionMillis = ScriptureDiscEvents.resumePosition(level.dimension().location(), pos, selection);
             ListeningSession session = LivingWordNetwork.startPositionedListeningSession(

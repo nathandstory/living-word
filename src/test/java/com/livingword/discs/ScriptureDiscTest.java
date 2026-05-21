@@ -25,13 +25,14 @@ final class ScriptureDiscTest {
 
     @Test
     void tooltipDocumentsConfigureJukeboxAndResetControls() throws Exception {
-        String source = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDisc.java"));
+        String discSource = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDisc.java"));
+        String eventSource = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDiscEvents.java"));
 
-        assertTrue(source.contains("item.livingword.scripture_disc.tooltip.configure"));
-        assertTrue(source.contains("item.livingword.scripture_disc.tooltip.jukebox"));
-        assertTrue(source.contains("item.livingword.scripture_disc.tooltip.stop"));
-        assertTrue(source.contains("message.livingword.disc.session_paused"));
-        assertTrue(source.contains("message.livingword.disc.session_reset"));
+        assertTrue(discSource.contains("item.livingword.scripture_disc.tooltip.configure"));
+        assertTrue(discSource.contains("item.livingword.scripture_disc.tooltip.jukebox"));
+        assertTrue(discSource.contains("item.livingword.scripture_disc.tooltip.stop"));
+        assertTrue(eventSource.contains("message.livingword.disc.session_paused"));
+        assertTrue(discSource.contains("message.livingword.disc.session_reset"));
     }
 
     @Test
@@ -51,6 +52,15 @@ final class ScriptureDiscTest {
         assertTrue(source.contains("getTheItem"));
         assertTrue(source.contains("instanceof ScriptureDisc"));
         assertTrue(source.contains("popOutTheItem"));
+    }
+
+    @Test
+    void chapterCompletionRequiresDiscStillInsertedBeforeContinuingBook() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDiscEvents.java"));
+
+        assertTrue(source.contains("hasMatchingInsertedDisc"));
+        assertTrue(source.indexOf("hasMatchingInsertedDisc") < source.indexOf("ScriptureDiscPlaybackSequencer.nextSelection"));
+        assertTrue(source.contains("stopActiveJukeboxSession"));
     }
 
     @Test
