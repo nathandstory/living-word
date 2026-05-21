@@ -1,22 +1,40 @@
 package com.livingword.client.gui;
 
 import com.livingword.bible.BibleReference;
+import com.livingword.client.study.AudioQueueEntry;
+import com.livingword.client.study.VerseCollection;
+import com.livingword.client.study.VerseNote;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public final class BibleGuiState {
+    public enum ReaderView {
+        READING,
+        SEARCH,
+        HIGHLIGHTED,
+        NOTES,
+        COLLECTIONS
+    }
+
     private String translationId;
     private String bookId;
     private int chapter;
     private int selectedVerse;
     private String searchQuery;
+    private ReaderView readerView = ReaderView.READING;
     private final List<BibleReference> searchResults = new ArrayList<>();
     private int searchResultIndex;
     private final List<BibleReference> recentHistory = new ArrayList<>();
     private final List<BibleReference> bookmarks = new ArrayList<>();
     private final List<BibleReference> highlights = new ArrayList<>();
+    private final List<VerseNote> notes = new ArrayList<>();
+    private final List<VerseCollection> collections = new ArrayList<>();
+    private final List<AudioQueueEntry> audioQueue = new ArrayList<>();
+    private int audioQueueIndex;
 
     private BibleGuiState(String translationId, String bookId, int chapter) {
         this.translationId = translationId;
@@ -50,6 +68,14 @@ public final class BibleGuiState {
         return searchQuery;
     }
 
+    public ReaderView readerView() {
+        return readerView;
+    }
+
+    public List<BibleReference> searchResults() {
+        return List.copyOf(searchResults);
+    }
+
     public List<BibleReference> recentHistory() {
         return List.copyOf(recentHistory);
     }
@@ -60,6 +86,18 @@ public final class BibleGuiState {
 
     public List<BibleReference> highlights() {
         return List.copyOf(highlights);
+    }
+
+    public List<VerseNote> notes() {
+        return List.copyOf(notes);
+    }
+
+    public List<VerseCollection> collections() {
+        return List.copyOf(collections);
+    }
+
+    public List<AudioQueueEntry> audioQueue() {
+        return List.copyOf(audioQueue);
     }
 
     public void selectVerse(int selectedVerse) {
@@ -104,6 +142,26 @@ public final class BibleGuiState {
             return "";
         }
         return (searchResultIndex + 1) + " / " + searchResults.size();
+    }
+
+    public void showReading() {
+        readerView = ReaderView.READING;
+    }
+
+    public void showSearchResults() {
+        readerView = ReaderView.SEARCH;
+    }
+
+    public void showHighlighted() {
+        readerView = ReaderView.HIGHLIGHTED;
+    }
+
+    public void showNotes() {
+        readerView = ReaderView.NOTES;
+    }
+
+    public void showCollections() {
+        readerView = ReaderView.COLLECTIONS;
     }
 
     public void setPassage(String translationId, String bookId, int chapter) {
@@ -192,6 +250,116 @@ public final class BibleGuiState {
         }
     }
 
+    public Optional<String> noteFor(BibleReference reference) {
+        return notes.stream()
+            .filter(note -> note.reference().equals(reference))
+            .map(VerseNote::text)
+            .findFirst();
+    }
+
+    public void setNote(BibleReference reference, String text) {
+        notes.removeIf(note -> note.reference().equals(reference));
+        if (text != null && !text.isBlank()) {
+            notes.add(new VerseNote(reference, text));
+        }
+    }
+
+    public void replaceNotes(List<VerseNote> storedNotes) {
+        notes.clear();
+        if (storedNotes != null) {
+            for (VerseNote note : storedNotes) {
+                if (note != null && !note.text().isBlank()) {
+                    setNote(note.reference(), note.text());
+                }
+            }
+        }
+    }
+
+    public void addToCollection(String name, BibleReference reference) {
+        String normalizedName = normalizeCollectionName(name);
+        List<BibleReference> references = new ArrayList<>();
+        boolean found = false;
+        for (VerseCollection collection : collections) {
+            if (collection.name().equals(normalizedName)) {
+                references.addAll(collection.references());
+                found = true;
+                break;
+            }
+        }
+        if (!references.contains(reference)) {
+            references.add(reference);
+        }
+        replaceCollection(normalizedName, references);
+        if (!found) {
+            collections.sort(java.util.Comparator.comparing(VerseCollection::name));
+        }
+    }
+
+    public void removeFromCollection(String name, BibleReference reference) {
+        String normalizedName = normalizeCollectionName(name);
+        Optional<VerseCollection> existing = collections.stream()
+            .filter(collection -> collection.name().equals(normalizedName))
+            .findFirst();
+        if (existing.isEmpty()) {
+            return;
+        }
+        List<BibleReference> references = new ArrayList<>(existing.orElseThrow().references());
+        references.remove(reference);
+        replaceCollection(normalizedName, references);
+    }
+
+    public void replaceCollections(List<VerseCollection> storedCollections) {
+        collections.clear();
+        if (storedCollections == null) {
+            return;
+        }
+        Map<String, List<BibleReference>> merged = new LinkedHashMap<>();
+        for (VerseCollection collection : storedCollections) {
+            if (collection == null) {
+                continue;
+            }
+            List<BibleReference> references = merged.computeIfAbsent(collection.name(), ignored -> new ArrayList<>());
+            for (BibleReference reference : collection.references()) {
+                if (!references.contains(reference)) {
+                    references.add(reference);
+                }
+            }
+        }
+        merged.forEach(this::replaceCollection);
+    }
+
+    public void replaceAudioQueue(List<AudioQueueEntry> entries) {
+        audioQueue.clear();
+        if (entries != null) {
+            for (AudioQueueEntry entry : entries) {
+                if (entry != null && !audioQueue.contains(entry)) {
+                    audioQueue.add(entry);
+                }
+            }
+        }
+        audioQueueIndex = 0;
+    }
+
+    public Optional<AudioQueueEntry> currentQueuedChapter() {
+        if (audioQueue.isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(audioQueue.get(audioQueueIndex));
+    }
+
+    public void advanceAudioQueue(int direction) {
+        if (!audioQueue.isEmpty()) {
+            audioQueueIndex = Math.floorMod(audioQueueIndex + direction, audioQueue.size());
+        }
+    }
+
+    public String audioQueueSummary() {
+        if (audioQueue.isEmpty()) {
+            return "";
+        }
+        return (audioQueueIndex + 1) + " / " + audioQueue.size();
+    }
+
     public void recordHistory(BibleReference reference) {
         recentHistory.remove(reference);
         recentHistory.addFirst(reference);
@@ -212,5 +380,19 @@ public final class BibleGuiState {
 
     private static boolean isBlank(String value) {
         return value == null || value.isBlank();
+    }
+
+    private void replaceCollection(String name, List<BibleReference> references) {
+        collections.removeIf(collection -> collection.name().equals(name));
+        if (references != null && !references.isEmpty()) {
+            collections.add(new VerseCollection(name, references));
+        }
+    }
+
+    private static String normalizeCollectionName(String name) {
+        if (name == null || name.isBlank()) {
+            return "Study List";
+        }
+        return name.strip();
     }
 }

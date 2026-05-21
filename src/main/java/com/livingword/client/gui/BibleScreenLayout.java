@@ -17,8 +17,12 @@ public record BibleScreenLayout(
     Rect nextChapter,
     Rect nextBook,
     Rect version,
+    Rect previousAudio,
     Rect listen,
+    Rect stopAudio,
+    Rect nextAudio,
     Rect highlight,
+    Rect collection,
     Rect copy,
     Rect verseList,
     int headingBookY,
@@ -62,20 +66,29 @@ public record BibleScreenLayout(
 
         int toolbarGap = 4;
         int toolbarAvailable = Math.max(220, panelWidth - 32);
-        int navButtonWidth = Math.min(38, Math.max(20, toolbarAvailable / 14));
-        int toolButtonWidth = Math.min(72, Math.max(32, (toolbarAvailable - navButtonWidth * 4 - toolbarGap * 7) / 4));
-        int toolbarTotalWidth = toolButtonWidth * 4 + navButtonWidth * 4 + toolbarGap * 7;
+        int navButtonWidth = Math.min(34, Math.max(20, toolbarAvailable / 16));
+        int toolButtonWidth = Math.min(70, Math.max(34, (toolbarAvailable - navButtonWidth * 4 - toolbarGap * 6) / 3));
+        int toolbarTotalWidth = toolButtonWidth * 3 + navButtonWidth * 4 + toolbarGap * 6;
         int toolbarX = left + (panelWidth - toolbarTotalWidth) / 2;
         Rect version = new Rect(toolbarX, rowY, toolButtonWidth, 20);
         Rect previousBook = new Rect(version.right() + toolbarGap, rowY, navButtonWidth, 20);
         Rect previousChapter = new Rect(previousBook.right() + toolbarGap, rowY, navButtonWidth, 20);
         Rect nextChapter = new Rect(previousChapter.right() + toolbarGap, rowY, navButtonWidth, 20);
         Rect nextBook = new Rect(nextChapter.right() + toolbarGap, rowY, navButtonWidth, 20);
-        Rect listen = new Rect(nextBook.right() + toolbarGap, rowY, toolButtonWidth, 20);
-        Rect highlight = new Rect(listen.right() + toolbarGap, rowY, toolButtonWidth, 20);
+        Rect highlight = new Rect(nextBook.right() + toolbarGap, rowY, toolButtonWidth, 20);
         Rect copy = new Rect(highlight.right() + toolbarGap, rowY, toolButtonWidth, 20);
+
+        int audioY = rowY + 20 + rowGap;
+        int audioButtonWidth = Math.min(68, Math.max(36, (toolbarAvailable - toolbarGap * 4) / 5));
+        int audioTotalWidth = audioButtonWidth * 5 + toolbarGap * 4;
+        int audioX = left + (panelWidth - audioTotalWidth) / 2;
+        Rect previousAudio = new Rect(audioX, audioY, audioButtonWidth, 20);
+        Rect listen = new Rect(previousAudio.right() + toolbarGap, audioY, audioButtonWidth, 20);
+        Rect stopAudio = new Rect(listen.right() + toolbarGap, audioY, audioButtonWidth, 20);
+        Rect nextAudio = new Rect(stopAudio.right() + toolbarGap, audioY, audioButtonWidth, 20);
+        Rect collection = new Rect(nextAudio.right() + toolbarGap, audioY, audioButtonWidth, 20);
         if (toolsExpanded) {
-            rowY += 20 + rowGap;
+            rowY += 40 + rowGap * 2;
         }
 
         int headingBookY = rowY + 3;
@@ -100,8 +113,12 @@ public record BibleScreenLayout(
             nextChapter,
             nextBook,
             version,
+            previousAudio,
             listen,
+            stopAudio,
+            nextAudio,
             highlight,
+            collection,
             copy,
             new Rect(verseX, verseY, verseWidth, verseHeight),
             headingBookY,
@@ -126,8 +143,12 @@ public record BibleScreenLayout(
         rects.add(nextChapter);
         rects.add(nextBook);
         rects.add(version);
+        rects.add(previousAudio);
         rects.add(listen);
+        rects.add(stopAudio);
+        rects.add(nextAudio);
         rects.add(highlight);
+        rects.add(collection);
         rects.add(copy);
         return rects;
     }

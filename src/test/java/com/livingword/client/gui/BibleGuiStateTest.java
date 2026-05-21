@@ -1,7 +1,13 @@
 package com.livingword.client.gui;
 
 import com.livingword.bible.BibleReference;
+import com.livingword.client.study.AudioQueueEntry;
+import com.livingword.client.study.VerseCollection;
+import com.livingword.client.study.VerseNote;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -127,5 +133,79 @@ final class BibleGuiStateTest {
 
         assertTrue(state.currentSearchResult().isEmpty());
         assertEquals("", state.searchResultSummary());
+    }
+
+    @Test
+    void storesVerseNotesAndRemovesBlankNotes() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        BibleReference reference = new BibleReference("kjv", "john", 3, 16);
+
+        state.setNote(reference, "For memorization");
+
+        assertEquals(Optional.of("For memorization"), state.noteFor(reference));
+        assertEquals(List.of(new VerseNote(reference, "For memorization")), state.notes());
+
+        state.setNote(reference, "   ");
+
+        assertTrue(state.noteFor(reference).isEmpty());
+        assertTrue(state.notes().isEmpty());
+    }
+
+    @Test
+    void managesNamedVerseCollectionsWithoutDuplicates() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        BibleReference reference = new BibleReference("kjv", "john", 3, 16);
+
+        state.addToCollection("Comfort", reference);
+        state.addToCollection("Comfort", reference);
+
+        assertEquals(List.of(new VerseCollection("Comfort", List.of(reference))), state.collections());
+
+        state.removeFromCollection("Comfort", reference);
+
+        assertTrue(state.collections().isEmpty());
+    }
+
+    @Test
+    void tracksReaderViewForSearchNotesCollectionsAndHighlights() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+
+        assertEquals(BibleGuiState.ReaderView.READING, state.readerView());
+
+        state.showSearchResults();
+        assertEquals(BibleGuiState.ReaderView.SEARCH, state.readerView());
+
+        state.showHighlighted();
+        assertEquals(BibleGuiState.ReaderView.HIGHLIGHTED, state.readerView());
+
+        state.showNotes();
+        assertEquals(BibleGuiState.ReaderView.NOTES, state.readerView());
+
+        state.showCollections();
+        assertEquals(BibleGuiState.ReaderView.COLLECTIONS, state.readerView());
+
+        state.showReading();
+        assertEquals(BibleGuiState.ReaderView.READING, state.readerView());
+    }
+
+    @Test
+    void queuesLocalAudioChaptersForPlaybackControls() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        AudioQueueEntry first = new AudioQueueEntry("kjv", "john", 3);
+        AudioQueueEntry second = new AudioQueueEntry("kjv", "john", 4);
+
+        state.replaceAudioQueue(List.of(first, second));
+
+        assertEquals(Optional.of(first), state.currentQueuedChapter());
+        assertEquals("1 / 2", state.audioQueueSummary());
+
+        state.advanceAudioQueue(1);
+
+        assertEquals(Optional.of(second), state.currentQueuedChapter());
+        assertEquals("2 / 2", state.audioQueueSummary());
+
+        state.advanceAudioQueue(1);
+
+        assertEquals(Optional.of(first), state.currentQueuedChapter());
     }
 }

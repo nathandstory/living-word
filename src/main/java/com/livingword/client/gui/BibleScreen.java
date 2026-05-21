@@ -8,6 +8,9 @@ import com.livingword.client.BibleClientPreferences;
 import com.livingword.client.BibleClientRepository;
 import com.livingword.client.LivingWordClient;
 import com.livingword.client.gui.widgets.VerseListWidget;
+import com.livingword.client.study.AudioQueueEntry;
+import com.livingword.client.study.VerseCollection;
+import com.livingword.client.study.VerseNote;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Renderable;
@@ -17,6 +20,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -36,18 +40,22 @@ public final class BibleScreen extends Screen {
     private final VerseListWidget verseList = new VerseListWidget();
     private boolean searchExpanded;
     private boolean toolsExpanded;
-    private boolean highlightedView;
     private EditBox searchBox;
+    private EditBox noteBox;
     private Button searchGoButton;
     private Button searchNextButton;
-    private Button highlightedTabButton;
+    private Button viewButton;
     private Button previousBookButton;
     private Button previousChapterButton;
     private Button nextChapterButton;
     private Button nextBookButton;
     private Button versionButton;
+    private Button previousAudioButton;
     private Button listenButton;
+    private Button stopAudioButton;
+    private Button nextAudioButton;
     private Button highlightButton;
+    private Button collectionButton;
     private Button copyButton;
     private int verseListX;
     private int verseListY;
@@ -69,11 +77,12 @@ public final class BibleScreen extends Screen {
         selectFirstVerse(initialChapter);
         recordCurrentHistory();
         restoreStoredState();
+        state.replaceAudioQueue(audioQueueForCurrentBook());
     }
 
     @Override
     protected void init() {
-        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height, searchExpanded, toolsExpanded);
+        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height, searchRowVisible(), toolsExpanded);
 
         addRenderableWidget(Button.builder(Component.translatable(searchExpanded
                 ? "gui.livingword.bible.hide_search"
@@ -91,10 +100,10 @@ public final class BibleScreen extends Screen {
             })
             .bounds(layout.toolsToggle().x(), layout.toolsToggle().y(), layout.toolsToggle().width(), layout.toolsToggle().height())
             .build());
-        highlightedTabButton = addRenderableWidget(Button.builder(Component.empty(), button -> {
-                highlightedView = !highlightedView;
+        viewButton = addRenderableWidget(Button.builder(Component.empty(), button -> {
+                cycleReaderView();
                 verseScrollOffset = 0;
-                refreshActionLabels();
+                rebuildWidgets();
             })
             .bounds(layout.highlightedToggle().x(), layout.highlightedToggle().y(), layout.highlightedToggle().width(), layout.highlightedToggle().height())
             .build());
@@ -115,6 +124,12 @@ public final class BibleScreen extends Screen {
             .bounds(layout.searchNext().x(), layout.searchNext().y(), layout.searchNext().width(), layout.searchNext().height())
             .build());
 
+        noteBox = new EditBox(this.font, layout.searchBox().x(), layout.searchBox().y(), layout.searchBox().width(), layout.searchBox().height(), Component.translatable("gui.livingword.bible.note"));
+        noteBox.setHint(Component.translatable("gui.livingword.bible.note"));
+        noteBox.setValue(state.noteFor(state.selectedReference()).orElse(""));
+        noteBox.setResponder(value -> state.setNote(state.selectedReference(), value));
+        addRenderableWidget(noteBox);
+
         versionButton = addRenderableWidget(Button.builder(Component.empty(), button -> navigateTranslation(1))
             .bounds(layout.version().x(), layout.version().y(), layout.version().width(), layout.version().height())
             .build());
@@ -130,11 +145,23 @@ public final class BibleScreen extends Screen {
         nextBookButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.next_book"), button -> navigateBook(1))
             .bounds(layout.nextBook().x(), layout.nextBook().y(), layout.nextBook().width(), layout.nextBook().height())
             .build());
+        previousAudioButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.audio_previous"), button -> previousQueuedAudio())
+            .bounds(layout.previousAudio().x(), layout.previousAudio().y(), layout.previousAudio().width(), layout.previousAudio().height())
+            .build());
         listenButton = addRenderableWidget(Button.builder(Component.empty(), button -> {
-                LivingWordClient.toggleLocalChapter(state.translationId(), state.bookId(), state.chapter());
+                playQueuedAudio();
                 refreshActionLabels();
             })
             .bounds(layout.listen().x(), layout.listen().y(), layout.listen().width(), layout.listen().height())
+            .build());
+        stopAudioButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.audio_stop"), button -> {
+                LivingWordClient.stopLocalPlayback();
+                refreshActionLabels();
+            })
+            .bounds(layout.stopAudio().x(), layout.stopAudio().y(), layout.stopAudio().width(), layout.stopAudio().height())
+            .build());
+        nextAudioButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.audio_next"), button -> nextQueuedAudio())
+            .bounds(layout.nextAudio().x(), layout.nextAudio().y(), layout.nextAudio().width(), layout.nextAudio().height())
             .build());
         highlightButton = addRenderableWidget(Button.builder(Component.empty(), button -> {
                 state.toggleHighlight(state.selectedReference());
@@ -142,18 +169,27 @@ public final class BibleScreen extends Screen {
             })
             .bounds(layout.highlight().x(), layout.highlight().y(), layout.highlight().width(), layout.highlight().height())
             .build());
+        collectionButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.add_collection"), button -> {
+                state.addToCollection(Component.translatable("gui.livingword.bible.default_collection").getString(), state.selectedReference());
+                state.showCollections();
+                verseScrollOffset = 0;
+                rebuildWidgets();
+            })
+            .bounds(layout.collection().x(), layout.collection().y(), layout.collection().width(), layout.collection().height())
+            .build());
         copyButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.copy"), button -> copySelectedVerse())
             .bounds(layout.copy().x(), layout.copy().y(), layout.copy().width(), layout.copy().height())
             .build());
         setSearchControlsVisible(searchExpanded);
         setToolControlsVisible(toolsExpanded);
+        refreshNoteBox();
         refreshActionLabels();
     }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics, mouseX, mouseY, partialTick);
-        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height, searchExpanded, toolsExpanded);
+        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height, searchRowVisible(), toolsExpanded);
         BibleScreenLayout.Rect panel = layout.panel();
 
         graphics.fill(0, 0, this.width, this.height, BACKGROUND);
@@ -176,13 +212,32 @@ public final class BibleScreen extends Screen {
         verseListY = layout.verseList().y();
         verseListWidth = layout.verseList().width();
         verseListHeight = layout.verseList().height();
-        if (highlightedView) {
-            int maxScroll = highlightedMaxScroll();
-            verseScrollOffset = Math.max(0, Math.min(verseScrollOffset, maxScroll));
-            renderHighlightedVerses(graphics);
-            renderScrollBar(graphics, maxScroll);
-        } else {
-            currentChapter().ifPresent(chapter -> {
+        switch (state.readerView()) {
+            case SEARCH -> {
+                int maxScroll = referenceRowsMaxScroll(state.searchResults().size());
+                verseScrollOffset = Math.max(0, Math.min(verseScrollOffset, maxScroll));
+                renderSearchResults(graphics);
+                renderScrollBar(graphics, maxScroll);
+            }
+            case HIGHLIGHTED -> {
+                int maxScroll = referenceRowsMaxScroll(state.highlights().size());
+                verseScrollOffset = Math.max(0, Math.min(verseScrollOffset, maxScroll));
+                renderHighlightedVerses(graphics);
+                renderScrollBar(graphics, maxScroll);
+            }
+            case NOTES -> {
+                int maxScroll = referenceRowsMaxScroll(state.notes().size());
+                verseScrollOffset = Math.max(0, Math.min(verseScrollOffset, maxScroll));
+                renderNotes(graphics);
+                renderScrollBar(graphics, maxScroll);
+            }
+            case COLLECTIONS -> {
+                int maxScroll = referenceRowsMaxScroll(collectionReferences().size());
+                verseScrollOffset = Math.max(0, Math.min(verseScrollOffset, maxScroll));
+                renderCollections(graphics);
+                renderScrollBar(graphics, maxScroll);
+            }
+            case READING -> currentChapter().ifPresent(chapter -> {
                 verseScrollOffset = clampScroll(chapter, verseScrollOffset);
                 verseList.render(graphics, this.font, chapter, state, verseListX, verseListY, verseListWidth, verseListHeight, verseScrollOffset);
                 renderScrollBar(graphics, verseList.maxScroll(chapter, this.font, verseListWidth, verseListHeight));
@@ -197,13 +252,14 @@ public final class BibleScreen extends Screen {
         if (super.mouseClicked(mouseX, mouseY, button)) {
             return true;
         }
-        if (highlightedView && isInsideVerseList(mouseX, mouseY)) {
-            Optional<BibleReference> highlighted = highlightedReferenceAt(mouseY);
-            highlighted.ifPresent(reference -> {
-                highlightedView = false;
-                navigateTo(reference);
+        if (state.readerView() != BibleGuiState.ReaderView.READING && isInsideVerseList(mouseX, mouseY)) {
+            Optional<BibleReference> reference = referenceRowAt(mouseY);
+            reference.ifPresent(selected -> {
+                state.showReading();
+                navigateTo(selected);
+                rebuildWidgets();
             });
-            return highlighted.isPresent();
+            return reference.isPresent();
         }
         Optional<ChapterData> chapter = currentChapter();
         if (chapter.isPresent() && isInsideVerseList(mouseX, mouseY)) {
@@ -211,6 +267,7 @@ public final class BibleScreen extends Screen {
             if (selectedVerse.isPresent()) {
                 state.selectVerse(selectedVerse.getAsInt());
                 recordCurrentHistory();
+                refreshNoteBox();
                 refreshActionLabels();
                 return true;
             }
@@ -221,9 +278,9 @@ public final class BibleScreen extends Screen {
     @Override
     public boolean mouseScrolled(double mouseX, double mouseY, double scrollX, double scrollY) {
         if (isInsideVerseList(mouseX, mouseY)) {
-            if (highlightedView) {
+            if (state.readerView() != BibleGuiState.ReaderView.READING) {
                 int nextOffset = verseScrollOffset - (int) Math.round(scrollY * 28);
-                verseScrollOffset = Math.max(0, Math.min(nextOffset, highlightedMaxScroll()));
+                verseScrollOffset = Math.max(0, Math.min(nextOffset, referenceRowsMaxScroll(referencesForCurrentView().size())));
             } else {
                 currentChapter().ifPresent(chapter -> {
                     int nextOffset = verseScrollOffset - (int) Math.round(scrollY * 28);
@@ -251,10 +308,10 @@ public final class BibleScreen extends Screen {
     private void jumpToFirstSearchResult() {
         List<BibleReference> results = dataManager.search(state.translationId(), state.searchQuery(), 100);
         state.replaceSearchResults(results);
-        state.currentSearchResult().ifPresent(reference -> {
-            highlightedView = false;
-            navigateTo(reference);
-        });
+        state.showSearchResults();
+        verseScrollOffset = 0;
+        refreshNoteBox();
+        refreshActionLabels();
     }
 
     private void jumpToNextSearchResult() {
@@ -264,8 +321,9 @@ public final class BibleScreen extends Screen {
         }
         state.advanceSearchResult(1);
         state.currentSearchResult().ifPresent(reference -> {
-            highlightedView = false;
+            state.showReading();
             navigateTo(reference);
+            rebuildWidgets();
         });
     }
 
@@ -318,7 +376,9 @@ public final class BibleScreen extends Screen {
         state.setPassage(translationId, bookId, chapter);
         verseScrollOffset = 0;
         currentChapter().ifPresent(this::selectFirstVerse);
+        state.replaceAudioQueue(audioQueueForCurrentBook());
         recordCurrentHistory();
+        refreshNoteBox();
         refreshActionLabels();
     }
 
@@ -333,20 +393,41 @@ public final class BibleScreen extends Screen {
     }
 
     private String currentBookChapterHeading() {
-        if (highlightedView) {
-            return Component.translatable("gui.livingword.bible.highlighted").getString();
-        }
-        return formatBookId(state.bookId()) + " " + state.chapter();
+        return switch (state.readerView()) {
+            case SEARCH -> Component.translatable("gui.livingword.bible.search_results").getString();
+            case HIGHLIGHTED -> Component.translatable("gui.livingword.bible.highlighted").getString();
+            case NOTES -> Component.translatable("gui.livingword.bible.notes").getString();
+            case COLLECTIONS -> Component.translatable("gui.livingword.bible.collections").getString();
+            case READING -> formatBookId(state.bookId()) + " " + state.chapter();
+        };
     }
 
     private String currentTranslationHeading() {
-        if (highlightedView) {
-            return Component.translatable("gui.livingword.bible.highlighted_count", state.highlightCount()).getString();
+        switch (state.readerView()) {
+            case SEARCH -> {
+                if (!state.searchResultSummary().isEmpty()) {
+                    return Component.translatable("gui.livingword.bible.search_count", state.searchResultSummary()).getString();
+                }
+                return Component.translatable("gui.livingword.bible.search_prompt").getString();
+            }
+            case HIGHLIGHTED -> {
+                return Component.translatable("gui.livingword.bible.highlighted_count", state.highlightCount()).getString();
+            }
+            case NOTES -> {
+                return Component.translatable("gui.livingword.bible.notes_count", state.notes().size()).getString();
+            }
+            case COLLECTIONS -> {
+                return Component.translatable("gui.livingword.bible.collections_count", state.collections().size()).getString();
+            }
+            case READING -> {
+                String translationName = dataManager.getTranslation(state.translationId())
+                    .map(TranslationManifest::displayName)
+                    .orElse(state.translationId().toUpperCase(java.util.Locale.ROOT));
+                String queueSummary = state.audioQueueSummary();
+                return queueSummary.isBlank() ? translationName : translationName + "  Audio " + queueSummary;
+            }
         }
-        String translationName = dataManager.getTranslation(state.translationId())
-            .map(TranslationManifest::displayName)
-            .orElse(state.translationId().toUpperCase(java.util.Locale.ROOT));
-        return translationName;
+        throw new IllegalStateException("Unhandled reader view: " + state.readerView());
     }
 
     private void recordCurrentHistory() {
@@ -357,6 +438,8 @@ public final class BibleScreen extends Screen {
         BibleClientPreferences.StoredBibleState storedState = BibleClientPreferences.load(preferencesPath);
         state.replaceBookmarks(storedState.bookmarks());
         state.replaceHighlights(storedState.highlights());
+        state.replaceNotes(storedState.notes());
+        state.replaceCollections(storedState.collections());
         state.replaceRecentHistory(storedState.recentHistory());
         storedState.lastReference()
             .filter(reference -> dataManager.getChapter(reference.translationId(), reference.bookId(), reference.chapter()).isPresent())
@@ -366,7 +449,14 @@ public final class BibleScreen extends Screen {
     private void persistState() {
         BibleClientPreferences.save(
             preferencesPath,
-            new BibleClientPreferences.StoredBibleState(Optional.of(state.selectedReference()), state.bookmarks(), state.recentHistory(), state.highlights())
+            new BibleClientPreferences.StoredBibleState(
+                Optional.of(state.selectedReference()),
+                state.bookmarks(),
+                state.recentHistory(),
+                state.highlights(),
+                state.notes(),
+                state.collections()
+            )
         );
     }
 
@@ -375,16 +465,15 @@ public final class BibleScreen extends Screen {
     }
 
     private void refreshActionLabels() {
-        if (highlightedTabButton != null) {
-            highlightedTabButton.setMessage(Component.translatable(highlightedView
-                ? "gui.livingword.bible.show_reading"
-                : "gui.livingword.bible.show_highlighted"));
+        if (viewButton != null) {
+            viewButton.setMessage(Component.translatable("gui.livingword.bible.view_button", readerViewName(state.readerView())));
         }
         if (versionButton != null) {
             versionButton.setMessage(Component.literal(state.translationId().toUpperCase(java.util.Locale.ROOT)));
         }
         if (listenButton != null) {
-            listenButton.setMessage(Component.translatable(LivingWordClient.isLocalBibleChapterActive(state.translationId(), state.bookId(), state.chapter())
+            AudioQueueEntry queued = state.currentQueuedChapter().orElse(new AudioQueueEntry(state.translationId(), state.bookId(), state.chapter()));
+            listenButton.setMessage(Component.translatable(LivingWordClient.isLocalBibleChapterActive(queued.translationId(), queued.bookId(), queued.chapter())
                 ? "gui.livingword.bible.stop_listen"
                 : "gui.livingword.bible.listen"));
         }
@@ -393,6 +482,116 @@ public final class BibleScreen extends Screen {
                 ? "gui.livingword.bible.unhighlight"
                 : "gui.livingword.bible.highlight"));
         }
+        refreshNoteBox();
+    }
+
+    private boolean searchRowVisible() {
+        return searchExpanded || state.readerView() == BibleGuiState.ReaderView.NOTES;
+    }
+
+    private void cycleReaderView() {
+        switch (state.readerView()) {
+            case READING -> state.showSearchResults();
+            case SEARCH -> state.showHighlighted();
+            case HIGHLIGHTED -> state.showNotes();
+            case NOTES -> state.showCollections();
+            case COLLECTIONS -> state.showReading();
+        }
+        refreshNoteBox();
+    }
+
+    private void playQueuedAudio() {
+        AudioQueueEntry entry = ensureQueuedAudio().orElse(new AudioQueueEntry(state.translationId(), state.bookId(), state.chapter()));
+        LivingWordClient.toggleLocalChapter(entry.translationId(), entry.bookId(), entry.chapter());
+        refreshActionLabels();
+    }
+
+    private void previousQueuedAudio() {
+        ensureQueuedAudio();
+        state.advanceAudioQueue(-1);
+        state.currentQueuedChapter().ifPresent(entry -> {
+            LivingWordClient.playLocalChapter(entry.translationId(), entry.bookId(), entry.chapter());
+            setPassageWithoutResettingAudioQueue(entry.translationId(), entry.bookId(), entry.chapter());
+        });
+    }
+
+    private void nextQueuedAudio() {
+        ensureQueuedAudio();
+        state.advanceAudioQueue(1);
+        state.currentQueuedChapter().ifPresent(entry -> {
+            LivingWordClient.playLocalChapter(entry.translationId(), entry.bookId(), entry.chapter());
+            setPassageWithoutResettingAudioQueue(entry.translationId(), entry.bookId(), entry.chapter());
+        });
+    }
+
+    private Optional<AudioQueueEntry> ensureQueuedAudio() {
+        if (state.currentQueuedChapter().isEmpty()) {
+            state.replaceAudioQueue(audioQueueForCurrentContext());
+        }
+        return state.currentQueuedChapter();
+    }
+
+    private List<AudioQueueEntry> audioQueueForCurrentContext() {
+        List<BibleReference> references = referencesForCurrentView();
+        if (state.readerView() != BibleGuiState.ReaderView.READING && !references.isEmpty()) {
+            List<AudioQueueEntry> entries = new ArrayList<>();
+            for (BibleReference reference : references) {
+                AudioQueueEntry entry = new AudioQueueEntry(reference.translationId(), reference.bookId(), reference.chapter());
+                if (!entries.contains(entry)) {
+                    entries.add(entry);
+                }
+            }
+            return entries;
+        }
+        return audioQueueForCurrentBook();
+    }
+
+    private List<AudioQueueEntry> audioQueueForCurrentBook() {
+        List<AudioQueueEntry> entries = new ArrayList<>();
+        for (int chapterNumber : dataManager.chapters(state.translationId(), state.bookId())) {
+            if (chapterNumber >= state.chapter()) {
+                entries.add(new AudioQueueEntry(state.translationId(), state.bookId(), chapterNumber));
+            }
+        }
+        if (entries.isEmpty()) {
+            entries.add(new AudioQueueEntry(state.translationId(), state.bookId(), state.chapter()));
+        }
+        return entries;
+    }
+
+    private void setPassageWithoutResettingAudioQueue(String translationId, String bookId, int chapter) {
+        state.setPassage(translationId, bookId, chapter);
+        verseScrollOffset = 0;
+        currentChapter().ifPresent(this::selectFirstVerse);
+        recordCurrentHistory();
+        refreshNoteBox();
+        refreshActionLabels();
+    }
+
+    private void refreshNoteBox() {
+        if (noteBox == null) {
+            return;
+        }
+        boolean visible = state.readerView() == BibleGuiState.ReaderView.NOTES && !searchExpanded;
+        noteBox.visible = visible;
+        noteBox.active = visible;
+        if (!visible && getFocused() == noteBox) {
+            setFocused(null);
+        }
+        String currentValue = state.noteFor(state.selectedReference()).orElse("");
+        if (!noteBox.getValue().equals(currentValue)) {
+            noteBox.setValue(currentValue);
+        }
+    }
+
+    private static String readerViewName(BibleGuiState.ReaderView view) {
+        return switch (view) {
+            case READING -> Component.translatable("gui.livingword.bible.reading").getString();
+            case SEARCH -> Component.translatable("gui.livingword.bible.search_results").getString();
+            case HIGHLIGHTED -> Component.translatable("gui.livingword.bible.highlighted").getString();
+            case NOTES -> Component.translatable("gui.livingword.bible.notes").getString();
+            case COLLECTIONS -> Component.translatable("gui.livingword.bible.collections").getString();
+        };
     }
 
     private void setSearchControlsVisible(boolean visible) {
@@ -405,6 +604,7 @@ public final class BibleScreen extends Screen {
         }
         setButtonVisible(searchGoButton, visible);
         setButtonVisible(searchNextButton, visible);
+        refreshNoteBox();
     }
 
     private void setToolControlsVisible(boolean visible) {
@@ -413,8 +613,12 @@ public final class BibleScreen extends Screen {
         setButtonVisible(previousChapterButton, visible);
         setButtonVisible(nextChapterButton, visible);
         setButtonVisible(nextBookButton, visible);
+        setButtonVisible(previousAudioButton, visible);
         setButtonVisible(listenButton, visible);
+        setButtonVisible(stopAudioButton, visible);
+        setButtonVisible(nextAudioButton, visible);
         setButtonVisible(highlightButton, visible);
+        setButtonVisible(collectionButton, visible);
         setButtonVisible(copyButton, visible);
     }
 
@@ -449,14 +653,33 @@ public final class BibleScreen extends Screen {
     }
 
     private void renderHighlightedVerses(GuiGraphics graphics) {
+        renderReferenceRows(graphics, state.highlights(), Component.translatable("gui.livingword.bible.no_highlights").getString(), true);
+    }
+
+    private void renderSearchResults(GuiGraphics graphics) {
+        renderReferenceRows(graphics, state.searchResults(), Component.translatable("gui.livingword.bible.no_search_results").getString(), false);
+    }
+
+    private void renderNotes(GuiGraphics graphics) {
+        List<BibleReference> references = state.notes().stream().map(VerseNote::reference).toList();
+        renderReferenceRows(graphics, references, Component.translatable("gui.livingword.bible.no_notes").getString(), false);
+    }
+
+    private void renderCollections(GuiGraphics graphics) {
+        renderReferenceRows(graphics, collectionReferences(), Component.translatable("gui.livingword.bible.no_collections").getString(), false);
+    }
+
+    private void renderReferenceRows(GuiGraphics graphics, List<BibleReference> references, String emptyMessage, boolean highlightRows) {
         graphics.enableScissor(verseListX, verseListY, verseListX + verseListWidth, verseListY + verseListHeight);
         int lineY = verseListY - verseScrollOffset;
-        for (BibleReference reference : state.highlights()) {
+        for (BibleReference reference : references) {
             if (lineY + 14 >= verseListY && lineY <= verseListY + verseListHeight) {
-                graphics.fill(verseListX + 2, lineY - 1, verseListX + verseListWidth - 6, lineY + 13, 0x55E7B844);
+                if (highlightRows || state.isHighlighted(reference)) {
+                    graphics.fill(verseListX + 2, lineY - 1, verseListX + verseListWidth - 6, lineY + 13, 0x55E7B844);
+                }
                 drawTrimmed(
                     graphics,
-                    formatReference(reference) + "  " + dataManager.getVerse(reference).orElse(""),
+                    rowText(reference),
                     verseListX + 8,
                     lineY,
                     verseListWidth - 20,
@@ -465,22 +688,62 @@ public final class BibleScreen extends Screen {
             }
             lineY += 16;
         }
-        if (state.highlights().isEmpty()) {
-            drawCenteredTrimmed(graphics, Component.translatable("gui.livingword.bible.no_highlights").getString(), this.width / 2, verseListY + 18, verseListWidth - 16, 0xFF7C5426);
+        if (references.isEmpty()) {
+            drawCenteredTrimmed(graphics, emptyMessage, this.width / 2, verseListY + 18, verseListWidth - 16, 0xFF7C5426);
         }
         graphics.disableScissor();
     }
 
-    private Optional<BibleReference> highlightedReferenceAt(double mouseY) {
+    private Optional<BibleReference> referenceRowAt(double mouseY) {
         int index = (((int) mouseY - verseListY) + verseScrollOffset) / 16;
-        if (index < 0 || index >= state.highlights().size()) {
+        List<BibleReference> references = referencesForCurrentView();
+        if (index < 0 || index >= references.size()) {
             return Optional.empty();
         }
-        return Optional.of(state.highlights().get(index));
+        return Optional.of(references.get(index));
     }
 
-    private int highlightedMaxScroll() {
-        return Math.max(0, state.highlights().size() * 16 - verseListHeight);
+    private int referenceRowsMaxScroll(int rows) {
+        return Math.max(0, rows * 16 - verseListHeight);
+    }
+
+    private List<BibleReference> referencesForCurrentView() {
+        return switch (state.readerView()) {
+            case SEARCH -> state.searchResults();
+            case HIGHLIGHTED -> state.highlights();
+            case NOTES -> state.notes().stream().map(VerseNote::reference).toList();
+            case COLLECTIONS -> collectionReferences();
+            case READING -> List.of();
+        };
+    }
+
+    private List<BibleReference> collectionReferences() {
+        List<BibleReference> references = new ArrayList<>();
+        for (VerseCollection collection : state.collections()) {
+            for (BibleReference reference : collection.references()) {
+                references.add(reference);
+            }
+        }
+        return List.copyOf(references);
+    }
+
+    private String rowText(BibleReference reference) {
+        String baseText = formatReference(reference) + "  " + dataManager.getVerse(reference).orElse("");
+        if (state.readerView() == BibleGuiState.ReaderView.NOTES) {
+            return state.noteFor(reference).map(note -> baseText + "  -  " + note).orElse(baseText);
+        }
+        if (state.readerView() == BibleGuiState.ReaderView.COLLECTIONS) {
+            String collectionNames = state.collections().stream()
+                .filter(collection -> collection.references().contains(reference))
+                .map(VerseCollection::name)
+                .distinct()
+                .reduce((left, right) -> left + ", " + right)
+                .orElse("");
+            if (!collectionNames.isBlank()) {
+                return "[" + collectionNames + "] " + baseText;
+            }
+        }
+        return baseText;
     }
 
     private void renderScrollBar(GuiGraphics graphics, int maxScroll) {
