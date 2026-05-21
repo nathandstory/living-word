@@ -7,11 +7,13 @@ import com.livingword.audio.AudioPlaybackService;
 import com.livingword.audio.DownloadState;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
 import com.livingword.network.payload.TimestampCorrectionPayload;
+import com.livingword.sync.AudioSourcePosition;
 import com.livingword.sync.PlaybackState;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicLong;
@@ -143,6 +145,52 @@ final class ClientAudioSessionControllerTest {
         controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 0L)).join();
 
         assertEquals(1, playback.stopAllCount);
+        assertEquals(new AudioChapterId("webp", "john", 3), playback.playedChapter);
+    }
+
+    @Test
+    void positionedSessionPlaysAtPayloadSourcePosition() {
+        FakePlaybackService playback = new FakePlaybackService();
+        AudioSourcePosition source = new AudioSourcePosition(10.5D, 64.5D, -2.5D);
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            ClientAudioSessionControllerTest::manifest,
+            new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3))),
+            playback,
+            true,
+            false,
+            250L
+        );
+
+        controller.handleSessionSync(new ListeningSessionSyncPayload(
+            UUID.randomUUID(),
+            "webp",
+            "john",
+            3,
+            "default",
+            Optional.of(source),
+            PlaybackState.PLAYING,
+            0L,
+            15_000L,
+            2
+        )).join();
+
+        assertEquals(true, playback.playedSpatial);
+        assertEquals(Optional.of(source), playback.playedSourcePosition);
+    }
+
+    @Test
+    void previewControllerCanStartPlaybackWithoutStoppingExistingWorldAudio() {
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = ClientAudioSessionController.preview(
+            ClientAudioSessionControllerTest::manifest,
+            new FakeDownloadService(DownloadState.cached(new AudioChapterId("webp", "john", 3))),
+            playback,
+            250L
+        );
+
+        controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 0L)).join();
+
+        assertEquals(0, playback.stopAllCount);
         assertEquals(new AudioChapterId("webp", "john", 3), playback.playedChapter);
     }
 
@@ -304,6 +352,7 @@ final class ClientAudioSessionControllerTest {
         private AudioChapterId stoppedChapter;
         private int stopAllCount;
         private String playedFileExtension;
+        private Optional<AudioSourcePosition> playedSourcePosition = Optional.empty();
 
         @Override
         public void play(AudioChapterId chapterId, long positionMillis, boolean spatial) {
@@ -315,6 +364,12 @@ final class ClientAudioSessionControllerTest {
         public void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension) {
             play(chapterId, positionMillis, spatial);
             playedFileExtension = fileExtension;
+        }
+
+        @Override
+        public void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
+            play(chapterId, positionMillis, spatial, fileExtension);
+            playedSourcePosition = sourcePosition;
         }
 
         @Override

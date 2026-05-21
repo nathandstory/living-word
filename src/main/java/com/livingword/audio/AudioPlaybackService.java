@@ -1,10 +1,18 @@
 package com.livingword.audio;
 
+import com.livingword.sync.AudioSourcePosition;
+
+import java.util.Optional;
+
 public interface AudioPlaybackService {
     void play(AudioChapterId chapterId, long positionMillis, boolean spatial);
 
     default void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension) {
         play(chapterId, positionMillis, spatial);
+    }
+
+    default void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
+        play(chapterId, positionMillis, spatial, fileExtension);
     }
 
     void pause(AudioChapterId chapterId);
@@ -13,6 +21,10 @@ public interface AudioPlaybackService {
 
     default void seek(AudioChapterId chapterId, long positionMillis, String fileExtension) {
         seek(chapterId, positionMillis);
+    }
+
+    default void seek(AudioChapterId chapterId, long positionMillis, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
+        seek(chapterId, positionMillis, fileExtension);
     }
 
     void stop(AudioChapterId chapterId);

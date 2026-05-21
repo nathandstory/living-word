@@ -8,8 +8,10 @@ import com.livingword.audio.DownloadState;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
 import com.livingword.network.payload.PlaybackControlPayload;
 import com.livingword.network.payload.TimestampCorrectionPayload;
+import com.livingword.sync.AudioSourcePosition;
 import com.livingword.sync.PlaybackState;
 
+import java.util.Optional;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -24,6 +26,7 @@ public final class ClientAudioSessionController {
     private final AudioPlaybackService playbackService;
     private final boolean autoplay;
     private final boolean spatial;
+    private final boolean stopExistingBeforePlayback;
     private final long syncToleranceMillis;
     private final LongSupplier clock;
 
@@ -31,6 +34,7 @@ public final class ClientAudioSessionController {
     private AudioChapterId activeChapter;
     private String activeAudioManifestId = "default";
     private String activeFileExtension = "ogg";
+    private Optional<AudioSourcePosition> activeSourcePosition = Optional.empty();
     private long lastCommandedPositionMillis;
     private PlaybackState activeState = PlaybackState.STOPPED;
     private long positionAnchorMillis;
@@ -44,7 +48,7 @@ public final class ClientAudioSessionController {
         boolean spatial,
         long syncToleranceMillis
     ) {
-        this((translationId, ignored) -> manifestProvider.apply(translationId), downloadService, playbackService, autoplay, spatial, syncToleranceMillis, System::currentTimeMillis);
+        this((translationId, ignored) -> manifestProvider.apply(translationId), downloadService, playbackService, autoplay, spatial, true, syncToleranceMillis, System::currentTimeMillis);
     }
 
     public ClientAudioSessionController(
@@ -55,7 +59,7 @@ public final class ClientAudioSessionController {
         boolean spatial,
         long syncToleranceMillis
     ) {
-        this(manifestProvider, downloadService, playbackService, autoplay, spatial, syncToleranceMillis, System::currentTimeMillis);
+        this(manifestProvider, downloadService, playbackService, autoplay, spatial, true, syncToleranceMillis, System::currentTimeMillis);
     }
 
     ClientAudioSessionController(
@@ -67,7 +71,7 @@ public final class ClientAudioSessionController {
         long syncToleranceMillis,
         LongSupplier clock
     ) {
-        this((translationId, ignored) -> manifestProvider.apply(translationId), downloadService, playbackService, autoplay, spatial, syncToleranceMillis, clock);
+        this((translationId, ignored) -> manifestProvider.apply(translationId), downloadService, playbackService, autoplay, spatial, true, syncToleranceMillis, clock);
     }
 
     ClientAudioSessionController(
@@ -79,13 +83,45 @@ public final class ClientAudioSessionController {
         long syncToleranceMillis,
         LongSupplier clock
     ) {
+        this(manifestProvider, downloadService, playbackService, autoplay, spatial, true, syncToleranceMillis, clock);
+    }
+
+    private ClientAudioSessionController(
+        BiFunction<String, String, AudioManifest> manifestProvider,
+        AudioDownloadService downloadService,
+        AudioPlaybackService playbackService,
+        boolean autoplay,
+        boolean spatial,
+        boolean stopExistingBeforePlayback,
+        long syncToleranceMillis,
+        LongSupplier clock
+    ) {
         this.manifestProvider = Objects.requireNonNull(manifestProvider, "manifestProvider");
         this.downloadService = Objects.requireNonNull(downloadService, "downloadService");
         this.playbackService = Objects.requireNonNull(playbackService, "playbackService");
         this.autoplay = autoplay;
         this.spatial = spatial;
+        this.stopExistingBeforePlayback = stopExistingBeforePlayback;
         this.syncToleranceMillis = Math.max(0L, syncToleranceMillis);
         this.clock = Objects.requireNonNull(clock, "clock");
+    }
+
+    public static ClientAudioSessionController preview(
+        Function<String, AudioManifest> manifestProvider,
+        AudioDownloadService downloadService,
+        AudioPlaybackService playbackService,
+        long syncToleranceMillis
+    ) {
+        return preview((translationId, ignored) -> manifestProvider.apply(translationId), downloadService, playbackService, syncToleranceMillis);
+    }
+
+    public static ClientAudioSessionController preview(
+        BiFunction<String, String, AudioManifest> manifestProvider,
+        AudioDownloadService downloadService,
+        AudioPlaybackService playbackService,
+        long syncToleranceMillis
+    ) {
+        return new ClientAudioSessionController(manifestProvider, downloadService, playbackService, true, false, false, syncToleranceMillis, System::currentTimeMillis);
     }
 
     public CompletableFuture<DownloadState> handleSessionSync(ListeningSessionSyncPayload payload) {
@@ -94,11 +130,12 @@ public final class ClientAudioSessionController {
         activeSessionId = payload.sessionId();
         activeChapter = chapterId;
         activeAudioManifestId = payload.audioManifestId();
+        activeSourcePosition = payload.sourcePosition();
         markPosition(payload.positionMillis(), payload.state());
 
         return switch (payload.state()) {
             case PLAYING -> autoplay
-                ? downloadThenPlay(chapterId, payload.positionMillis())
+                ? downloadThenPlay(chapterId, payload.positionMillis(), payload.sourcePosition())
                 : CompletableFuture.completedFuture(unavailable(chapterId, "Autoplay is disabled."));
             case PAUSED -> {
                 playbackService.pause(chapterId);
@@ -120,7 +157,7 @@ public final class ClientAudioSessionController {
         }
         markPosition(payload.positionMillis(), payload.state());
         return switch (payload.state()) {
-            case PLAYING -> downloadThenPlay(activeChapter, payload.positionMillis());
+            case PLAYING -> downloadThenPlay(activeChapter, payload.positionMillis(), activeSourcePosition);
             case PAUSED -> {
                 playbackService.pause(activeChapter);
                 markPosition(payload.positionMillis(), PlaybackState.PAUSED);
@@ -141,12 +178,12 @@ public final class ClientAudioSessionController {
         }
         long driftMillis = Math.abs(payload.positionMillis() - currentPositionMillis());
         if (driftMillis > syncToleranceMillis) {
-            playbackService.seek(activeChapter, payload.positionMillis(), activeFileExtension);
+            playbackService.seek(activeChapter, payload.positionMillis(), activeFileExtension, activeSourcePosition);
             markPosition(payload.positionMillis(), PlaybackState.PLAYING);
         }
     }
 
-    private CompletableFuture<DownloadState> downloadThenPlay(AudioChapterId chapterId, long positionMillis) {
+    private CompletableFuture<DownloadState> downloadThenPlay(AudioChapterId chapterId, long positionMillis, Optional<AudioSourcePosition> sourcePosition) {
         AudioManifest manifest;
         try {
             manifest = manifestProvider.apply(chapterId.translationId(), activeAudioManifestId);
@@ -168,8 +205,10 @@ public final class ClientAudioSessionController {
             }
             if (state.status() == DownloadState.Status.CACHED) {
                 try {
-                    playbackService.stopAll();
-                    playbackService.play(chapterId, positionMillis, spatial, manifest.fileExtension());
+                    if (stopExistingBeforePlayback) {
+                        playbackService.stopAll();
+                    }
+                    playbackService.play(chapterId, positionMillis, spatial || sourcePosition.isPresent(), manifest.fileExtension(), sourcePosition);
                     markPosition(positionMillis, PlaybackState.PLAYING);
                 } catch (RuntimeException playbackException) {
                     return failed(chapterId, playbackException);
@@ -198,6 +237,7 @@ public final class ClientAudioSessionController {
         activeSessionId = null;
         activeAudioManifestId = "default";
         activeFileExtension = "ogg";
+        activeSourcePosition = Optional.empty();
         return positionMillis;
     }
 

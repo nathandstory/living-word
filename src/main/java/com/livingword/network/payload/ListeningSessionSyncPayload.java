@@ -1,6 +1,7 @@
 package com.livingword.network.payload;
 
 import com.livingword.LivingWord;
+import com.livingword.sync.AudioSourcePosition;
 import com.livingword.sync.ListeningSession;
 import com.livingword.sync.PlaybackState;
 import net.minecraft.core.UUIDUtil;
@@ -11,6 +12,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.network.codec.NeoForgeStreamCodecs;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public record ListeningSessionSyncPayload(
@@ -19,6 +21,7 @@ public record ListeningSessionSyncPayload(
     String bookId,
     int chapter,
     String audioManifestId,
+    Optional<AudioSourcePosition> sourcePosition,
     PlaybackState state,
     long positionMillis,
     long serverTimeMillis,
@@ -45,6 +48,7 @@ public record ListeningSessionSyncPayload(
             throw new IllegalArgumentException("chapter must be positive");
         }
         audioManifestId = audioManifestId == null || audioManifestId.isBlank() ? "default" : audioManifestId;
+        sourcePosition = sourcePosition == null ? Optional.empty() : sourcePosition;
         if (state == null) {
             throw new IllegalArgumentException("state is required");
         }
@@ -62,7 +66,21 @@ public record ListeningSessionSyncPayload(
         long serverTimeMillis,
         int participantCount
     ) {
-        this(sessionId, translationId, bookId, chapter, "default", state, positionMillis, serverTimeMillis, participantCount);
+        this(sessionId, translationId, bookId, chapter, "default", Optional.empty(), state, positionMillis, serverTimeMillis, participantCount);
+    }
+
+    public ListeningSessionSyncPayload(
+        UUID sessionId,
+        String translationId,
+        String bookId,
+        int chapter,
+        String audioManifestId,
+        PlaybackState state,
+        long positionMillis,
+        long serverTimeMillis,
+        int participantCount
+    ) {
+        this(sessionId, translationId, bookId, chapter, audioManifestId, Optional.empty(), state, positionMillis, serverTimeMillis, participantCount);
     }
 
     public static ListeningSessionSyncPayload fromSession(ListeningSession session, long serverMillis) {
@@ -72,6 +90,7 @@ public record ListeningSessionSyncPayload(
             session.bookId(),
             session.chapter(),
             session.audioManifestId(),
+            session.sourcePosition(),
             session.state(),
             session.positionMillisAt(serverMillis),
             serverMillis,
@@ -90,6 +109,12 @@ public record ListeningSessionSyncPayload(
         ByteBufCodecs.STRING_UTF8.encode(buffer, payload.bookId);
         ByteBufCodecs.VAR_INT.encode(buffer, payload.chapter);
         ByteBufCodecs.STRING_UTF8.encode(buffer, payload.audioManifestId);
+        buffer.writeBoolean(payload.sourcePosition.isPresent());
+        payload.sourcePosition.ifPresent(source -> {
+            buffer.writeDouble(source.x());
+            buffer.writeDouble(source.y());
+            buffer.writeDouble(source.z());
+        });
         PLAYBACK_STATE_CODEC.encode(buffer, payload.state);
         ByteBufCodecs.VAR_LONG.encode(buffer, payload.positionMillis);
         ByteBufCodecs.VAR_LONG.encode(buffer, payload.serverTimeMillis);
@@ -103,10 +128,18 @@ public record ListeningSessionSyncPayload(
             ByteBufCodecs.STRING_UTF8.decode(buffer),
             ByteBufCodecs.VAR_INT.decode(buffer),
             ByteBufCodecs.STRING_UTF8.decode(buffer),
+            decodeSourcePosition(buffer),
             PLAYBACK_STATE_CODEC.decode(buffer),
             ByteBufCodecs.VAR_LONG.decode(buffer),
             ByteBufCodecs.VAR_LONG.decode(buffer),
             ByteBufCodecs.VAR_INT.decode(buffer)
         );
+    }
+
+    private static Optional<AudioSourcePosition> decodeSourcePosition(RegistryFriendlyByteBuf buffer) {
+        if (!buffer.readBoolean()) {
+            return Optional.empty();
+        }
+        return Optional.of(new AudioSourcePosition(buffer.readDouble(), buffer.readDouble(), buffer.readDouble()));
     }
 }

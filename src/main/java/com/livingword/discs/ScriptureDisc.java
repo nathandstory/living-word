@@ -3,10 +3,12 @@ package com.livingword.discs;
 import com.livingword.network.LivingWordNetwork;
 import com.livingword.sync.ListeningSession;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.InteractionResult;
@@ -16,7 +18,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.List;
 
@@ -90,18 +94,27 @@ public final class ScriptureDisc extends Item {
             return InteractionResult.SUCCESS;
         }
         if (player instanceof ServerPlayer serverPlayer) {
-            if (player.isShiftKeyDown() && ScriptureDiscEvents.stopAndForgetJukeboxSession(level.dimension().location(), context.getClickedPos())) {
+            BlockPos pos = context.getClickedPos();
+            if (!(level.getBlockEntity(pos) instanceof JukeboxBlockEntity jukebox)) {
+                return InteractionResult.PASS;
+            }
+            if (!jukebox.getTheItem().isEmpty()) {
+                return InteractionResult.PASS;
+            }
+            if (player.isShiftKeyDown() && ScriptureDiscEvents.stopAndForgetJukeboxSession(level.dimension().location(), pos)) {
                 serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_reset"), true);
                 return InteractionResult.CONSUME;
             }
-            if (ScriptureDiscEvents.pauseJukeboxSession(level.dimension().location(), context.getClickedPos())) {
+            if (ScriptureDiscEvents.pauseJukeboxSession(level.dimension().location(), pos)) {
                 serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_paused"), true);
                 return InteractionResult.CONSUME;
             }
             ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
-            long resumePositionMillis = ScriptureDiscEvents.resumePosition(level.dimension().location(), context.getClickedPos(), selection);
-            ListeningSession session = LivingWordNetwork.startNearbyListeningSession(
+            insertIntoJukebox(level, pos, level.getBlockState(pos), serverPlayer, stack, jukebox);
+            long resumePositionMillis = ScriptureDiscEvents.resumePosition(level.dimension().location(), pos, selection);
+            ListeningSession session = LivingWordNetwork.startPositionedListeningSession(
                 serverPlayer,
+                pos,
                 selection.translationId(),
                 selection.bookId(),
                 selection.chapter(),
@@ -109,7 +122,7 @@ public final class ScriptureDisc extends Item {
                 48.0D,
                 resumePositionMillis
             );
-            ScriptureDiscEvents.rememberJukeboxSession(level.dimension().location(), context.getClickedPos(), selection, session.id(), resumePositionMillis);
+            ScriptureDiscEvents.rememberJukeboxSession(level.dimension().location(), pos, selection, session.id(), resumePositionMillis);
             serverPlayer.displayClientMessage(Component.translatable("message.livingword.disc.session_started", formatSelection(selection)), true);
         }
         return InteractionResult.CONSUME;
@@ -160,6 +173,17 @@ public final class ScriptureDisc extends Item {
             formatted.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
         }
         return formatted.toString();
+    }
+
+    private static void insertIntoJukebox(Level level, BlockPos pos, BlockState state, ServerPlayer player, ItemStack stack, JukeboxBlockEntity jukebox) {
+        ItemStack inserted = stack.copy();
+        inserted.setCount(1);
+        jukebox.setTheItem(inserted);
+        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
+        if (!player.getAbilities().instabuild) {
+            stack.shrink(1);
+        }
+        player.awardStat(Stats.PLAY_RECORD);
     }
 
     private static void openSelectionScreen(InteractionHand hand) {

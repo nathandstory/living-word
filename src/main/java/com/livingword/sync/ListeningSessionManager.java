@@ -15,7 +15,18 @@ public final class ListeningSessionManager {
     }
 
     public ListeningSession create(String translationId, String bookId, int chapter, String audioManifestId, long serverMillis) {
-        ListeningSession session = ListeningSession.started(translationId, bookId, chapter, audioManifestId, serverMillis);
+        return create(translationId, bookId, chapter, audioManifestId, java.util.Optional.empty(), serverMillis);
+    }
+
+    public ListeningSession create(
+        String translationId,
+        String bookId,
+        int chapter,
+        String audioManifestId,
+        java.util.Optional<AudioSourcePosition> sourcePosition,
+        long serverMillis
+    ) {
+        ListeningSession session = ListeningSession.started(translationId, bookId, chapter, audioManifestId, sourcePosition, serverMillis);
         sessions.put(session.id(), session);
         return session;
     }

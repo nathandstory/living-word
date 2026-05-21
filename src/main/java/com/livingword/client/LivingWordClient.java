@@ -40,6 +40,7 @@ public final class LivingWordClient {
 
     private static ListeningSessionSyncPayload activeSession;
     private static ClientAudioSessionController audioSessionController;
+    private static ClientAudioSessionController scriptureDiscPreviewController;
     private static AudioManifestRepository audioManifestRepository;
     private static final Map<AudioChapterId, Long> LOCAL_RESUME_POSITIONS = new ConcurrentHashMap<>();
     private static final long BIBLE_OPEN_ANIMATION_DELAY_MILLIS = 180L;
@@ -79,6 +80,9 @@ public final class LivingWordClient {
     }
 
     public static void handleSessionSync(ListeningSessionSyncPayload payload) {
+        if (payload.state() != PlaybackState.STOPPED) {
+            stopScriptureDiscPreview();
+        }
         activeSession = payload.state() == PlaybackState.STOPPED ? null : payload;
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.player != null && payload.state() != PlaybackState.STOPPED) {
@@ -114,6 +118,7 @@ public final class LivingWordClient {
     }
 
     public static void playLocalChapter(String translationId, String bookId, int chapter, String audioManifestId, long positionMillis) {
+        stopScriptureDiscPreview();
         handleSessionSync(new ListeningSessionSyncPayload(
             UUID.randomUUID(),
             translationId,
@@ -125,6 +130,26 @@ public final class LivingWordClient {
             System.currentTimeMillis(),
             1
         ));
+    }
+
+    public static void previewScriptureDiscChapter(String translationId, String bookId, int chapter, String audioManifestId) {
+        scriptureDiscPreviewController().handleSessionSync(new ListeningSessionSyncPayload(
+            UUID.randomUUID(),
+            translationId,
+            bookId,
+            chapter,
+            audioManifestId,
+            PlaybackState.PLAYING,
+            0L,
+            System.currentTimeMillis(),
+            1
+        )).thenAccept(LivingWordClient::reportDownloadState);
+    }
+
+    public static void stopScriptureDiscPreview() {
+        if (scriptureDiscPreviewController != null) {
+            scriptureDiscPreviewController.stopActive();
+        }
     }
 
     public static void toggleLocalChapter(String translationId, String bookId, int chapter) {
@@ -184,6 +209,22 @@ public final class LivingWordClient {
             );
         }
         return audioSessionController;
+    }
+
+    private static ClientAudioSessionController scriptureDiscPreviewController() {
+        if (scriptureDiscPreviewController == null) {
+            Minecraft minecraft = Minecraft.getInstance();
+            Path cacheRoot = minecraft.gameDirectory.toPath().resolve("livingword").resolve("cache").resolve("audio");
+            AudioCacheManager cacheManager = new AudioCacheManager(cacheRoot);
+            CachedAudioDownloadService downloadService = new CachedAudioDownloadService(cacheManager, AUDIO_DOWNLOAD_EXECUTOR);
+            scriptureDiscPreviewController = ClientAudioSessionController.preview(
+                LivingWordClient::manifestFor,
+                downloadService,
+                new MinecraftAudioPlaybackService(cacheManager),
+                LivingWordConfig.SYNC_TOLERANCE_MILLIS.get()
+            );
+        }
+        return scriptureDiscPreviewController;
     }
 
     private static AudioManifest manifestFor(String translationId, String audioManifestId) {

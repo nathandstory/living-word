@@ -35,6 +35,25 @@ final class ScriptureDiscTest {
     }
 
     @Test
+    void scriptureDiscIsInsertedIntoJukeboxBlockEntityBeforePlaybackStarts() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDisc.java"));
+
+        assertTrue(source.contains("JukeboxBlockEntity"));
+        assertTrue(source.contains("setTheItem"));
+        assertTrue(source.contains("startPositionedListeningSession"));
+    }
+
+    @Test
+    void emptyHandJukeboxClickControlsInsertedScriptureDisc() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDiscEvents.java"));
+
+        assertTrue(source.contains("PlayerInteractEvent.RightClickBlock"));
+        assertTrue(source.contains("getTheItem"));
+        assertTrue(source.contains("instanceof ScriptureDisc"));
+        assertTrue(source.contains("popOutTheItem"));
+    }
+
+    @Test
     void discInHandDoesNotHaveHiddenSneakStartSessionShortcut() throws Exception {
         String source = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDisc.java"));
         int useMethodStart = source.indexOf("public InteractionResultHolder<ItemStack> use(");

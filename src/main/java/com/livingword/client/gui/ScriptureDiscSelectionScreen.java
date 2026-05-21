@@ -229,12 +229,12 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     }
 
     private void previewSelection() {
-        LivingWordClient.playLocalChapter(translationId, bookId, chapter, audioManifestId, 0L);
+        LivingWordClient.previewScriptureDiscChapter(translationId, bookId, chapter, audioManifestId);
         statusLine = Component.translatable("gui.livingword.disc.previewing", formatSelection()).getString();
     }
 
     private void stopPreview() {
-        LivingWordClient.stopLocalPlayback();
+        LivingWordClient.stopScriptureDiscPreview();
         statusLine = Component.translatable("gui.livingword.disc.preview_stopped").getString();
     }
 

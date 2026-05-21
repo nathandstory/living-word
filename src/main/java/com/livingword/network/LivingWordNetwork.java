@@ -10,27 +10,36 @@ import com.livingword.network.payload.ListeningSessionSyncPayload;
 import com.livingword.network.payload.OpenBiblePayload;
 import com.livingword.network.payload.PlaybackControlPayload;
 import com.livingword.network.payload.TimestampCorrectionPayload;
+import com.livingword.sync.AudioSourcePosition;
 import com.livingword.sync.ListeningSession;
 import com.livingword.sync.ListeningSessionManager;
+import com.livingword.sync.PlaybackState;
 import net.minecraft.Util;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public final class LivingWordNetwork {
+    private static final int SYNC_CORRECTION_INTERVAL_TICKS = 100;
     private static final ListeningSessionManager LISTENING_SESSIONS = new ListeningSessionManager();
+    private static int syncCorrectionTick;
 
     private LivingWordNetwork() {
     }
 
     public static void register(IEventBus modEventBus) {
         modEventBus.addListener(LivingWordNetwork::registerPayloadHandlers);
+        NeoForge.EVENT_BUS.addListener(LivingWordNetwork::onServerTick);
     }
 
     private static void registerPayloadHandlers(RegisterPayloadHandlersEvent event) {
@@ -119,6 +128,55 @@ public final class LivingWordNetwork {
         return LISTENING_SESSIONS.get(created.id()).orElse(created);
     }
 
+    public static ListeningSession startPositionedListeningSession(
+        ServerPlayer source,
+        BlockPos sourcePos,
+        String translationId,
+        String bookId,
+        int chapter,
+        String audioManifestId,
+        double radius,
+        long startPositionMillis
+    ) {
+        return startPositionedListeningSession(
+            source,
+            new AudioSourcePosition(sourcePos.getX() + 0.5D, sourcePos.getY() + 0.5D, sourcePos.getZ() + 0.5D),
+            translationId,
+            bookId,
+            chapter,
+            audioManifestId,
+            radius,
+            startPositionMillis
+        );
+    }
+
+    public static ListeningSession startPositionedListeningSession(
+        ServerPlayer source,
+        AudioSourcePosition sourcePosition,
+        String translationId,
+        String bookId,
+        int chapter,
+        String audioManifestId,
+        double radius,
+        long startPositionMillis
+    ) {
+        long now = Util.getMillis();
+        Optional<AudioSourcePosition> sourcePositionOptional = Optional.of(sourcePosition);
+        ListeningSession created = LISTENING_SESSIONS.create(translationId, bookId, chapter, audioManifestId, sourcePositionOptional, now);
+        if (startPositionMillis > 0L) {
+            LISTENING_SESSIONS.seek(created.id(), startPositionMillis, now);
+            LISTENING_SESSIONS.play(created.id(), now);
+        }
+        double radiusSquared = radius * radius;
+        for (ServerPlayer candidate : source.serverLevel().players()) {
+            if (candidate.distanceToSqr(sourcePosition.x(), sourcePosition.y(), sourcePosition.z()) <= radiusSquared) {
+                LISTENING_SESSIONS.join(created.id(), candidate.getUUID());
+            }
+        }
+        syncSessionToParticipants(created.id(), now);
+        return LISTENING_SESSIONS.get(created.id()).orElse(created);
+    }
+
     public static java.util.Optional<ListeningSession> stopListeningSession(UUID sessionId) {
         long now = Util.getMillis();
         java.util.Optional<ListeningSession> existing = LISTENING_SESSIONS.get(sessionId);
@@ -128,6 +186,30 @@ public final class LivingWordNetwork {
         LISTENING_SESSIONS.control(sessionId, com.livingword.sync.PlaybackState.STOPPED, existing.orElseThrow().positionMillisAt(now), now);
         syncSessionToParticipants(sessionId, now);
         return LISTENING_SESSIONS.remove(sessionId);
+    }
+
+    private static void onServerTick(ServerTickEvent.Post event) {
+        syncCorrectionTick++;
+        if (syncCorrectionTick < SYNC_CORRECTION_INTERVAL_TICKS) {
+            return;
+        }
+        syncCorrectionTick = 0;
+        long now = Util.getMillis();
+        for (ListeningSession session : LISTENING_SESSIONS.sessions()) {
+            if (session.state() == PlaybackState.PLAYING) {
+                sendTimestampCorrection(session, now);
+            }
+        }
+    }
+
+    private static void sendTimestampCorrection(ListeningSession session, long serverMillis) {
+        TimestampCorrectionPayload payload = new TimestampCorrectionPayload(session.id(), session.positionMillisAt(serverMillis), serverMillis);
+        for (UUID participantId : session.participants()) {
+            ServerPlayer participant = participantById(participantId);
+            if (participant != null) {
+                PacketDistributor.sendToPlayer(participant, payload);
+            }
+        }
     }
 
     private static void syncSessionToParticipants(UUID sessionId, long serverMillis) {

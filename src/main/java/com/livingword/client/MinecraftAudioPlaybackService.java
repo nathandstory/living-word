@@ -5,6 +5,7 @@ import com.livingword.audio.AudioCacheManager;
 import com.livingword.audio.AudioChapterId;
 import com.livingword.audio.AudioPlaybackService;
 import com.livingword.config.LivingWordConfig;
+import com.livingword.sync.AudioSourcePosition;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.Sound;
@@ -29,6 +30,7 @@ import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -47,16 +49,28 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
 
     @Override
     public void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension) {
+        play(chapterId, positionMillis, spatial, fileExtension, Optional.empty());
+    }
+
+    @Override
+    public void play(AudioChapterId chapterId, long positionMillis, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
         Minecraft minecraft = Minecraft.getInstance();
         String normalizedExtension = normalizeAudioExtension(fileExtension);
+        Optional<AudioSourcePosition> normalizedSourcePosition = sourcePosition == null ? Optional.empty() : sourcePosition;
         minecraft.execute(() -> {
-            stopAllNow(minecraft.getSoundManager());
+            stopNow(chapterId, minecraft.getSoundManager());
             Path path = cacheManager.chapterAudioPath(chapterId, normalizedExtension);
             if (!Files.isRegularFile(path)) {
                 return;
             }
-            CachedChapterSoundInstance sound = new CachedChapterSoundInstance(chapterId, path, Math.max(0L, positionMillis), spatial, playbackPosition(minecraft, spatial));
-            activeSounds.put(chapterId, new ActiveSound(sound, spatial, normalizedExtension));
+            CachedChapterSoundInstance sound = new CachedChapterSoundInstance(
+                chapterId,
+                path,
+                Math.max(0L, positionMillis),
+                spatial,
+                playbackPosition(minecraft, spatial, normalizedSourcePosition)
+            );
+            activeSounds.put(chapterId, new ActiveSound(sound, spatial, normalizedExtension, normalizedSourcePosition));
             minecraft.getSoundManager().play(sound);
         });
     }
@@ -69,13 +83,26 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
     @Override
     public void seek(AudioChapterId chapterId, long positionMillis) {
         ActiveSound activeSound = activeSounds.get(chapterId);
-        play(chapterId, positionMillis, activeSound != null && activeSound.spatial(), activeSound == null ? "ogg" : activeSound.fileExtension());
+        play(
+            chapterId,
+            positionMillis,
+            activeSound != null && activeSound.spatial(),
+            activeSound == null ? "ogg" : activeSound.fileExtension(),
+            activeSound == null ? Optional.empty() : activeSound.sourcePosition()
+        );
     }
 
     @Override
     public void seek(AudioChapterId chapterId, long positionMillis, String fileExtension) {
         ActiveSound activeSound = activeSounds.get(chapterId);
-        play(chapterId, positionMillis, activeSound != null && activeSound.spatial(), fileExtension);
+        play(chapterId, positionMillis, activeSound != null && activeSound.spatial(), fileExtension, activeSound == null ? Optional.empty() : activeSound.sourcePosition());
+    }
+
+    @Override
+    public void seek(AudioChapterId chapterId, long positionMillis, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
+        ActiveSound activeSound = activeSounds.get(chapterId);
+        Optional<AudioSourcePosition> nextSourcePosition = sourcePosition == null ? Optional.empty() : sourcePosition;
+        play(chapterId, positionMillis, activeSound != null && activeSound.spatial() || nextSourcePosition.isPresent(), fileExtension, nextSourcePosition);
     }
 
     @Override
@@ -102,13 +129,32 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         activeSounds.clear();
     }
 
+    private void stopNow(AudioChapterId chapterId, SoundManager soundManager) {
+        ActiveSound activeSound = activeSounds.remove(chapterId);
+        if (activeSound != null) {
+            soundManager.stop(activeSound.sound());
+        }
+    }
+
     private static Vec3 playbackPosition(Minecraft minecraft, boolean spatial) {
-        return playbackPositionFor(spatial, minecraft.player == null ? Vec3.ZERO : minecraft.player.position());
+        return playbackPosition(minecraft, spatial, Optional.empty());
+    }
+
+    private static Vec3 playbackPosition(Minecraft minecraft, boolean spatial, Optional<AudioSourcePosition> sourcePosition) {
+        return playbackPositionFor(spatial, minecraft.player == null ? Vec3.ZERO : minecraft.player.position(), sourcePosition);
     }
 
     static Vec3 playbackPositionFor(boolean spatial, Vec3 playerPosition) {
+        return playbackPositionFor(spatial, playerPosition, Optional.empty());
+    }
+
+    static Vec3 playbackPositionFor(boolean spatial, Vec3 playerPosition, Optional<AudioSourcePosition> sourcePosition) {
         if (!spatial) {
             return Vec3.ZERO;
+        }
+        if (sourcePosition != null && sourcePosition.isPresent()) {
+            AudioSourcePosition source = sourcePosition.orElseThrow();
+            return new Vec3(source.x(), source.y(), source.z());
         }
         return playerPosition == null ? Vec3.ZERO : playerPosition;
     }
@@ -122,7 +168,7 @@ public final class MinecraftAudioPlaybackService implements AudioPlaybackService
         return normalized.matches("[a-z0-9]+") ? normalized : "ogg";
     }
 
-    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial, String fileExtension) {
+    private record ActiveSound(CachedChapterSoundInstance sound, boolean spatial, String fileExtension, Optional<AudioSourcePosition> sourcePosition) {
     }
 
     private static final class CachedChapterSoundInstance implements SoundInstance {
