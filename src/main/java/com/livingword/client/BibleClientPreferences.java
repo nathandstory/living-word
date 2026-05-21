@@ -31,7 +31,8 @@ public final class BibleClientPreferences {
             return new StoredBibleState(
                 BibleReference.parseStableId(json.lastReference),
                 parseReferences(json.bookmarks),
-                parseReferences(json.recentHistory)
+                parseReferences(json.recentHistory),
+                parseReferences(json.highlights)
             );
         } catch (IOException exception) {
             return StoredBibleState.empty();
@@ -56,24 +57,26 @@ public final class BibleClientPreferences {
         return stableIds.stream().map(BibleReference::parseStableId).flatMap(Optional::stream).toList();
     }
 
-    public record StoredBibleState(Optional<BibleReference> lastReference, List<BibleReference> bookmarks, List<BibleReference> recentHistory) {
+    public record StoredBibleState(Optional<BibleReference> lastReference, List<BibleReference> bookmarks, List<BibleReference> recentHistory, List<BibleReference> highlights) {
         public StoredBibleState {
             lastReference = lastReference == null ? Optional.empty() : lastReference;
             bookmarks = List.copyOf(bookmarks == null ? List.of() : bookmarks);
             recentHistory = List.copyOf(recentHistory == null ? List.of() : recentHistory);
+            highlights = List.copyOf(highlights == null ? List.of() : highlights);
         }
 
         public static StoredBibleState empty() {
-            return new StoredBibleState(Optional.empty(), List.of(), List.of());
+            return new StoredBibleState(Optional.empty(), List.of(), List.of(), List.of());
         }
     }
 
-    private record StoredBibleStateJson(String lastReference, List<String> bookmarks, List<String> recentHistory) {
+    private record StoredBibleStateJson(String lastReference, List<String> bookmarks, List<String> recentHistory, List<String> highlights) {
         static StoredBibleStateJson from(StoredBibleState state) {
             return new StoredBibleStateJson(
                 state.lastReference().map(BibleReference::toStableId).orElse(""),
                 state.bookmarks().stream().map(BibleReference::toStableId).toList(),
-                state.recentHistory().stream().map(BibleReference::toStableId).toList()
+                state.recentHistory().stream().map(BibleReference::toStableId).toList(),
+                state.highlights().stream().map(BibleReference::toStableId).toList()
             );
         }
     }

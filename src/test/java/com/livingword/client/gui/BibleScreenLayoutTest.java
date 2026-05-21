@@ -32,6 +32,7 @@ final class BibleScreenLayoutTest {
         assertTrue(layout.verseList().width() >= layout.panel().width() - 80);
         assertTrue(layout.verseList().y() < BibleScreenLayout.compute(854, 480, true, true).verseList().y());
         assertTrue(layout.searchToggle().x() < layout.toolsToggle().x());
+        assertTrue(layout.toolsToggle().x() < layout.highlightedToggle().x());
     }
 
     @Test

@@ -16,6 +16,7 @@ public final class BibleGuiState {
     private int searchResultIndex;
     private final List<BibleReference> recentHistory = new ArrayList<>();
     private final List<BibleReference> bookmarks = new ArrayList<>();
+    private final List<BibleReference> highlights = new ArrayList<>();
 
     private BibleGuiState(String translationId, String bookId, int chapter) {
         this.translationId = translationId;
@@ -55,6 +56,10 @@ public final class BibleGuiState {
 
     public List<BibleReference> bookmarks() {
         return List.copyOf(bookmarks);
+    }
+
+    public List<BibleReference> highlights() {
+        return List.copyOf(highlights);
     }
 
     public void selectVerse(int selectedVerse) {
@@ -148,6 +153,41 @@ public final class BibleGuiState {
         if (references != null) {
             for (BibleReference reference : references) {
                 addBookmark(reference);
+            }
+        }
+    }
+
+    public void addHighlight(BibleReference reference) {
+        if (!highlights.contains(reference)) {
+            highlights.add(reference);
+        }
+    }
+
+    public void toggleHighlight(BibleReference reference) {
+        if (highlights.contains(reference)) {
+            highlights.remove(reference);
+            return;
+        }
+        highlights.add(reference);
+    }
+
+    public boolean isHighlighted(BibleReference reference) {
+        return highlights.contains(reference);
+    }
+
+    public boolean isSelectedVerseHighlighted() {
+        return isHighlighted(selectedReference());
+    }
+
+    public int highlightCount() {
+        return highlights.size();
+    }
+
+    public void replaceHighlights(List<BibleReference> references) {
+        highlights.clear();
+        if (references != null) {
+            for (BibleReference reference : references) {
+                addHighlight(reference);
             }
         }
     }

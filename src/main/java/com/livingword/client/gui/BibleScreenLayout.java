@@ -7,6 +7,7 @@ public record BibleScreenLayout(
     Rect panel,
     Rect searchToggle,
     Rect toolsToggle,
+    Rect highlightedToggle,
     Rect searchBox,
     Rect searchGo,
     Rect searchNext,
@@ -17,6 +18,7 @@ public record BibleScreenLayout(
     Rect nextBook,
     Rect version,
     Rect listen,
+    Rect highlight,
     Rect copy,
     Rect verseList,
     int headingBookY,
@@ -39,6 +41,7 @@ public record BibleScreenLayout(
         int toggleWidth = 56;
         Rect searchToggle = new Rect(left + 20, chromeY, toggleWidth, 20);
         Rect toolsToggle = new Rect(searchToggle.right() + 6, chromeY, 48, 20);
+        Rect highlightedToggle = new Rect(toolsToggle.right() + 6, chromeY, 78, 20);
         Rect close = new Rect(left + panelWidth - 62, chromeY, 42, 20);
 
         int rowY = top + 34;
@@ -57,11 +60,11 @@ public record BibleScreenLayout(
             rowY += 20 + rowGap;
         }
 
-        int toolbarGap = 5;
+        int toolbarGap = 4;
         int toolbarAvailable = Math.max(220, panelWidth - 32);
-        int navButtonWidth = Math.min(38, Math.max(22, toolbarAvailable / 12));
-        int toolButtonWidth = Math.min(72, Math.max(42, (toolbarAvailable - navButtonWidth * 4 - toolbarGap * 6) / 3));
-        int toolbarTotalWidth = toolButtonWidth * 3 + navButtonWidth * 4 + toolbarGap * 6;
+        int navButtonWidth = Math.min(38, Math.max(20, toolbarAvailable / 14));
+        int toolButtonWidth = Math.min(72, Math.max(32, (toolbarAvailable - navButtonWidth * 4 - toolbarGap * 7) / 4));
+        int toolbarTotalWidth = toolButtonWidth * 4 + navButtonWidth * 4 + toolbarGap * 7;
         int toolbarX = left + (panelWidth - toolbarTotalWidth) / 2;
         Rect version = new Rect(toolbarX, rowY, toolButtonWidth, 20);
         Rect previousBook = new Rect(version.right() + toolbarGap, rowY, navButtonWidth, 20);
@@ -69,7 +72,8 @@ public record BibleScreenLayout(
         Rect nextChapter = new Rect(previousChapter.right() + toolbarGap, rowY, navButtonWidth, 20);
         Rect nextBook = new Rect(nextChapter.right() + toolbarGap, rowY, navButtonWidth, 20);
         Rect listen = new Rect(nextBook.right() + toolbarGap, rowY, toolButtonWidth, 20);
-        Rect copy = new Rect(listen.right() + toolbarGap, rowY, toolButtonWidth, 20);
+        Rect highlight = new Rect(listen.right() + toolbarGap, rowY, toolButtonWidth, 20);
+        Rect copy = new Rect(highlight.right() + toolbarGap, rowY, toolButtonWidth, 20);
         if (toolsExpanded) {
             rowY += 20 + rowGap;
         }
@@ -86,6 +90,7 @@ public record BibleScreenLayout(
             new Rect(left, top, panelWidth, panelHeight),
             searchToggle,
             toolsToggle,
+            highlightedToggle,
             searchBox,
             searchGo,
             searchNext,
@@ -96,6 +101,7 @@ public record BibleScreenLayout(
             nextBook,
             version,
             listen,
+            highlight,
             copy,
             new Rect(verseX, verseY, verseWidth, verseHeight),
             headingBookY,
@@ -110,6 +116,7 @@ public record BibleScreenLayout(
         List<Rect> rects = new ArrayList<>();
         rects.add(searchToggle);
         rects.add(toolsToggle);
+        rects.add(highlightedToggle);
         rects.add(searchBox);
         rects.add(searchGo);
         rects.add(searchNext);
@@ -120,6 +127,7 @@ public record BibleScreenLayout(
         rects.add(nextBook);
         rects.add(version);
         rects.add(listen);
+        rects.add(highlight);
         rects.add(copy);
         return rects;
     }

@@ -54,4 +54,25 @@ final class BibleScreenRenderContractTest {
         assertTrue(source.contains("currentTranslationHeading()"));
         assertFalse(source.contains("currentHeading()"));
     }
+
+    @Test
+    void screenHasHighlightedVerseViewAndHighlightAction() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
+
+        assertTrue(source.contains("highlightedView"));
+        assertTrue(source.contains("highlightButton"));
+        assertTrue(source.contains("renderHighlightedVerses"));
+        assertTrue(source.contains("state.toggleHighlight"));
+        assertTrue(source.contains("state.highlights()"));
+    }
+
+    @Test
+    void listenButtonReflectsWhetherCurrentChapterIsPlaying() throws Exception {
+        String screenSource = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
+        String clientSource = Files.readString(Path.of("src/main/java/com/livingword/client/LivingWordClient.java"));
+
+        assertTrue(screenSource.contains("gui.livingword.bible.stop_listen"));
+        assertTrue(screenSource.contains("LivingWordClient.isLocalBibleChapterActive"));
+        assertTrue(clientSource.contains("public static boolean isLocalBibleChapterActive"));
+    }
 }

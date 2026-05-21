@@ -21,7 +21,8 @@ final class BibleClientPreferencesTest {
         BibleClientPreferences.StoredBibleState state = new BibleClientPreferences.StoredBibleState(
             Optional.of(new BibleReference("webp", "john", 3, 16)),
             List.of(new BibleReference("kjv", "psalms", 23, 1)),
-            List.of(new BibleReference("webp", "john", 3, 16))
+            List.of(new BibleReference("webp", "john", 3, 16)),
+            List.of(new BibleReference("bsb", "romans", 8, 1))
         );
 
         BibleClientPreferences.save(stateFile, state);
@@ -35,6 +36,7 @@ final class BibleClientPreferencesTest {
         BibleClientPreferences.StoredBibleState loaded = BibleClientPreferences.load(tempDir.resolve("missing.json"));
 
         assertTrue(loaded.bookmarks().isEmpty());
+        assertTrue(loaded.highlights().isEmpty());
         assertTrue(loaded.recentHistory().isEmpty());
         assertTrue(loaded.lastReference().isEmpty());
     }

@@ -13,6 +13,8 @@ public final class VerseListWidget {
     private static final int TEXT = 0xFF3B2A18;
     private static final int SELECTED = 0xFF7C3F08;
     private static final int BOOKMARK = 0xFFC08A2E;
+    private static final int HIGHLIGHT = 0x55E7B844;
+    private static final int HIGHLIGHT_MARK = 0xFFE0A31A;
     private static final int LINE_HEIGHT = 14;
 
     public void render(GuiGraphics graphics, Font font, ChapterData chapter, BibleGuiState state, int x, int y, int width) {
@@ -28,7 +30,13 @@ public final class VerseListWidget {
             int color = line.verseNumber() == state.selectedVerse() ? SELECTED : TEXT;
             if (lineY + LINE_HEIGHT >= y && lineY <= y + height) {
                 boolean firstLineOfVerse = line.verseNumber() != lastVerse;
-                if (firstLineOfVerse && state.isBookmarked(new BibleReference(chapter.translationId(), chapter.bookId(), chapter.chapter(), line.verseNumber()))) {
+                BibleReference reference = new BibleReference(chapter.translationId(), chapter.bookId(), chapter.chapter(), line.verseNumber());
+                if (state.isHighlighted(reference)) {
+                    graphics.fill(x + 8, lineY - 1, x + width - 6, lineY + LINE_HEIGHT - 1, HIGHLIGHT);
+                }
+                if (firstLineOfVerse && state.isHighlighted(reference)) {
+                    graphics.drawString(font, "|", x + 3, lineY, HIGHLIGHT_MARK, false);
+                } else if (firstLineOfVerse && state.isBookmarked(reference)) {
                     graphics.drawString(font, "*", x, lineY, BOOKMARK, false);
                 }
                 graphics.drawString(font, line.text(), x + 10, lineY, color, false);

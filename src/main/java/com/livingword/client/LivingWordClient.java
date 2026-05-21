@@ -88,6 +88,13 @@ public final class LivingWordClient {
             }
             PacketDistributor.sendToServer(new ChapterFinishedPayload(completed.sessionId()));
         });
+        if (bibleAudioController != null) {
+            bibleAudioController.drainCompletedPlayback().ifPresent(completed -> {
+                if (localBibleSession != null && localBibleSession.sessionId().equals(completed.sessionId())) {
+                    localBibleSession = null;
+                }
+            });
+        }
     }
 
     public static boolean isBibleOpenInHand() {
@@ -282,7 +289,7 @@ public final class LivingWordClient {
             && activeSession.chapter() == chapter;
     }
 
-    private static boolean isLocalBibleChapterActive(String translationId, String bookId, int chapter) {
+    public static boolean isLocalBibleChapterActive(String translationId, String bookId, int chapter) {
         return localBibleSession != null
             && localBibleSession.state() == PlaybackState.PLAYING
             && localBibleSession.translationId().equals(translationId)

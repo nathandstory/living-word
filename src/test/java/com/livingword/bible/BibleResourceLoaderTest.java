@@ -80,6 +80,20 @@ final class BibleResourceLoaderTest {
 
         assertEquals(List.of(new BibleReference("kjv", "revelation", 1, 1)), manager.search("kjv", "revelation:", 10));
         assertEquals(List.of(new BibleReference("kjv", "revelation", 22, 21)), manager.search("kjv", "Rev 22:21", 10));
+        assertEquals(List.of(new BibleReference("kjv", "john", 3, 16)), manager.search("kjv", "Jn 3:16", 10));
+        assertEquals(List.of(new BibleReference("kjv", "john", 3, 16)), manager.search("kjv", "john 3 16", 10));
+        assertEquals(List.of(new BibleReference("kjv", "1_john", 4, 8)), manager.search("kjv", "first john 4:8", 10));
+    }
+
+    @Test
+    void searchFindsRelevantVersesWhenWordsAreNotContiguous() {
+        BibleDataManager manager = new BibleDataManager();
+        BibleResourceLoader loader = new BibleResourceLoader(manager, BibleResourceLoaderTest.class.getClassLoader());
+        loader.reload(List.of("kjv"));
+
+        List<BibleReference> results = manager.search("kjv", "loved world", 10);
+
+        assertTrue(results.contains(new BibleReference("kjv", "john", 3, 16)));
     }
 
     private static int verseCount(BibleDataManager manager, String translationId) {

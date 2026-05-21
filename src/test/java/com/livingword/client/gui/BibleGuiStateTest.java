@@ -69,6 +69,39 @@ final class BibleGuiStateTest {
     }
 
     @Test
+    void togglesHighlightsSeparatelyFromBookmarks() {
+        BibleGuiState state = BibleGuiState.initial("bsb", "john", 3);
+        BibleReference reference = new BibleReference("bsb", "john", 3, 16);
+
+        state.selectVerse(16);
+
+        assertTrue(!state.isHighlighted(reference));
+        assertTrue(!state.isSelectedVerseHighlighted());
+
+        state.toggleHighlight(reference);
+
+        assertTrue(state.isHighlighted(reference));
+        assertTrue(state.isSelectedVerseHighlighted());
+        assertEquals(1, state.highlightCount());
+        assertTrue(state.bookmarks().isEmpty());
+
+        state.toggleHighlight(reference);
+
+        assertTrue(!state.isHighlighted(reference));
+        assertEquals(0, state.highlightCount());
+    }
+
+    @Test
+    void restoresHighlightsWithoutDuplicates() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        BibleReference highlight = new BibleReference("webp", "john", 3, 16);
+
+        state.replaceHighlights(java.util.List.of(highlight, highlight));
+
+        assertEquals(java.util.List.of(highlight), state.highlights());
+    }
+
+    @Test
     void cyclesSearchResults() {
         BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
         BibleReference first = new BibleReference("kjv", "john", 3, 16);
