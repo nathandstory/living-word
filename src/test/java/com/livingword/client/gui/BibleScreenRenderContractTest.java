@@ -74,9 +74,22 @@ final class BibleScreenRenderContractTest {
         assertTrue(source.contains("renderSearchResults"));
         assertTrue(source.contains("searchResultAt"));
         assertTrue(source.contains("state.searchResults()"));
+        assertTrue(source.contains("returnToReading"));
+        assertTrue(source.contains("gui.livingword.bible.back_to_reading"));
         assertFalse(source.contains("renderNotes"));
         assertFalse(source.contains("renderCollections"));
         assertFalse(source.contains("previousAudioButton"));
+    }
+
+    @Test
+    void copyAndSearchActionsHavePlayerVisibleFeedback() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
+
+        assertTrue(source.contains("statusLine"));
+        assertTrue(source.contains("setStatus"));
+        assertTrue(source.contains("message.livingword.bible.copied"));
+        assertTrue(source.contains("message.livingword.bible.search_results"));
+        assertTrue(source.contains("message.livingword.bible.search_none"));
     }
 
     @Test
@@ -87,5 +100,41 @@ final class BibleScreenRenderContractTest {
         assertTrue(screenSource.contains("gui.livingword.bible.stop_listen"));
         assertTrue(screenSource.contains("LivingWordClient.isLocalBibleChapterActive"));
         assertTrue(clientSource.contains("public static boolean isLocalBibleChapterActive"));
+    }
+
+    @Test
+    void highlightedTabUsesObviousFramedHighlightRows() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
+
+        assertTrue(source.contains("LIST_HIGHLIGHT_FILL"));
+        assertTrue(source.contains("LIST_HIGHLIGHT_BORDER"));
+        assertTrue(source.contains("renderListHighlightFrame"));
+        assertTrue(source.contains("graphics.fill(left, top, left + 4"));
+        assertFalse(source.contains("0x55E7B844"));
+    }
+
+    @Test
+    void searchHasPreviousNavigationAndObviousActiveResultTreatment() throws Exception {
+        String screenSource = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
+        String layoutSource = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreenLayout.java"));
+        String lang = Files.readString(Path.of("src/main/resources/assets/livingword/lang/en_us.json"));
+
+        assertTrue(screenSource.contains("searchPreviousButton"));
+        assertTrue(screenSource.contains("jumpToPreviousSearchResult"));
+        assertTrue(screenSource.contains("gui.livingword.bible.search_previous"));
+        assertTrue(layoutSource.contains("searchPrevious"));
+        assertTrue(lang.contains("gui.livingword.bible.search_previous"));
+        assertTrue(screenSource.contains("renderListHighlightFrame(graphics"));
+        assertTrue(screenSource.contains("drawSearchResultText"));
+    }
+
+    @Test
+    void searchNavigationScrollsSelectedVerseIntoView() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
+
+        assertTrue(source.contains("scrollSelectedVerseIntoView"));
+        assertTrue(source.contains("verseList.scrollOffsetForVerse"));
+        assertTrue(source.contains("pendingSelectedVerseScroll"));
+        assertTrue(source.contains("this.font == null"));
     }
 }

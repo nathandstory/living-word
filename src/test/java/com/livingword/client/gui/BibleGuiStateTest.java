@@ -92,13 +92,38 @@ final class BibleGuiStateTest {
     }
 
     @Test
+    void highlightsAreSharedAcrossTranslationsByPassage() {
+        BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
+        BibleReference kjvReference = new BibleReference("kjv", "john", 3, 16);
+        BibleReference bsbReference = new BibleReference("bsb", "john", 3, 16);
+        BibleReference webpReference = new BibleReference("webp", "john", 3, 16);
+
+        state.selectVerse(16);
+        state.toggleHighlight(kjvReference);
+
+        assertTrue(state.isHighlighted(bsbReference));
+
+        state.setPassage("bsb", "john", 3);
+        state.selectVerse(16);
+
+        assertTrue(state.isSelectedVerseHighlighted());
+        assertEquals(java.util.List.of(bsbReference), state.highlights());
+
+        state.toggleHighlight(webpReference);
+
+        assertTrue(!state.isHighlighted(kjvReference));
+        assertEquals(0, state.highlightCount());
+    }
+
+    @Test
     void restoresHighlightsWithoutDuplicates() {
         BibleGuiState state = BibleGuiState.initial("kjv", "john", 3);
-        BibleReference highlight = new BibleReference("webp", "john", 3, 16);
+        BibleReference kjvHighlight = new BibleReference("kjv", "john", 3, 16);
+        BibleReference webpHighlight = new BibleReference("webp", "john", 3, 16);
 
-        state.replaceHighlights(java.util.List.of(highlight, highlight));
+        state.replaceHighlights(java.util.List.of(webpHighlight, kjvHighlight, webpHighlight));
 
-        assertEquals(java.util.List.of(highlight), state.highlights());
+        assertEquals(java.util.List.of(kjvHighlight), state.highlights());
     }
 
     @Test

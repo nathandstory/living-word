@@ -1,5 +1,6 @@
 package com.livingword.client.gui;
 
+import com.livingword.bible.BiblePassageKey;
 import com.livingword.bible.BibleReference;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public final class BibleGuiState {
     private int searchResultIndex;
     private final List<BibleReference> recentHistory = new ArrayList<>();
     private final List<BibleReference> bookmarks = new ArrayList<>();
-    private final List<BibleReference> highlights = new ArrayList<>();
+    private final List<BiblePassageKey> highlights = new ArrayList<>();
 
     private BibleGuiState(String translationId, String bookId, int chapter) {
         this.translationId = translationId;
@@ -63,7 +64,13 @@ public final class BibleGuiState {
     }
 
     public List<BibleReference> highlights() {
-        return List.copyOf(highlights);
+        return highlights.stream()
+            .map(key -> key.toReference(translationId))
+            .toList();
+    }
+
+    public List<BibleReference> highlightReferencesForStorage() {
+        return highlights();
     }
 
     public void selectVerse(int selectedVerse) {
@@ -162,21 +169,23 @@ public final class BibleGuiState {
     }
 
     public void addHighlight(BibleReference reference) {
-        if (!highlights.contains(reference)) {
-            highlights.add(reference);
+        BiblePassageKey key = BiblePassageKey.from(reference);
+        if (!highlights.contains(key)) {
+            highlights.add(key);
         }
     }
 
     public void toggleHighlight(BibleReference reference) {
-        if (highlights.contains(reference)) {
-            highlights.remove(reference);
+        BiblePassageKey key = BiblePassageKey.from(reference);
+        if (highlights.contains(key)) {
+            highlights.remove(key);
             return;
         }
-        highlights.add(reference);
+        highlights.add(key);
     }
 
     public boolean isHighlighted(BibleReference reference) {
-        return highlights.contains(reference);
+        return highlights.contains(BiblePassageKey.from(reference));
     }
 
     public boolean isSelectedVerseHighlighted() {

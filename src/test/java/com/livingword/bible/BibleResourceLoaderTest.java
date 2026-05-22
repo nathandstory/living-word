@@ -60,6 +60,34 @@ final class BibleResourceLoaderTest {
     }
 
     @Test
+    void bundledTranslationsHaveReadableChapterContent() {
+        BibleDataManager manager = new BibleDataManager();
+        BibleResourceLoader loader = new BibleResourceLoader(manager, BibleResourceLoaderTest.class.getClassLoader());
+
+        loader.reload();
+
+        for (TranslationManifest translation : manager.translations()) {
+            for (String bookId : manager.bookIds(translation.id())) {
+                assertFalse(manager.chapters(translation.id(), bookId).isEmpty(), translation.id() + " " + bookId + " has no chapters");
+                boolean bookHasSubstantialVerse = false;
+                for (int chapterNumber : manager.chapters(translation.id(), bookId)) {
+                    ChapterData chapter = manager.getChapter(translation.id(), bookId, chapterNumber).orElseThrow();
+                    assertFalse(chapter.verses().isEmpty(), chapterLabel(chapter) + " has no verses");
+                    assertFalse(chapter.verses().values().stream().allMatch(BibleResourceLoaderTest::isSelahOnly), chapterLabel(chapter) + " is only Selah");
+                    assertFalse(chapter.verses().values().stream().allMatch(BibleResourceLoaderTest::isBlank), chapterLabel(chapter) + " is blank");
+                    for (String verseText : chapter.verses().values()) {
+                        assertFalse(isBlank(verseText), chapterLabel(chapter) + " contains a blank verse");
+                        if (verseText.strip().length() > 20 && !isSelahOnly(verseText)) {
+                            bookHasSubstantialVerse = true;
+                        }
+                    }
+                }
+                assertTrue(bookHasSubstantialVerse, translation.id() + " " + bookId + " has no substantial readable verse");
+            }
+        }
+    }
+
+    @Test
     void searchesLoadedVersesDeterministically() {
         BibleDataManager manager = new BibleDataManager();
         BibleResourceLoader loader = new BibleResourceLoader(manager, BibleResourceLoaderTest.class.getClassLoader());
@@ -96,6 +124,18 @@ final class BibleResourceLoaderTest {
         assertTrue(results.contains(new BibleReference("kjv", "john", 3, 16)));
     }
 
+    @Test
+    void broadSearchesCanReachLateBooksWithDefaultResultLimit() {
+        BibleDataManager manager = new BibleDataManager();
+        BibleResourceLoader loader = new BibleResourceLoader(manager, BibleResourceLoaderTest.class.getClassLoader());
+        loader.reload(List.of("bsb"));
+
+        List<BibleReference> results = manager.search("bsb", "beast", 500);
+
+        assertTrue(results.contains(new BibleReference("bsb", "revelation", 13, 1)));
+        assertTrue(results.contains(new BibleReference("bsb", "revelation", 20, 10)));
+    }
+
     private static int verseCount(BibleDataManager manager, String translationId) {
         int count = 0;
         for (String bookId : manager.bookIds(translationId)) {
@@ -104,5 +144,17 @@ final class BibleResourceLoaderTest {
             }
         }
         return count;
+    }
+
+    private static String chapterLabel(ChapterData chapter) {
+        return chapter.translationId() + " " + chapter.bookId() + " " + chapter.chapter();
+    }
+
+    private static boolean isBlank(String text) {
+        return text == null || text.isBlank();
+    }
+
+    private static boolean isSelahOnly(String text) {
+        return text != null && text.strip().equalsIgnoreCase("selah");
     }
 }

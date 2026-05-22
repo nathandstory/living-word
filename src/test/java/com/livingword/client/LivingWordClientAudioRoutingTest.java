@@ -21,4 +21,22 @@ final class LivingWordClientAudioRoutingTest {
         assertFalse(playLocalMethod.contains("handleSessionSync(new ListeningSessionSyncPayload"));
         assertFalse(playLocalMethod.contains("controller().handleSessionSync"));
     }
+
+    @Test
+    void clientAudioChannelsStopCompetingSourcesBeforeStartingNewPrimaryAudio() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/client/LivingWordClient.java"));
+        int playLocalStart = source.indexOf("public static void playLocalChapter(String translationId, String bookId, int chapter, String audioManifestId, long positionMillis)");
+        int previewStart = source.indexOf("public static void previewScriptureDiscChapter", playLocalStart);
+        String playLocalMethod = source.substring(playLocalStart, previewStart);
+        int sessionSyncStart = source.indexOf("public static void handleSessionSync");
+        int playbackControlStart = source.indexOf("public static void handlePlaybackControl", sessionSyncStart);
+        String sessionSyncMethod = source.substring(sessionSyncStart, playbackControlStart);
+
+        assertTrue(source.contains("stopWorldPlaybackForLocalBible"));
+        assertTrue(source.contains("stopLocalBibleForWorldSession"));
+        assertTrue(playLocalMethod.contains("stopWorldPlaybackForLocalBible();"));
+        assertTrue(sessionSyncMethod.contains("stopLocalBibleForWorldSession();"));
+        assertTrue(source.contains("message.livingword.audio.local_bible_stopped_for_session"));
+        assertTrue(source.contains("message.livingword.audio.world_stopped_for_bible"));
+    }
 }

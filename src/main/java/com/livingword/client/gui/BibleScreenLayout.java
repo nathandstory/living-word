@@ -10,6 +10,7 @@ public record BibleScreenLayout(
     Rect highlightedToggle,
     Rect searchBox,
     Rect searchGo,
+    Rect searchPrevious,
     Rect searchNext,
     Rect close,
     Rect previousBook,
@@ -48,14 +49,16 @@ public record BibleScreenLayout(
         int rowGap = 6;
         int searchGap = 5;
         int searchGoWidth = 32;
+        int searchPreviousWidth = 42;
         int searchNextWidth = 42;
         int searchAvailable = Math.max(210, panelWidth - 32);
-        int searchWidth = Math.min(420, Math.max(120, searchAvailable - searchGoWidth - searchNextWidth - searchGap * 2));
-        int searchTotalWidth = searchWidth + searchGoWidth + searchNextWidth + searchGap * 2;
+        int searchWidth = Math.min(420, Math.max(120, searchAvailable - searchGoWidth - searchPreviousWidth - searchNextWidth - searchGap * 3));
+        int searchTotalWidth = searchWidth + searchGoWidth + searchPreviousWidth + searchNextWidth + searchGap * 3;
         int searchX = left + (panelWidth - searchTotalWidth) / 2;
         Rect searchBox = new Rect(searchX, rowY, searchWidth, 20);
         Rect searchGo = new Rect(searchBox.right() + searchGap, rowY, searchGoWidth, 20);
-        Rect searchNext = new Rect(searchGo.right() + searchGap, rowY, searchNextWidth, 20);
+        Rect searchPrevious = new Rect(searchGo.right() + searchGap, rowY, searchPreviousWidth, 20);
+        Rect searchNext = new Rect(searchPrevious.right() + searchGap, rowY, searchNextWidth, 20);
         if (searchExpanded) {
             rowY += 20 + rowGap;
         }
@@ -93,6 +96,7 @@ public record BibleScreenLayout(
             highlightedToggle,
             searchBox,
             searchGo,
+            searchPrevious,
             searchNext,
             close,
             previousBook,
@@ -119,6 +123,7 @@ public record BibleScreenLayout(
         rects.add(highlightedToggle);
         rects.add(searchBox);
         rects.add(searchGo);
+        rects.add(searchPrevious);
         rects.add(searchNext);
         rects.add(close);
         rects.add(previousBook);

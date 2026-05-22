@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -62,7 +63,7 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     @Override
     protected void init() {
         int panelWidth = Math.min(430, this.width - 24);
-        int panelHeight = Math.min(284, this.height - 24);
+        int panelHeight = Math.min(320, this.height - 24);
         int left = (this.width - panelWidth) / 2;
         int top = (this.height - panelHeight) / 2;
         int centerX = left + panelWidth / 2;
@@ -107,7 +108,7 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics, mouseX, mouseY, partialTick);
         int panelWidth = Math.min(430, this.width - 24);
-        int panelHeight = Math.min(284, this.height - 24);
+        int panelHeight = Math.min(320, this.height - 24);
         int left = (this.width - panelWidth) / 2;
         int top = (this.height - panelHeight) / 2;
 
@@ -120,12 +121,40 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         graphics.fill(left, top, left + 1, top + panelHeight, BORDER);
         graphics.fill(left + panelWidth - 1, top, left + panelWidth, top + panelHeight, BORDER);
 
-        graphics.drawCenteredString(this.font, this.title, this.width / 2, top + 14, TITLE_TEXT);
-        drawCenteredTrimmed(graphics, formatSelection(), this.width / 2, top + 30, panelWidth - 56, TEXT);
-        if (!statusLine.isBlank()) {
-            drawCenteredTrimmed(graphics, statusLine, this.width / 2, top + panelHeight - 76, panelWidth - 56, MUTED_TEXT);
-        }
         super.render(graphics, mouseX, mouseY, partialTick);
+        renderTopLabels(graphics, left, top, panelWidth);
+        renderInstructionPanel(graphics, left, top, panelWidth, panelHeight);
+    }
+
+    private void renderTopLabels(GuiGraphics graphics, int left, int top, int panelWidth) {
+        int centerX = left + panelWidth / 2;
+        drawCenteredPlain(graphics, this.title.getString(), centerX, top + 14, panelWidth - 56, TITLE_TEXT);
+        drawCenteredPlain(graphics, formatSelection(), centerX, top + 30, panelWidth - 56, TEXT);
+    }
+
+    private void renderInstructionPanel(GuiGraphics graphics, int left, int top, int panelWidth, int panelHeight) {
+        int controlWidth = Math.min(300, panelWidth - 48);
+        int controlLeft = left + (panelWidth - controlWidth) / 2;
+        int bottomY = top + panelHeight - 52;
+        int infoTop = top + 208;
+        int infoHeight = statusLine.isBlank() ? 46 : 58;
+        int infoBottom = Math.min(infoTop + infoHeight, bottomY - 10);
+        if (infoBottom <= infoTop + 18) {
+            return;
+        }
+
+        graphics.fill(controlLeft, infoTop, controlLeft + controlWidth, infoBottom, 0x66F1D79A);
+        graphics.fill(controlLeft, infoTop, controlLeft + controlWidth, infoTop + 1, BORDER);
+        graphics.fill(controlLeft, infoBottom - 1, controlLeft + controlWidth, infoBottom, BORDER);
+        graphics.fill(controlLeft, infoTop, controlLeft + 1, infoBottom, BORDER);
+        graphics.fill(controlLeft + controlWidth - 1, infoTop, controlLeft + controlWidth, infoBottom, BORDER);
+
+        int y = infoTop + 6;
+        y = drawCenteredWrapped(graphics, modeDescription(), left + panelWidth / 2, y, controlWidth - 18, MUTED_TEXT, 2);
+        String secondary = statusLine.isBlank()
+            ? Component.translatable("gui.livingword.disc.reverse_hint").getString()
+            : statusLine;
+        drawCenteredWrapped(graphics, secondary, left + panelWidth / 2, y + 2, controlWidth - 18, MUTED_TEXT, 2);
     }
 
     @Override
@@ -286,9 +315,55 @@ public final class ScriptureDiscSelectionScreen extends Screen {
             + source.displayName();
     }
 
+    private String modeDescription() {
+        return Component.translatable(switch (playbackMode) {
+            case SINGLE_CHAPTER -> "gui.livingword.disc.mode.single";
+            case CONTINUE_BOOK -> "gui.livingword.disc.mode.continue";
+            case LOOP_CHAPTER -> "gui.livingword.disc.mode.loop";
+        }).getString();
+    }
+
     private void drawCenteredTrimmed(GuiGraphics graphics, String text, int centerX, int y, int maxWidth, int color) {
         String trimmed = this.font.plainSubstrByWidth(text, maxWidth);
-        graphics.drawCenteredString(this.font, trimmed, centerX, y, color);
+        drawCenteredPlain(graphics, trimmed, centerX, y, maxWidth, color);
+    }
+
+    private void drawCenteredPlain(GuiGraphics graphics, String text, int centerX, int y, int maxWidth, int color) {
+        String trimmed = this.font.plainSubstrByWidth(text, maxWidth);
+        graphics.drawString(this.font, trimmed, centerX - this.font.width(trimmed) / 2, y, color, false);
+    }
+
+    private int drawCenteredWrapped(GuiGraphics graphics, String text, int centerX, int y, int maxWidth, int color, int maxLines) {
+        int lineY = y;
+        for (String line : wrapText(text, maxWidth, maxLines)) {
+            graphics.drawString(this.font, line, centerX - this.font.width(line) / 2, lineY, color, false);
+            lineY += 11;
+        }
+        return lineY;
+    }
+
+    private List<String> wrapText(String text, int maxWidth, int maxLines) {
+        if (text == null || text.isBlank() || maxLines <= 0) {
+            return List.of();
+        }
+        List<String> lines = new ArrayList<>();
+        StringBuilder current = new StringBuilder();
+        for (String word : text.split("\\s+")) {
+            String candidate = current.length() == 0 ? word : current + " " + word;
+            if (current.length() > 0 && this.font.width(candidate) > maxWidth) {
+                lines.add(current.toString());
+                current = new StringBuilder(word);
+                if (lines.size() == maxLines) {
+                    return lines;
+                }
+                continue;
+            }
+            current = new StringBuilder(candidate);
+        }
+        if (current.length() > 0 && lines.size() < maxLines) {
+            lines.add(current.toString());
+        }
+        return List.copyOf(lines);
     }
 
     private static ScriptureDiscSelection currentSelection(InteractionHand hand) {

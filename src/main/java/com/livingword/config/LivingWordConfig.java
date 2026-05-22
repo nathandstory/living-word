@@ -17,6 +17,8 @@ public final class LivingWordConfig {
 
     public static final ModConfigSpec.BooleanValue SUBTITLE_ENABLED;
     public static final ModConfigSpec.DoubleValue NARRATION_VOLUME;
+    public static final ModConfigSpec.BooleanValue AUDIO_STATUS_MESSAGES;
+    public static final ModConfigSpec.IntValue SEARCH_RESULT_LIMIT;
 
     static {
         ModConfigSpec.Builder common = new ModConfigSpec.Builder();
@@ -62,6 +64,15 @@ public final class LivingWordConfig {
         NARRATION_VOLUME = client
             .comment("Client-side narration volume multiplier.")
             .defineInRange("narrationVolume", 1.0D, 0.0D, 1.0D);
+        AUDIO_STATUS_MESSAGES = client
+            .comment("Whether the client should show actionbar messages when Bible, preview, and shared listening audio hand off to each other.")
+            .define("audioStatusMessages", true);
+        client.pop();
+
+        client.push("bible");
+        SEARCH_RESULT_LIMIT = client
+            .comment("Maximum number of verses shown in the Bible search results list.")
+            .defineInRange("searchResultLimit", 500, 10, 1000);
         client.pop();
         CLIENT_SPEC = client.build();
     }

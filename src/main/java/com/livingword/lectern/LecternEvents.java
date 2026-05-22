@@ -49,9 +49,32 @@ public final class LecternEvents {
                 station.selectedReference().chapter(),
                 48.0D
             );
-            serverPlayer.displayClientMessage(Component.translatable("message.livingword.lectern.session_started"), true);
+            serverPlayer.displayClientMessage(Component.translatable("message.livingword.lectern.session_started", formatReference(station.selectedReference())), true);
         } else {
-            serverPlayer.displayClientMessage(Component.translatable("message.livingword.lectern.station_ready"), true);
+            serverPlayer.displayClientMessage(Component.translatable("message.livingword.lectern.station_ready", formatReference(station.selectedReference())), true);
         }
+    }
+
+    private static String formatReference(BibleReference reference) {
+        return reference.translationId().toUpperCase(java.util.Locale.ROOT)
+            + " "
+            + formatBookId(reference.bookId())
+            + " "
+            + reference.chapter();
+    }
+
+    private static String formatBookId(String bookId) {
+        String[] words = bookId.replace('_', ' ').split(" ");
+        StringBuilder formatted = new StringBuilder();
+        for (String word : words) {
+            if (word.isBlank()) {
+                continue;
+            }
+            if (!formatted.isEmpty()) {
+                formatted.append(' ');
+            }
+            formatted.append(Character.toUpperCase(word.charAt(0))).append(word.substring(1));
+        }
+        return formatted.toString();
     }
 }

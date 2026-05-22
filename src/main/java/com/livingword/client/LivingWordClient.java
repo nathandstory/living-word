@@ -104,6 +104,7 @@ public final class LivingWordClient {
     public static void handleSessionSync(ListeningSessionSyncPayload payload) {
         if (payload.state() != PlaybackState.STOPPED) {
             stopScriptureDiscPreview();
+            stopLocalBibleForWorldSession();
         }
         activeSession = payload.state() == PlaybackState.STOPPED ? null : payload;
         Minecraft minecraft = Minecraft.getInstance();
@@ -141,6 +142,7 @@ public final class LivingWordClient {
 
     public static void playLocalChapter(String translationId, String bookId, int chapter, String audioManifestId, long positionMillis) {
         stopScriptureDiscPreview();
+        stopWorldPlaybackForLocalBible();
         localBibleSession = new ListeningSessionSyncPayload(
             UUID.randomUUID(),
             translationId,
@@ -156,6 +158,7 @@ public final class LivingWordClient {
     }
 
     public static void previewScriptureDiscChapter(String translationId, String bookId, int chapter, String audioManifestId) {
+        stopLocalBibleForPreview();
         scriptureDiscPreviewController().handleSessionSync(new ListeningSessionSyncPayload(
             UUID.randomUUID(),
             translationId,
@@ -214,6 +217,43 @@ public final class LivingWordClient {
 
     public static ListeningSessionSyncPayload activeSession() {
         return activeSession;
+    }
+
+    private static void stopWorldPlaybackForLocalBible() {
+        if (activeSession == null || audioSessionController == null) {
+            return;
+        }
+        audioSessionController.stopActive();
+        activeSession = null;
+        displayAudioStatus("message.livingword.audio.world_stopped_for_bible");
+    }
+
+    private static void stopLocalBibleForWorldSession() {
+        if (localBibleSession == null || bibleAudioController == null) {
+            return;
+        }
+        stopLocalPlayback();
+        displayAudioStatus("message.livingword.audio.local_bible_stopped_for_session");
+    }
+
+    private static void stopLocalBibleForPreview() {
+        if (localBibleSession == null || bibleAudioController == null) {
+            return;
+        }
+        stopLocalPlayback();
+        displayAudioStatus("message.livingword.audio.local_bible_stopped_for_preview");
+    }
+
+    private static void displayAudioStatus(String translationKey) {
+        if (!LivingWordConfig.AUDIO_STATUS_MESSAGES.get()) {
+            return;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        minecraft.execute(() -> {
+            if (minecraft.player != null) {
+                minecraft.player.displayClientMessage(Component.translatable(translationKey).withStyle(ChatFormatting.GOLD), true);
+            }
+        });
     }
 
     private static ClientAudioSessionController controller() {

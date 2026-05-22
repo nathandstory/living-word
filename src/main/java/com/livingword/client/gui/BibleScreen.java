@@ -8,12 +8,14 @@ import com.livingword.client.BibleClientPreferences;
 import com.livingword.client.BibleClientRepository;
 import com.livingword.client.LivingWordClient;
 import com.livingword.client.gui.widgets.VerseListWidget;
+import com.livingword.config.LivingWordConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
 import java.nio.file.Path;
@@ -29,6 +31,10 @@ public final class BibleScreen extends Screen {
     private static final int BORDER = 0xFF8C6A3E;
     private static final int TEXT = 0xFF3B2A18;
     private static final int TITLE_TEXT = 0xFFFFE3AD;
+    private static final int LIST_HIGHLIGHT_FILL = 0x88F0C24A;
+    private static final int LIST_HIGHLIGHT_SELECTED_FILL = 0xAAE8AD2D;
+    private static final int LIST_HIGHLIGHT_BORDER = 0xFFE0A31A;
+    private static final int LIST_HIGHLIGHT_ACCENT = 0xFFFFD45A;
 
     private final BibleDataManager dataManager;
     private final BibleGuiState state;
@@ -40,6 +46,7 @@ public final class BibleScreen extends Screen {
     private boolean searchResultsView;
     private EditBox searchBox;
     private Button searchGoButton;
+    private Button searchPreviousButton;
     private Button searchNextButton;
     private Button highlightedTabButton;
     private Button previousBookButton;
@@ -55,6 +62,8 @@ public final class BibleScreen extends Screen {
     private int verseListWidth;
     private int verseListHeight;
     private int verseScrollOffset;
+    private boolean pendingSelectedVerseScroll;
+    private String statusLine = "";
 
     public BibleScreen() {
         super(Component.translatable("gui.livingword.bible.title"));
@@ -93,12 +102,14 @@ public final class BibleScreen extends Screen {
             .bounds(layout.toolsToggle().x(), layout.toolsToggle().y(), layout.toolsToggle().width(), layout.toolsToggle().height())
             .build());
         highlightedTabButton = addRenderableWidget(Button.builder(Component.empty(), button -> {
-                highlightedView = !highlightedView;
-                if (highlightedView) {
+                if (highlightedView || searchResultsView) {
+                    returnToReading();
+                } else {
+                    highlightedView = true;
                     searchResultsView = false;
+                    verseScrollOffset = 0;
+                    refreshActionLabels();
                 }
-                verseScrollOffset = 0;
-                refreshActionLabels();
             })
             .bounds(layout.highlightedToggle().x(), layout.highlightedToggle().y(), layout.highlightedToggle().width(), layout.highlightedToggle().height())
             .build());
@@ -114,6 +125,9 @@ public final class BibleScreen extends Screen {
 
         searchGoButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_go"), button -> jumpToFirstSearchResult())
             .bounds(layout.searchGo().x(), layout.searchGo().y(), layout.searchGo().width(), layout.searchGo().height())
+            .build());
+        searchPreviousButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_previous"), button -> jumpToPreviousSearchResult())
+            .bounds(layout.searchPrevious().x(), layout.searchPrevious().y(), layout.searchPrevious().width(), layout.searchPrevious().height())
             .build());
         searchNextButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.search_next"), button -> jumpToNextSearchResult())
             .bounds(layout.searchNext().x(), layout.searchNext().y(), layout.searchNext().width(), layout.searchNext().height())
@@ -173,13 +187,17 @@ public final class BibleScreen extends Screen {
 
         graphics.drawCenteredString(this.font, this.title, this.width / 2, panel.y() + 10, TITLE_TEXT);
         renderPassageHeading(graphics, layout);
-        if (!state.searchResultSummary().isEmpty()) {
-            drawCenteredTrimmed(graphics, state.searchResultSummary(), this.width / 2, layout.statusY(), panel.width() - 80, 0xFF7C5426);
+        String statusText = statusLine.isBlank() ? state.searchResultSummary() : statusLine;
+        if (!statusText.isEmpty()) {
+            drawCenteredTrimmed(graphics, statusText, this.width / 2, layout.statusY(), panel.width() - 80, 0xFF7C5426);
         }
         verseListX = layout.verseList().x();
         verseListY = layout.verseList().y();
         verseListWidth = layout.verseList().width();
         verseListHeight = layout.verseList().height();
+        if (pendingSelectedVerseScroll && !highlightedView && !searchResultsView) {
+            scrollSelectedVerseIntoView();
+        }
         if (highlightedView) {
             int maxScroll = highlightedMaxScroll();
             verseScrollOffset = Math.max(0, Math.min(verseScrollOffset, maxScroll));
@@ -264,17 +282,32 @@ public final class BibleScreen extends Screen {
     private void copySelectedVerse() {
         currentChapter().flatMap(chapter -> chapter.getVerse(state.selectedVerse())).ifPresent(text -> {
             Minecraft minecraft = Minecraft.getInstance();
-            minecraft.keyboardHandler.setClipboard(formatBookId(state.bookId()) + " " + state.chapter() + ":" + state.selectedVerse() + " " + text);
+            String reference = formatReference(state.selectedReference());
+            minecraft.keyboardHandler.setClipboard(reference + " " + text);
+            Component message = Component.translatable("message.livingword.bible.copied", reference);
+            setStatus(message);
+            if (minecraft.player != null) {
+                minecraft.player.displayClientMessage(message.copy().withStyle(ChatFormatting.GOLD), true);
+            }
         });
     }
 
     private void jumpToFirstSearchResult() {
-        List<BibleReference> results = dataManager.search(state.translationId(), state.searchQuery(), 100);
+        List<BibleReference> results = dataManager.search(state.translationId(), state.searchQuery(), searchResultLimit());
         state.replaceSearchResults(results);
         highlightedView = false;
         searchResultsView = true;
         verseScrollOffset = 0;
+        if (results.isEmpty()) {
+            setStatus(Component.translatable("message.livingword.bible.search_none"));
+        } else {
+            setStatus(Component.translatable("message.livingword.bible.search_results", results.size()));
+        }
         refreshActionLabels();
+    }
+
+    private static int searchResultLimit() {
+        return Math.max(500, LivingWordConfig.SEARCH_RESULT_LIMIT.get());
     }
 
     private void jumpToNextSearchResult() {
@@ -283,9 +316,25 @@ public final class BibleScreen extends Screen {
             return;
         }
         state.advanceSearchResult(1);
+        navigateCurrentSearchResult();
+    }
+
+    private void jumpToPreviousSearchResult() {
+        if (state.currentSearchResult().isEmpty()) {
+            jumpToFirstSearchResult();
+            state.advanceSearchResult(-1);
+            navigateCurrentSearchResult();
+            return;
+        }
+        state.advanceSearchResult(-1);
+        navigateCurrentSearchResult();
+    }
+
+    private void navigateCurrentSearchResult() {
         state.currentSearchResult().ifPresent(reference -> {
             highlightedView = false;
             searchResultsView = false;
+            statusLine = "";
             navigateTo(reference);
         });
     }
@@ -331,7 +380,10 @@ public final class BibleScreen extends Screen {
     private void navigateTo(BibleReference reference) {
         setPassage(reference.translationId(), reference.bookId(), reference.chapter());
         state.selectVerse(reference.verse());
+        pendingSelectedVerseScroll = true;
+        scrollSelectedVerseIntoView();
         recordCurrentHistory();
+        statusLine = "";
         refreshActionLabels();
     }
 
@@ -345,6 +397,22 @@ public final class BibleScreen extends Screen {
 
     private Optional<ChapterData> currentChapter() {
         return dataManager.getChapter(state.translationId(), state.bookId(), state.chapter());
+    }
+
+    private void scrollSelectedVerseIntoView() {
+        if (this.font == null || this.width <= 0 || this.height <= 0) {
+            return;
+        }
+        BibleScreenLayout layout = BibleScreenLayout.compute(this.width, this.height, searchExpanded, toolsExpanded);
+        BibleScreenLayout.Rect verseListRect = layout.verseList();
+        verseListX = verseListRect.x();
+        verseListY = verseListRect.y();
+        verseListWidth = verseListRect.width();
+        verseListHeight = verseListRect.height();
+        currentChapter().ifPresent(chapter ->
+            verseScrollOffset = verseList.scrollOffsetForVerse(chapter, this.font, verseListWidth, verseListHeight, state.selectedVerse())
+        );
+        pendingSelectedVerseScroll = false;
     }
 
     private void renderPassageHeading(GuiGraphics graphics, BibleScreenLayout layout) {
@@ -395,7 +463,7 @@ public final class BibleScreen extends Screen {
     private void persistState() {
         BibleClientPreferences.save(
             preferencesPath,
-            new BibleClientPreferences.StoredBibleState(Optional.of(state.selectedReference()), state.bookmarks(), state.recentHistory(), state.highlights())
+            new BibleClientPreferences.StoredBibleState(Optional.of(state.selectedReference()), state.bookmarks(), state.recentHistory(), state.highlightReferencesForStorage())
         );
     }
 
@@ -405,8 +473,8 @@ public final class BibleScreen extends Screen {
 
     private void refreshActionLabels() {
         if (highlightedTabButton != null) {
-            highlightedTabButton.setMessage(Component.translatable(highlightedView
-                ? "gui.livingword.bible.show_reading"
+            highlightedTabButton.setMessage(Component.translatable((highlightedView || searchResultsView)
+                ? "gui.livingword.bible.back_to_reading"
                 : "gui.livingword.bible.show_highlighted"));
         }
         if (versionButton != null) {
@@ -424,6 +492,18 @@ public final class BibleScreen extends Screen {
         }
     }
 
+    private void returnToReading() {
+        highlightedView = false;
+        searchResultsView = false;
+        statusLine = "";
+        verseScrollOffset = 0;
+        refreshActionLabels();
+    }
+
+    private void setStatus(Component message) {
+        statusLine = message.getString();
+    }
+
     private void setSearchControlsVisible(boolean visible) {
         if (searchBox != null) {
             searchBox.visible = visible;
@@ -433,6 +513,7 @@ public final class BibleScreen extends Screen {
             }
         }
         setButtonVisible(searchGoButton, visible);
+        setButtonVisible(searchPreviousButton, visible);
         setButtonVisible(searchNextButton, visible);
     }
 
@@ -482,13 +563,13 @@ public final class BibleScreen extends Screen {
         int lineY = verseListY - verseScrollOffset;
         for (BibleReference reference : state.highlights()) {
             if (lineY + 14 >= verseListY && lineY <= verseListY + verseListHeight) {
-                graphics.fill(verseListX + 2, lineY - 1, verseListX + verseListWidth - 6, lineY + 13, 0x55E7B844);
+                renderListHighlightFrame(graphics, verseListX + 2, lineY - 2, verseListWidth - 8, 15, false);
                 drawTrimmed(
                     graphics,
                     formatReference(reference) + "  " + dataManager.getVerse(reference).orElse(""),
-                    verseListX + 8,
+                    verseListX + 12,
                     lineY,
-                    verseListWidth - 20,
+                    verseListWidth - 24,
                     TEXT
                 );
             }
@@ -505,16 +586,17 @@ public final class BibleScreen extends Screen {
         int lineY = verseListY - verseScrollOffset;
         for (BibleReference reference : state.searchResults()) {
             if (lineY + 14 >= verseListY && lineY <= verseListY + verseListHeight) {
-                if (state.currentSearchResult().filter(reference::equals).isPresent()) {
-                    graphics.fill(verseListX + 2, lineY - 1, verseListX + verseListWidth - 6, lineY + 13, 0x55E7B844);
+                boolean activeSearchResult = state.currentSearchResult().filter(reference::equals).isPresent();
+                if (activeSearchResult) {
+                    renderListHighlightFrame(graphics, verseListX + 2, lineY - 2, verseListWidth - 8, 15, true);
                 }
-                drawTrimmed(
+                drawSearchResultText(
                     graphics,
                     formatReference(reference) + "  " + dataManager.getVerse(reference).orElse(""),
-                    verseListX + 8,
+                    verseListX + 12,
                     lineY,
-                    verseListWidth - 20,
-                    TEXT
+                    verseListWidth - 24,
+                    activeSearchResult
                 );
             }
             lineY += 16;
@@ -547,6 +629,21 @@ public final class BibleScreen extends Screen {
 
     private int searchResultsMaxScroll() {
         return Math.max(0, state.searchResults().size() * 16 - verseListHeight);
+    }
+
+    private void drawSearchResultText(GuiGraphics graphics, String text, int x, int y, int maxWidth, boolean activeSearchResult) {
+        String rendered = trimToWidth(text, maxWidth);
+        VerseListWidget.drawSearchAwareText(graphics, this.font, rendered, x, y, TEXT, state.searchQuery(), activeSearchResult);
+    }
+
+    private static void renderListHighlightFrame(GuiGraphics graphics, int left, int top, int width, int height, boolean selected) {
+        int right = left + width;
+        int bottom = top + height;
+        graphics.fill(left, top, right, bottom, selected ? LIST_HIGHLIGHT_SELECTED_FILL : LIST_HIGHLIGHT_FILL);
+        graphics.fill(left, top, left + 4, bottom, LIST_HIGHLIGHT_ACCENT);
+        graphics.fill(left, top, right, top + 1, LIST_HIGHLIGHT_BORDER);
+        graphics.fill(left, bottom - 1, right, bottom, LIST_HIGHLIGHT_BORDER);
+        graphics.fill(right - 1, top, right, bottom, LIST_HIGHLIGHT_BORDER);
     }
 
     private void renderScrollBar(GuiGraphics graphics, int maxScroll) {
