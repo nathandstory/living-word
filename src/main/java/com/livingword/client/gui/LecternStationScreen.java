@@ -7,14 +7,15 @@ import com.livingword.client.LivingWordClient;
 import com.livingword.discs.ScriptureDiscAudioSource;
 import com.livingword.discs.ScriptureDiscPlaybackMode;
 import com.livingword.discs.ScriptureDiscSelection;
+import com.livingword.lectern.LecternStationAction;
+import com.livingword.network.payload.OpenLecternStationPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
-public final class ScriptureDiscSelectionScreen extends Screen {
+public final class LecternStationScreen extends Screen {
     private static final int BACKGROUND = 0xF0181510;
     private static final int PANEL = 0xF02B2118;
     private static final int PAGE = 0xFFE6D0A3;
@@ -32,16 +33,18 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     private static final int MUTED_TEXT = 0xFF7C5426;
     private static final int TITLE_TEXT = 0xFFFFE3AD;
 
-    private final InteractionHand hand;
     private final BibleDataManager dataManager = BibleClientRepository.dataManager();
+    private final BlockPos sourcePos;
 
     private String translationId;
     private String bookId;
     private int chapter;
     private String audioManifestId;
     private ScriptureDiscPlaybackMode playbackMode;
-    private boolean previewing;
-    private String statusLine = "";
+    private long resumePositionMillis;
+    private boolean stationPlaying;
+    private boolean displayEnabled;
+    private String statusLine;
 
     private EditBox bookSearchBox;
     private Button translationButton;
@@ -49,32 +52,38 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     private Button chapterButton;
     private Button sourceButton;
     private Button modeButton;
-    private Button previewButton;
+    private Button playbackToggleButton;
+    private Button displayToggleButton;
 
-    public ScriptureDiscSelectionScreen(InteractionHand hand) {
-        super(Component.translatable("gui.livingword.disc.title"));
-        this.hand = hand;
-        ScriptureDiscSelection selection = currentSelection(hand);
-        this.translationId = selection.translationId();
-        this.bookId = selection.bookId();
-        this.chapter = selection.chapter();
-        this.audioManifestId = selection.audioManifestId();
-        this.playbackMode = selection.playbackMode();
+    public LecternStationScreen(OpenLecternStationPayload payload) {
+        super(Component.translatable("gui.livingword.lectern.title"));
+        this.sourcePos = payload.sourcePos();
+        this.translationId = payload.translationId();
+        this.bookId = payload.bookId();
+        this.chapter = payload.chapter();
+        this.audioManifestId = payload.audioManifestId();
+        this.playbackMode = payload.playbackMode();
+        this.resumePositionMillis = payload.resumePositionMillis();
+        this.stationPlaying = payload.playing();
+        this.displayEnabled = payload.displayEnabled();
+        this.statusLine = payload.playing()
+            ? Component.translatable("gui.livingword.lectern.status_playing").getString()
+            : Component.translatable("gui.livingword.lectern.status_ready").getString();
     }
 
     @Override
     protected void init() {
-        int panelWidth = Math.min(430, this.width - 24);
-        int panelHeight = Math.min(320, this.height - 24);
+        int panelWidth = Math.min(440, this.width - 24);
+        int panelHeight = Math.min(352, this.height - 24);
         int left = (this.width - panelWidth) / 2;
         int top = (this.height - panelHeight) / 2;
         int centerX = left + panelWidth / 2;
-        int controlWidth = Math.min(300, panelWidth - 48);
+        int controlWidth = Math.min(310, panelWidth - 48);
         int controlLeft = centerX - controlWidth / 2;
 
         bookSearchBox = new EditBox(this.font, controlLeft, top + 48, controlWidth, 20, Component.translatable("gui.livingword.disc.search_book"));
         bookSearchBox.setHint(Component.translatable("gui.livingword.disc.search_book"));
-        bookSearchBox.setResponder(query -> statusLine = query.isBlank() ? "" : Component.translatable("gui.livingword.disc.search_status").getString());
+        bookSearchBox.setResponder(query -> statusLine = query.isBlank() ? stationStatus() : Component.translatable("gui.livingword.disc.search_status").getString());
         addRenderableWidget(bookSearchBox);
 
         translationButton = addCycleButton(controlLeft, top + 76, controlWidth, button -> navigateTranslation(1));
@@ -83,13 +92,16 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         sourceButton = addCycleButton(controlLeft, top + 154, controlWidth, button -> navigateSource(1));
         modeButton = addCycleButton(controlLeft, top + 180, controlWidth, button -> navigateMode(1));
 
-        int bottomY = top + panelHeight - 52;
-        int splitWidth = (controlWidth - 6) / 2;
-        previewButton = addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.preview"), button -> togglePreview())
-            .bounds(controlLeft, bottomY, splitWidth, 20)
+        int bottomY = top + panelHeight - 78;
+        int actionWidth = (controlWidth - 12) / 3;
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.lectern.save"), button -> configure(LecternStationAction.SAVE))
+            .bounds(controlLeft, bottomY, actionWidth, 20)
             .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.disc.save"), button -> saveAndClose())
-            .bounds(controlLeft + splitWidth + 6, bottomY, splitWidth, 20)
+        playbackToggleButton = addRenderableWidget(Button.builder(Component.empty(), button -> togglePlayback())
+            .bounds(controlLeft + actionWidth + 6, bottomY, actionWidth, 20)
+            .build());
+        displayToggleButton = addRenderableWidget(Button.builder(Component.empty(), button -> toggleFloatingVerse())
+            .bounds(controlLeft + (actionWidth + 6) * 2, bottomY, actionWidth, 20)
             .build());
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.close"), button -> onClose())
             .bounds(controlLeft, bottomY + 26, controlWidth, 20)
@@ -106,8 +118,8 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         renderBackground(graphics, mouseX, mouseY, partialTick);
-        int panelWidth = Math.min(430, this.width - 24);
-        int panelHeight = Math.min(320, this.height - 24);
+        int panelWidth = Math.min(440, this.width - 24);
+        int panelHeight = Math.min(352, this.height - 24);
         int left = (this.width - panelWidth) / 2;
         int top = (this.height - panelHeight) / 2;
 
@@ -132,12 +144,11 @@ public final class ScriptureDiscSelectionScreen extends Screen {
     }
 
     private void renderInstructionPanel(GuiGraphics graphics, int left, int top, int panelWidth, int panelHeight) {
-        int controlWidth = Math.min(300, panelWidth - 48);
+        int controlWidth = Math.min(310, panelWidth - 48);
         int controlLeft = left + (panelWidth - controlWidth) / 2;
-        int bottomY = top + panelHeight - 52;
+        int bottomY = top + panelHeight - 78;
         int infoTop = top + 208;
-        int infoHeight = statusLine.isBlank() ? 46 : 58;
-        int infoBottom = Math.min(infoTop + infoHeight, bottomY - 10);
+        int infoBottom = Math.min(infoTop + 58, bottomY - 10);
         if (infoBottom <= infoTop + 18) {
             return;
         }
@@ -150,7 +161,7 @@ public final class ScriptureDiscSelectionScreen extends Screen {
 
         int y = infoTop + 6;
         y = drawCenteredWrapped(graphics, modeDescription(), left + panelWidth / 2, y, controlWidth - 18, MUTED_TEXT, 2);
-        String secondary = statusLine.isBlank()
+        String secondary = statusLine == null || statusLine.isBlank()
             ? Component.translatable("gui.livingword.disc.reverse_hint").getString()
             : statusLine;
         drawCenteredWrapped(graphics, secondary, left + panelWidth / 2, y + 2, controlWidth - 18, MUTED_TEXT, 2);
@@ -203,7 +214,7 @@ public final class ScriptureDiscSelectionScreen extends Screen {
             audioManifestId = ScriptureDiscAudioSource.defaultFor(translationId).manifestId();
         });
         ensureSelectedChapterExists();
-        statusLine = "";
+        statusLine = stationStatus();
         refreshLabels();
     }
 
@@ -211,27 +222,27 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         List<String> books = dataManager.bookIds(translationId);
         SelectionCycle.next(books, bookId, direction).ifPresent(nextBookId -> bookId = nextBookId);
         chapter = firstChapterOrOne(translationId, bookId);
-        statusLine = "";
+        statusLine = stationStatus();
         refreshLabels();
     }
 
     private void navigateChapter(int direction) {
         List<Integer> chapters = dataManager.chapters(translationId, bookId);
         SelectionCycle.next(chapters, chapter, direction).ifPresent(nextChapter -> chapter = nextChapter);
-        statusLine = "";
+        statusLine = stationStatus();
         refreshLabels();
     }
 
     private void navigateSource(int direction) {
         audioManifestId = ScriptureDiscAudioSource.cycle(translationId, audioManifestId, direction).manifestId();
-        statusLine = "";
+        statusLine = stationStatus();
         refreshLabels();
     }
 
     private void navigateMode(int direction) {
         List<ScriptureDiscPlaybackMode> modes = Arrays.asList(ScriptureDiscPlaybackMode.values());
         SelectionCycle.next(modes, playbackMode, direction).ifPresent(nextMode -> playbackMode = nextMode);
-        statusLine = "";
+        statusLine = stationStatus();
         refreshLabels();
     }
 
@@ -256,22 +267,33 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         statusLine = Component.translatable("gui.livingword.disc.search_none").getString();
     }
 
-    private void togglePreview() {
-        if (previewing) {
-            LivingWordClient.stopScriptureDiscPreview();
-            previewing = false;
-            statusLine = Component.translatable("gui.livingword.disc.preview_stopped").getString();
-        } else {
-            LivingWordClient.previewScriptureDiscChapter(translationId, bookId, chapter, audioManifestId);
-            previewing = true;
-            statusLine = Component.translatable("gui.livingword.disc.previewing", formatSelection()).getString();
-        }
-        refreshPreviewButton();
+    private void togglePlayback() {
+        configure(stationPlaying ? LecternStationAction.PAUSE : LecternStationAction.PLAY);
     }
 
-    private void saveAndClose() {
-        LivingWordClient.configureScriptureDisc(hand, new ScriptureDiscSelection(translationId, bookId, chapter, audioManifestId, playbackMode));
-        onClose();
+    private void toggleFloatingVerse() {
+        displayEnabled = !displayEnabled;
+        LivingWordClient.configureLecternStation(sourcePos, selection(), LecternStationAction.TOGGLE_DISPLAY);
+        statusLine = Component.translatable(displayEnabled ? "gui.livingword.lectern.status_display_on" : "gui.livingword.lectern.status_display_off").getString();
+        refreshPlaybackButtons();
+    }
+
+    private void configure(LecternStationAction action) {
+        LivingWordClient.configureLecternStation(sourcePos, selection(), action);
+        if (action == LecternStationAction.PLAY) {
+            stationPlaying = true;
+            statusLine = Component.translatable("gui.livingword.lectern.status_started").getString();
+        } else if (action == LecternStationAction.PAUSE) {
+            stationPlaying = false;
+            statusLine = Component.translatable("gui.livingword.lectern.status_paused").getString();
+        } else {
+            statusLine = Component.translatable("gui.livingword.lectern.status_saved").getString();
+        }
+        refreshPlaybackButtons();
+    }
+
+    private ScriptureDiscSelection selection() {
+        return new ScriptureDiscSelection(translationId, bookId, chapter, audioManifestId, playbackMode);
     }
 
     private void refreshLabels() {
@@ -290,12 +312,15 @@ public final class ScriptureDiscSelectionScreen extends Screen {
         if (modeButton != null) {
             modeButton.setMessage(Component.literal("Mode: " + playbackMode.displayName()));
         }
-        refreshPreviewButton();
+        refreshPlaybackButtons();
     }
 
-    private void refreshPreviewButton() {
-        if (previewButton != null) {
-            previewButton.setMessage(Component.translatable(previewing ? "gui.livingword.disc.stop_preview" : "gui.livingword.disc.preview"));
+    private void refreshPlaybackButtons() {
+        if (playbackToggleButton != null) {
+            playbackToggleButton.setMessage(Component.translatable(stationPlaying ? "gui.livingword.lectern.pause" : "gui.livingword.lectern.play"));
+        }
+        if (displayToggleButton != null) {
+            displayToggleButton.setMessage(Component.translatable(displayEnabled ? "gui.livingword.lectern.display_on" : "gui.livingword.lectern.display_off"));
         }
     }
 
@@ -324,17 +349,22 @@ public final class ScriptureDiscSelectionScreen extends Screen {
             + source.displayName();
     }
 
+    private String stationStatus() {
+        if (stationPlaying) {
+            return Component.translatable("gui.livingword.lectern.status_playing").getString();
+        }
+        if (resumePositionMillis > 0L) {
+            return Component.translatable("gui.livingword.lectern.status_resume", resumePositionMillis / 1000L).getString();
+        }
+        return Component.translatable("gui.livingword.lectern.status_ready").getString();
+    }
+
     private String modeDescription() {
         return Component.translatable(switch (playbackMode) {
             case SINGLE_CHAPTER -> "gui.livingword.disc.mode.single";
             case CONTINUE_BOOK -> "gui.livingword.disc.mode.continue";
             case LOOP_CHAPTER -> "gui.livingword.disc.mode.loop";
         }).getString();
-    }
-
-    private void drawCenteredTrimmed(GuiGraphics graphics, String text, int centerX, int y, int maxWidth, int color) {
-        String trimmed = this.font.plainSubstrByWidth(text, maxWidth);
-        drawCenteredPlain(graphics, trimmed, centerX, y, maxWidth, color);
     }
 
     private void drawCenteredPlain(GuiGraphics graphics, String text, int centerX, int y, int maxWidth, int color) {
@@ -373,15 +403,6 @@ public final class ScriptureDiscSelectionScreen extends Screen {
             lines.add(current.toString());
         }
         return List.copyOf(lines);
-    }
-
-    private static ScriptureDiscSelection currentSelection(InteractionHand hand) {
-        Minecraft minecraft = Minecraft.getInstance();
-        if (minecraft.player == null) {
-            return ScriptureDiscSelection.defaults();
-        }
-        ItemStack stack = minecraft.player.getItemInHand(hand);
-        return ScriptureDiscSelection.from(stack);
     }
 
     private static String formatBookId(String bookId) {

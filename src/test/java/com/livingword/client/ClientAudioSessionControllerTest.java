@@ -113,6 +113,30 @@ final class ClientAudioSessionControllerTest {
     }
 
     @Test
+    void delayedDownloadStartsPlaybackAtAdvancedSessionPosition() {
+        AtomicLong clock = new AtomicLong(1_000L);
+        CompletableFuture<DownloadState> download = new CompletableFuture<>();
+        FakePlaybackService playback = new FakePlaybackService();
+        ClientAudioSessionController controller = new ClientAudioSessionController(
+            ClientAudioSessionControllerTest::manifest,
+            new FakeDownloadService(download),
+            playback,
+            true,
+            false,
+            250L,
+            clock::get
+        );
+
+        CompletableFuture<DownloadState> state = controller.handleSessionSync(syncPayload(PlaybackState.PLAYING, 10_000L));
+        clock.set(3_400L);
+        download.complete(DownloadState.cached(new AudioChapterId("webp", "john", 3)));
+        state.join();
+
+        assertEquals(12_400L, playback.playedPositionMillis);
+        assertEquals(12_400L, controller.currentPositionMillis());
+    }
+
+    @Test
     void failedDownloadDoesNotStartPlayback() {
         FakeDownloadService downloader = new FakeDownloadService(DownloadState.hashMismatch(new AudioChapterId("webp", "john", 3)));
         FakePlaybackService playback = new FakePlaybackService();

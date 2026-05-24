@@ -197,11 +197,13 @@ public final class ClientAudioSessionController {
         }
 
         CompletableFuture<DownloadState> downloadFuture;
+        long downloadRequestClockMillis = clock.getAsLong();
         try {
             downloadFuture = downloadService.requestChapter(manifest, chapterId);
         } catch (RuntimeException exception) {
             return CompletableFuture.completedFuture(failed(chapterId, exception));
         }
+        boolean downloadAlreadyAvailable = downloadFuture.isDone();
 
         return downloadFuture.handle((state, exception) -> {
             if (exception != null) {
@@ -209,11 +211,14 @@ public final class ClientAudioSessionController {
             }
             if (state.status() == DownloadState.Status.CACHED) {
                 try {
+                    long playbackPositionMillis = downloadAlreadyAvailable
+                        ? positionMillis
+                        : positionMillis + Math.max(0L, clock.getAsLong() - downloadRequestClockMillis);
                     if (stopExistingBeforePlayback) {
                         playbackService.stopAll();
                     }
-                    playbackService.play(chapterId, positionMillis, spatial || sourcePosition.isPresent(), manifest.fileExtension(), sourcePosition);
-                    markPosition(positionMillis, PlaybackState.PLAYING);
+                    playbackService.play(chapterId, playbackPositionMillis, spatial || sourcePosition.isPresent(), manifest.fileExtension(), sourcePosition);
+                    markPosition(playbackPositionMillis, PlaybackState.PLAYING);
                 } catch (RuntimeException playbackException) {
                     return failed(chapterId, playbackException);
                 }

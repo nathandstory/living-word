@@ -4,12 +4,15 @@ import com.livingword.LivingWord;
 import com.livingword.discs.ScriptureDisc;
 import com.livingword.discs.ScriptureDiscEvents;
 import com.livingword.discs.ScriptureDiscSelection;
+import com.livingword.lectern.LecternEvents;
 import com.livingword.network.payload.ChapterFinishedPayload;
+import com.livingword.network.payload.ConfigureLecternStationPayload;
 import com.livingword.network.payload.ConfigureScriptureDiscPayload;
 import com.livingword.network.payload.JoinListeningSessionPayload;
 import com.livingword.network.payload.LeaveListeningSessionPayload;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
 import com.livingword.network.payload.OpenBiblePayload;
+import com.livingword.network.payload.OpenLecternStationPayload;
 import com.livingword.network.payload.PlaybackControlPayload;
 import com.livingword.network.payload.TimestampCorrectionPayload;
 import com.livingword.sync.AudioSourcePosition;
@@ -49,6 +52,9 @@ public final class LivingWordNetwork {
         var registrar = event.registrar("1").optional();
         registrar.playToClient(OpenBiblePayload.TYPE, OpenBiblePayload.STREAM_CODEC, (payload, context) -> {
             context.enqueueWork(() -> invokeClient("openBibleScreen"));
+        });
+        registrar.playToClient(OpenLecternStationPayload.TYPE, OpenLecternStationPayload.STREAM_CODEC, (payload, context) -> {
+            context.enqueueWork(() -> invokeClient("openLecternStation", OpenLecternStationPayload.class, payload));
         });
         registrar.playToClient(ListeningSessionSyncPayload.TYPE, ListeningSessionSyncPayload.STREAM_CODEC, (payload, context) -> {
             context.enqueueWork(() -> invokeClient("handleSessionSync", ListeningSessionSyncPayload.class, payload));
@@ -97,6 +103,13 @@ public final class LivingWordNetwork {
                         ));
                         player.displayClientMessage(Component.translatable("message.livingword.disc.configured"), true);
                     }
+                }
+            });
+        });
+        registrar.playToServer(ConfigureLecternStationPayload.TYPE, ConfigureLecternStationPayload.STREAM_CODEC, (payload, context) -> {
+            context.enqueueWork(() -> {
+                if (context.player() instanceof ServerPlayer player) {
+                    LecternEvents.configureStation(player, payload);
                 }
             });
         });
@@ -223,7 +236,13 @@ public final class LivingWordNetwork {
     }
 
     private static void handleChapterFinished(ServerPlayer player, ChapterFinishedPayload payload) {
-        ScriptureDiscEvents.completeJukeboxChapter(player, payload.sessionId());
+        if (!ScriptureDiscEvents.completeJukeboxChapter(player, payload.sessionId())) {
+            LecternEvents.completeLecternChapter(player, payload.sessionId());
+        }
+    }
+
+    public static java.util.Optional<ListeningSession> currentListeningSession(UUID sessionId) {
+        return LISTENING_SESSIONS.get(sessionId);
     }
 
     public static java.util.Optional<ListeningSession> stopListeningSession(UUID sessionId) {

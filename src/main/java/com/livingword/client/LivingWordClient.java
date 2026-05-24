@@ -8,18 +8,23 @@ import com.livingword.audio.AudioManifestRepository;
 import com.livingword.audio.CachedAudioDownloadService;
 import com.livingword.audio.DownloadState;
 import com.livingword.client.gui.BibleScreen;
+import com.livingword.client.gui.LecternStationScreen;
 import com.livingword.client.gui.ScriptureDiscSelectionScreen;
 import com.livingword.config.LivingWordConfig;
 import com.livingword.discs.ScriptureDiscSelection;
+import com.livingword.lectern.LecternStationAction;
 import com.livingword.network.payload.ChapterFinishedPayload;
+import com.livingword.network.payload.ConfigureLecternStationPayload;
 import com.livingword.network.payload.ConfigureScriptureDiscPayload;
 import com.livingword.network.payload.ListeningSessionSyncPayload;
+import com.livingword.network.payload.OpenLecternStationPayload;
 import com.livingword.network.payload.PlaybackControlPayload;
 import com.livingword.network.payload.TimestampCorrectionPayload;
 import com.livingword.sync.PlaybackState;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -204,6 +209,10 @@ public final class LivingWordClient {
         Minecraft.getInstance().setScreen(new ScriptureDiscSelectionScreen(hand));
     }
 
+    public static void openLecternStation(OpenLecternStationPayload payload) {
+        Minecraft.getInstance().setScreen(new LecternStationScreen(payload));
+    }
+
     public static void configureScriptureDisc(InteractionHand hand, ScriptureDiscSelection selection) {
         PacketDistributor.sendToServer(new ConfigureScriptureDiscPayload(
             hand,
@@ -213,6 +222,10 @@ public final class LivingWordClient {
             selection.audioManifestId(),
             selection.playbackMode()
         ));
+    }
+
+    public static void configureLecternStation(BlockPos sourcePos, ScriptureDiscSelection selection, LecternStationAction action) {
+        PacketDistributor.sendToServer(new ConfigureLecternStationPayload(sourcePos, selection, action));
     }
 
     public static ListeningSessionSyncPayload activeSession() {
