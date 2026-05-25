@@ -88,6 +88,9 @@ public final class BibleScreen extends Screen {
         addRenderableWidget(Button.builder(Component.translatable(searchExpanded
                 ? "gui.livingword.bible.hide_search"
                 : "gui.livingword.bible.show_search"), button -> {
+                if (!searchExpanded && highlightedView) {
+                    returnToReading();
+                }
                 searchExpanded = !searchExpanded;
                 rebuildWidgets();
             })
@@ -118,7 +121,7 @@ public final class BibleScreen extends Screen {
             .build());
 
         searchBox = new EditBox(this.font, layout.searchBox().x(), layout.searchBox().y(), layout.searchBox().width(), layout.searchBox().height(), Component.translatable("gui.livingword.bible.search"));
-        searchBox.setResponder(state::setSearchQuery);
+        searchBox.setResponder(this::handleSearchQueryChanged);
         searchBox.setHint(Component.translatable("gui.livingword.bible.search"));
         searchBox.setValue(state.searchQuery());
         addRenderableWidget(searchBox);
@@ -304,6 +307,19 @@ public final class BibleScreen extends Screen {
             setStatus(Component.translatable("message.livingword.bible.search_results", results.size()));
         }
         refreshActionLabels();
+    }
+
+    private void handleSearchQueryChanged(String query) {
+        String normalized = query == null ? "" : query;
+        boolean changed = !state.searchQuery().equals(normalized);
+        state.setSearchQuery(normalized);
+        if (changed) {
+            highlightedView = false;
+            searchResultsView = false;
+            statusLine = "";
+            verseScrollOffset = 0;
+            refreshActionLabels();
+        }
     }
 
     private static int searchResultLimit() {

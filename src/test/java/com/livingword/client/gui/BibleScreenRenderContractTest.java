@@ -137,4 +137,15 @@ final class BibleScreenRenderContractTest {
         assertTrue(source.contains("pendingSelectedVerseScroll"));
         assertTrue(source.contains("this.font == null"));
     }
+
+    @Test
+    void searchInputUsesReadingScopeInsteadOfHighlightedView() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/client/gui/BibleScreen.java"));
+
+        assertTrue(source.contains("searchBox.setResponder(this::handleSearchQueryChanged)"));
+        assertTrue(source.contains("private void handleSearchQueryChanged(String query)"));
+        assertTrue(source.contains("if (!searchExpanded && highlightedView)"));
+        assertTrue(source.contains("returnToReading();"));
+        assertFalse(source.contains("searchBox.setResponder(state::setSearchQuery)"));
+    }
 }

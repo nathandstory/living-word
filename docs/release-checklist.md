@@ -25,7 +25,7 @@ Use this before uploading Living Word to Modrinth, CurseForge, or making the rep
 - Required dependencies: NeoForge
 - Description: use the README summary and feature list
 - Changelog: use `CHANGELOG.md`
-- Gallery: include actual in-game screenshots of the Bible item, Bible GUI, Scripture Disc, lectern station, and shofar
+- Gallery: use the images in `docs/screenshots`, including the Bible item, Bible GUI, Scripture Disc, lectern station, and shofar
 
 ## CurseForge Metadata
 
@@ -38,6 +38,7 @@ Use this before uploading Living Word to Modrinth, CurseForge, or making the rep
 - Summary: Peaceful in-game Bible reading and synchronized scripture listening for NeoForge.
 - Description: use the README summary and feature list
 - Changelog: use `CHANGELOG.md`
+- Gallery: use the images in `docs/screenshots`, including the Bible item, Bible GUI, Scripture Disc, lectern station, and shofar
 - Relations: NeoForge is required
 - Mark the file as both client and server when the platform asks for supported environments
 

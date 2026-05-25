@@ -49,6 +49,16 @@ The server only synchronizes passage, playback state, timestamps, session member
 
 See [docs/audio-packs.md](docs/audio-packs.md) for provider and pack details.
 
+## Screenshots
+
+Release screenshots are collected in [docs/screenshots](docs/screenshots).
+
+![Bible UI](docs/screenshots/bible-ui.png)
+
+![Lectern read-along](docs/screenshots/read-along.png)
+
+![Scripture Disc](docs/screenshots/scripture-disc.png)
+
 ## Content And Licensing
 
 Source code is MIT licensed. Bible texts, streamed audio, generated timing data, item art, and bundled sounds have their own source notices.
