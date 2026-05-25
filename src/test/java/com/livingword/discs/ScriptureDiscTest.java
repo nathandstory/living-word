@@ -73,4 +73,14 @@ final class ScriptureDiscTest {
         assertFalse(useMethod.contains("player.isShiftKeyDown()"));
         assertFalse(useMethod.contains("startNearbyListeningSession"));
     }
+
+    @Test
+    void jukeboxPlaybackPausesOtherWorldSourceSessionsForThePlayer() throws Exception {
+        String itemSource = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDisc.java"));
+        String eventSource = Files.readString(Path.of("src/main/java/com/livingword/discs/ScriptureDiscEvents.java"));
+
+        assertTrue(itemSource.contains("LecternEvents.pauseSessionsForParticipant(serverPlayer);"));
+        assertTrue(eventSource.contains("LecternEvents.pauseSessionsForParticipant(serverPlayer);"));
+        assertTrue(eventSource.contains("pauseSessionsForParticipant(ServerPlayer player)"));
+    }
 }

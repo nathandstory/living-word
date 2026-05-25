@@ -1,6 +1,7 @@
 package com.livingword.discs;
 
 import com.livingword.network.LivingWordNetwork;
+import com.livingword.lectern.LecternEvents;
 import com.livingword.sync.ListeningSession;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -107,6 +108,8 @@ public final class ScriptureDisc extends Item {
             }
             ScriptureDiscSelection selection = ScriptureDiscSelection.from(stack);
             ScriptureDiscEvents.stopActiveJukeboxSession(level.dimension().location(), pos);
+            LecternEvents.pauseSessionsForParticipant(serverPlayer);
+            ScriptureDiscEvents.pauseSessionsForParticipant(serverPlayer);
             insertIntoJukebox(level, pos, level.getBlockState(pos), serverPlayer, stack, jukebox);
             long resumePositionMillis = ScriptureDiscEvents.resumePosition(level.dimension().location(), pos, selection);
             ListeningSession session = LivingWordNetwork.startPositionedListeningSession(

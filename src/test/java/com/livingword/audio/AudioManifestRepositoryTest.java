@@ -70,6 +70,7 @@ final class AudioManifestRepositoryTest {
         assertEquals("kjv", manifest.translationId());
         assertEquals("mp3", manifest.fileExtension());
         assertEquals("audiotreasure-kjv", manifest.pathStrategy());
+        assertTrue(manifest.verseTimings());
     }
 
     @Test
@@ -97,7 +98,9 @@ final class AudioManifestRepositoryTest {
 
         assertEquals("bsb-helloao-hays", hays.id());
         assertEquals("helloao-bsb-hays", hays.pathStrategy());
+        assertTrue(hays.verseTimings());
         assertEquals("bsb-helloao-souer", souer.id());
         assertEquals("helloao-bsb-souer", souer.pathStrategy());
+        assertTrue(souer.verseTimings());
     }
 }

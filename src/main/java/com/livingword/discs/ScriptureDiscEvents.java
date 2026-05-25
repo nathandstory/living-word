@@ -2,6 +2,7 @@ package com.livingword.discs;
 
 import com.livingword.bible.BibleDataManager;
 import com.livingword.bible.BibleResourceLoader;
+import com.livingword.lectern.LecternEvents;
 import com.livingword.network.LivingWordNetwork;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
@@ -111,6 +112,21 @@ public final class ScriptureDiscEvents {
             .orElse(false);
     }
 
+    public static void pauseSessionsForParticipant(ServerPlayer player) {
+        long now = net.minecraft.Util.getMillis();
+        UUID playerId = player.getUUID();
+        for (JukeboxListeningSessionRegistry.PlayingSessionSnapshot snapshot : JUKEBOX_SESSIONS.playingSessions()) {
+            var session = LivingWordNetwork.currentListeningSession(snapshot.sessionId());
+            if (session.isEmpty() || !session.orElseThrow().participants().contains(playerId)) {
+                continue;
+            }
+            long resumePosition = LivingWordNetwork.stopListeningSession(snapshot.sessionId())
+                .map(stopped -> stopped.positionMillisAt(now))
+                .orElseGet(() -> session.orElseThrow().positionMillisAt(now));
+            JUKEBOX_SESSIONS.pause(snapshot.dimension(), snapshot.pos(), resumePosition);
+        }
+    }
+
     private static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.getHand() != InteractionHand.MAIN_HAND || !event.getItemStack().isEmpty()) {
             return;
@@ -145,6 +161,8 @@ public final class ScriptureDiscEvents {
         }
 
         ScriptureDiscSelection selection = ScriptureDiscSelection.from(inserted);
+        LecternEvents.pauseSessionsForParticipant(serverPlayer);
+        pauseSessionsForParticipant(serverPlayer);
         long resumePositionMillis = resumePosition(dimension, pos, selection);
         var session = LivingWordNetwork.startPositionedListeningSession(
             serverPlayer,

@@ -7,6 +7,7 @@ import com.livingword.bible.ChapterData;
 import com.livingword.audio.AudioChapterId;
 import com.livingword.audio.AudioTimingRepository;
 import com.livingword.audio.VerseTimestampMap;
+import com.livingword.discs.ScriptureDiscEvents;
 import com.livingword.discs.ScriptureDiscPlaybackSequencer;
 import com.livingword.discs.ScriptureDiscSelection;
 import com.livingword.items.LivingWordItems;
@@ -141,6 +142,25 @@ public final class LecternEvents {
             .orElse(false);
     }
 
+    public static void pauseSessionsForParticipant(ServerPlayer player) {
+        long now = Util.getMillis();
+        UUID playerId = player.getUUID();
+        for (LecternListeningStationRegistry.PlayingSessionSnapshot snapshot : STATIONS.playingSessions()) {
+            Optional<ListeningSession> session = LivingWordNetwork.currentListeningSession(snapshot.sessionId());
+            if (session.isEmpty() || !session.orElseThrow().participants().contains(playerId)) {
+                continue;
+            }
+            ServerLevel level = player.server.getLevel(ResourceKey.create(Registries.DIMENSION, snapshot.dimension()));
+            if (level == null) {
+                continue;
+            }
+            long resumePosition = LivingWordNetwork.stopListeningSession(snapshot.sessionId())
+                .map(stopped -> stopped.positionMillisAt(now))
+                .orElseGet(() -> session.orElseThrow().positionMillisAt(now));
+            pauseStationDisplay(level, snapshot, resumePosition);
+        }
+    }
+
     private static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         if (event.getHand() != InteractionHand.MAIN_HAND) {
             return;
@@ -239,6 +259,8 @@ public final class LecternEvents {
             return;
         }
         stopActiveSession(level, station.sourcePos(), false);
+        pauseSessionsForParticipant(player);
+        ScriptureDiscEvents.pauseSessionsForParticipant(player);
 
         long resumePosition = savedData.get(station.sourcePos())
             .filter(existing -> existing.selection().equals(station.selection()))
@@ -324,6 +346,19 @@ public final class LecternEvents {
             STATIONS.removeSession(dimension, pos);
         }
         return resumePosition;
+    }
+
+    private static void pauseStationDisplay(ServerLevel level, LecternListeningStationRegistry.PlayingSessionSnapshot snapshot, long resumePosition) {
+        STATIONS.pause(snapshot.dimension(), snapshot.sourcePos(), resumePosition);
+        LecternStationSavedData savedData = stationData(level);
+        savedData.get(snapshot.sourcePos()).ifPresent(station -> {
+            LecternListeningStation paused = station.withSelection(snapshot.selection()).withResumePosition(resumePosition);
+            if (paused.displayEnabled()) {
+                paused = syncDisplayEntities(level, paused, resumePosition);
+            }
+            savedData.put(paused);
+            STATIONS.remember(snapshot.dimension(), paused);
+        });
     }
 
     private static void removeBibleFromLectern(ServerPlayer player, ServerLevel level, BlockPos pos, BlockState state) {

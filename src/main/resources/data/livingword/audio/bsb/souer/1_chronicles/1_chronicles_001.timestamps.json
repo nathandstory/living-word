@@ -1,0 +1,2767 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB Souer audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 288.423,
+  "matchRatio": 0.8494,
+  "verses": {
+    "1": 4.9,
+    "2": 7.4,
+    "3": 9.74,
+    "4": 12.21,
+    "5": 16.0,
+    "6": 23.32,
+    "7": 26.98,
+    "8": 32.36,
+    "9": 37.12,
+    "10": 46.26,
+    "11": 50.44,
+    "12": 55.66,
+    "13": 61.38,
+    "14": 65.66,
+    "15": 68.38,
+    "16": 71.08,
+    "17": 74.26,
+    "18": 84.22,
+    "19": 89.28,
+    "20": 96.82,
+    "21": 101.96,
+    "22": 105.26,
+    "23": 107.76,
+    "24": 111.52,
+    "25": 114.86,
+    "26": 117.66,
+    "27": 118.84,
+    "28": 121.4,
+    "29": 124.62,
+    "30": 131.68,
+    "31": 137.52,
+    "32": 140.8,
+    "33": 152.86,
+    "34": 161.74,
+    "35": 167.28,
+    "36": 172.84,
+    "37": 180.3,
+    "38": 184.64,
+    "39": 191.1,
+    "40": 197.32,
+    "41": 205.98,
+    "42": 212.8,
+    "43": 220.22,
+    "44": 229.72,
+    "45": 234.54,
+    "46": 239.32,
+    "47": 247.76,
+    "48": 252.1,
+    "49": 257.52,
+    "50": 261.78,
+    "51": 271.92,
+    "52": 278.76,
+    "53": 282.28,
+    "54": 283.18
+  },
+  "words": {
+    "1": [
+      {
+        "text": "Adam",
+        "start": 4.9,
+        "end": 5.12
+      },
+      {
+        "text": "Seth",
+        "start": 6.02,
+        "end": 6.07
+      }
+    ],
+    "2": [
+      {
+        "text": "Kenan",
+        "start": 7.4,
+        "end": 7.64
+      },
+      {
+        "text": "Mahalalel",
+        "start": 8.12,
+        "end": 8.78
+      },
+      {
+        "text": "Jared",
+        "start": 8.9,
+        "end": 9.2
+      }
+    ],
+    "3": [
+      {
+        "text": "Enoch",
+        "start": 9.74,
+        "end": 10.08
+      },
+      {
+        "text": "Methuselah",
+        "start": 10.44,
+        "end": 11.0
+      },
+      {
+        "text": "Lamech",
+        "start": 11.36,
+        "end": 11.72
+      }
+    ],
+    "4": [
+      {
+        "text": "The",
+        "start": 12.21,
+        "end": 12.54
+      },
+      {
+        "text": "sons",
+        "start": 12.54,
+        "end": 12.76
+      },
+      {
+        "text": "of",
+        "start": 12.76,
+        "end": 12.96
+      },
+      {
+        "text": "Noah",
+        "start": 12.96,
+        "end": 13.16
+      },
+      {
+        "text": "Shem",
+        "start": 13.88,
+        "end": 14.04
+      },
+      {
+        "text": "Ham",
+        "start": 14.44,
+        "end": 14.68
+      },
+      {
+        "text": "and",
+        "start": 15.0,
+        "end": 15.24
+      },
+      {
+        "text": "Japheth",
+        "start": 15.24,
+        "end": 15.7
+      }
+    ],
+    "5": [
+      {
+        "text": "The",
+        "start": 16.0,
+        "end": 16.24
+      },
+      {
+        "text": "sons",
+        "start": 16.24,
+        "end": 16.46
+      },
+      {
+        "text": "of",
+        "start": 16.46,
+        "end": 16.7
+      },
+      {
+        "text": "Japheth",
+        "start": 16.7,
+        "end": 17.34
+      },
+      {
+        "text": "Gomer",
+        "start": 17.66,
+        "end": 17.92
+      },
+      {
+        "text": "Magog",
+        "start": 18.6,
+        "end": 18.96
+      },
+      {
+        "text": "Tubal",
+        "start": 20.98,
+        "end": 21.26
+      },
+      {
+        "text": "Meshech",
+        "start": 21.72,
+        "end": 21.98
+      },
+      {
+        "text": "and",
+        "start": 22.24,
+        "end": 22.44
+      }
+    ],
+    "6": [
+      {
+        "text": "The",
+        "start": 23.32,
+        "end": 23.56
+      },
+      {
+        "text": "sons",
+        "start": 23.56,
+        "end": 23.78
+      },
+      {
+        "text": "of",
+        "start": 23.78,
+        "end": 23.98
+      },
+      {
+        "text": "Gomer",
+        "start": 23.98,
+        "end": 24.28
+      },
+      {
+        "text": "Ashkenaz",
+        "start": 24.76,
+        "end": 25.28
+      },
+      {
+        "text": "Riphath",
+        "start": 25.66,
+        "end": 26.0
+      },
+      {
+        "text": "and",
+        "start": 26.28,
+        "end": 26.44
+      },
+      {
+        "text": "Togarmah",
+        "start": 26.44,
+        "end": 26.98
+      }
+    ],
+    "7": [
+      {
+        "text": "And",
+        "start": 26.98,
+        "end": 27.5
+      },
+      {
+        "text": "the",
+        "start": 27.5,
+        "end": 27.64
+      },
+      {
+        "text": "sons",
+        "start": 27.64,
+        "end": 27.92
+      },
+      {
+        "text": "of",
+        "start": 27.92,
+        "end": 28.12
+      },
+      {
+        "text": "Elishah",
+        "start": 28.78,
+        "end": 29.3
+      },
+      {
+        "text": "Tarshish",
+        "start": 29.7,
+        "end": 30.06
+      },
+      {
+        "text": "the",
+        "start": 30.2,
+        "end": 30.4
+      },
+      {
+        "text": "Kittites",
+        "start": 30.4,
+        "end": 30.74
+      },
+      {
+        "text": "and",
+        "start": 31.0,
+        "end": 31.16
+      },
+      {
+        "text": "the",
+        "start": 31.16,
+        "end": 31.4
+      },
+      {
+        "text": "Rodanites",
+        "start": 31.4,
+        "end": 31.8
+      }
+    ],
+    "8": [
+      {
+        "text": "The",
+        "start": 32.36,
+        "end": 32.46
+      },
+      {
+        "text": "sons",
+        "start": 32.46,
+        "end": 32.66
+      },
+      {
+        "text": "of",
+        "start": 32.66,
+        "end": 32.86
+      },
+      {
+        "text": "Ham",
+        "start": 32.86,
+        "end": 33.1
+      },
+      {
+        "text": "Mizraim",
+        "start": 34.66,
+        "end": 35.18
+      },
+      {
+        "text": "Put",
+        "start": 35.54,
+        "end": 35.6
+      },
+      {
+        "text": "and",
+        "start": 36.02,
+        "end": 36.44
+      },
+      {
+        "text": "Canaan",
+        "start": 36.44,
+        "end": 36.54
+      }
+    ],
+    "9": [
+      {
+        "text": "The",
+        "start": 37.12,
+        "end": 37.34
+      },
+      {
+        "text": "sons",
+        "start": 37.34,
+        "end": 37.54
+      },
+      {
+        "text": "of",
+        "start": 37.54,
+        "end": 37.78
+      },
+      {
+        "text": "Sabta",
+        "start": 40.28,
+        "end": 40.56
+      },
+      {
+        "text": "and",
+        "start": 41.7,
+        "end": 41.98
+      },
+      {
+        "text": "The",
+        "start": 42.84,
+        "end": 43.12
+      },
+      {
+        "text": "sons",
+        "start": 43.12,
+        "end": 43.3
+      },
+      {
+        "text": "of",
+        "start": 43.3,
+        "end": 43.52
+      },
+      {
+        "text": "Sheba",
+        "start": 44.2,
+        "end": 44.54
+      },
+      {
+        "text": "and",
+        "start": 44.82,
+        "end": 45.0
+      }
+    ],
+    "10": [
+      {
+        "text": "was",
+        "start": 46.26,
+        "end": 46.54
+      },
+      {
+        "text": "the",
+        "start": 46.54,
+        "end": 46.72
+      },
+      {
+        "text": "father",
+        "start": 46.72,
+        "end": 46.92
+      },
+      {
+        "text": "of",
+        "start": 46.92,
+        "end": 47.22
+      },
+      {
+        "text": "Nimrod",
+        "start": 47.22,
+        "end": 47.56
+      },
+      {
+        "text": "who",
+        "start": 47.56,
+        "end": 47.78
+      },
+      {
+        "text": "began",
+        "start": 47.78,
+        "end": 48.12
+      },
+      {
+        "text": "to",
+        "start": 48.12,
+        "end": 48.38
+      },
+      {
+        "text": "be",
+        "start": 48.38,
+        "end": 48.5
+      },
+      {
+        "text": "a",
+        "start": 48.5,
+        "end": 48.64
+      },
+      {
+        "text": "mighty",
+        "start": 48.64,
+        "end": 48.82
+      },
+      {
+        "text": "one",
+        "start": 48.82,
+        "end": 49.1
+      },
+      {
+        "text": "on",
+        "start": 49.1,
+        "end": 49.4
+      },
+      {
+        "text": "the",
+        "start": 49.4,
+        "end": 49.54
+      },
+      {
+        "text": "earth",
+        "start": 49.54,
+        "end": 49.72
+      }
+    ],
+    "11": [
+      {
+        "text": "Mizraim",
+        "start": 50.44,
+        "end": 50.98
+      },
+      {
+        "text": "was",
+        "start": 50.98,
+        "end": 51.18
+      },
+      {
+        "text": "the",
+        "start": 51.18,
+        "end": 51.38
+      },
+      {
+        "text": "father",
+        "start": 51.38,
+        "end": 51.62
+      },
+      {
+        "text": "of",
+        "start": 51.62,
+        "end": 51.88
+      },
+      {
+        "text": "the",
+        "start": 51.88,
+        "end": 52.04
+      },
+      {
+        "text": "Ludites",
+        "start": 52.04,
+        "end": 52.42
+      },
+      {
+        "text": "the",
+        "start": 52.8,
+        "end": 52.86
+      },
+      {
+        "text": "Anamites",
+        "start": 52.86,
+        "end": 53.38
+      },
+      {
+        "text": "the",
+        "start": 53.76,
+        "end": 53.86
+      },
+      {
+        "text": "Lehabites",
+        "start": 53.86,
+        "end": 54.42
+      },
+      {
+        "text": "the",
+        "start": 54.68,
+        "end": 54.78
+      },
+      {
+        "text": "Naphtuhites",
+        "start": 54.78,
+        "end": 55.34
+      }
+    ],
+    "12": [
+      {
+        "text": "the",
+        "start": 55.66,
+        "end": 55.94
+      },
+      {
+        "text": "Pathrusites",
+        "start": 55.94,
+        "end": 56.5
+      },
+      {
+        "text": "the",
+        "start": 56.74,
+        "end": 56.86
+      },
+      {
+        "text": "from",
+        "start": 57.98,
+        "end": 58.16
+      },
+      {
+        "text": "whom",
+        "start": 58.16,
+        "end": 58.38
+      },
+      {
+        "text": "the",
+        "start": 58.38,
+        "end": 58.56
+      },
+      {
+        "text": "Philistines",
+        "start": 58.56,
+        "end": 59.0
+      },
+      {
+        "text": "came",
+        "start": 59.0,
+        "end": 59.38
+      },
+      {
+        "text": "and",
+        "start": 59.7,
+        "end": 59.9
+      },
+      {
+        "text": "the",
+        "start": 59.9,
+        "end": 60.12
+      }
+    ],
+    "13": [
+      {
+        "text": "And",
+        "start": 61.38,
+        "end": 61.62
+      },
+      {
+        "text": "Canaan",
+        "start": 61.62,
+        "end": 61.86
+      },
+      {
+        "text": "was",
+        "start": 61.86,
+        "end": 62.18
+      },
+      {
+        "text": "the",
+        "start": 62.18,
+        "end": 62.36
+      },
+      {
+        "text": "father",
+        "start": 62.36,
+        "end": 62.56
+      },
+      {
+        "text": "of",
+        "start": 62.56,
+        "end": 62.86
+      },
+      {
+        "text": "Sidon",
+        "start": 62.86,
+        "end": 63.24
+      },
+      {
+        "text": "his",
+        "start": 63.4,
+        "end": 63.56
+      },
+      {
+        "text": "firstborn",
+        "start": 63.56,
+        "end": 64.16
+      },
+      {
+        "text": "and",
+        "start": 64.5,
+        "end": 64.72
+      },
+      {
+        "text": "of",
+        "start": 64.72,
+        "end": 64.84
+      },
+      {
+        "text": "the",
+        "start": 64.84,
+        "end": 65.0
+      },
+      {
+        "text": "Hittites",
+        "start": 65.0,
+        "end": 65.4
+      }
+    ],
+    "14": [
+      {
+        "text": "the",
+        "start": 65.66,
+        "end": 65.78
+      },
+      {
+        "text": "Jebusites",
+        "start": 65.78,
+        "end": 66.34
+      },
+      {
+        "text": "the",
+        "start": 66.62,
+        "end": 66.78
+      },
+      {
+        "text": "Amorites",
+        "start": 66.78,
+        "end": 67.2
+      },
+      {
+        "text": "the",
+        "start": 67.5,
+        "end": 67.58
+      },
+      {
+        "text": "Girgashites",
+        "start": 67.58,
+        "end": 68.12
+      }
+    ],
+    "15": [
+      {
+        "text": "the",
+        "start": 68.38,
+        "end": 68.46
+      },
+      {
+        "text": "Hivites",
+        "start": 68.46,
+        "end": 68.82
+      },
+      {
+        "text": "the",
+        "start": 69.08,
+        "end": 69.14
+      },
+      {
+        "text": "the",
+        "start": 69.98,
+        "end": 70.1
+      },
+      {
+        "text": "Sinites",
+        "start": 70.1,
+        "end": 70.54
+      }
+    ],
+    "16": [
+      {
+        "text": "the",
+        "start": 71.08,
+        "end": 71.2
+      },
+      {
+        "text": "Arvadites",
+        "start": 71.2,
+        "end": 71.8
+      },
+      {
+        "text": "the",
+        "start": 72.04,
+        "end": 72.09
+      },
+      {
+        "text": "and",
+        "start": 72.78,
+        "end": 73.0
+      },
+      {
+        "text": "the",
+        "start": 73.0,
+        "end": 73.14
+      },
+      {
+        "text": "Hamathites",
+        "start": 73.14,
+        "end": 73.64
+      }
+    ],
+    "17": [
+      {
+        "text": "The",
+        "start": 74.26,
+        "end": 74.44
+      },
+      {
+        "text": "sons",
+        "start": 74.44,
+        "end": 74.64
+      },
+      {
+        "text": "of",
+        "start": 74.64,
+        "end": 74.92
+      },
+      {
+        "text": "Shem",
+        "start": 74.92,
+        "end": 75.26
+      },
+      {
+        "text": "Elam",
+        "start": 75.7,
+        "end": 75.88
+      },
+      {
+        "text": "Arphaxad",
+        "start": 77.02,
+        "end": 77.64
+      },
+      {
+        "text": "Lud",
+        "start": 78.08,
+        "end": 78.14
+      },
+      {
+        "text": "and",
+        "start": 78.5,
+        "end": 78.78
+      },
+      {
+        "text": "The",
+        "start": 79.44,
+        "end": 79.58
+      },
+      {
+        "text": "sons",
+        "start": 79.58,
+        "end": 79.76
+      },
+      {
+        "text": "of",
+        "start": 79.76,
+        "end": 79.98
+      },
+      {
+        "text": "Hul",
+        "start": 81.56,
+        "end": 81.76
+      },
+      {
+        "text": "Gether",
+        "start": 82.38,
+        "end": 82.66
+      },
+      {
+        "text": "and",
+        "start": 82.94,
+        "end": 83.18
+      },
+      {
+        "text": "Meshech",
+        "start": 83.18,
+        "end": 83.46
+      }
+    ],
+    "18": [
+      {
+        "text": "Arphaxad",
+        "start": 84.22,
+        "end": 84.86
+      },
+      {
+        "text": "was",
+        "start": 84.86,
+        "end": 85.08
+      },
+      {
+        "text": "the",
+        "start": 85.08,
+        "end": 85.26
+      },
+      {
+        "text": "father",
+        "start": 85.26,
+        "end": 85.48
+      },
+      {
+        "text": "of",
+        "start": 85.48,
+        "end": 85.82
+      },
+      {
+        "text": "Shelah",
+        "start": 85.82,
+        "end": 86.16
+      },
+      {
+        "text": "and",
+        "start": 86.62,
+        "end": 86.7
+      },
+      {
+        "text": "Shelah",
+        "start": 86.7,
+        "end": 87.02
+      },
+      {
+        "text": "was",
+        "start": 87.02,
+        "end": 87.22
+      },
+      {
+        "text": "the",
+        "start": 87.22,
+        "end": 87.4
+      },
+      {
+        "text": "father",
+        "start": 87.4,
+        "end": 87.66
+      },
+      {
+        "text": "of",
+        "start": 87.66,
+        "end": 88.02
+      },
+      {
+        "text": "Eber",
+        "start": 88.02,
+        "end": 88.24
+      }
+    ],
+    "19": [
+      {
+        "text": "Two",
+        "start": 89.28,
+        "end": 89.5
+      },
+      {
+        "text": "sons",
+        "start": 89.5,
+        "end": 89.72
+      },
+      {
+        "text": "were",
+        "start": 89.72,
+        "end": 90.08
+      },
+      {
+        "text": "born",
+        "start": 90.08,
+        "end": 90.28
+      },
+      {
+        "text": "to",
+        "start": 90.28,
+        "end": 90.48
+      },
+      {
+        "text": "Eber",
+        "start": 90.48,
+        "end": 90.78
+      },
+      {
+        "text": "One",
+        "start": 91.0,
+        "end": 91.22
+      },
+      {
+        "text": "was",
+        "start": 91.22,
+        "end": 91.5
+      },
+      {
+        "text": "named",
+        "start": 91.5,
+        "end": 91.82
+      },
+      {
+        "text": "because",
+        "start": 92.2,
+        "end": 92.58
+      },
+      {
+        "text": "in",
+        "start": 92.58,
+        "end": 92.78
+      },
+      {
+        "text": "his",
+        "start": 92.78,
+        "end": 93.02
+      },
+      {
+        "text": "days",
+        "start": 93.02,
+        "end": 93.28
+      },
+      {
+        "text": "the",
+        "start": 93.28,
+        "end": 93.54
+      },
+      {
+        "text": "earth",
+        "start": 93.54,
+        "end": 93.68
+      },
+      {
+        "text": "was",
+        "start": 93.68,
+        "end": 93.96
+      },
+      {
+        "text": "divided",
+        "start": 93.96,
+        "end": 94.36
+      },
+      {
+        "text": "and",
+        "start": 94.36,
+        "end": 94.74
+      },
+      {
+        "text": "his",
+        "start": 94.74,
+        "end": 94.94
+      },
+      {
+        "text": "brother",
+        "start": 94.94,
+        "end": 95.16
+      },
+      {
+        "text": "was",
+        "start": 95.16,
+        "end": 95.44
+      },
+      {
+        "text": "named",
+        "start": 95.44,
+        "end": 95.74
+      },
+      {
+        "text": "Joktan",
+        "start": 95.74,
+        "end": 96.14
+      }
+    ],
+    "20": [
+      {
+        "text": "And",
+        "start": 96.82,
+        "end": 97.1
+      },
+      {
+        "text": "Joktan",
+        "start": 97.1,
+        "end": 97.46
+      },
+      {
+        "text": "was",
+        "start": 97.46,
+        "end": 97.72
+      },
+      {
+        "text": "the",
+        "start": 97.72,
+        "end": 97.9
+      },
+      {
+        "text": "father",
+        "start": 97.9,
+        "end": 98.14
+      },
+      {
+        "text": "of",
+        "start": 98.14,
+        "end": 98.52
+      },
+      {
+        "text": "Almodad",
+        "start": 98.52,
+        "end": 99.06
+      },
+      {
+        "text": "Sheleph",
+        "start": 99.42,
+        "end": 99.8
+      }
+    ],
+    "21": [
+      {
+        "text": "Hadoram",
+        "start": 101.96,
+        "end": 102.44
+      },
+      {
+        "text": "Diklah",
+        "start": 103.66,
+        "end": 103.98
+      }
+    ],
+    "22": [
+      {
+        "text": "Abimael",
+        "start": 105.26,
+        "end": 105.76
+      },
+      {
+        "text": "Sheba",
+        "start": 106.16,
+        "end": 106.5
+      }
+    ],
+    "23": [
+      {
+        "text": "Havilah",
+        "start": 107.76,
+        "end": 108.08
+      },
+      {
+        "text": "and",
+        "start": 108.38,
+        "end": 108.48
+      },
+      {
+        "text": "Jobab",
+        "start": 108.48,
+        "end": 108.86
+      },
+      {
+        "text": "All",
+        "start": 109.3,
+        "end": 109.54
+      },
+      {
+        "text": "these",
+        "start": 109.54,
+        "end": 109.92
+      },
+      {
+        "text": "were",
+        "start": 109.92,
+        "end": 110.22
+      },
+      {
+        "text": "sons",
+        "start": 110.22,
+        "end": 110.44
+      },
+      {
+        "text": "of",
+        "start": 110.44,
+        "end": 110.72
+      },
+      {
+        "text": "Joktan",
+        "start": 110.72,
+        "end": 111.14
+      }
+    ],
+    "24": [
+      {
+        "text": "So",
+        "start": 111.52,
+        "end": 111.86
+      },
+      {
+        "text": "from",
+        "start": 111.86,
+        "end": 112.18
+      },
+      {
+        "text": "Shem",
+        "start": 112.18,
+        "end": 112.62
+      },
+      {
+        "text": "came",
+        "start": 112.62,
+        "end": 113.0
+      },
+      {
+        "text": "Arphaxad",
+        "start": 113.0,
+        "end": 113.88
+      },
+      {
+        "text": "Shelah",
+        "start": 114.26,
+        "end": 114.56
+      }
+    ],
+    "25": [
+      {
+        "text": "Eber",
+        "start": 114.86,
+        "end": 114.94
+      },
+      {
+        "text": "Reu",
+        "start": 116.24,
+        "end": 116.38
+      }
+    ],
+    "26": [
+      {
+        "text": "Nahor",
+        "start": 117.66,
+        "end": 117.94
+      }
+    ],
+    "27": [
+      {
+        "text": "and",
+        "start": 118.84,
+        "end": 119.04
+      },
+      {
+        "text": "Abram",
+        "start": 119.04,
+        "end": 119.4
+      },
+      {
+        "text": "that",
+        "start": 119.72,
+        "end": 119.84
+      },
+      {
+        "text": "is",
+        "start": 119.84,
+        "end": 120.1
+      },
+      {
+        "text": "Abraham",
+        "start": 120.4,
+        "end": 120.62
+      }
+    ],
+    "28": [
+      {
+        "text": "The",
+        "start": 121.4,
+        "end": 121.62
+      },
+      {
+        "text": "sons",
+        "start": 121.62,
+        "end": 121.8
+      },
+      {
+        "text": "of",
+        "start": 121.8,
+        "end": 122.02
+      },
+      {
+        "text": "Abraham",
+        "start": 122.02,
+        "end": 122.46
+      },
+      {
+        "text": "were",
+        "start": 122.46,
+        "end": 122.76
+      },
+      {
+        "text": "Isaac",
+        "start": 122.76,
+        "end": 123.24
+      },
+      {
+        "text": "and",
+        "start": 123.24,
+        "end": 123.58
+      },
+      {
+        "text": "Ishmael",
+        "start": 123.58,
+        "end": 124.14
+      }
+    ],
+    "29": [
+      {
+        "text": "These",
+        "start": 124.62,
+        "end": 124.92
+      },
+      {
+        "text": "are",
+        "start": 124.92,
+        "end": 125.12
+      },
+      {
+        "text": "their",
+        "start": 125.12,
+        "end": 125.34
+      },
+      {
+        "text": "genealogies",
+        "start": 125.34,
+        "end": 126.3
+      },
+      {
+        "text": "the",
+        "start": 127.34,
+        "end": 127.58
+      },
+      {
+        "text": "firstborn",
+        "start": 127.58,
+        "end": 128.04
+      },
+      {
+        "text": "of",
+        "start": 128.04,
+        "end": 128.18
+      },
+      {
+        "text": "Ishmael",
+        "start": 128.18,
+        "end": 128.7
+      },
+      {
+        "text": "then",
+        "start": 128.94,
+        "end": 129.1
+      },
+      {
+        "text": "Adbeel",
+        "start": 130.14,
+        "end": 130.48
+      },
+      {
+        "text": "Mibsam",
+        "start": 130.94,
+        "end": 131.26
+      }
+    ],
+    "30": [
+      {
+        "text": "Mishma",
+        "start": 131.68,
+        "end": 132.04
+      },
+      {
+        "text": "Dumah",
+        "start": 132.46,
+        "end": 132.68
+      },
+      {
+        "text": "Massa",
+        "start": 133.4,
+        "end": 133.66
+      },
+      {
+        "text": "Hadad",
+        "start": 134.32,
+        "end": 134.6
+      },
+      {
+        "text": "Tema",
+        "start": 135.02,
+        "end": 135.34
+      }
+    ],
+    "31": [
+      {
+        "text": "and",
+        "start": 137.52,
+        "end": 137.76
+      },
+      {
+        "text": "Kedemah",
+        "start": 137.76,
+        "end": 138.22
+      },
+      {
+        "text": "These",
+        "start": 138.76,
+        "end": 139.18
+      },
+      {
+        "text": "were",
+        "start": 139.18,
+        "end": 139.36
+      },
+      {
+        "text": "the",
+        "start": 139.36,
+        "end": 139.52
+      },
+      {
+        "text": "sons",
+        "start": 139.52,
+        "end": 139.7
+      },
+      {
+        "text": "of",
+        "start": 139.7,
+        "end": 139.92
+      },
+      {
+        "text": "Ishmael",
+        "start": 139.92,
+        "end": 140.38
+      }
+    ],
+    "32": [
+      {
+        "text": "The",
+        "start": 140.8,
+        "end": 141.14
+      },
+      {
+        "text": "sons",
+        "start": 141.14,
+        "end": 141.4
+      },
+      {
+        "text": "born",
+        "start": 141.4,
+        "end": 141.76
+      },
+      {
+        "text": "to",
+        "start": 141.76,
+        "end": 142.08
+      },
+      {
+        "text": "Abraham",
+        "start": 142.94,
+        "end": 143.48
+      },
+      {
+        "text": "concubine",
+        "start": 143.48,
+        "end": 144.02
+      },
+      {
+        "text": "Zimran",
+        "start": 144.68,
+        "end": 144.94
+      },
+      {
+        "text": "Jokshan",
+        "start": 145.58,
+        "end": 145.98
+      },
+      {
+        "text": "Medan",
+        "start": 146.42,
+        "end": 146.64
+      },
+      {
+        "text": "Midian",
+        "start": 147.02,
+        "end": 147.36
+      },
+      {
+        "text": "Ishbak",
+        "start": 147.74,
+        "end": 148.06
+      },
+      {
+        "text": "and",
+        "start": 148.4,
+        "end": 148.56
+      },
+      {
+        "text": "Shuah",
+        "start": 148.56,
+        "end": 148.88
+      },
+      {
+        "text": "The",
+        "start": 149.52,
+        "end": 149.8
+      },
+      {
+        "text": "sons",
+        "start": 149.8,
+        "end": 150.0
+      },
+      {
+        "text": "of",
+        "start": 150.0,
+        "end": 150.22
+      },
+      {
+        "text": "Jokshan",
+        "start": 150.22,
+        "end": 150.72
+      },
+      {
+        "text": "Sheba",
+        "start": 151.38,
+        "end": 151.6
+      },
+      {
+        "text": "and",
+        "start": 151.88,
+        "end": 152.12
+      },
+      {
+        "text": "Dedan",
+        "start": 152.12,
+        "end": 152.3
+      }
+    ],
+    "33": [
+      {
+        "text": "The",
+        "start": 152.86,
+        "end": 152.98
+      },
+      {
+        "text": "sons",
+        "start": 152.98,
+        "end": 153.16
+      },
+      {
+        "text": "of",
+        "start": 153.16,
+        "end": 153.38
+      },
+      {
+        "text": "Midian",
+        "start": 153.38,
+        "end": 153.72
+      },
+      {
+        "text": "Ephah",
+        "start": 154.36,
+        "end": 154.7
+      },
+      {
+        "text": "Abida",
+        "start": 156.58,
+        "end": 156.92
+      },
+      {
+        "text": "and",
+        "start": 157.32,
+        "end": 157.58
+      },
+      {
+        "text": "All",
+        "start": 158.7,
+        "end": 158.98
+      },
+      {
+        "text": "of",
+        "start": 158.98,
+        "end": 159.12
+      },
+      {
+        "text": "these",
+        "start": 159.12,
+        "end": 159.42
+      },
+      {
+        "text": "were",
+        "start": 159.42,
+        "end": 159.7
+      },
+      {
+        "text": "sons",
+        "start": 160.5,
+        "end": 160.8
+      }
+    ],
+    "34": [
+      {
+        "text": "Abraham",
+        "start": 161.74,
+        "end": 162.26
+      },
+      {
+        "text": "was",
+        "start": 162.26,
+        "end": 162.62
+      },
+      {
+        "text": "the",
+        "start": 162.62,
+        "end": 162.82
+      },
+      {
+        "text": "father",
+        "start": 162.82,
+        "end": 163.0
+      },
+      {
+        "text": "of",
+        "start": 163.0,
+        "end": 163.28
+      },
+      {
+        "text": "Isaac",
+        "start": 163.28,
+        "end": 163.7
+      },
+      {
+        "text": "The",
+        "start": 164.06,
+        "end": 164.2
+      },
+      {
+        "text": "sons",
+        "start": 164.2,
+        "end": 164.38
+      },
+      {
+        "text": "of",
+        "start": 164.38,
+        "end": 164.58
+      },
+      {
+        "text": "Isaac",
+        "start": 164.58,
+        "end": 164.96
+      },
+      {
+        "text": "Esau",
+        "start": 165.26,
+        "end": 165.56
+      },
+      {
+        "text": "and",
+        "start": 165.82,
+        "end": 166.02
+      },
+      {
+        "text": "Israel",
+        "start": 166.02,
+        "end": 166.5
+      }
+    ],
+    "35": [
+      {
+        "text": "The",
+        "start": 167.28,
+        "end": 167.6
+      },
+      {
+        "text": "sons",
+        "start": 167.6,
+        "end": 167.84
+      },
+      {
+        "text": "of",
+        "start": 167.84,
+        "end": 168.02
+      },
+      {
+        "text": "Esau",
+        "start": 168.02,
+        "end": 168.5
+      },
+      {
+        "text": "Eliphaz",
+        "start": 168.92,
+        "end": 169.46
+      },
+      {
+        "text": "Reuel",
+        "start": 169.86,
+        "end": 170.04
+      },
+      {
+        "text": "and",
+        "start": 171.96,
+        "end": 172.24
+      },
+      {
+        "text": "Korah",
+        "start": 172.24,
+        "end": 172.58
+      }
+    ],
+    "36": [
+      {
+        "text": "The",
+        "start": 172.84,
+        "end": 173.16
+      },
+      {
+        "text": "sons",
+        "start": 173.16,
+        "end": 173.36
+      },
+      {
+        "text": "of",
+        "start": 173.36,
+        "end": 173.56
+      },
+      {
+        "text": "Eliphaz",
+        "start": 173.56,
+        "end": 174.16
+      },
+      {
+        "text": "Zepho",
+        "start": 175.86,
+        "end": 176.26
+      },
+      {
+        "text": "and",
+        "start": 178.22,
+        "end": 178.44
+      },
+      {
+        "text": "by",
+        "start": 178.44,
+        "end": 178.62
+      },
+      {
+        "text": "Timna",
+        "start": 178.62,
+        "end": 179.06
+      },
+      {
+        "text": "Amalek",
+        "start": 179.36,
+        "end": 179.68
+      }
+    ],
+    "37": [
+      {
+        "text": "The",
+        "start": 180.3,
+        "end": 180.58
+      },
+      {
+        "text": "sons",
+        "start": 180.58,
+        "end": 180.78
+      },
+      {
+        "text": "of",
+        "start": 180.78,
+        "end": 181.0
+      },
+      {
+        "text": "Reuel",
+        "start": 181.0,
+        "end": 181.3
+      },
+      {
+        "text": "Nahath",
+        "start": 181.76,
+        "end": 182.1
+      },
+      {
+        "text": "Shammah",
+        "start": 183.28,
+        "end": 183.4
+      },
+      {
+        "text": "and",
+        "start": 183.68,
+        "end": 183.96
+      },
+      {
+        "text": "Mizzah",
+        "start": 183.96,
+        "end": 184.3
+      }
+    ],
+    "38": [
+      {
+        "text": "The",
+        "start": 184.64,
+        "end": 184.82
+      },
+      {
+        "text": "sons",
+        "start": 184.82,
+        "end": 185.02
+      },
+      {
+        "text": "of",
+        "start": 185.02,
+        "end": 185.28
+      },
+      {
+        "text": "Lotan",
+        "start": 186.02,
+        "end": 186.42
+      },
+      {
+        "text": "Shobal",
+        "start": 186.92,
+        "end": 187.18
+      },
+      {
+        "text": "Dishon",
+        "start": 189.18,
+        "end": 189.54
+      },
+      {
+        "text": "Ezer",
+        "start": 190.0,
+        "end": 190.18
+      },
+      {
+        "text": "and",
+        "start": 190.54,
+        "end": 190.76
+      },
+      {
+        "text": "Dishan",
+        "start": 190.76,
+        "end": 191.1
+      }
+    ],
+    "39": [
+      {
+        "text": "The",
+        "start": 191.1,
+        "end": 191.9
+      },
+      {
+        "text": "sons",
+        "start": 191.9,
+        "end": 192.12
+      },
+      {
+        "text": "of",
+        "start": 192.12,
+        "end": 192.32
+      },
+      {
+        "text": "Lotan",
+        "start": 192.32,
+        "end": 192.86
+      },
+      {
+        "text": "Hori",
+        "start": 193.3,
+        "end": 193.68
+      },
+      {
+        "text": "and",
+        "start": 193.92,
+        "end": 194.08
+      },
+      {
+        "text": "Timna",
+        "start": 194.88,
+        "end": 195.26
+      },
+      {
+        "text": "was",
+        "start": 195.26,
+        "end": 195.54
+      },
+      {
+        "text": "Lotan",
+        "start": 195.54,
+        "end": 196.14
+      },
+      {
+        "text": "sister",
+        "start": 196.14,
+        "end": 196.5
+      }
+    ],
+    "40": [
+      {
+        "text": "The",
+        "start": 197.32,
+        "end": 197.37
+      },
+      {
+        "text": "sons",
+        "start": 197.36,
+        "end": 197.58
+      },
+      {
+        "text": "of",
+        "start": 197.58,
+        "end": 197.82
+      },
+      {
+        "text": "Shobal",
+        "start": 197.82,
+        "end": 198.2
+      },
+      {
+        "text": "Manahath",
+        "start": 199.5,
+        "end": 199.9
+      },
+      {
+        "text": "and",
+        "start": 201.5,
+        "end": 201.86
+      },
+      {
+        "text": "The",
+        "start": 202.68,
+        "end": 202.94
+      },
+      {
+        "text": "sons",
+        "start": 202.94,
+        "end": 203.16
+      },
+      {
+        "text": "of",
+        "start": 203.16,
+        "end": 203.4
+      },
+      {
+        "text": "and",
+        "start": 204.7,
+        "end": 205.04
+      }
+    ],
+    "41": [
+      {
+        "text": "The",
+        "start": 205.98,
+        "end": 206.2
+      },
+      {
+        "text": "sons",
+        "start": 206.2,
+        "end": 206.4
+      },
+      {
+        "text": "of",
+        "start": 206.4,
+        "end": 206.6
+      },
+      {
+        "text": "Dishon",
+        "start": 207.3,
+        "end": 207.56
+      },
+      {
+        "text": "Hemdan",
+        "start": 209.52,
+        "end": 209.88
+      },
+      {
+        "text": "Eshban",
+        "start": 210.2,
+        "end": 210.56
+      },
+      {
+        "text": "Ithran",
+        "start": 211.02,
+        "end": 211.36
+      },
+      {
+        "text": "and",
+        "start": 211.68,
+        "end": 212.0
+      }
+    ],
+    "42": [
+      {
+        "text": "The",
+        "start": 212.8,
+        "end": 213.16
+      },
+      {
+        "text": "sons",
+        "start": 213.16,
+        "end": 213.36
+      },
+      {
+        "text": "of",
+        "start": 213.36,
+        "end": 213.64
+      },
+      {
+        "text": "Ezer",
+        "start": 213.64,
+        "end": 213.96
+      },
+      {
+        "text": "Bilhan",
+        "start": 214.34,
+        "end": 214.68
+      },
+      {
+        "text": "and",
+        "start": 215.82,
+        "end": 216.04
+      },
+      {
+        "text": "The",
+        "start": 217.14,
+        "end": 217.36
+      },
+      {
+        "text": "sons",
+        "start": 217.36,
+        "end": 217.54
+      },
+      {
+        "text": "of",
+        "start": 217.54,
+        "end": 217.76
+      },
+      {
+        "text": "Dishan",
+        "start": 217.76,
+        "end": 218.2
+      },
+      {
+        "text": "and",
+        "start": 219.1,
+        "end": 219.44
+      }
+    ],
+    "43": [
+      {
+        "text": "These",
+        "start": 220.22,
+        "end": 220.7
+      },
+      {
+        "text": "are",
+        "start": 220.7,
+        "end": 220.98
+      },
+      {
+        "text": "the",
+        "start": 220.98,
+        "end": 221.14
+      },
+      {
+        "text": "kings",
+        "start": 221.14,
+        "end": 221.36
+      },
+      {
+        "text": "who",
+        "start": 221.36,
+        "end": 221.68
+      },
+      {
+        "text": "reigned",
+        "start": 221.68,
+        "end": 222.04
+      },
+      {
+        "text": "in",
+        "start": 222.04,
+        "end": 222.2
+      },
+      {
+        "text": "the",
+        "start": 222.2,
+        "end": 222.28
+      },
+      {
+        "text": "land",
+        "start": 222.28,
+        "end": 222.5
+      },
+      {
+        "text": "of",
+        "start": 222.5,
+        "end": 222.7
+      },
+      {
+        "text": "Edom",
+        "start": 222.7,
+        "end": 223.08
+      },
+      {
+        "text": "before",
+        "start": 223.08,
+        "end": 223.42
+      },
+      {
+        "text": "any",
+        "start": 223.42,
+        "end": 223.74
+      },
+      {
+        "text": "king",
+        "start": 223.74,
+        "end": 224.04
+      },
+      {
+        "text": "reigned",
+        "start": 224.04,
+        "end": 224.44
+      },
+      {
+        "text": "over",
+        "start": 224.44,
+        "end": 224.66
+      },
+      {
+        "text": "the",
+        "start": 224.66,
+        "end": 224.82
+      },
+      {
+        "text": "Israelites",
+        "start": 224.82,
+        "end": 225.56
+      },
+      {
+        "text": "son",
+        "start": 226.46,
+        "end": 226.54
+      },
+      {
+        "text": "of",
+        "start": 226.54,
+        "end": 226.8
+      },
+      {
+        "text": "Beor",
+        "start": 226.8,
+        "end": 227.04
+      },
+      {
+        "text": "His",
+        "start": 227.4,
+        "end": 227.52
+      },
+      {
+        "text": "city",
+        "start": 227.52,
+        "end": 227.74
+      },
+      {
+        "text": "was",
+        "start": 227.74,
+        "end": 227.98
+      },
+      {
+        "text": "named",
+        "start": 227.98,
+        "end": 228.4
+      },
+      {
+        "text": "Dinhabah",
+        "start": 228.4,
+        "end": 229.08
+      }
+    ],
+    "44": [
+      {
+        "text": "When",
+        "start": 229.72,
+        "end": 229.9
+      },
+      {
+        "text": "died",
+        "start": 230.24,
+        "end": 230.54
+      },
+      {
+        "text": "Jobab",
+        "start": 230.76,
+        "end": 231.04
+      },
+      {
+        "text": "son",
+        "start": 231.24,
+        "end": 231.34
+      },
+      {
+        "text": "of",
+        "start": 231.34,
+        "end": 231.54
+      },
+      {
+        "text": "from",
+        "start": 232.04,
+        "end": 232.16
+      },
+      {
+        "text": "reigned",
+        "start": 232.86,
+        "end": 233.0
+      },
+      {
+        "text": "in",
+        "start": 233.0,
+        "end": 233.16
+      },
+      {
+        "text": "his",
+        "start": 233.16,
+        "end": 233.32
+      },
+      {
+        "text": "place",
+        "start": 233.32,
+        "end": 233.66
+      }
+    ],
+    "45": [
+      {
+        "text": "When",
+        "start": 234.54,
+        "end": 234.68
+      },
+      {
+        "text": "Jobab",
+        "start": 234.68,
+        "end": 235.12
+      },
+      {
+        "text": "died",
+        "start": 235.12,
+        "end": 235.44
+      },
+      {
+        "text": "Husham",
+        "start": 235.86,
+        "end": 236.08
+      },
+      {
+        "text": "from",
+        "start": 236.32,
+        "end": 236.44
+      },
+      {
+        "text": "the",
+        "start": 236.44,
+        "end": 236.6
+      },
+      {
+        "text": "land",
+        "start": 236.6,
+        "end": 236.82
+      },
+      {
+        "text": "of",
+        "start": 236.82,
+        "end": 236.98
+      },
+      {
+        "text": "the",
+        "start": 236.98,
+        "end": 237.12
+      },
+      {
+        "text": "reigned",
+        "start": 237.9,
+        "end": 238.06
+      },
+      {
+        "text": "in",
+        "start": 238.06,
+        "end": 238.22
+      },
+      {
+        "text": "his",
+        "start": 238.22,
+        "end": 238.4
+      },
+      {
+        "text": "place",
+        "start": 238.4,
+        "end": 238.72
+      }
+    ],
+    "46": [
+      {
+        "text": "When",
+        "start": 239.32,
+        "end": 239.48
+      },
+      {
+        "text": "Husham",
+        "start": 239.48,
+        "end": 239.86
+      },
+      {
+        "text": "died",
+        "start": 239.86,
+        "end": 240.18
+      },
+      {
+        "text": "Hadad",
+        "start": 240.44,
+        "end": 240.7
+      },
+      {
+        "text": "son",
+        "start": 240.94,
+        "end": 241.02
+      },
+      {
+        "text": "of",
+        "start": 241.02,
+        "end": 241.26
+      },
+      {
+        "text": "Bedad",
+        "start": 241.26,
+        "end": 241.58
+      },
+      {
+        "text": "who",
+        "start": 241.74,
+        "end": 241.84
+      },
+      {
+        "text": "defeated",
+        "start": 241.84,
+        "end": 242.2
+      },
+      {
+        "text": "Midian",
+        "start": 242.2,
+        "end": 242.66
+      },
+      {
+        "text": "in",
+        "start": 242.66,
+        "end": 242.88
+      },
+      {
+        "text": "the",
+        "start": 242.88,
+        "end": 243.0
+      },
+      {
+        "text": "country",
+        "start": 243.0,
+        "end": 243.32
+      },
+      {
+        "text": "of",
+        "start": 243.32,
+        "end": 243.52
+      },
+      {
+        "text": "Moab",
+        "start": 243.52,
+        "end": 243.88
+      },
+      {
+        "text": "reigned",
+        "start": 244.16,
+        "end": 244.28
+      },
+      {
+        "text": "in",
+        "start": 244.28,
+        "end": 244.42
+      },
+      {
+        "text": "his",
+        "start": 244.42,
+        "end": 244.62
+      },
+      {
+        "text": "place",
+        "start": 244.62,
+        "end": 244.96
+      },
+      {
+        "text": "And",
+        "start": 245.42,
+        "end": 245.6
+      },
+      {
+        "text": "the",
+        "start": 245.6,
+        "end": 245.7
+      },
+      {
+        "text": "name",
+        "start": 245.7,
+        "end": 245.84
+      },
+      {
+        "text": "of",
+        "start": 245.84,
+        "end": 246.0
+      },
+      {
+        "text": "his",
+        "start": 246.0,
+        "end": 246.18
+      },
+      {
+        "text": "city",
+        "start": 246.18,
+        "end": 246.46
+      },
+      {
+        "text": "was",
+        "start": 246.46,
+        "end": 246.72
+      },
+      {
+        "text": "Avith",
+        "start": 246.72,
+        "end": 247.2
+      }
+    ],
+    "47": [
+      {
+        "text": "When",
+        "start": 247.76,
+        "end": 248.08
+      },
+      {
+        "text": "Hadad",
+        "start": 248.08,
+        "end": 248.48
+      },
+      {
+        "text": "died",
+        "start": 248.48,
+        "end": 248.78
+      },
+      {
+        "text": "Samlah",
+        "start": 248.98,
+        "end": 249.34
+      },
+      {
+        "text": "from",
+        "start": 249.56,
+        "end": 249.61
+      },
+      {
+        "text": "reigned",
+        "start": 250.44,
+        "end": 250.6
+      },
+      {
+        "text": "in",
+        "start": 250.6,
+        "end": 250.8
+      },
+      {
+        "text": "his",
+        "start": 250.8,
+        "end": 250.96
+      },
+      {
+        "text": "place",
+        "start": 250.96,
+        "end": 251.3
+      }
+    ],
+    "48": [
+      {
+        "text": "When",
+        "start": 252.1,
+        "end": 252.26
+      },
+      {
+        "text": "Samlah",
+        "start": 252.26,
+        "end": 252.72
+      },
+      {
+        "text": "died",
+        "start": 252.72,
+        "end": 253.04
+      },
+      {
+        "text": "Shaul",
+        "start": 253.3,
+        "end": 253.46
+      },
+      {
+        "text": "from",
+        "start": 253.84,
+        "end": 253.9
+      },
+      {
+        "text": "Rehoboth",
+        "start": 253.9,
+        "end": 254.74
+      },
+      {
+        "text": "on",
+        "start": 254.88,
+        "end": 254.96
+      },
+      {
+        "text": "the",
+        "start": 254.96,
+        "end": 255.1
+      },
+      {
+        "text": "Euphrates",
+        "start": 255.1,
+        "end": 255.5
+      },
+      {
+        "text": "reigned",
+        "start": 255.86,
+        "end": 256.08
+      },
+      {
+        "text": "in",
+        "start": 256.08,
+        "end": 256.24
+      },
+      {
+        "text": "his",
+        "start": 256.24,
+        "end": 256.42
+      },
+      {
+        "text": "place",
+        "start": 256.42,
+        "end": 256.7
+      }
+    ],
+    "49": [
+      {
+        "text": "When",
+        "start": 257.52,
+        "end": 257.76
+      },
+      {
+        "text": "Shaul",
+        "start": 257.76,
+        "end": 258.1
+      },
+      {
+        "text": "died",
+        "start": 258.1,
+        "end": 258.42
+      },
+      {
+        "text": "son",
+        "start": 259.54,
+        "end": 259.62
+      },
+      {
+        "text": "of",
+        "start": 259.62,
+        "end": 259.82
+      },
+      {
+        "text": "reigned",
+        "start": 260.38,
+        "end": 260.56
+      },
+      {
+        "text": "in",
+        "start": 260.56,
+        "end": 260.72
+      },
+      {
+        "text": "his",
+        "start": 260.72,
+        "end": 260.88
+      },
+      {
+        "text": "place",
+        "start": 260.88,
+        "end": 261.18
+      }
+    ],
+    "50": [
+      {
+        "text": "When",
+        "start": 261.78,
+        "end": 261.94
+      },
+      {
+        "text": "died",
+        "start": 262.6,
+        "end": 262.92
+      },
+      {
+        "text": "Hadad",
+        "start": 263.36,
+        "end": 263.58
+      },
+      {
+        "text": "reigned",
+        "start": 263.58,
+        "end": 263.94
+      },
+      {
+        "text": "in",
+        "start": 263.94,
+        "end": 264.1
+      },
+      {
+        "text": "his",
+        "start": 264.1,
+        "end": 264.3
+      },
+      {
+        "text": "place",
+        "start": 264.3,
+        "end": 264.64
+      },
+      {
+        "text": "His",
+        "start": 265.04,
+        "end": 265.24
+      },
+      {
+        "text": "city",
+        "start": 265.24,
+        "end": 265.48
+      },
+      {
+        "text": "was",
+        "start": 265.48,
+        "end": 265.7
+      },
+      {
+        "text": "named",
+        "start": 265.7,
+        "end": 266.04
+      },
+      {
+        "text": "Pau",
+        "start": 266.04,
+        "end": 266.26
+      },
+      {
+        "text": "and",
+        "start": 266.82,
+        "end": 266.88
+      },
+      {
+        "text": "his",
+        "start": 266.88,
+        "end": 267.02
+      },
+      {
+        "text": "name",
+        "start": 267.4,
+        "end": 267.56
+      },
+      {
+        "text": "was",
+        "start": 267.56,
+        "end": 267.84
+      },
+      {
+        "text": "Mehetabel",
+        "start": 267.84,
+        "end": 268.32
+      },
+      {
+        "text": "daughter",
+        "start": 268.62,
+        "end": 268.76
+      },
+      {
+        "text": "of",
+        "start": 268.76,
+        "end": 269.02
+      },
+      {
+        "text": "Matred",
+        "start": 269.02,
+        "end": 269.4
+      },
+      {
+        "text": "the",
+        "start": 269.64,
+        "end": 269.74
+      },
+      {
+        "text": "daughter",
+        "start": 269.74,
+        "end": 269.98
+      },
+      {
+        "text": "of",
+        "start": 269.98,
+        "end": 270.38
+      },
+      {
+        "text": "zahab",
+        "start": 270.38,
+        "end": 270.88
+      }
+    ],
+    "51": [
+      {
+        "text": "Then",
+        "start": 271.92,
+        "end": 272.3
+      },
+      {
+        "text": "Hadad",
+        "start": 272.3,
+        "end": 272.82
+      },
+      {
+        "text": "died",
+        "start": 272.82,
+        "end": 273.12
+      },
+      {
+        "text": "Now",
+        "start": 273.12,
+        "end": 273.84
+      },
+      {
+        "text": "the",
+        "start": 273.84,
+        "end": 274.06
+      },
+      {
+        "text": "chiefs",
+        "start": 274.06,
+        "end": 274.28
+      },
+      {
+        "text": "of",
+        "start": 274.28,
+        "end": 274.54
+      },
+      {
+        "text": "Edom",
+        "start": 274.54,
+        "end": 274.74
+      },
+      {
+        "text": "were",
+        "start": 274.74,
+        "end": 275.06
+      },
+      {
+        "text": "Timna",
+        "start": 275.06,
+        "end": 275.62
+      },
+      {
+        "text": "Alvah",
+        "start": 276.1,
+        "end": 276.3
+      },
+      {
+        "text": "Jetheth",
+        "start": 276.84,
+        "end": 277.14
+      }
+    ],
+    "52": [
+      {
+        "text": "Elah",
+        "start": 278.76,
+        "end": 279.14
+      }
+    ],
+    "53": [
+      {
+        "text": "Mibzar",
+        "start": 282.28,
+        "end": 282.6
+      }
+    ],
+    "54": [
+      {
+        "text": "Magdiel",
+        "start": 283.18,
+        "end": 283.54
+      },
+      {
+        "text": "and",
+        "start": 283.86,
+        "end": 284.04
+      },
+      {
+        "text": "These",
+        "start": 284.78,
+        "end": 285.1
+      },
+      {
+        "text": "were",
+        "start": 285.1,
+        "end": 285.3
+      },
+      {
+        "text": "the",
+        "start": 285.3,
+        "end": 285.48
+      },
+      {
+        "text": "chiefs",
+        "start": 285.48,
+        "end": 285.66
+      },
+      {
+        "text": "of",
+        "start": 285.66,
+        "end": 285.98
+      },
+      {
+        "text": "Edom",
+        "start": 285.98,
+        "end": 286.3
+      }
+    ]
+  }
+}

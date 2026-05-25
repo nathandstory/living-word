@@ -1,0 +1,3725 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB Hays audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 355.002,
+  "matchRatio": 0.9179,
+  "verses": {
+    "1": 4.6,
+    "2": 13.24,
+    "3": 25.8,
+    "4": 35.38,
+    "5": 48.56,
+    "6": 58.28,
+    "7": 70.02,
+    "8": 77.8,
+    "9": 87.14,
+    "10": 92.1,
+    "11": 100.42,
+    "12": 111.04,
+    "13": 118.56,
+    "14": 129.68,
+    "15": 131.7,
+    "16": 135.34,
+    "17": 141.82,
+    "18": 146.64,
+    "19": 152.0,
+    "20": 159.8,
+    "21": 166.4,
+    "22": 174.14,
+    "23": 179.62,
+    "24": 184.98,
+    "25": 189.82,
+    "26": 198.67,
+    "27": 206.09,
+    "28": 222.71,
+    "29": 227.37,
+    "30": 232.81,
+    "31": 236.97,
+    "32": 242.49,
+    "33": 255.55,
+    "34": 262.39,
+    "35": 272.13,
+    "36": 277.21,
+    "37": 281.65,
+    "38": 287.11,
+    "39": 295.27,
+    "40": 301.03,
+    "41": 308.11,
+    "42": 317.29,
+    "43": 324.35,
+    "44": 332.81,
+    "45": 345.97
+  },
+  "words": {
+    "1": [
+      {
+        "text": "Now",
+        "start": 4.6,
+        "end": 4.65
+      },
+      {
+        "text": "the",
+        "start": 4.64,
+        "end": 4.84
+      },
+      {
+        "text": "family",
+        "start": 4.84,
+        "end": 5.22
+      },
+      {
+        "text": "heads",
+        "start": 5.22,
+        "end": 5.6
+      },
+      {
+        "text": "of",
+        "start": 5.6,
+        "end": 5.84
+      },
+      {
+        "text": "the",
+        "start": 5.84,
+        "end": 6.0
+      },
+      {
+        "text": "Levites",
+        "start": 6.0,
+        "end": 6.52
+      },
+      {
+        "text": "approached",
+        "start": 6.52,
+        "end": 7.14
+      },
+      {
+        "text": "the",
+        "start": 7.86,
+        "end": 8.12
+      },
+      {
+        "text": "priest",
+        "start": 8.12,
+        "end": 8.54
+      },
+      {
+        "text": "Joshua",
+        "start": 9.1,
+        "end": 9.5
+      },
+      {
+        "text": "son",
+        "start": 9.5,
+        "end": 9.88
+      },
+      {
+        "text": "of",
+        "start": 9.88,
+        "end": 10.08
+      },
+      {
+        "text": "Nun",
+        "start": 10.08,
+        "end": 10.34
+      },
+      {
+        "text": "and",
+        "start": 10.86,
+        "end": 11.02
+      },
+      {
+        "text": "the",
+        "start": 11.02,
+        "end": 11.16
+      },
+      {
+        "text": "heads",
+        "start": 11.16,
+        "end": 11.42
+      },
+      {
+        "text": "of",
+        "start": 11.42,
+        "end": 11.72
+      },
+      {
+        "text": "the",
+        "start": 11.72,
+        "end": 11.86
+      },
+      {
+        "text": "other",
+        "start": 11.86,
+        "end": 12.16
+      },
+      {
+        "text": "tribes",
+        "start": 12.16,
+        "end": 12.48
+      },
+      {
+        "text": "of",
+        "start": 12.48,
+        "end": 12.76
+      },
+      {
+        "text": "Israel",
+        "start": 12.76,
+        "end": 13.24
+      }
+    ],
+    "2": [
+      {
+        "text": "at",
+        "start": 13.24,
+        "end": 13.8
+      },
+      {
+        "text": "Shiloh",
+        "start": 13.8,
+        "end": 14.34
+      },
+      {
+        "text": "in",
+        "start": 14.34,
+        "end": 14.78
+      },
+      {
+        "text": "the",
+        "start": 14.78,
+        "end": 14.9
+      },
+      {
+        "text": "land",
+        "start": 14.9,
+        "end": 15.12
+      },
+      {
+        "text": "of",
+        "start": 15.12,
+        "end": 15.36
+      },
+      {
+        "text": "Canaan",
+        "start": 15.36,
+        "end": 15.62
+      },
+      {
+        "text": "and",
+        "start": 16.14,
+        "end": 16.36
+      },
+      {
+        "text": "said",
+        "start": 16.36,
+        "end": 16.58
+      },
+      {
+        "text": "to",
+        "start": 16.58,
+        "end": 16.74
+      },
+      {
+        "text": "them",
+        "start": 16.74,
+        "end": 17.02
+      },
+      {
+        "text": "The",
+        "start": 17.6,
+        "end": 17.68
+      },
+      {
+        "text": "LORD",
+        "start": 17.68,
+        "end": 17.9
+      },
+      {
+        "text": "commanded",
+        "start": 17.9,
+        "end": 18.32
+      },
+      {
+        "text": "through",
+        "start": 18.32,
+        "end": 18.84
+      },
+      {
+        "text": "Moses",
+        "start": 18.84,
+        "end": 19.28
+      },
+      {
+        "text": "that",
+        "start": 19.28,
+        "end": 19.84
+      },
+      {
+        "text": "we",
+        "start": 19.84,
+        "end": 20.1
+      },
+      {
+        "text": "be",
+        "start": 20.1,
+        "end": 20.28
+      },
+      {
+        "text": "given",
+        "start": 20.28,
+        "end": 20.56
+      },
+      {
+        "text": "cities",
+        "start": 20.56,
+        "end": 20.94
+      },
+      {
+        "text": "in",
+        "start": 20.94,
+        "end": 21.36
+      },
+      {
+        "text": "which",
+        "start": 21.36,
+        "end": 21.54
+      },
+      {
+        "text": "to",
+        "start": 21.54,
+        "end": 21.8
+      },
+      {
+        "text": "live",
+        "start": 21.8,
+        "end": 22.18
+      },
+      {
+        "text": "together",
+        "start": 22.18,
+        "end": 22.78
+      },
+      {
+        "text": "with",
+        "start": 22.78,
+        "end": 23.18
+      },
+      {
+        "text": "for",
+        "start": 24.0,
+        "end": 24.28
+      },
+      {
+        "text": "our",
+        "start": 24.28,
+        "end": 24.52
+      },
+      {
+        "text": "livestock",
+        "start": 24.52,
+        "end": 25.08
+      }
+    ],
+    "3": [
+      {
+        "text": "So",
+        "start": 25.8,
+        "end": 26.32
+      },
+      {
+        "text": "by",
+        "start": 26.32,
+        "end": 26.54
+      },
+      {
+        "text": "the",
+        "start": 26.54,
+        "end": 26.72
+      },
+      {
+        "text": "command",
+        "start": 26.72,
+        "end": 27.02
+      },
+      {
+        "text": "of",
+        "start": 27.02,
+        "end": 27.42
+      },
+      {
+        "text": "the",
+        "start": 27.42,
+        "end": 27.58
+      },
+      {
+        "text": "LORD",
+        "start": 27.58,
+        "end": 27.88
+      },
+      {
+        "text": "the",
+        "start": 27.88,
+        "end": 28.38
+      },
+      {
+        "text": "Israelites",
+        "start": 28.38,
+        "end": 29.14
+      },
+      {
+        "text": "gave",
+        "start": 29.14,
+        "end": 29.42
+      },
+      {
+        "text": "the",
+        "start": 29.42,
+        "end": 29.66
+      },
+      {
+        "text": "Levites",
+        "start": 29.66,
+        "end": 30.14
+      },
+      {
+        "text": "these",
+        "start": 30.14,
+        "end": 30.48
+      },
+      {
+        "text": "cities",
+        "start": 30.48,
+        "end": 30.84
+      },
+      {
+        "text": "and",
+        "start": 30.84,
+        "end": 31.46
+      },
+      {
+        "text": "their",
+        "start": 31.46,
+        "end": 31.66
+      },
+      {
+        "text": "out",
+        "start": 32.58,
+        "end": 33.06
+      },
+      {
+        "text": "of",
+        "start": 33.06,
+        "end": 33.24
+      },
+      {
+        "text": "their",
+        "start": 33.24,
+        "end": 33.38
+      },
+      {
+        "text": "own",
+        "start": 33.38,
+        "end": 33.74
+      },
+      {
+        "text": "inheritance",
+        "start": 33.74,
+        "end": 34.28
+      }
+    ],
+    "4": [
+      {
+        "text": "The",
+        "start": 35.38,
+        "end": 35.52
+      },
+      {
+        "text": "first",
+        "start": 35.52,
+        "end": 35.86
+      },
+      {
+        "text": "lot",
+        "start": 35.86,
+        "end": 36.16
+      },
+      {
+        "text": "came",
+        "start": 36.16,
+        "end": 36.52
+      },
+      {
+        "text": "out",
+        "start": 36.52,
+        "end": 36.78
+      },
+      {
+        "text": "for",
+        "start": 36.78,
+        "end": 37.0
+      },
+      {
+        "text": "the",
+        "start": 37.0,
+        "end": 37.3
+      },
+      {
+        "text": "Kohathite",
+        "start": 37.3,
+        "end": 37.78
+      },
+      {
+        "text": "clans",
+        "start": 37.78,
+        "end": 38.18
+      },
+      {
+        "text": "The",
+        "start": 38.94,
+        "end": 39.04
+      },
+      {
+        "text": "Levites",
+        "start": 39.04,
+        "end": 39.52
+      },
+      {
+        "text": "who",
+        "start": 39.52,
+        "end": 39.76
+      },
+      {
+        "text": "were",
+        "start": 39.76,
+        "end": 39.92
+      },
+      {
+        "text": "descendants",
+        "start": 39.92,
+        "end": 40.32
+      },
+      {
+        "text": "of",
+        "start": 40.32,
+        "end": 40.84
+      },
+      {
+        "text": "Aaron",
+        "start": 40.84,
+        "end": 41.04
+      },
+      {
+        "text": "the",
+        "start": 41.04,
+        "end": 41.26
+      },
+      {
+        "text": "priest",
+        "start": 41.26,
+        "end": 41.62
+      },
+      {
+        "text": "received",
+        "start": 41.62,
+        "end": 42.48
+      },
+      {
+        "text": "thirteen",
+        "start": 42.48,
+        "end": 43.06
+      },
+      {
+        "text": "cities",
+        "start": 43.06,
+        "end": 43.54
+      },
+      {
+        "text": "by",
+        "start": 43.54,
+        "end": 43.96
+      },
+      {
+        "text": "lot",
+        "start": 43.96,
+        "end": 44.26
+      },
+      {
+        "text": "from",
+        "start": 44.26,
+        "end": 44.9
+      },
+      {
+        "text": "the",
+        "start": 44.9,
+        "end": 45.08
+      },
+      {
+        "text": "tribes",
+        "start": 45.08,
+        "end": 45.34
+      },
+      {
+        "text": "of",
+        "start": 45.34,
+        "end": 45.74
+      },
+      {
+        "text": "Judah",
+        "start": 45.74,
+        "end": 46.2
+      },
+      {
+        "text": "Simeon",
+        "start": 46.62,
+        "end": 47.0
+      },
+      {
+        "text": "and",
+        "start": 47.2,
+        "end": 47.36
+      },
+      {
+        "text": "Benjamin",
+        "start": 47.36,
+        "end": 47.74
+      }
+    ],
+    "5": [
+      {
+        "text": "The",
+        "start": 48.56,
+        "end": 48.82
+      },
+      {
+        "text": "remaining",
+        "start": 48.82,
+        "end": 49.2
+      },
+      {
+        "text": "descendants",
+        "start": 49.2,
+        "end": 49.66
+      },
+      {
+        "text": "of",
+        "start": 49.66,
+        "end": 50.18
+      },
+      {
+        "text": "Kohath",
+        "start": 50.18,
+        "end": 50.56
+      },
+      {
+        "text": "received",
+        "start": 50.56,
+        "end": 51.34
+      },
+      {
+        "text": "ten",
+        "start": 51.34,
+        "end": 51.72
+      },
+      {
+        "text": "cities",
+        "start": 51.72,
+        "end": 52.14
+      },
+      {
+        "text": "by",
+        "start": 52.14,
+        "end": 52.5
+      },
+      {
+        "text": "lot",
+        "start": 52.5,
+        "end": 52.78
+      },
+      {
+        "text": "from",
+        "start": 52.78,
+        "end": 53.32
+      },
+      {
+        "text": "the",
+        "start": 53.32,
+        "end": 53.48
+      },
+      {
+        "text": "tribes",
+        "start": 53.48,
+        "end": 53.84
+      },
+      {
+        "text": "of",
+        "start": 53.84,
+        "end": 54.24
+      },
+      {
+        "text": "Ephraim",
+        "start": 54.24,
+        "end": 54.82
+      },
+      {
+        "text": "Dan",
+        "start": 54.82,
+        "end": 55.34
+      },
+      {
+        "text": "and",
+        "start": 55.9,
+        "end": 56.0
+      },
+      {
+        "text": "the",
+        "start": 56.0,
+        "end": 56.18
+      },
+      {
+        "text": "half",
+        "start": 56.18,
+        "end": 56.42
+      },
+      {
+        "text": "tribe",
+        "start": 56.42,
+        "end": 56.84
+      },
+      {
+        "text": "of",
+        "start": 56.84,
+        "end": 57.14
+      },
+      {
+        "text": "Manasseh",
+        "start": 57.14,
+        "end": 58.1
+      }
+    ],
+    "6": [
+      {
+        "text": "The",
+        "start": 58.28,
+        "end": 58.88
+      },
+      {
+        "text": "descendants",
+        "start": 58.88,
+        "end": 59.22
+      },
+      {
+        "text": "of",
+        "start": 59.22,
+        "end": 59.6
+      },
+      {
+        "text": "Gershon",
+        "start": 59.6,
+        "end": 60.08
+      },
+      {
+        "text": "received",
+        "start": 60.08,
+        "end": 60.92
+      },
+      {
+        "text": "thirteen",
+        "start": 60.92,
+        "end": 61.52
+      },
+      {
+        "text": "cities",
+        "start": 61.52,
+        "end": 62.02
+      },
+      {
+        "text": "by",
+        "start": 62.02,
+        "end": 62.38
+      },
+      {
+        "text": "lot",
+        "start": 62.38,
+        "end": 62.66
+      },
+      {
+        "text": "from",
+        "start": 62.66,
+        "end": 63.28
+      },
+      {
+        "text": "the",
+        "start": 63.28,
+        "end": 63.44
+      },
+      {
+        "text": "tribes",
+        "start": 63.44,
+        "end": 63.7
+      },
+      {
+        "text": "of",
+        "start": 63.7,
+        "end": 64.1
+      },
+      {
+        "text": "Issachar",
+        "start": 64.1,
+        "end": 64.7
+      },
+      {
+        "text": "Asher",
+        "start": 65.12,
+        "end": 65.44
+      },
+      {
+        "text": "Naphtali",
+        "start": 66.0,
+        "end": 66.4
+      },
+      {
+        "text": "and",
+        "start": 66.92,
+        "end": 67.14
+      },
+      {
+        "text": "the",
+        "start": 67.14,
+        "end": 67.26
+      },
+      {
+        "text": "half",
+        "start": 67.26,
+        "end": 67.52
+      },
+      {
+        "text": "tribe",
+        "start": 67.52,
+        "end": 67.82
+      },
+      {
+        "text": "of",
+        "start": 67.82,
+        "end": 68.04
+      },
+      {
+        "text": "Manasseh",
+        "start": 68.04,
+        "end": 68.76
+      },
+      {
+        "text": "in",
+        "start": 68.76,
+        "end": 69.02
+      }
+    ],
+    "7": [
+      {
+        "text": "And",
+        "start": 70.02,
+        "end": 70.48
+      },
+      {
+        "text": "the",
+        "start": 70.48,
+        "end": 70.64
+      },
+      {
+        "text": "descendants",
+        "start": 70.64,
+        "end": 71.0
+      },
+      {
+        "text": "of",
+        "start": 71.0,
+        "end": 71.4
+      },
+      {
+        "text": "received",
+        "start": 72.02,
+        "end": 72.82
+      },
+      {
+        "text": "twelve",
+        "start": 72.82,
+        "end": 73.24
+      },
+      {
+        "text": "cities",
+        "start": 73.24,
+        "end": 73.68
+      },
+      {
+        "text": "from",
+        "start": 73.68,
+        "end": 74.06
+      },
+      {
+        "text": "the",
+        "start": 74.06,
+        "end": 74.18
+      },
+      {
+        "text": "tribes",
+        "start": 74.18,
+        "end": 74.5
+      },
+      {
+        "text": "of",
+        "start": 74.5,
+        "end": 74.88
+      },
+      {
+        "text": "Reuben",
+        "start": 74.88,
+        "end": 75.3
+      },
+      {
+        "text": "Gad",
+        "start": 75.96,
+        "end": 76.01
+      },
+      {
+        "text": "and",
+        "start": 76.26,
+        "end": 76.42
+      },
+      {
+        "text": "Zebulun",
+        "start": 76.42,
+        "end": 76.96
+      }
+    ],
+    "8": [
+      {
+        "text": "So",
+        "start": 77.8,
+        "end": 78.18
+      },
+      {
+        "text": "the",
+        "start": 78.18,
+        "end": 78.36
+      },
+      {
+        "text": "Israelites",
+        "start": 78.36,
+        "end": 79.12
+      },
+      {
+        "text": "allotted",
+        "start": 79.12,
+        "end": 79.52
+      },
+      {
+        "text": "to",
+        "start": 79.52,
+        "end": 79.88
+      },
+      {
+        "text": "the",
+        "start": 79.88,
+        "end": 80.1
+      },
+      {
+        "text": "Levites",
+        "start": 80.1,
+        "end": 80.52
+      },
+      {
+        "text": "these",
+        "start": 80.52,
+        "end": 80.84
+      },
+      {
+        "text": "cities",
+        "start": 80.84,
+        "end": 81.28
+      },
+      {
+        "text": "together",
+        "start": 81.28,
+        "end": 82.0
+      },
+      {
+        "text": "with",
+        "start": 82.0,
+        "end": 84.8
+      },
+      {
+        "text": "their",
+        "start": 84.8,
+        "end": 84.85
+      },
+      {
+        "text": "through",
+        "start": 85.36,
+        "end": 85.46
+      },
+      {
+        "text": "Moses",
+        "start": 85.46,
+        "end": 85.94
+      }
+    ],
+    "9": [
+      {
+        "text": "From",
+        "start": 87.14,
+        "end": 87.26
+      },
+      {
+        "text": "the",
+        "start": 87.26,
+        "end": 87.42
+      },
+      {
+        "text": "tribes",
+        "start": 87.42,
+        "end": 87.66
+      },
+      {
+        "text": "of",
+        "start": 87.66,
+        "end": 88.0
+      },
+      {
+        "text": "Judah",
+        "start": 88.0,
+        "end": 88.36
+      },
+      {
+        "text": "and",
+        "start": 88.36,
+        "end": 88.76
+      },
+      {
+        "text": "Simeon",
+        "start": 88.76,
+        "end": 89.34
+      },
+      {
+        "text": "they",
+        "start": 89.34,
+        "end": 89.82
+      },
+      {
+        "text": "designated",
+        "start": 89.82,
+        "end": 90.42
+      },
+      {
+        "text": "these",
+        "start": 90.42,
+        "end": 90.98
+      },
+      {
+        "text": "cities",
+        "start": 90.98,
+        "end": 91.32
+      },
+      {
+        "text": "by",
+        "start": 91.32,
+        "end": 91.72
+      },
+      {
+        "text": "name",
+        "start": 91.72,
+        "end": 92.1
+      }
+    ],
+    "10": [
+      {
+        "text": "to",
+        "start": 92.1,
+        "end": 92.66
+      },
+      {
+        "text": "the",
+        "start": 92.66,
+        "end": 92.82
+      },
+      {
+        "text": "descendants",
+        "start": 92.82,
+        "end": 93.18
+      },
+      {
+        "text": "of",
+        "start": 93.18,
+        "end": 93.62
+      },
+      {
+        "text": "Aaron",
+        "start": 93.62,
+        "end": 93.9
+      },
+      {
+        "text": "from",
+        "start": 93.9,
+        "end": 94.52
+      },
+      {
+        "text": "the",
+        "start": 94.52,
+        "end": 94.76
+      },
+      {
+        "text": "Kohathite",
+        "start": 94.76,
+        "end": 95.34
+      },
+      {
+        "text": "clans",
+        "start": 95.34,
+        "end": 95.66
+      },
+      {
+        "text": "of",
+        "start": 95.66,
+        "end": 95.92
+      },
+      {
+        "text": "the",
+        "start": 95.92,
+        "end": 96.08
+      },
+      {
+        "text": "Levites",
+        "start": 96.08,
+        "end": 96.62
+      },
+      {
+        "text": "because",
+        "start": 96.62,
+        "end": 97.34
+      },
+      {
+        "text": "the",
+        "start": 97.34,
+        "end": 97.68
+      },
+      {
+        "text": "first",
+        "start": 97.68,
+        "end": 97.96
+      },
+      {
+        "text": "lot",
+        "start": 97.96,
+        "end": 98.34
+      },
+      {
+        "text": "fell",
+        "start": 98.34,
+        "end": 98.72
+      },
+      {
+        "text": "to",
+        "start": 98.72,
+        "end": 98.98
+      },
+      {
+        "text": "them",
+        "start": 98.98,
+        "end": 99.38
+      }
+    ],
+    "11": [
+      {
+        "text": "They",
+        "start": 100.42,
+        "end": 100.52
+      },
+      {
+        "text": "gave",
+        "start": 100.52,
+        "end": 100.74
+      },
+      {
+        "text": "them",
+        "start": 100.74,
+        "end": 101.04
+      },
+      {
+        "text": "Kiriath",
+        "start": 101.04,
+        "end": 101.6
+      },
+      {
+        "text": "arba",
+        "start": 101.6,
+        "end": 102.04
+      },
+      {
+        "text": "that",
+        "start": 102.36,
+        "end": 102.56
+      },
+      {
+        "text": "is",
+        "start": 102.56,
+        "end": 102.78
+      },
+      {
+        "text": "with",
+        "start": 103.64,
+        "end": 103.86
+      },
+      {
+        "text": "its",
+        "start": 103.86,
+        "end": 104.06
+      },
+      {
+        "text": "surrounding",
+        "start": 104.06,
+        "end": 104.58
+      },
+      {
+        "text": "in",
+        "start": 105.54,
+        "end": 106.02
+      },
+      {
+        "text": "the",
+        "start": 106.02,
+        "end": 106.14
+      },
+      {
+        "text": "hill",
+        "start": 106.14,
+        "end": 106.38
+      },
+      {
+        "text": "country",
+        "start": 106.38,
+        "end": 106.7
+      },
+      {
+        "text": "of",
+        "start": 106.7,
+        "end": 107.04
+      },
+      {
+        "text": "Judah",
+        "start": 107.04,
+        "end": 107.46
+      },
+      {
+        "text": "Arba",
+        "start": 108.24,
+        "end": 108.64
+      },
+      {
+        "text": "was",
+        "start": 108.64,
+        "end": 108.92
+      },
+      {
+        "text": "the",
+        "start": 108.92,
+        "end": 109.14
+      },
+      {
+        "text": "father",
+        "start": 109.14,
+        "end": 109.36
+      },
+      {
+        "text": "of",
+        "start": 109.36,
+        "end": 109.72
+      },
+      {
+        "text": "Anak",
+        "start": 109.72,
+        "end": 110.24
+      }
+    ],
+    "12": [
+      {
+        "text": "But",
+        "start": 111.04,
+        "end": 111.3
+      },
+      {
+        "text": "they",
+        "start": 111.3,
+        "end": 111.46
+      },
+      {
+        "text": "had",
+        "start": 111.46,
+        "end": 111.66
+      },
+      {
+        "text": "given",
+        "start": 111.66,
+        "end": 111.96
+      },
+      {
+        "text": "the",
+        "start": 111.96,
+        "end": 112.22
+      },
+      {
+        "text": "fields",
+        "start": 112.22,
+        "end": 112.58
+      },
+      {
+        "text": "and",
+        "start": 112.58,
+        "end": 112.9
+      },
+      {
+        "text": "villages",
+        "start": 112.9,
+        "end": 113.32
+      },
+      {
+        "text": "around",
+        "start": 113.32,
+        "end": 113.92
+      },
+      {
+        "text": "the",
+        "start": 113.92,
+        "end": 114.2
+      },
+      {
+        "text": "city",
+        "start": 114.2,
+        "end": 114.46
+      },
+      {
+        "text": "to",
+        "start": 114.46,
+        "end": 114.92
+      },
+      {
+        "text": "Caleb",
+        "start": 114.92,
+        "end": 115.32
+      },
+      {
+        "text": "son",
+        "start": 115.5,
+        "end": 115.66
+      },
+      {
+        "text": "of",
+        "start": 115.66,
+        "end": 115.86
+      },
+      {
+        "text": "as",
+        "start": 116.32,
+        "end": 116.72
+      },
+      {
+        "text": "his",
+        "start": 116.72,
+        "end": 117.0
+      },
+      {
+        "text": "possession",
+        "start": 117.0,
+        "end": 117.52
+      }
+    ],
+    "13": [
+      {
+        "text": "So",
+        "start": 118.56,
+        "end": 118.98
+      },
+      {
+        "text": "to",
+        "start": 118.98,
+        "end": 119.2
+      },
+      {
+        "text": "the",
+        "start": 119.2,
+        "end": 119.38
+      },
+      {
+        "text": "descendants",
+        "start": 119.38,
+        "end": 119.76
+      },
+      {
+        "text": "of",
+        "start": 119.76,
+        "end": 120.26
+      },
+      {
+        "text": "Aaron",
+        "start": 120.26,
+        "end": 120.54
+      },
+      {
+        "text": "the",
+        "start": 120.54,
+        "end": 120.78
+      },
+      {
+        "text": "priest",
+        "start": 120.78,
+        "end": 121.12
+      },
+      {
+        "text": "they",
+        "start": 121.12,
+        "end": 121.56
+      },
+      {
+        "text": "gave",
+        "start": 121.56,
+        "end": 121.82
+      },
+      {
+        "text": "these",
+        "start": 121.82,
+        "end": 122.24
+      },
+      {
+        "text": "cities",
+        "start": 122.24,
+        "end": 122.64
+      },
+      {
+        "text": "together",
+        "start": 122.64,
+        "end": 123.28
+      },
+      {
+        "text": "with",
+        "start": 123.28,
+        "end": 123.6
+      },
+      {
+        "text": "their",
+        "start": 123.6,
+        "end": 123.76
+      },
+      {
+        "text": "a",
+        "start": 126.02,
+        "end": 126.1
+      },
+      {
+        "text": "city",
+        "start": 126.1,
+        "end": 126.3
+      },
+      {
+        "text": "of",
+        "start": 126.3,
+        "end": 126.54
+      },
+      {
+        "text": "refuge",
+        "start": 126.54,
+        "end": 126.9
+      },
+      {
+        "text": "for",
+        "start": 126.9,
+        "end": 127.26
+      },
+      {
+        "text": "the",
+        "start": 127.26,
+        "end": 127.4
+      },
+      {
+        "text": "Libnah",
+        "start": 128.78,
+        "end": 129.1
+      }
+    ],
+    "14": [
+      {
+        "text": "Jattir",
+        "start": 129.68,
+        "end": 129.8
+      },
+      {
+        "text": "Eshtemoa",
+        "start": 130.5,
+        "end": 131.06
+      }
+    ],
+    "15": [
+      {
+        "text": "Holon",
+        "start": 131.7,
+        "end": 132.04
+      }
+    ],
+    "16": [
+      {
+        "text": "and",
+        "start": 135.34,
+        "end": 135.44
+      },
+      {
+        "text": "Beth",
+        "start": 135.44,
+        "end": 135.66
+      },
+      {
+        "text": "shemesh",
+        "start": 135.66,
+        "end": 136.2
+      },
+      {
+        "text": "nine",
+        "start": 136.94,
+        "end": 137.16
+      },
+      {
+        "text": "cities",
+        "start": 137.16,
+        "end": 137.58
+      },
+      {
+        "text": "from",
+        "start": 137.58,
+        "end": 138.1
+      },
+      {
+        "text": "these",
+        "start": 138.1,
+        "end": 138.36
+      },
+      {
+        "text": "two",
+        "start": 138.36,
+        "end": 138.64
+      },
+      {
+        "text": "tribes",
+        "start": 138.64,
+        "end": 139.16
+      },
+      {
+        "text": "together",
+        "start": 139.16,
+        "end": 139.86
+      },
+      {
+        "text": "with",
+        "start": 139.86,
+        "end": 140.2
+      },
+      {
+        "text": "their",
+        "start": 140.2,
+        "end": 140.42
+      }
+    ],
+    "17": [
+      {
+        "text": "And",
+        "start": 141.82,
+        "end": 142.34
+      },
+      {
+        "text": "from",
+        "start": 142.34,
+        "end": 142.56
+      },
+      {
+        "text": "the",
+        "start": 142.56,
+        "end": 142.72
+      },
+      {
+        "text": "tribe",
+        "start": 142.72,
+        "end": 142.98
+      },
+      {
+        "text": "of",
+        "start": 142.98,
+        "end": 143.18
+      },
+      {
+        "text": "Benjamin",
+        "start": 143.18,
+        "end": 143.62
+      },
+      {
+        "text": "they",
+        "start": 143.62,
+        "end": 144.16
+      },
+      {
+        "text": "gave",
+        "start": 144.16,
+        "end": 144.36
+      },
+      {
+        "text": "them",
+        "start": 144.36,
+        "end": 144.7
+      },
+      {
+        "text": "Gibeon",
+        "start": 144.7,
+        "end": 145.32
+      },
+      {
+        "text": "Geba",
+        "start": 145.8,
+        "end": 146.12
+      }
+    ],
+    "18": [
+      {
+        "text": "Anathoth",
+        "start": 146.64,
+        "end": 147.06
+      },
+      {
+        "text": "and",
+        "start": 147.42,
+        "end": 147.74
+      },
+      {
+        "text": "Almon",
+        "start": 147.74,
+        "end": 148.06
+      },
+      {
+        "text": "four",
+        "start": 148.66,
+        "end": 148.86
+      },
+      {
+        "text": "cities",
+        "start": 148.86,
+        "end": 149.32
+      },
+      {
+        "text": "together",
+        "start": 149.32,
+        "end": 149.92
+      },
+      {
+        "text": "with",
+        "start": 149.92,
+        "end": 150.28
+      },
+      {
+        "text": "their",
+        "start": 150.28,
+        "end": 150.48
+      }
+    ],
+    "19": [
+      {
+        "text": "In",
+        "start": 152.0,
+        "end": 152.34
+      },
+      {
+        "text": "all",
+        "start": 152.34,
+        "end": 152.74
+      },
+      {
+        "text": "thirteen",
+        "start": 153.16,
+        "end": 153.52
+      },
+      {
+        "text": "cities",
+        "start": 153.52,
+        "end": 154.04
+      },
+      {
+        "text": "together",
+        "start": 154.04,
+        "end": 154.62
+      },
+      {
+        "text": "with",
+        "start": 154.62,
+        "end": 154.9
+      },
+      {
+        "text": "their",
+        "start": 154.9,
+        "end": 155.06
+      },
+      {
+        "text": "were",
+        "start": 155.84,
+        "end": 156.32
+      },
+      {
+        "text": "given",
+        "start": 156.32,
+        "end": 156.56
+      },
+      {
+        "text": "to",
+        "start": 156.56,
+        "end": 156.86
+      },
+      {
+        "text": "the",
+        "start": 156.86,
+        "end": 157.04
+      },
+      {
+        "text": "priests",
+        "start": 157.04,
+        "end": 157.44
+      },
+      {
+        "text": "the",
+        "start": 157.44,
+        "end": 157.96
+      },
+      {
+        "text": "descendants",
+        "start": 157.96,
+        "end": 158.28
+      },
+      {
+        "text": "of",
+        "start": 158.28,
+        "end": 158.7
+      },
+      {
+        "text": "Aaron",
+        "start": 158.7,
+        "end": 158.92
+      }
+    ],
+    "20": [
+      {
+        "text": "The",
+        "start": 159.8,
+        "end": 160.08
+      },
+      {
+        "text": "remaining",
+        "start": 160.08,
+        "end": 160.48
+      },
+      {
+        "text": "Kohathite",
+        "start": 160.48,
+        "end": 161.3
+      },
+      {
+        "text": "clans",
+        "start": 161.3,
+        "end": 161.6
+      },
+      {
+        "text": "of",
+        "start": 161.6,
+        "end": 161.9
+      },
+      {
+        "text": "the",
+        "start": 161.9,
+        "end": 162.06
+      },
+      {
+        "text": "Levites",
+        "start": 162.06,
+        "end": 162.54
+      },
+      {
+        "text": "were",
+        "start": 162.54,
+        "end": 162.82
+      },
+      {
+        "text": "allotted",
+        "start": 162.82,
+        "end": 163.18
+      },
+      {
+        "text": "these",
+        "start": 163.18,
+        "end": 163.64
+      },
+      {
+        "text": "cities",
+        "start": 163.64,
+        "end": 164.08
+      },
+      {
+        "text": "From",
+        "start": 165.02,
+        "end": 165.22
+      },
+      {
+        "text": "the",
+        "start": 165.22,
+        "end": 165.38
+      },
+      {
+        "text": "tribe",
+        "start": 165.38,
+        "end": 165.62
+      },
+      {
+        "text": "of",
+        "start": 165.62,
+        "end": 165.8
+      },
+      {
+        "text": "Ephraim",
+        "start": 165.8,
+        "end": 166.4
+      }
+    ],
+    "21": [
+      {
+        "text": "they",
+        "start": 166.4,
+        "end": 166.84
+      },
+      {
+        "text": "were",
+        "start": 166.84,
+        "end": 167.04
+      },
+      {
+        "text": "given",
+        "start": 167.04,
+        "end": 167.36
+      },
+      {
+        "text": "Shechem",
+        "start": 167.36,
+        "end": 167.96
+      },
+      {
+        "text": "in",
+        "start": 167.96,
+        "end": 168.26
+      },
+      {
+        "text": "the",
+        "start": 168.26,
+        "end": 168.36
+      },
+      {
+        "text": "hill",
+        "start": 168.36,
+        "end": 168.56
+      },
+      {
+        "text": "country",
+        "start": 168.56,
+        "end": 168.9
+      },
+      {
+        "text": "of",
+        "start": 168.9,
+        "end": 169.12
+      },
+      {
+        "text": "Ephraim",
+        "start": 169.12,
+        "end": 169.74
+      },
+      {
+        "text": "a",
+        "start": 170.16,
+        "end": 170.21
+      },
+      {
+        "text": "city",
+        "start": 170.18,
+        "end": 170.44
+      },
+      {
+        "text": "of",
+        "start": 170.44,
+        "end": 170.84
+      },
+      {
+        "text": "refuge",
+        "start": 170.84,
+        "end": 171.24
+      },
+      {
+        "text": "for",
+        "start": 171.24,
+        "end": 171.68
+      },
+      {
+        "text": "the",
+        "start": 171.68,
+        "end": 171.8
+      },
+      {
+        "text": "Gezer",
+        "start": 173.46,
+        "end": 173.74
+      }
+    ],
+    "22": [
+      {
+        "text": "Kibzaim",
+        "start": 174.14,
+        "end": 174.62
+      },
+      {
+        "text": "and",
+        "start": 174.88,
+        "end": 175.04
+      },
+      {
+        "text": "four",
+        "start": 176.28,
+        "end": 176.46
+      },
+      {
+        "text": "cities",
+        "start": 176.46,
+        "end": 176.92
+      },
+      {
+        "text": "together",
+        "start": 176.92,
+        "end": 177.48
+      },
+      {
+        "text": "with",
+        "start": 177.48,
+        "end": 177.82
+      },
+      {
+        "text": "their",
+        "start": 177.82,
+        "end": 178.02
+      }
+    ],
+    "23": [
+      {
+        "text": "From",
+        "start": 179.62,
+        "end": 179.96
+      },
+      {
+        "text": "the",
+        "start": 179.96,
+        "end": 180.12
+      },
+      {
+        "text": "tribe",
+        "start": 180.12,
+        "end": 180.36
+      },
+      {
+        "text": "of",
+        "start": 180.36,
+        "end": 180.64
+      },
+      {
+        "text": "Dan",
+        "start": 180.64,
+        "end": 180.92
+      },
+      {
+        "text": "they",
+        "start": 180.92,
+        "end": 181.4
+      },
+      {
+        "text": "were",
+        "start": 181.4,
+        "end": 181.58
+      },
+      {
+        "text": "given",
+        "start": 181.58,
+        "end": 181.88
+      },
+      {
+        "text": "Gibbethon",
+        "start": 183.08,
+        "end": 183.52
+      }
+    ],
+    "24": [
+      {
+        "text": "and",
+        "start": 184.98,
+        "end": 185.32
+      },
+      {
+        "text": "four",
+        "start": 186.52,
+        "end": 186.72
+      },
+      {
+        "text": "cities",
+        "start": 186.72,
+        "end": 187.22
+      },
+      {
+        "text": "together",
+        "start": 187.22,
+        "end": 187.82
+      },
+      {
+        "text": "with",
+        "start": 187.82,
+        "end": 188.14
+      },
+      {
+        "text": "their",
+        "start": 188.14,
+        "end": 188.3
+      }
+    ],
+    "25": [
+      {
+        "text": "And",
+        "start": 189.82,
+        "end": 190.18
+      },
+      {
+        "text": "from",
+        "start": 190.18,
+        "end": 190.36
+      },
+      {
+        "text": "the",
+        "start": 190.36,
+        "end": 190.56
+      },
+      {
+        "text": "half",
+        "start": 190.56,
+        "end": 190.78
+      },
+      {
+        "text": "tribe",
+        "start": 190.78,
+        "end": 191.1
+      },
+      {
+        "text": "of",
+        "start": 191.1,
+        "end": 191.45
+      },
+      {
+        "text": "Manasseh",
+        "start": 191.45,
+        "end": 192.13
+      },
+      {
+        "text": "they",
+        "start": 192.13,
+        "end": 192.43
+      },
+      {
+        "text": "were",
+        "start": 192.43,
+        "end": 192.63
+      },
+      {
+        "text": "given",
+        "start": 192.63,
+        "end": 192.93
+      },
+      {
+        "text": "and",
+        "start": 193.69,
+        "end": 194.21
+      },
+      {
+        "text": "two",
+        "start": 195.59,
+        "end": 195.75
+      },
+      {
+        "text": "cities",
+        "start": 195.75,
+        "end": 196.13
+      },
+      {
+        "text": "together",
+        "start": 196.13,
+        "end": 196.79
+      },
+      {
+        "text": "with",
+        "start": 196.79,
+        "end": 197.09
+      },
+      {
+        "text": "their",
+        "start": 197.09,
+        "end": 197.27
+      }
+    ],
+    "26": [
+      {
+        "text": "In",
+        "start": 198.67,
+        "end": 199.07
+      },
+      {
+        "text": "all",
+        "start": 199.07,
+        "end": 199.41
+      },
+      {
+        "text": "ten",
+        "start": 199.71,
+        "end": 200.01
+      },
+      {
+        "text": "cities",
+        "start": 200.01,
+        "end": 200.47
+      },
+      {
+        "text": "together",
+        "start": 200.47,
+        "end": 200.95
+      },
+      {
+        "text": "with",
+        "start": 200.95,
+        "end": 201.25
+      },
+      {
+        "text": "their",
+        "start": 201.25,
+        "end": 201.41
+      },
+      {
+        "text": "were",
+        "start": 202.23,
+        "end": 202.71
+      },
+      {
+        "text": "given",
+        "start": 202.71,
+        "end": 202.99
+      },
+      {
+        "text": "to",
+        "start": 202.99,
+        "end": 203.21
+      },
+      {
+        "text": "the",
+        "start": 203.21,
+        "end": 203.35
+      },
+      {
+        "text": "rest",
+        "start": 203.35,
+        "end": 203.61
+      },
+      {
+        "text": "of",
+        "start": 203.61,
+        "end": 203.89
+      },
+      {
+        "text": "the",
+        "start": 203.89,
+        "end": 204.09
+      },
+      {
+        "text": "Kohathite",
+        "start": 204.09,
+        "end": 204.57
+      },
+      {
+        "text": "clans",
+        "start": 204.57,
+        "end": 204.95
+      }
+    ],
+    "27": [
+      {
+        "text": "This",
+        "start": 206.09,
+        "end": 206.45
+      },
+      {
+        "text": "is",
+        "start": 206.45,
+        "end": 206.59
+      },
+      {
+        "text": "what",
+        "start": 206.59,
+        "end": 206.81
+      },
+      {
+        "text": "the",
+        "start": 206.81,
+        "end": 207.01
+      },
+      {
+        "text": "Levite",
+        "start": 207.01,
+        "end": 207.45
+      },
+      {
+        "text": "clans",
+        "start": 207.45,
+        "end": 207.75
+      },
+      {
+        "text": "of",
+        "start": 207.75,
+        "end": 208.13
+      },
+      {
+        "text": "the",
+        "start": 208.13,
+        "end": 208.35
+      },
+      {
+        "text": "Gershonites",
+        "start": 208.35,
+        "end": 208.75
+      },
+      {
+        "text": "were",
+        "start": 208.75,
+        "end": 209.03
+      },
+      {
+        "text": "given",
+        "start": 209.03,
+        "end": 209.33
+      },
+      {
+        "text": "From",
+        "start": 210.11,
+        "end": 210.31
+      },
+      {
+        "text": "the",
+        "start": 210.31,
+        "end": 210.49
+      },
+      {
+        "text": "half",
+        "start": 210.49,
+        "end": 210.69
+      },
+      {
+        "text": "tribe",
+        "start": 210.69,
+        "end": 210.99
+      },
+      {
+        "text": "of",
+        "start": 210.99,
+        "end": 211.19
+      },
+      {
+        "text": "Manasseh",
+        "start": 211.19,
+        "end": 212.17
+      },
+      {
+        "text": "they",
+        "start": 212.17,
+        "end": 212.31
+      },
+      {
+        "text": "were",
+        "start": 212.31,
+        "end": 212.51
+      },
+      {
+        "text": "given",
+        "start": 212.51,
+        "end": 212.85
+      },
+      {
+        "text": "Golan",
+        "start": 212.85,
+        "end": 213.37
+      },
+      {
+        "text": "in",
+        "start": 213.37,
+        "end": 213.71
+      },
+      {
+        "text": "a",
+        "start": 214.63,
+        "end": 214.83
+      },
+      {
+        "text": "city",
+        "start": 214.83,
+        "end": 215.03
+      },
+      {
+        "text": "of",
+        "start": 215.03,
+        "end": 215.29
+      },
+      {
+        "text": "refuge",
+        "start": 215.29,
+        "end": 215.65
+      },
+      {
+        "text": "for",
+        "start": 215.65,
+        "end": 216.13
+      },
+      {
+        "text": "the",
+        "start": 216.13,
+        "end": 216.27
+      },
+      {
+        "text": "and",
+        "start": 217.55,
+        "end": 217.89
+      },
+      {
+        "text": "two",
+        "start": 218.79,
+        "end": 219.27
+      },
+      {
+        "text": "cities",
+        "start": 219.27,
+        "end": 219.73
+      },
+      {
+        "text": "together",
+        "start": 219.73,
+        "end": 220.39
+      },
+      {
+        "text": "with",
+        "start": 220.39,
+        "end": 220.69
+      },
+      {
+        "text": "their",
+        "start": 220.69,
+        "end": 220.89
+      }
+    ],
+    "28": [
+      {
+        "text": "From",
+        "start": 222.71,
+        "end": 222.91
+      },
+      {
+        "text": "the",
+        "start": 222.91,
+        "end": 223.07
+      },
+      {
+        "text": "tribe",
+        "start": 223.07,
+        "end": 223.33
+      },
+      {
+        "text": "of",
+        "start": 223.33,
+        "end": 223.59
+      },
+      {
+        "text": "Issachar",
+        "start": 223.59,
+        "end": 224.27
+      },
+      {
+        "text": "they",
+        "start": 224.27,
+        "end": 224.73
+      },
+      {
+        "text": "were",
+        "start": 224.73,
+        "end": 224.91
+      },
+      {
+        "text": "given",
+        "start": 224.91,
+        "end": 225.23
+      },
+      {
+        "text": "Kishion",
+        "start": 225.23,
+        "end": 225.95
+      },
+      {
+        "text": "Daberath",
+        "start": 226.39,
+        "end": 226.91
+      }
+    ],
+    "29": [
+      {
+        "text": "Jarmuth",
+        "start": 227.37,
+        "end": 227.71
+      },
+      {
+        "text": "and",
+        "start": 228.13,
+        "end": 228.19
+      },
+      {
+        "text": "four",
+        "start": 229.33,
+        "end": 229.49
+      },
+      {
+        "text": "cities",
+        "start": 229.49,
+        "end": 229.91
+      },
+      {
+        "text": "together",
+        "start": 229.91,
+        "end": 230.55
+      },
+      {
+        "text": "with",
+        "start": 230.55,
+        "end": 230.89
+      },
+      {
+        "text": "their",
+        "start": 230.89,
+        "end": 231.09
+      }
+    ],
+    "30": [
+      {
+        "text": "From",
+        "start": 232.81,
+        "end": 232.99
+      },
+      {
+        "text": "the",
+        "start": 232.99,
+        "end": 233.15
+      },
+      {
+        "text": "tribe",
+        "start": 233.15,
+        "end": 233.39
+      },
+      {
+        "text": "of",
+        "start": 233.39,
+        "end": 233.67
+      },
+      {
+        "text": "Asher",
+        "start": 233.67,
+        "end": 234.07
+      },
+      {
+        "text": "they",
+        "start": 234.07,
+        "end": 234.51
+      },
+      {
+        "text": "were",
+        "start": 234.51,
+        "end": 234.67
+      },
+      {
+        "text": "given",
+        "start": 234.67,
+        "end": 234.99
+      },
+      {
+        "text": "Mishal",
+        "start": 234.99,
+        "end": 235.73
+      },
+      {
+        "text": "Abdon",
+        "start": 236.03,
+        "end": 236.53
+      }
+    ],
+    "31": [
+      {
+        "text": "Helkath",
+        "start": 236.97,
+        "end": 237.45
+      },
+      {
+        "text": "and",
+        "start": 237.83,
+        "end": 238.13
+      },
+      {
+        "text": "Rehob",
+        "start": 238.13,
+        "end": 238.47
+      },
+      {
+        "text": "four",
+        "start": 239.05,
+        "end": 239.27
+      },
+      {
+        "text": "cities",
+        "start": 239.27,
+        "end": 239.69
+      },
+      {
+        "text": "together",
+        "start": 239.69,
+        "end": 240.35
+      },
+      {
+        "text": "with",
+        "start": 240.35,
+        "end": 240.67
+      },
+      {
+        "text": "their",
+        "start": 240.67,
+        "end": 240.85
+      }
+    ],
+    "32": [
+      {
+        "text": "And",
+        "start": 242.49,
+        "end": 242.71
+      },
+      {
+        "text": "from",
+        "start": 242.71,
+        "end": 242.91
+      },
+      {
+        "text": "the",
+        "start": 242.91,
+        "end": 243.09
+      },
+      {
+        "text": "tribe",
+        "start": 243.09,
+        "end": 243.39
+      },
+      {
+        "text": "of",
+        "start": 243.39,
+        "end": 243.61
+      },
+      {
+        "text": "they",
+        "start": 244.39,
+        "end": 244.87
+      },
+      {
+        "text": "were",
+        "start": 244.87,
+        "end": 245.03
+      },
+      {
+        "text": "given",
+        "start": 245.03,
+        "end": 245.41
+      },
+      {
+        "text": "in",
+        "start": 246.03,
+        "end": 246.39
+      },
+      {
+        "text": "Galilee",
+        "start": 246.39,
+        "end": 247.07
+      },
+      {
+        "text": "a",
+        "start": 247.07,
+        "end": 247.47
+      },
+      {
+        "text": "city",
+        "start": 247.47,
+        "end": 247.69
+      },
+      {
+        "text": "of",
+        "start": 247.69,
+        "end": 247.93
+      },
+      {
+        "text": "refuge",
+        "start": 247.93,
+        "end": 248.31
+      },
+      {
+        "text": "for",
+        "start": 248.31,
+        "end": 248.69
+      },
+      {
+        "text": "the",
+        "start": 248.69,
+        "end": 248.83
+      },
+      {
+        "text": "and",
+        "start": 251.07,
+        "end": 251.39
+      },
+      {
+        "text": "Kartan",
+        "start": 251.39,
+        "end": 251.83
+      },
+      {
+        "text": "three",
+        "start": 252.31,
+        "end": 252.53
+      },
+      {
+        "text": "cities",
+        "start": 252.53,
+        "end": 253.03
+      },
+      {
+        "text": "together",
+        "start": 253.03,
+        "end": 253.61
+      },
+      {
+        "text": "with",
+        "start": 253.61,
+        "end": 253.91
+      },
+      {
+        "text": "their",
+        "start": 253.91,
+        "end": 254.11
+      }
+    ],
+    "33": [
+      {
+        "text": "In",
+        "start": 255.55,
+        "end": 255.83
+      },
+      {
+        "text": "all",
+        "start": 255.83,
+        "end": 256.19
+      },
+      {
+        "text": "thirteen",
+        "start": 256.59,
+        "end": 256.97
+      },
+      {
+        "text": "cities",
+        "start": 256.97,
+        "end": 257.49
+      },
+      {
+        "text": "together",
+        "start": 257.49,
+        "end": 258.07
+      },
+      {
+        "text": "with",
+        "start": 258.07,
+        "end": 258.39
+      },
+      {
+        "text": "their",
+        "start": 258.39,
+        "end": 258.55
+      },
+      {
+        "text": "were",
+        "start": 259.37,
+        "end": 259.65
+      },
+      {
+        "text": "given",
+        "start": 259.65,
+        "end": 259.91
+      },
+      {
+        "text": "to",
+        "start": 259.91,
+        "end": 260.25
+      },
+      {
+        "text": "the",
+        "start": 260.25,
+        "end": 260.41
+      },
+      {
+        "text": "Gershonite",
+        "start": 260.41,
+        "end": 260.93
+      },
+      {
+        "text": "clans",
+        "start": 260.93,
+        "end": 261.29
+      }
+    ],
+    "34": [
+      {
+        "text": "This",
+        "start": 262.39,
+        "end": 262.73
+      },
+      {
+        "text": "is",
+        "start": 262.73,
+        "end": 262.89
+      },
+      {
+        "text": "what",
+        "start": 262.89,
+        "end": 263.15
+      },
+      {
+        "text": "the",
+        "start": 263.15,
+        "end": 263.39
+      },
+      {
+        "text": "Merarite",
+        "start": 263.39,
+        "end": 263.93
+      },
+      {
+        "text": "clan",
+        "start": 263.93,
+        "end": 264.35
+      },
+      {
+        "text": "the",
+        "start": 264.73,
+        "end": 264.85
+      },
+      {
+        "text": "rest",
+        "start": 264.85,
+        "end": 265.11
+      },
+      {
+        "text": "of",
+        "start": 265.11,
+        "end": 265.33
+      },
+      {
+        "text": "the",
+        "start": 265.33,
+        "end": 265.47
+      },
+      {
+        "text": "Levites",
+        "start": 265.47,
+        "end": 265.87
+      },
+      {
+        "text": "were",
+        "start": 265.97,
+        "end": 266.21
+      },
+      {
+        "text": "given",
+        "start": 266.21,
+        "end": 266.49
+      },
+      {
+        "text": "From",
+        "start": 267.43,
+        "end": 267.61
+      },
+      {
+        "text": "the",
+        "start": 267.61,
+        "end": 267.79
+      },
+      {
+        "text": "tribe",
+        "start": 267.79,
+        "end": 268.01
+      },
+      {
+        "text": "of",
+        "start": 268.01,
+        "end": 268.29
+      },
+      {
+        "text": "Zebulun",
+        "start": 268.29,
+        "end": 268.85
+      },
+      {
+        "text": "they",
+        "start": 268.85,
+        "end": 269.27
+      },
+      {
+        "text": "were",
+        "start": 269.27,
+        "end": 269.45
+      },
+      {
+        "text": "given",
+        "start": 269.45,
+        "end": 269.83
+      },
+      {
+        "text": "Kartah",
+        "start": 271.35,
+        "end": 271.63
+      }
+    ],
+    "35": [
+      {
+        "text": "Dimnah",
+        "start": 272.13,
+        "end": 272.39
+      },
+      {
+        "text": "and",
+        "start": 272.69,
+        "end": 272.95
+      },
+      {
+        "text": "Nahalal",
+        "start": 272.95,
+        "end": 273.47
+      },
+      {
+        "text": "four",
+        "start": 274.03,
+        "end": 274.23
+      },
+      {
+        "text": "cities",
+        "start": 274.23,
+        "end": 274.69
+      },
+      {
+        "text": "together",
+        "start": 274.69,
+        "end": 275.23
+      },
+      {
+        "text": "with",
+        "start": 275.23,
+        "end": 275.53
+      },
+      {
+        "text": "their",
+        "start": 275.53,
+        "end": 275.73
+      }
+    ],
+    "36": [
+      {
+        "text": "From",
+        "start": 277.21,
+        "end": 277.57
+      },
+      {
+        "text": "the",
+        "start": 277.57,
+        "end": 277.73
+      },
+      {
+        "text": "tribe",
+        "start": 277.73,
+        "end": 277.95
+      },
+      {
+        "text": "of",
+        "start": 277.95,
+        "end": 278.17
+      },
+      {
+        "text": "Reuben",
+        "start": 278.17,
+        "end": 278.61
+      },
+      {
+        "text": "they",
+        "start": 278.61,
+        "end": 279.03
+      },
+      {
+        "text": "were",
+        "start": 279.03,
+        "end": 279.21
+      },
+      {
+        "text": "given",
+        "start": 279.21,
+        "end": 279.51
+      },
+      {
+        "text": "Bezer",
+        "start": 279.51,
+        "end": 280.11
+      }
+    ],
+    "37": [
+      {
+        "text": "Kedemoth",
+        "start": 281.65,
+        "end": 282.07
+      },
+      {
+        "text": "and",
+        "start": 282.41,
+        "end": 282.71
+      },
+      {
+        "text": "Mephaath",
+        "start": 282.71,
+        "end": 283.35
+      },
+      {
+        "text": "four",
+        "start": 283.77,
+        "end": 283.97
+      },
+      {
+        "text": "cities",
+        "start": 283.97,
+        "end": 284.37
+      },
+      {
+        "text": "together",
+        "start": 284.37,
+        "end": 285.07
+      },
+      {
+        "text": "with",
+        "start": 285.07,
+        "end": 285.43
+      },
+      {
+        "text": "their",
+        "start": 285.43,
+        "end": 285.59
+      }
+    ],
+    "38": [
+      {
+        "text": "And",
+        "start": 287.11,
+        "end": 287.39
+      },
+      {
+        "text": "from",
+        "start": 287.39,
+        "end": 287.59
+      },
+      {
+        "text": "the",
+        "start": 287.59,
+        "end": 287.77
+      },
+      {
+        "text": "tribe",
+        "start": 287.77,
+        "end": 288.03
+      },
+      {
+        "text": "of",
+        "start": 288.03,
+        "end": 288.41
+      },
+      {
+        "text": "Gad",
+        "start": 288.41,
+        "end": 288.53
+      },
+      {
+        "text": "they",
+        "start": 288.53,
+        "end": 288.97
+      },
+      {
+        "text": "were",
+        "start": 288.97,
+        "end": 289.15
+      },
+      {
+        "text": "given",
+        "start": 289.15,
+        "end": 289.49
+      },
+      {
+        "text": "Ramoth",
+        "start": 289.49,
+        "end": 290.11
+      },
+      {
+        "text": "in",
+        "start": 290.11,
+        "end": 290.37
+      },
+      {
+        "text": "Gilead",
+        "start": 290.37,
+        "end": 290.99
+      },
+      {
+        "text": "a",
+        "start": 291.41,
+        "end": 291.53
+      },
+      {
+        "text": "city",
+        "start": 291.53,
+        "end": 291.73
+      },
+      {
+        "text": "of",
+        "start": 291.73,
+        "end": 292.01
+      },
+      {
+        "text": "refuge",
+        "start": 292.01,
+        "end": 292.31
+      },
+      {
+        "text": "for",
+        "start": 292.31,
+        "end": 292.67
+      },
+      {
+        "text": "the",
+        "start": 292.67,
+        "end": 292.81
+      },
+      {
+        "text": "Mahanaim",
+        "start": 294.25,
+        "end": 294.73
+      }
+    ],
+    "39": [
+      {
+        "text": "Heshbon",
+        "start": 295.27,
+        "end": 295.65
+      },
+      {
+        "text": "and",
+        "start": 296.07,
+        "end": 296.27
+      },
+      {
+        "text": "four",
+        "start": 297.21,
+        "end": 297.39
+      },
+      {
+        "text": "cities",
+        "start": 297.39,
+        "end": 297.73
+      },
+      {
+        "text": "in",
+        "start": 297.73,
+        "end": 298.07
+      },
+      {
+        "text": "all",
+        "start": 298.07,
+        "end": 298.39
+      },
+      {
+        "text": "together",
+        "start": 298.39,
+        "end": 299.01
+      },
+      {
+        "text": "with",
+        "start": 299.01,
+        "end": 299.39
+      },
+      {
+        "text": "their",
+        "start": 299.39,
+        "end": 299.57
+      }
+    ],
+    "40": [
+      {
+        "text": "In",
+        "start": 301.03,
+        "end": 301.37
+      },
+      {
+        "text": "all",
+        "start": 301.37,
+        "end": 301.75
+      },
+      {
+        "text": "twelve",
+        "start": 301.97,
+        "end": 302.33
+      },
+      {
+        "text": "cities",
+        "start": 302.33,
+        "end": 302.73
+      },
+      {
+        "text": "were",
+        "start": 302.73,
+        "end": 303.01
+      },
+      {
+        "text": "allotted",
+        "start": 303.01,
+        "end": 303.33
+      },
+      {
+        "text": "to",
+        "start": 303.33,
+        "end": 303.71
+      },
+      {
+        "text": "the",
+        "start": 303.71,
+        "end": 303.87
+      },
+      {
+        "text": "clans",
+        "start": 303.87,
+        "end": 304.13
+      },
+      {
+        "text": "of",
+        "start": 304.13,
+        "end": 304.49
+      },
+      {
+        "text": "the",
+        "start": 305.49,
+        "end": 305.71
+      },
+      {
+        "text": "remaining",
+        "start": 305.71,
+        "end": 306.15
+      },
+      {
+        "text": "Levite",
+        "start": 306.15,
+        "end": 306.71
+      },
+      {
+        "text": "clans",
+        "start": 306.71,
+        "end": 307.13
+      }
+    ],
+    "41": [
+      {
+        "text": "For",
+        "start": 308.11,
+        "end": 308.31
+      },
+      {
+        "text": "the",
+        "start": 308.31,
+        "end": 308.47
+      },
+      {
+        "text": "Levites",
+        "start": 308.47,
+        "end": 308.87
+      },
+      {
+        "text": "then",
+        "start": 308.87,
+        "end": 309.17
+      },
+      {
+        "text": "there",
+        "start": 309.55,
+        "end": 309.71
+      },
+      {
+        "text": "were",
+        "start": 309.71,
+        "end": 309.95
+      },
+      {
+        "text": "forty",
+        "start": 309.95,
+        "end": 310.31
+      },
+      {
+        "text": "eight",
+        "start": 310.31,
+        "end": 310.63
+      },
+      {
+        "text": "cities",
+        "start": 310.63,
+        "end": 310.99
+      },
+      {
+        "text": "in",
+        "start": 310.99,
+        "end": 311.31
+      },
+      {
+        "text": "all",
+        "start": 311.31,
+        "end": 311.63
+      },
+      {
+        "text": "together",
+        "start": 312.07,
+        "end": 312.35
+      },
+      {
+        "text": "with",
+        "start": 312.35,
+        "end": 312.73
+      },
+      {
+        "text": "their",
+        "start": 312.73,
+        "end": 312.93
+      },
+      {
+        "text": "within",
+        "start": 313.79,
+        "end": 314.33
+      },
+      {
+        "text": "the",
+        "start": 314.33,
+        "end": 314.65
+      },
+      {
+        "text": "territory",
+        "start": 314.65,
+        "end": 315.01
+      },
+      {
+        "text": "of",
+        "start": 315.01,
+        "end": 315.55
+      },
+      {
+        "text": "the",
+        "start": 315.55,
+        "end": 315.71
+      },
+      {
+        "text": "Israelites",
+        "start": 315.71,
+        "end": 316.47
+      }
+    ],
+    "42": [
+      {
+        "text": "Each",
+        "start": 317.29,
+        "end": 317.49
+      },
+      {
+        "text": "of",
+        "start": 317.49,
+        "end": 317.71
+      },
+      {
+        "text": "these",
+        "start": 317.71,
+        "end": 317.93
+      },
+      {
+        "text": "cities",
+        "start": 317.93,
+        "end": 318.23
+      },
+      {
+        "text": "had",
+        "start": 318.23,
+        "end": 318.75
+      },
+      {
+        "text": "its",
+        "start": 318.75,
+        "end": 318.95
+      },
+      {
+        "text": "own",
+        "start": 318.95,
+        "end": 319.25
+      },
+      {
+        "text": "surrounding",
+        "start": 319.25,
+        "end": 319.85
+      },
+      {
+        "text": "this",
+        "start": 321.23,
+        "end": 321.51
+      },
+      {
+        "text": "was",
+        "start": 321.51,
+        "end": 321.71
+      },
+      {
+        "text": "true",
+        "start": 321.71,
+        "end": 322.07
+      },
+      {
+        "text": "for",
+        "start": 322.07,
+        "end": 322.61
+      },
+      {
+        "text": "all",
+        "start": 322.61,
+        "end": 322.91
+      },
+      {
+        "text": "the",
+        "start": 322.91,
+        "end": 323.11
+      },
+      {
+        "text": "cities",
+        "start": 323.11,
+        "end": 323.41
+      }
+    ],
+    "43": [
+      {
+        "text": "Thus",
+        "start": 324.35,
+        "end": 324.55
+      },
+      {
+        "text": "the",
+        "start": 324.55,
+        "end": 324.79
+      },
+      {
+        "text": "LORD",
+        "start": 324.79,
+        "end": 324.99
+      },
+      {
+        "text": "gave",
+        "start": 324.99,
+        "end": 325.31
+      },
+      {
+        "text": "Israel",
+        "start": 325.31,
+        "end": 325.95
+      },
+      {
+        "text": "all",
+        "start": 325.95,
+        "end": 326.37
+      },
+      {
+        "text": "the",
+        "start": 326.37,
+        "end": 326.55
+      },
+      {
+        "text": "land",
+        "start": 326.55,
+        "end": 326.89
+      },
+      {
+        "text": "He",
+        "start": 326.89,
+        "end": 327.15
+      },
+      {
+        "text": "had",
+        "start": 327.15,
+        "end": 327.31
+      },
+      {
+        "text": "sworn",
+        "start": 327.31,
+        "end": 327.69
+      },
+      {
+        "text": "to",
+        "start": 327.69,
+        "end": 327.99
+      },
+      {
+        "text": "give",
+        "start": 327.99,
+        "end": 328.19
+      },
+      {
+        "text": "their",
+        "start": 328.19,
+        "end": 328.41
+      },
+      {
+        "text": "fathers",
+        "start": 328.41,
+        "end": 328.77
+      },
+      {
+        "text": "and",
+        "start": 329.29,
+        "end": 329.55
+      },
+      {
+        "text": "they",
+        "start": 329.55,
+        "end": 329.73
+      },
+      {
+        "text": "took",
+        "start": 329.73,
+        "end": 329.93
+      },
+      {
+        "text": "possession",
+        "start": 329.93,
+        "end": 330.35
+      },
+      {
+        "text": "of",
+        "start": 330.35,
+        "end": 330.67
+      },
+      {
+        "text": "it",
+        "start": 330.67,
+        "end": 330.87
+      },
+      {
+        "text": "and",
+        "start": 330.87,
+        "end": 331.27
+      },
+      {
+        "text": "settled",
+        "start": 331.27,
+        "end": 331.61
+      },
+      {
+        "text": "in",
+        "start": 331.61,
+        "end": 331.97
+      },
+      {
+        "text": "it",
+        "start": 331.97,
+        "end": 332.33
+      }
+    ],
+    "44": [
+      {
+        "text": "And",
+        "start": 332.81,
+        "end": 333.11
+      },
+      {
+        "text": "the",
+        "start": 333.11,
+        "end": 333.23
+      },
+      {
+        "text": "LORD",
+        "start": 333.23,
+        "end": 333.43
+      },
+      {
+        "text": "gave",
+        "start": 333.43,
+        "end": 333.65
+      },
+      {
+        "text": "them",
+        "start": 333.65,
+        "end": 333.91
+      },
+      {
+        "text": "rest",
+        "start": 333.91,
+        "end": 334.21
+      },
+      {
+        "text": "on",
+        "start": 334.21,
+        "end": 334.57
+      },
+      {
+        "text": "every",
+        "start": 334.57,
+        "end": 334.93
+      },
+      {
+        "text": "side",
+        "start": 334.93,
+        "end": 335.37
+      },
+      {
+        "text": "just",
+        "start": 335.69,
+        "end": 336.09
+      },
+      {
+        "text": "as",
+        "start": 336.09,
+        "end": 336.31
+      },
+      {
+        "text": "He",
+        "start": 336.31,
+        "end": 336.49
+      },
+      {
+        "text": "had",
+        "start": 336.49,
+        "end": 336.61
+      },
+      {
+        "text": "sworn",
+        "start": 336.61,
+        "end": 336.95
+      },
+      {
+        "text": "to",
+        "start": 336.95,
+        "end": 337.19
+      },
+      {
+        "text": "their",
+        "start": 337.19,
+        "end": 337.41
+      },
+      {
+        "text": "fathers",
+        "start": 337.41,
+        "end": 337.79
+      },
+      {
+        "text": "None",
+        "start": 338.71,
+        "end": 338.95
+      },
+      {
+        "text": "of",
+        "start": 338.95,
+        "end": 339.11
+      },
+      {
+        "text": "their",
+        "start": 339.11,
+        "end": 339.27
+      },
+      {
+        "text": "enemies",
+        "start": 339.27,
+        "end": 339.67
+      },
+      {
+        "text": "could",
+        "start": 339.67,
+        "end": 339.99
+      },
+      {
+        "text": "stand",
+        "start": 339.99,
+        "end": 340.37
+      },
+      {
+        "text": "against",
+        "start": 340.37,
+        "end": 340.81
+      },
+      {
+        "text": "them",
+        "start": 340.81,
+        "end": 341.23
+      },
+      {
+        "text": "for",
+        "start": 341.55,
+        "end": 341.87
+      },
+      {
+        "text": "the",
+        "start": 341.87,
+        "end": 342.03
+      },
+      {
+        "text": "LORD",
+        "start": 342.03,
+        "end": 342.23
+      },
+      {
+        "text": "delivered",
+        "start": 342.23,
+        "end": 342.71
+      },
+      {
+        "text": "all",
+        "start": 342.71,
+        "end": 343.21
+      },
+      {
+        "text": "their",
+        "start": 343.21,
+        "end": 343.45
+      },
+      {
+        "text": "enemies",
+        "start": 343.45,
+        "end": 343.89
+      },
+      {
+        "text": "into",
+        "start": 343.89,
+        "end": 344.43
+      },
+      {
+        "text": "their",
+        "start": 344.43,
+        "end": 344.69
+      },
+      {
+        "text": "hand",
+        "start": 344.69,
+        "end": 345.13
+      }
+    ],
+    "45": [
+      {
+        "text": "Not",
+        "start": 345.97,
+        "end": 346.23
+      },
+      {
+        "text": "one",
+        "start": 346.23,
+        "end": 346.59
+      },
+      {
+        "text": "of",
+        "start": 346.59,
+        "end": 346.87
+      },
+      {
+        "text": "all",
+        "start": 346.87,
+        "end": 347.23
+      },
+      {
+        "text": "the",
+        "start": 347.23,
+        "end": 347.43
+      },
+      {
+        "text": "good",
+        "start": 347.83,
+        "end": 348.01
+      },
+      {
+        "text": "promises",
+        "start": 348.01,
+        "end": 348.51
+      },
+      {
+        "text": "to",
+        "start": 348.51,
+        "end": 348.89
+      },
+      {
+        "text": "the",
+        "start": 348.89,
+        "end": 349.05
+      },
+      {
+        "text": "house",
+        "start": 349.05,
+        "end": 349.27
+      },
+      {
+        "text": "of",
+        "start": 349.27,
+        "end": 349.47
+      },
+      {
+        "text": "Israel",
+        "start": 349.47,
+        "end": 349.95
+      },
+      {
+        "text": "had",
+        "start": 349.95,
+        "end": 350.47
+      },
+      {
+        "text": "failed",
+        "start": 350.47,
+        "end": 350.95
+      },
+      {
+        "text": "everything",
+        "start": 350.95,
+        "end": 351.95
+      },
+      {
+        "text": "was",
+        "start": 351.95,
+        "end": 352.67
+      },
+      {
+        "text": "fulfilled",
+        "start": 352.67,
+        "end": 353.15
+      }
+    ]
+  }
+}

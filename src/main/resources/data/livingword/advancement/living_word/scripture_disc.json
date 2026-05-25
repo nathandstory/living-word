@@ -1,0 +1,32 @@
+{
+  "parent": "livingword:living_word/root",
+  "criteria": {
+    "has_scripture_disc": {
+      "conditions": {
+        "items": [
+          {
+            "items": "livingword:scripture_disc_john"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.livingword.scripture_disc.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "livingword:scripture_disc_john"
+    },
+    "title": {
+      "translate": "advancements.livingword.scripture_disc.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_scripture_disc"
+    ]
+  ]
+}

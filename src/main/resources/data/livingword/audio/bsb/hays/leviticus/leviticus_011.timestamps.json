@@ -1,0 +1,4781 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB Hays audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 370.534,
+  "matchRatio": 0.9989,
+  "verses": {
+    "1": 4.0,
+    "2": 8.16,
+    "3": 13.4,
+    "4": 19.4,
+    "5": 32.4,
+    "6": 39.5,
+    "7": 46.18,
+    "8": 54.38,
+    "9": 60.76,
+    "10": 69.0,
+    "11": 80.24,
+    "12": 87.56,
+    "13": 93.42,
+    "14": 104.44,
+    "15": 107.32,
+    "16": 109.02,
+    "17": 113.74,
+    "18": 116.98,
+    "19": 120.5,
+    "20": 125.54,
+    "21": 130.2,
+    "22": 140.76,
+    "23": 146.4,
+    "24": 151.62,
+    "25": 158.66,
+    "26": 165.96,
+    "27": 176.34,
+    "28": 185.6,
+    "29": 195.22,
+    "30": 203.68,
+    "31": 209.2,
+    "32": 218.76,
+    "33": 236.88,
+    "34": 244.32,
+    "35": 253.26,
+    "36": 266.06,
+    "37": 275.28,
+    "38": 280.06,
+    "39": 286.9,
+    "40": 293.5,
+    "41": 305.44,
+    "42": 311.26,
+    "43": 321.76,
+    "44": 328.92,
+    "45": 342.58,
+    "46": 352.9,
+    "47": 361.4
+  },
+  "words": {
+    "1": [
+      {
+        "text": "The",
+        "start": 4.0,
+        "end": 4.56
+      },
+      {
+        "text": "LORD",
+        "start": 4.56,
+        "end": 4.74
+      },
+      {
+        "text": "spoke",
+        "start": 4.74,
+        "end": 5.06
+      },
+      {
+        "text": "again",
+        "start": 5.06,
+        "end": 5.44
+      },
+      {
+        "text": "to",
+        "start": 5.44,
+        "end": 5.76
+      },
+      {
+        "text": "Moses",
+        "start": 5.76,
+        "end": 6.04
+      },
+      {
+        "text": "and",
+        "start": 6.04,
+        "end": 6.32
+      },
+      {
+        "text": "Aaron",
+        "start": 6.32,
+        "end": 6.58
+      },
+      {
+        "text": "telling",
+        "start": 7.0,
+        "end": 7.28
+      },
+      {
+        "text": "them",
+        "start": 7.28,
+        "end": 7.58
+      }
+    ],
+    "2": [
+      {
+        "text": "Say",
+        "start": 8.16,
+        "end": 8.21
+      },
+      {
+        "text": "to",
+        "start": 8.2,
+        "end": 8.44
+      },
+      {
+        "text": "the",
+        "start": 8.44,
+        "end": 8.6
+      },
+      {
+        "text": "Israelites",
+        "start": 8.6,
+        "end": 9.34
+      },
+      {
+        "text": "Of",
+        "start": 9.78,
+        "end": 9.84
+      },
+      {
+        "text": "all",
+        "start": 9.84,
+        "end": 10.14
+      },
+      {
+        "text": "the",
+        "start": 10.14,
+        "end": 10.32
+      },
+      {
+        "text": "beasts",
+        "start": 10.32,
+        "end": 10.54
+      },
+      {
+        "text": "of",
+        "start": 10.54,
+        "end": 10.78
+      },
+      {
+        "text": "the",
+        "start": 10.78,
+        "end": 10.92
+      },
+      {
+        "text": "earth",
+        "start": 10.92,
+        "end": 11.28
+      },
+      {
+        "text": "these",
+        "start": 11.62,
+        "end": 11.82
+      },
+      {
+        "text": "ones",
+        "start": 11.82,
+        "end": 12.1
+      },
+      {
+        "text": "you",
+        "start": 12.1,
+        "end": 12.46
+      },
+      {
+        "text": "may",
+        "start": 12.46,
+        "end": 12.62
+      },
+      {
+        "text": "eat",
+        "start": 12.62,
+        "end": 13.0
+      }
+    ],
+    "3": [
+      {
+        "text": "You",
+        "start": 13.4,
+        "end": 13.68
+      },
+      {
+        "text": "may",
+        "start": 13.68,
+        "end": 13.84
+      },
+      {
+        "text": "eat",
+        "start": 13.84,
+        "end": 14.12
+      },
+      {
+        "text": "any",
+        "start": 14.12,
+        "end": 14.42
+      },
+      {
+        "text": "animal",
+        "start": 14.42,
+        "end": 14.82
+      },
+      {
+        "text": "that",
+        "start": 14.82,
+        "end": 15.06
+      },
+      {
+        "text": "has",
+        "start": 15.06,
+        "end": 15.26
+      },
+      {
+        "text": "a",
+        "start": 15.26,
+        "end": 15.44
+      },
+      {
+        "text": "split",
+        "start": 15.44,
+        "end": 15.72
+      },
+      {
+        "text": "hoof",
+        "start": 15.72,
+        "end": 16.24
+      },
+      {
+        "text": "completely",
+        "start": 16.24,
+        "end": 16.8
+      },
+      {
+        "text": "divided",
+        "start": 16.8,
+        "end": 17.32
+      },
+      {
+        "text": "and",
+        "start": 17.32,
+        "end": 17.84
+      },
+      {
+        "text": "that",
+        "start": 17.84,
+        "end": 18.04
+      },
+      {
+        "text": "chews",
+        "start": 18.04,
+        "end": 18.4
+      },
+      {
+        "text": "the",
+        "start": 18.4,
+        "end": 18.6
+      },
+      {
+        "text": "cud",
+        "start": 18.6,
+        "end": 18.88
+      }
+    ],
+    "4": [
+      {
+        "text": "But",
+        "start": 19.4,
+        "end": 19.74
+      },
+      {
+        "text": "of",
+        "start": 19.74,
+        "end": 19.86
+      },
+      {
+        "text": "those",
+        "start": 19.86,
+        "end": 20.06
+      },
+      {
+        "text": "that",
+        "start": 20.06,
+        "end": 20.34
+      },
+      {
+        "text": "only",
+        "start": 20.34,
+        "end": 20.78
+      },
+      {
+        "text": "chew",
+        "start": 20.78,
+        "end": 21.06
+      },
+      {
+        "text": "the",
+        "start": 21.06,
+        "end": 21.26
+      },
+      {
+        "text": "cud",
+        "start": 21.26,
+        "end": 21.66
+      },
+      {
+        "text": "or",
+        "start": 21.94,
+        "end": 22.1
+      },
+      {
+        "text": "only",
+        "start": 22.1,
+        "end": 22.42
+      },
+      {
+        "text": "have",
+        "start": 22.42,
+        "end": 22.66
+      },
+      {
+        "text": "a",
+        "start": 22.66,
+        "end": 22.78
+      },
+      {
+        "text": "divided",
+        "start": 22.78,
+        "end": 23.14
+      },
+      {
+        "text": "hoof",
+        "start": 23.14,
+        "end": 23.68
+      },
+      {
+        "text": "you",
+        "start": 24.0,
+        "end": 24.18
+      },
+      {
+        "text": "are",
+        "start": 24.18,
+        "end": 24.32
+      },
+      {
+        "text": "not",
+        "start": 24.32,
+        "end": 24.58
+      },
+      {
+        "text": "to",
+        "start": 24.58,
+        "end": 24.78
+      },
+      {
+        "text": "eat",
+        "start": 24.78,
+        "end": 24.98
+      },
+      {
+        "text": "the",
+        "start": 24.98,
+        "end": 25.22
+      },
+      {
+        "text": "following",
+        "start": 25.22,
+        "end": 25.58
+      },
+      {
+        "text": "The",
+        "start": 26.16,
+        "end": 26.44
+      },
+      {
+        "text": "camel",
+        "start": 26.44,
+        "end": 26.76
+      },
+      {
+        "text": "though",
+        "start": 27.06,
+        "end": 27.22
+      },
+      {
+        "text": "it",
+        "start": 27.22,
+        "end": 27.4
+      },
+      {
+        "text": "chews",
+        "start": 27.4,
+        "end": 27.72
+      },
+      {
+        "text": "the",
+        "start": 27.72,
+        "end": 27.88
+      },
+      {
+        "text": "cud",
+        "start": 27.88,
+        "end": 28.22
+      },
+      {
+        "text": "does",
+        "start": 28.5,
+        "end": 28.68
+      },
+      {
+        "text": "not",
+        "start": 28.68,
+        "end": 28.9
+      },
+      {
+        "text": "have",
+        "start": 28.9,
+        "end": 29.22
+      },
+      {
+        "text": "a",
+        "start": 29.22,
+        "end": 29.38
+      },
+      {
+        "text": "divided",
+        "start": 29.38,
+        "end": 29.76
+      },
+      {
+        "text": "hoof",
+        "start": 29.76,
+        "end": 30.2
+      },
+      {
+        "text": "it",
+        "start": 30.48,
+        "end": 30.66
+      },
+      {
+        "text": "is",
+        "start": 30.66,
+        "end": 30.82
+      },
+      {
+        "text": "unclean",
+        "start": 30.82,
+        "end": 31.5
+      },
+      {
+        "text": "for",
+        "start": 31.5,
+        "end": 31.72
+      },
+      {
+        "text": "you",
+        "start": 31.72,
+        "end": 32.0
+      }
+    ],
+    "5": [
+      {
+        "text": "The",
+        "start": 32.4,
+        "end": 32.86
+      },
+      {
+        "text": "rock",
+        "start": 32.86,
+        "end": 33.14
+      },
+      {
+        "text": "badger",
+        "start": 33.14,
+        "end": 33.62
+      },
+      {
+        "text": "though",
+        "start": 33.94,
+        "end": 34.12
+      },
+      {
+        "text": "it",
+        "start": 34.12,
+        "end": 34.38
+      },
+      {
+        "text": "chews",
+        "start": 34.38,
+        "end": 34.72
+      },
+      {
+        "text": "the",
+        "start": 34.72,
+        "end": 34.9
+      },
+      {
+        "text": "cud",
+        "start": 34.9,
+        "end": 35.22
+      },
+      {
+        "text": "does",
+        "start": 35.46,
+        "end": 35.62
+      },
+      {
+        "text": "not",
+        "start": 35.62,
+        "end": 35.86
+      },
+      {
+        "text": "have",
+        "start": 35.86,
+        "end": 36.12
+      },
+      {
+        "text": "a",
+        "start": 36.12,
+        "end": 36.26
+      },
+      {
+        "text": "divided",
+        "start": 36.26,
+        "end": 36.66
+      },
+      {
+        "text": "hoof",
+        "start": 36.66,
+        "end": 37.16
+      },
+      {
+        "text": "it",
+        "start": 37.46,
+        "end": 37.68
+      },
+      {
+        "text": "is",
+        "start": 37.68,
+        "end": 37.86
+      },
+      {
+        "text": "unclean",
+        "start": 37.86,
+        "end": 38.5
+      },
+      {
+        "text": "for",
+        "start": 38.5,
+        "end": 38.78
+      },
+      {
+        "text": "you",
+        "start": 38.78,
+        "end": 39.08
+      }
+    ],
+    "6": [
+      {
+        "text": "The",
+        "start": 39.5,
+        "end": 39.9
+      },
+      {
+        "text": "rabbit",
+        "start": 39.9,
+        "end": 40.2
+      },
+      {
+        "text": "though",
+        "start": 40.54,
+        "end": 40.66
+      },
+      {
+        "text": "it",
+        "start": 40.66,
+        "end": 40.9
+      },
+      {
+        "text": "chews",
+        "start": 40.9,
+        "end": 41.28
+      },
+      {
+        "text": "the",
+        "start": 41.28,
+        "end": 41.46
+      },
+      {
+        "text": "cud",
+        "start": 41.46,
+        "end": 41.78
+      },
+      {
+        "text": "does",
+        "start": 42.16,
+        "end": 42.26
+      },
+      {
+        "text": "not",
+        "start": 42.26,
+        "end": 42.5
+      },
+      {
+        "text": "have",
+        "start": 42.5,
+        "end": 42.76
+      },
+      {
+        "text": "a",
+        "start": 42.76,
+        "end": 42.92
+      },
+      {
+        "text": "divided",
+        "start": 42.92,
+        "end": 43.32
+      },
+      {
+        "text": "hoof",
+        "start": 43.32,
+        "end": 43.82
+      },
+      {
+        "text": "it",
+        "start": 44.04,
+        "end": 44.34
+      },
+      {
+        "text": "is",
+        "start": 44.34,
+        "end": 44.6
+      },
+      {
+        "text": "unclean",
+        "start": 44.6,
+        "end": 45.3
+      },
+      {
+        "text": "for",
+        "start": 45.3,
+        "end": 45.56
+      },
+      {
+        "text": "you",
+        "start": 45.56,
+        "end": 45.88
+      }
+    ],
+    "7": [
+      {
+        "text": "And",
+        "start": 46.18,
+        "end": 46.56
+      },
+      {
+        "text": "the",
+        "start": 46.56,
+        "end": 46.76
+      },
+      {
+        "text": "pig",
+        "start": 46.76,
+        "end": 47.1
+      },
+      {
+        "text": "though",
+        "start": 47.5,
+        "end": 47.74
+      },
+      {
+        "text": "it",
+        "start": 47.74,
+        "end": 47.9
+      },
+      {
+        "text": "has",
+        "start": 47.9,
+        "end": 48.18
+      },
+      {
+        "text": "a",
+        "start": 48.18,
+        "end": 48.44
+      },
+      {
+        "text": "split",
+        "start": 48.44,
+        "end": 48.78
+      },
+      {
+        "text": "hoof",
+        "start": 48.78,
+        "end": 49.26
+      },
+      {
+        "text": "completely",
+        "start": 49.78,
+        "end": 49.84
+      },
+      {
+        "text": "divided",
+        "start": 49.84,
+        "end": 50.38
+      },
+      {
+        "text": "does",
+        "start": 50.84,
+        "end": 51.06
+      },
+      {
+        "text": "not",
+        "start": 51.06,
+        "end": 51.4
+      },
+      {
+        "text": "chew",
+        "start": 51.4,
+        "end": 51.68
+      },
+      {
+        "text": "the",
+        "start": 51.68,
+        "end": 51.88
+      },
+      {
+        "text": "cud",
+        "start": 51.88,
+        "end": 52.2
+      },
+      {
+        "text": "it",
+        "start": 52.64,
+        "end": 52.96
+      },
+      {
+        "text": "is",
+        "start": 52.96,
+        "end": 53.18
+      },
+      {
+        "text": "unclean",
+        "start": 53.18,
+        "end": 53.84
+      },
+      {
+        "text": "for",
+        "start": 53.84,
+        "end": 54.1
+      },
+      {
+        "text": "you",
+        "start": 54.1,
+        "end": 54.38
+      }
+    ],
+    "8": [
+      {
+        "text": "You",
+        "start": 54.38,
+        "end": 55.22
+      },
+      {
+        "text": "must",
+        "start": 55.22,
+        "end": 55.38
+      },
+      {
+        "text": "not",
+        "start": 55.38,
+        "end": 55.62
+      },
+      {
+        "text": "eat",
+        "start": 55.62,
+        "end": 55.86
+      },
+      {
+        "text": "their",
+        "start": 55.86,
+        "end": 56.08
+      },
+      {
+        "text": "meat",
+        "start": 56.08,
+        "end": 56.36
+      },
+      {
+        "text": "or",
+        "start": 56.36,
+        "end": 56.72
+      },
+      {
+        "text": "touch",
+        "start": 56.72,
+        "end": 56.98
+      },
+      {
+        "text": "their",
+        "start": 56.98,
+        "end": 57.24
+      },
+      {
+        "text": "carcasses",
+        "start": 57.24,
+        "end": 57.78
+      },
+      {
+        "text": "they",
+        "start": 58.22,
+        "end": 58.48
+      },
+      {
+        "text": "are",
+        "start": 58.48,
+        "end": 58.72
+      },
+      {
+        "text": "unclean",
+        "start": 58.72,
+        "end": 59.36
+      },
+      {
+        "text": "for",
+        "start": 59.36,
+        "end": 59.58
+      },
+      {
+        "text": "you",
+        "start": 59.58,
+        "end": 59.98
+      }
+    ],
+    "9": [
+      {
+        "text": "Of",
+        "start": 60.76,
+        "end": 60.86
+      },
+      {
+        "text": "all",
+        "start": 60.86,
+        "end": 61.16
+      },
+      {
+        "text": "the",
+        "start": 61.16,
+        "end": 61.36
+      },
+      {
+        "text": "creatures",
+        "start": 61.36,
+        "end": 61.66
+      },
+      {
+        "text": "that",
+        "start": 61.66,
+        "end": 61.96
+      },
+      {
+        "text": "live",
+        "start": 61.96,
+        "end": 62.12
+      },
+      {
+        "text": "in",
+        "start": 62.12,
+        "end": 62.3
+      },
+      {
+        "text": "the",
+        "start": 62.3,
+        "end": 62.42
+      },
+      {
+        "text": "water",
+        "start": 62.42,
+        "end": 62.76
+      },
+      {
+        "text": "whether",
+        "start": 63.26,
+        "end": 63.38
+      },
+      {
+        "text": "in",
+        "start": 63.38,
+        "end": 63.68
+      },
+      {
+        "text": "the",
+        "start": 63.68,
+        "end": 63.84
+      },
+      {
+        "text": "seas",
+        "start": 63.84,
+        "end": 64.08
+      },
+      {
+        "text": "or",
+        "start": 64.08,
+        "end": 64.42
+      },
+      {
+        "text": "in",
+        "start": 64.42,
+        "end": 64.58
+      },
+      {
+        "text": "the",
+        "start": 64.58,
+        "end": 64.7
+      },
+      {
+        "text": "streams",
+        "start": 64.7,
+        "end": 65.12
+      },
+      {
+        "text": "you",
+        "start": 65.58,
+        "end": 65.78
+      },
+      {
+        "text": "may",
+        "start": 65.78,
+        "end": 65.96
+      },
+      {
+        "text": "eat",
+        "start": 65.96,
+        "end": 66.26
+      },
+      {
+        "text": "anything",
+        "start": 66.26,
+        "end": 66.78
+      },
+      {
+        "text": "with",
+        "start": 66.78,
+        "end": 67.14
+      },
+      {
+        "text": "fins",
+        "start": 67.14,
+        "end": 67.56
+      },
+      {
+        "text": "and",
+        "start": 67.56,
+        "end": 67.9
+      },
+      {
+        "text": "scales",
+        "start": 67.9,
+        "end": 68.32
+      }
+    ],
+    "10": [
+      {
+        "text": "But",
+        "start": 69.0,
+        "end": 69.26
+      },
+      {
+        "text": "the",
+        "start": 69.26,
+        "end": 69.44
+      },
+      {
+        "text": "following",
+        "start": 69.44,
+        "end": 69.82
+      },
+      {
+        "text": "among",
+        "start": 69.82,
+        "end": 70.26
+      },
+      {
+        "text": "all",
+        "start": 70.26,
+        "end": 70.6
+      },
+      {
+        "text": "the",
+        "start": 70.6,
+        "end": 70.8
+      },
+      {
+        "text": "teeming",
+        "start": 70.8,
+        "end": 71.16
+      },
+      {
+        "text": "life",
+        "start": 71.16,
+        "end": 71.54
+      },
+      {
+        "text": "and",
+        "start": 71.54,
+        "end": 71.84
+      },
+      {
+        "text": "creatures",
+        "start": 71.84,
+        "end": 72.22
+      },
+      {
+        "text": "in",
+        "start": 72.22,
+        "end": 72.54
+      },
+      {
+        "text": "the",
+        "start": 72.54,
+        "end": 72.66
+      },
+      {
+        "text": "water",
+        "start": 72.66,
+        "end": 72.96
+      },
+      {
+        "text": "are",
+        "start": 72.96,
+        "end": 73.42
+      },
+      {
+        "text": "detestable",
+        "start": 73.42,
+        "end": 74.1
+      },
+      {
+        "text": "to",
+        "start": 74.1,
+        "end": 74.3
+      },
+      {
+        "text": "you",
+        "start": 74.3,
+        "end": 74.66
+      },
+      {
+        "text": "everything",
+        "start": 75.32,
+        "end": 75.62
+      },
+      {
+        "text": "in",
+        "start": 75.62,
+        "end": 76.06
+      },
+      {
+        "text": "the",
+        "start": 76.06,
+        "end": 76.22
+      },
+      {
+        "text": "seas",
+        "start": 76.22,
+        "end": 76.5
+      },
+      {
+        "text": "or",
+        "start": 76.5,
+        "end": 76.8
+      },
+      {
+        "text": "streams",
+        "start": 76.8,
+        "end": 77.24
+      },
+      {
+        "text": "that",
+        "start": 77.24,
+        "end": 77.76
+      },
+      {
+        "text": "does",
+        "start": 77.76,
+        "end": 77.94
+      },
+      {
+        "text": "not",
+        "start": 77.94,
+        "end": 78.18
+      },
+      {
+        "text": "have",
+        "start": 78.18,
+        "end": 78.46
+      },
+      {
+        "text": "fins",
+        "start": 78.46,
+        "end": 78.84
+      },
+      {
+        "text": "and",
+        "start": 78.84,
+        "end": 79.16
+      },
+      {
+        "text": "scales",
+        "start": 79.16,
+        "end": 79.64
+      }
+    ],
+    "11": [
+      {
+        "text": "They",
+        "start": 80.24,
+        "end": 80.6
+      },
+      {
+        "text": "shall",
+        "start": 80.6,
+        "end": 80.8
+      },
+      {
+        "text": "be",
+        "start": 80.8,
+        "end": 81.08
+      },
+      {
+        "text": "an",
+        "start": 81.08,
+        "end": 81.3
+      },
+      {
+        "text": "abomination",
+        "start": 81.3,
+        "end": 81.78
+      },
+      {
+        "text": "to",
+        "start": 81.78,
+        "end": 82.2
+      },
+      {
+        "text": "you",
+        "start": 82.2,
+        "end": 82.5
+      },
+      {
+        "text": "you",
+        "start": 82.86,
+        "end": 83.16
+      },
+      {
+        "text": "must",
+        "start": 83.16,
+        "end": 83.34
+      },
+      {
+        "text": "not",
+        "start": 83.34,
+        "end": 83.64
+      },
+      {
+        "text": "eat",
+        "start": 83.64,
+        "end": 83.88
+      },
+      {
+        "text": "their",
+        "start": 83.88,
+        "end": 84.1
+      },
+      {
+        "text": "meat",
+        "start": 84.1,
+        "end": 84.38
+      },
+      {
+        "text": "and",
+        "start": 84.38,
+        "end": 84.9
+      },
+      {
+        "text": "you",
+        "start": 84.9,
+        "end": 85.04
+      },
+      {
+        "text": "must",
+        "start": 85.04,
+        "end": 85.28
+      },
+      {
+        "text": "detest",
+        "start": 85.28,
+        "end": 85.88
+      },
+      {
+        "text": "their",
+        "start": 85.88,
+        "end": 86.18
+      },
+      {
+        "text": "carcasses",
+        "start": 86.18,
+        "end": 86.74
+      }
+    ],
+    "12": [
+      {
+        "text": "Everything",
+        "start": 87.56,
+        "end": 87.92
+      },
+      {
+        "text": "in",
+        "start": 87.92,
+        "end": 88.3
+      },
+      {
+        "text": "the",
+        "start": 88.3,
+        "end": 88.42
+      },
+      {
+        "text": "water",
+        "start": 88.42,
+        "end": 88.66
+      },
+      {
+        "text": "that",
+        "start": 88.66,
+        "end": 88.9
+      },
+      {
+        "text": "does",
+        "start": 88.9,
+        "end": 89.06
+      },
+      {
+        "text": "not",
+        "start": 89.06,
+        "end": 89.3
+      },
+      {
+        "text": "have",
+        "start": 89.3,
+        "end": 89.58
+      },
+      {
+        "text": "fins",
+        "start": 89.58,
+        "end": 89.88
+      },
+      {
+        "text": "and",
+        "start": 89.88,
+        "end": 90.18
+      },
+      {
+        "text": "scales",
+        "start": 90.18,
+        "end": 90.62
+      },
+      {
+        "text": "shall",
+        "start": 90.62,
+        "end": 91.2
+      },
+      {
+        "text": "be",
+        "start": 91.2,
+        "end": 91.42
+      },
+      {
+        "text": "detestable",
+        "start": 91.42,
+        "end": 92.14
+      },
+      {
+        "text": "to",
+        "start": 92.14,
+        "end": 92.32
+      },
+      {
+        "text": "you",
+        "start": 92.32,
+        "end": 92.68
+      }
+    ],
+    "13": [
+      {
+        "text": "Additionally",
+        "start": 93.42,
+        "end": 93.86
+      },
+      {
+        "text": "you",
+        "start": 94.28,
+        "end": 94.52
+      },
+      {
+        "text": "are",
+        "start": 94.52,
+        "end": 94.68
+      },
+      {
+        "text": "to",
+        "start": 94.68,
+        "end": 94.88
+      },
+      {
+        "text": "detest",
+        "start": 94.88,
+        "end": 95.4
+      },
+      {
+        "text": "the",
+        "start": 95.4,
+        "end": 95.64
+      },
+      {
+        "text": "following",
+        "start": 95.64,
+        "end": 96.06
+      },
+      {
+        "text": "birds",
+        "start": 96.06,
+        "end": 96.46
+      },
+      {
+        "text": "and",
+        "start": 96.86,
+        "end": 97.14
+      },
+      {
+        "text": "they",
+        "start": 97.14,
+        "end": 97.3
+      },
+      {
+        "text": "must",
+        "start": 97.3,
+        "end": 97.44
+      },
+      {
+        "text": "not",
+        "start": 97.44,
+        "end": 97.74
+      },
+      {
+        "text": "be",
+        "start": 97.74,
+        "end": 97.96
+      },
+      {
+        "text": "eaten",
+        "start": 97.96,
+        "end": 98.32
+      },
+      {
+        "text": "because",
+        "start": 98.32,
+        "end": 98.94
+      },
+      {
+        "text": "they",
+        "start": 98.94,
+        "end": 99.22
+      },
+      {
+        "text": "are",
+        "start": 99.22,
+        "end": 99.46
+      },
+      {
+        "text": "detestable",
+        "start": 99.46,
+        "end": 100.18
+      },
+      {
+        "text": "the",
+        "start": 100.52,
+        "end": 100.98
+      },
+      {
+        "text": "eagle",
+        "start": 100.98,
+        "end": 101.4
+      },
+      {
+        "text": "the",
+        "start": 101.82,
+        "end": 101.94
+      },
+      {
+        "text": "bearded",
+        "start": 101.94,
+        "end": 102.24
+      },
+      {
+        "text": "vulture",
+        "start": 102.24,
+        "end": 102.72
+      },
+      {
+        "text": "the",
+        "start": 103.1,
+        "end": 103.2
+      },
+      {
+        "text": "black",
+        "start": 103.2,
+        "end": 103.52
+      },
+      {
+        "text": "vulture",
+        "start": 103.52,
+        "end": 104.04
+      }
+    ],
+    "14": [
+      {
+        "text": "the",
+        "start": 104.44,
+        "end": 104.64
+      },
+      {
+        "text": "kite",
+        "start": 104.64,
+        "end": 105.02
+      },
+      {
+        "text": "any",
+        "start": 105.5,
+        "end": 105.76
+      },
+      {
+        "text": "kind",
+        "start": 105.76,
+        "end": 106.18
+      },
+      {
+        "text": "of",
+        "start": 106.18,
+        "end": 106.42
+      },
+      {
+        "text": "falcon",
+        "start": 106.42,
+        "end": 106.86
+      }
+    ],
+    "15": [
+      {
+        "text": "any",
+        "start": 107.32,
+        "end": 107.6
+      },
+      {
+        "text": "kind",
+        "start": 107.6,
+        "end": 107.92
+      },
+      {
+        "text": "of",
+        "start": 107.92,
+        "end": 108.12
+      },
+      {
+        "text": "raven",
+        "start": 108.12,
+        "end": 108.5
+      }
+    ],
+    "16": [
+      {
+        "text": "the",
+        "start": 109.02,
+        "end": 109.26
+      },
+      {
+        "text": "ostrich",
+        "start": 109.26,
+        "end": 109.9
+      },
+      {
+        "text": "the",
+        "start": 110.3,
+        "end": 110.38
+      },
+      {
+        "text": "screech",
+        "start": 110.38,
+        "end": 110.84
+      },
+      {
+        "text": "owl",
+        "start": 110.84,
+        "end": 111.02
+      },
+      {
+        "text": "the",
+        "start": 111.36,
+        "end": 111.5
+      },
+      {
+        "text": "gull",
+        "start": 111.5,
+        "end": 111.72
+      },
+      {
+        "text": "any",
+        "start": 112.24,
+        "end": 112.52
+      },
+      {
+        "text": "kind",
+        "start": 112.52,
+        "end": 112.86
+      },
+      {
+        "text": "of",
+        "start": 112.86,
+        "end": 113.1
+      },
+      {
+        "text": "hawk",
+        "start": 113.1,
+        "end": 113.4
+      }
+    ],
+    "17": [
+      {
+        "text": "the",
+        "start": 113.74,
+        "end": 113.94
+      },
+      {
+        "text": "little",
+        "start": 113.94,
+        "end": 114.18
+      },
+      {
+        "text": "owl",
+        "start": 114.18,
+        "end": 114.48
+      },
+      {
+        "text": "the",
+        "start": 114.86,
+        "end": 115.04
+      },
+      {
+        "text": "cormorant",
+        "start": 115.04,
+        "end": 115.54
+      },
+      {
+        "text": "the",
+        "start": 115.84,
+        "end": 115.96
+      },
+      {
+        "text": "great",
+        "start": 115.96,
+        "end": 116.18
+      },
+      {
+        "text": "owl",
+        "start": 116.18,
+        "end": 116.5
+      }
+    ],
+    "18": [
+      {
+        "text": "the",
+        "start": 116.98,
+        "end": 117.12
+      },
+      {
+        "text": "white",
+        "start": 117.12,
+        "end": 117.42
+      },
+      {
+        "text": "owl",
+        "start": 117.42,
+        "end": 117.76
+      },
+      {
+        "text": "the",
+        "start": 118.08,
+        "end": 118.18
+      },
+      {
+        "text": "desert",
+        "start": 118.18,
+        "end": 118.54
+      },
+      {
+        "text": "owl",
+        "start": 118.54,
+        "end": 118.9
+      },
+      {
+        "text": "the",
+        "start": 119.32,
+        "end": 119.46
+      }
+    ],
+    "19": [
+      {
+        "text": "the",
+        "start": 120.5,
+        "end": 120.64
+      },
+      {
+        "text": "stork",
+        "start": 120.64,
+        "end": 121.02
+      },
+      {
+        "text": "any",
+        "start": 121.52,
+        "end": 121.8
+      },
+      {
+        "text": "kind",
+        "start": 121.8,
+        "end": 122.1
+      },
+      {
+        "text": "of",
+        "start": 122.1,
+        "end": 122.3
+      },
+      {
+        "text": "heron",
+        "start": 122.3,
+        "end": 122.68
+      },
+      {
+        "text": "the",
+        "start": 123.12,
+        "end": 123.3
+      },
+      {
+        "text": "hoopoe",
+        "start": 123.3,
+        "end": 123.76
+      },
+      {
+        "text": "and",
+        "start": 124.1,
+        "end": 124.36
+      },
+      {
+        "text": "the",
+        "start": 124.36,
+        "end": 124.54
+      },
+      {
+        "text": "bat",
+        "start": 124.54,
+        "end": 124.8
+      }
+    ],
+    "20": [
+      {
+        "text": "All",
+        "start": 125.54,
+        "end": 125.88
+      },
+      {
+        "text": "flying",
+        "start": 125.88,
+        "end": 126.28
+      },
+      {
+        "text": "insects",
+        "start": 126.28,
+        "end": 126.8
+      },
+      {
+        "text": "that",
+        "start": 126.8,
+        "end": 127.14
+      },
+      {
+        "text": "walk",
+        "start": 127.14,
+        "end": 127.36
+      },
+      {
+        "text": "on",
+        "start": 127.36,
+        "end": 127.58
+      },
+      {
+        "text": "all",
+        "start": 127.58,
+        "end": 127.9
+      },
+      {
+        "text": "fours",
+        "start": 127.9,
+        "end": 128.46
+      },
+      {
+        "text": "are",
+        "start": 128.46,
+        "end": 128.66
+      },
+      {
+        "text": "detestable",
+        "start": 128.66,
+        "end": 129.26
+      },
+      {
+        "text": "to",
+        "start": 129.26,
+        "end": 129.46
+      },
+      {
+        "text": "you",
+        "start": 129.46,
+        "end": 129.78
+      }
+    ],
+    "21": [
+      {
+        "text": "However",
+        "start": 130.2,
+        "end": 130.6
+      },
+      {
+        "text": "you",
+        "start": 131.06,
+        "end": 131.16
+      },
+      {
+        "text": "may",
+        "start": 131.16,
+        "end": 131.3
+      },
+      {
+        "text": "eat",
+        "start": 131.3,
+        "end": 131.64
+      },
+      {
+        "text": "the",
+        "start": 131.64,
+        "end": 131.92
+      },
+      {
+        "text": "following",
+        "start": 131.92,
+        "end": 132.24
+      },
+      {
+        "text": "kinds",
+        "start": 132.24,
+        "end": 132.72
+      },
+      {
+        "text": "of",
+        "start": 132.72,
+        "end": 133.0
+      },
+      {
+        "text": "flying",
+        "start": 133.0,
+        "end": 133.3
+      },
+      {
+        "text": "insects",
+        "start": 133.3,
+        "end": 133.84
+      },
+      {
+        "text": "that",
+        "start": 133.84,
+        "end": 134.14
+      },
+      {
+        "text": "walk",
+        "start": 134.14,
+        "end": 134.38
+      },
+      {
+        "text": "on",
+        "start": 134.38,
+        "end": 134.66
+      },
+      {
+        "text": "all",
+        "start": 134.66,
+        "end": 134.96
+      },
+      {
+        "text": "fours",
+        "start": 134.96,
+        "end": 135.72
+      },
+      {
+        "text": "those",
+        "start": 135.72,
+        "end": 136.28
+      },
+      {
+        "text": "having",
+        "start": 136.28,
+        "end": 136.7
+      },
+      {
+        "text": "jointed",
+        "start": 136.7,
+        "end": 137.2
+      },
+      {
+        "text": "legs",
+        "start": 137.2,
+        "end": 137.6
+      },
+      {
+        "text": "above",
+        "start": 137.6,
+        "end": 138.0
+      },
+      {
+        "text": "their",
+        "start": 138.0,
+        "end": 138.26
+      },
+      {
+        "text": "feet",
+        "start": 138.26,
+        "end": 138.62
+      },
+      {
+        "text": "for",
+        "start": 138.62,
+        "end": 139.1
+      },
+      {
+        "text": "hopping",
+        "start": 139.1,
+        "end": 139.44
+      },
+      {
+        "text": "on",
+        "start": 139.44,
+        "end": 139.76
+      },
+      {
+        "text": "the",
+        "start": 139.76,
+        "end": 139.9
+      },
+      {
+        "text": "ground",
+        "start": 139.9,
+        "end": 140.22
+      }
+    ],
+    "22": [
+      {
+        "text": "Of",
+        "start": 140.76,
+        "end": 140.98
+      },
+      {
+        "text": "these",
+        "start": 140.98,
+        "end": 141.3
+      },
+      {
+        "text": "you",
+        "start": 141.3,
+        "end": 141.64
+      },
+      {
+        "text": "may",
+        "start": 141.64,
+        "end": 141.82
+      },
+      {
+        "text": "eat",
+        "start": 141.82,
+        "end": 142.08
+      },
+      {
+        "text": "any",
+        "start": 142.08,
+        "end": 142.42
+      },
+      {
+        "text": "kind",
+        "start": 142.42,
+        "end": 142.7
+      },
+      {
+        "text": "of",
+        "start": 142.7,
+        "end": 142.92
+      },
+      {
+        "text": "locust",
+        "start": 142.92,
+        "end": 143.4
+      },
+      {
+        "text": "katydid",
+        "start": 143.84,
+        "end": 144.38
+      },
+      {
+        "text": "cricket",
+        "start": 144.64,
+        "end": 144.88
+      },
+      {
+        "text": "or",
+        "start": 145.24,
+        "end": 145.32
+      },
+      {
+        "text": "grasshopper",
+        "start": 145.32,
+        "end": 145.94
+      }
+    ],
+    "23": [
+      {
+        "text": "All",
+        "start": 146.4,
+        "end": 146.92
+      },
+      {
+        "text": "other",
+        "start": 146.92,
+        "end": 147.26
+      },
+      {
+        "text": "flying",
+        "start": 147.26,
+        "end": 147.64
+      },
+      {
+        "text": "insects",
+        "start": 147.64,
+        "end": 148.16
+      },
+      {
+        "text": "that",
+        "start": 148.16,
+        "end": 148.48
+      },
+      {
+        "text": "have",
+        "start": 148.48,
+        "end": 148.74
+      },
+      {
+        "text": "four",
+        "start": 148.74,
+        "end": 149.04
+      },
+      {
+        "text": "legs",
+        "start": 149.04,
+        "end": 149.42
+      },
+      {
+        "text": "are",
+        "start": 149.42,
+        "end": 149.86
+      },
+      {
+        "text": "detestable",
+        "start": 149.86,
+        "end": 150.5
+      },
+      {
+        "text": "to",
+        "start": 150.5,
+        "end": 150.72
+      },
+      {
+        "text": "you",
+        "start": 150.72,
+        "end": 151.1
+      }
+    ],
+    "24": [
+      {
+        "text": "These",
+        "start": 151.62,
+        "end": 151.98
+      },
+      {
+        "text": "creatures",
+        "start": 151.98,
+        "end": 152.36
+      },
+      {
+        "text": "will",
+        "start": 152.36,
+        "end": 152.76
+      },
+      {
+        "text": "make",
+        "start": 152.76,
+        "end": 152.98
+      },
+      {
+        "text": "you",
+        "start": 152.98,
+        "end": 153.24
+      },
+      {
+        "text": "unclean",
+        "start": 153.24,
+        "end": 154.02
+      },
+      {
+        "text": "Whoever",
+        "start": 154.54,
+        "end": 154.8
+      },
+      {
+        "text": "touches",
+        "start": 154.8,
+        "end": 155.24
+      },
+      {
+        "text": "their",
+        "start": 155.24,
+        "end": 155.54
+      },
+      {
+        "text": "carcasses",
+        "start": 155.54,
+        "end": 156.06
+      },
+      {
+        "text": "will",
+        "start": 156.06,
+        "end": 156.56
+      },
+      {
+        "text": "be",
+        "start": 156.56,
+        "end": 156.72
+      },
+      {
+        "text": "unclean",
+        "start": 156.72,
+        "end": 157.36
+      },
+      {
+        "text": "until",
+        "start": 157.36,
+        "end": 157.72
+      },
+      {
+        "text": "evening",
+        "start": 157.72,
+        "end": 158.2
+      }
+    ],
+    "25": [
+      {
+        "text": "and",
+        "start": 158.66,
+        "end": 158.98
+      },
+      {
+        "text": "whoever",
+        "start": 158.98,
+        "end": 159.32
+      },
+      {
+        "text": "picks",
+        "start": 159.32,
+        "end": 159.66
+      },
+      {
+        "text": "up",
+        "start": 159.66,
+        "end": 159.88
+      },
+      {
+        "text": "one",
+        "start": 159.88,
+        "end": 160.1
+      },
+      {
+        "text": "of",
+        "start": 160.1,
+        "end": 160.46
+      },
+      {
+        "text": "their",
+        "start": 160.46,
+        "end": 160.66
+      },
+      {
+        "text": "carcasses",
+        "start": 160.66,
+        "end": 160.96
+      },
+      {
+        "text": "must",
+        "start": 160.96,
+        "end": 161.48
+      },
+      {
+        "text": "wash",
+        "start": 161.48,
+        "end": 161.78
+      },
+      {
+        "text": "his",
+        "start": 161.78,
+        "end": 162.02
+      },
+      {
+        "text": "clothes",
+        "start": 162.02,
+        "end": 162.46
+      },
+      {
+        "text": "and",
+        "start": 162.86,
+        "end": 163.04
+      },
+      {
+        "text": "he",
+        "start": 163.04,
+        "end": 163.22
+      },
+      {
+        "text": "will",
+        "start": 163.22,
+        "end": 163.38
+      },
+      {
+        "text": "be",
+        "start": 163.38,
+        "end": 163.56
+      },
+      {
+        "text": "unclean",
+        "start": 163.56,
+        "end": 164.32
+      },
+      {
+        "text": "until",
+        "start": 164.32,
+        "end": 164.7
+      },
+      {
+        "text": "evening",
+        "start": 164.7,
+        "end": 165.14
+      }
+    ],
+    "26": [
+      {
+        "text": "Every",
+        "start": 165.96,
+        "end": 166.34
+      },
+      {
+        "text": "animal",
+        "start": 166.34,
+        "end": 166.78
+      },
+      {
+        "text": "with",
+        "start": 166.78,
+        "end": 167.04
+      },
+      {
+        "text": "hooves",
+        "start": 167.04,
+        "end": 167.5
+      },
+      {
+        "text": "not",
+        "start": 167.5,
+        "end": 167.8
+      },
+      {
+        "text": "completely",
+        "start": 167.8,
+        "end": 168.34
+      },
+      {
+        "text": "divided",
+        "start": 168.34,
+        "end": 168.82
+      },
+      {
+        "text": "or",
+        "start": 168.82,
+        "end": 169.2
+      },
+      {
+        "text": "that",
+        "start": 169.2,
+        "end": 169.36
+      },
+      {
+        "text": "does",
+        "start": 169.36,
+        "end": 169.54
+      },
+      {
+        "text": "not",
+        "start": 169.54,
+        "end": 169.76
+      },
+      {
+        "text": "chew",
+        "start": 169.76,
+        "end": 169.98
+      },
+      {
+        "text": "the",
+        "start": 169.98,
+        "end": 170.18
+      },
+      {
+        "text": "cud",
+        "start": 170.18,
+        "end": 170.52
+      },
+      {
+        "text": "is",
+        "start": 170.52,
+        "end": 171.0
+      },
+      {
+        "text": "unclean",
+        "start": 171.0,
+        "end": 171.68
+      },
+      {
+        "text": "for",
+        "start": 171.68,
+        "end": 171.9
+      },
+      {
+        "text": "you",
+        "start": 171.9,
+        "end": 172.22
+      },
+      {
+        "text": "Whoever",
+        "start": 172.82,
+        "end": 173.08
+      },
+      {
+        "text": "touches",
+        "start": 173.08,
+        "end": 173.56
+      },
+      {
+        "text": "any",
+        "start": 173.56,
+        "end": 173.96
+      },
+      {
+        "text": "of",
+        "start": 173.96,
+        "end": 174.16
+      },
+      {
+        "text": "them",
+        "start": 174.16,
+        "end": 174.46
+      },
+      {
+        "text": "will",
+        "start": 174.46,
+        "end": 174.8
+      },
+      {
+        "text": "be",
+        "start": 174.8,
+        "end": 175.02
+      },
+      {
+        "text": "unclean",
+        "start": 175.02,
+        "end": 175.7
+      }
+    ],
+    "27": [
+      {
+        "text": "All",
+        "start": 176.34,
+        "end": 176.86
+      },
+      {
+        "text": "the",
+        "start": 176.86,
+        "end": 177.06
+      },
+      {
+        "text": "four",
+        "start": 177.06,
+        "end": 177.3
+      },
+      {
+        "text": "footed",
+        "start": 177.3,
+        "end": 177.52
+      },
+      {
+        "text": "animals",
+        "start": 177.52,
+        "end": 178.0
+      },
+      {
+        "text": "that",
+        "start": 178.0,
+        "end": 178.3
+      },
+      {
+        "text": "walk",
+        "start": 178.3,
+        "end": 178.52
+      },
+      {
+        "text": "on",
+        "start": 178.52,
+        "end": 178.74
+      },
+      {
+        "text": "their",
+        "start": 178.74,
+        "end": 178.94
+      },
+      {
+        "text": "paws",
+        "start": 178.94,
+        "end": 179.28
+      },
+      {
+        "text": "are",
+        "start": 179.28,
+        "end": 179.86
+      },
+      {
+        "text": "unclean",
+        "start": 179.86,
+        "end": 180.52
+      },
+      {
+        "text": "for",
+        "start": 180.52,
+        "end": 180.74
+      },
+      {
+        "text": "you",
+        "start": 180.74,
+        "end": 181.08
+      },
+      {
+        "text": "whoever",
+        "start": 181.58,
+        "end": 181.86
+      },
+      {
+        "text": "touches",
+        "start": 181.86,
+        "end": 182.34
+      },
+      {
+        "text": "their",
+        "start": 182.34,
+        "end": 182.64
+      },
+      {
+        "text": "carcasses",
+        "start": 182.64,
+        "end": 183.18
+      },
+      {
+        "text": "will",
+        "start": 183.18,
+        "end": 183.68
+      },
+      {
+        "text": "be",
+        "start": 183.68,
+        "end": 183.86
+      },
+      {
+        "text": "unclean",
+        "start": 183.86,
+        "end": 184.46
+      },
+      {
+        "text": "until",
+        "start": 184.46,
+        "end": 184.74
+      },
+      {
+        "text": "evening",
+        "start": 184.74,
+        "end": 185.2
+      }
+    ],
+    "28": [
+      {
+        "text": "and",
+        "start": 185.6,
+        "end": 185.92
+      },
+      {
+        "text": "anyone",
+        "start": 185.92,
+        "end": 186.38
+      },
+      {
+        "text": "who",
+        "start": 186.38,
+        "end": 186.72
+      },
+      {
+        "text": "picks",
+        "start": 186.72,
+        "end": 186.96
+      },
+      {
+        "text": "up",
+        "start": 186.96,
+        "end": 187.18
+      },
+      {
+        "text": "a",
+        "start": 187.18,
+        "end": 187.36
+      },
+      {
+        "text": "carcass",
+        "start": 187.36,
+        "end": 187.78
+      },
+      {
+        "text": "must",
+        "start": 187.78,
+        "end": 188.22
+      },
+      {
+        "text": "wash",
+        "start": 188.22,
+        "end": 188.52
+      },
+      {
+        "text": "his",
+        "start": 188.52,
+        "end": 188.76
+      },
+      {
+        "text": "clothes",
+        "start": 188.76,
+        "end": 189.18
+      },
+      {
+        "text": "and",
+        "start": 189.62,
+        "end": 189.82
+      },
+      {
+        "text": "he",
+        "start": 189.82,
+        "end": 189.98
+      },
+      {
+        "text": "will",
+        "start": 189.98,
+        "end": 190.14
+      },
+      {
+        "text": "be",
+        "start": 190.14,
+        "end": 190.32
+      },
+      {
+        "text": "unclean",
+        "start": 190.32,
+        "end": 191.02
+      },
+      {
+        "text": "until",
+        "start": 191.02,
+        "end": 191.4
+      },
+      {
+        "text": "evening",
+        "start": 191.4,
+        "end": 191.82
+      },
+      {
+        "text": "They",
+        "start": 192.4,
+        "end": 192.76
+      },
+      {
+        "text": "are",
+        "start": 192.76,
+        "end": 193.06
+      },
+      {
+        "text": "unclean",
+        "start": 193.06,
+        "end": 193.8
+      },
+      {
+        "text": "for",
+        "start": 193.8,
+        "end": 194.02
+      },
+      {
+        "text": "you",
+        "start": 194.02,
+        "end": 194.3
+      }
+    ],
+    "29": [
+      {
+        "text": "The",
+        "start": 195.22,
+        "end": 195.54
+      },
+      {
+        "text": "following",
+        "start": 195.54,
+        "end": 195.84
+      },
+      {
+        "text": "creatures",
+        "start": 195.84,
+        "end": 196.3
+      },
+      {
+        "text": "that",
+        "start": 196.3,
+        "end": 196.6
+      },
+      {
+        "text": "move",
+        "start": 196.6,
+        "end": 196.88
+      },
+      {
+        "text": "along",
+        "start": 196.88,
+        "end": 197.28
+      },
+      {
+        "text": "the",
+        "start": 197.28,
+        "end": 197.5
+      },
+      {
+        "text": "ground",
+        "start": 197.5,
+        "end": 197.86
+      },
+      {
+        "text": "are",
+        "start": 197.86,
+        "end": 198.22
+      },
+      {
+        "text": "unclean",
+        "start": 198.22,
+        "end": 198.82
+      },
+      {
+        "text": "for",
+        "start": 198.82,
+        "end": 199.02
+      },
+      {
+        "text": "you",
+        "start": 199.02,
+        "end": 199.34
+      },
+      {
+        "text": "the",
+        "start": 199.76,
+        "end": 200.06
+      },
+      {
+        "text": "mole",
+        "start": 200.06,
+        "end": 200.38
+      },
+      {
+        "text": "the",
+        "start": 200.74,
+        "end": 200.82
+      },
+      {
+        "text": "mouse",
+        "start": 200.82,
+        "end": 201.2
+      },
+      {
+        "text": "any",
+        "start": 201.64,
+        "end": 201.9
+      },
+      {
+        "text": "kind",
+        "start": 201.9,
+        "end": 202.22
+      },
+      {
+        "text": "of",
+        "start": 202.22,
+        "end": 202.54
+      },
+      {
+        "text": "great",
+        "start": 202.54,
+        "end": 202.8
+      },
+      {
+        "text": "lizard",
+        "start": 202.8,
+        "end": 203.18
+      }
+    ],
+    "30": [
+      {
+        "text": "the",
+        "start": 203.68,
+        "end": 203.88
+      },
+      {
+        "text": "gecko",
+        "start": 203.88,
+        "end": 204.28
+      },
+      {
+        "text": "the",
+        "start": 204.66,
+        "end": 204.78
+      },
+      {
+        "text": "monitor",
+        "start": 204.78,
+        "end": 205.18
+      },
+      {
+        "text": "lizard",
+        "start": 205.18,
+        "end": 205.52
+      },
+      {
+        "text": "the",
+        "start": 205.94,
+        "end": 206.1
+      },
+      {
+        "text": "common",
+        "start": 206.1,
+        "end": 206.44
+      },
+      {
+        "text": "lizard",
+        "start": 206.44,
+        "end": 206.84
+      },
+      {
+        "text": "the",
+        "start": 207.04,
+        "end": 207.16
+      },
+      {
+        "text": "skink",
+        "start": 207.16,
+        "end": 207.48
+      },
+      {
+        "text": "and",
+        "start": 207.78,
+        "end": 207.96
+      },
+      {
+        "text": "the",
+        "start": 207.96,
+        "end": 208.14
+      },
+      {
+        "text": "chameleon",
+        "start": 208.14,
+        "end": 208.64
+      }
+    ],
+    "31": [
+      {
+        "text": "These",
+        "start": 209.2,
+        "end": 209.54
+      },
+      {
+        "text": "animals",
+        "start": 209.54,
+        "end": 209.96
+      },
+      {
+        "text": "are",
+        "start": 209.96,
+        "end": 210.34
+      },
+      {
+        "text": "unclean",
+        "start": 210.34,
+        "end": 210.96
+      },
+      {
+        "text": "for",
+        "start": 210.96,
+        "end": 211.14
+      },
+      {
+        "text": "you",
+        "start": 211.14,
+        "end": 211.44
+      },
+      {
+        "text": "among",
+        "start": 211.44,
+        "end": 211.76
+      },
+      {
+        "text": "all",
+        "start": 211.76,
+        "end": 212.2
+      },
+      {
+        "text": "the",
+        "start": 212.2,
+        "end": 212.38
+      },
+      {
+        "text": "crawling",
+        "start": 212.38,
+        "end": 212.74
+      },
+      {
+        "text": "creatures",
+        "start": 212.74,
+        "end": 213.26
+      },
+      {
+        "text": "Whoever",
+        "start": 213.8,
+        "end": 214.12
+      },
+      {
+        "text": "touches",
+        "start": 214.12,
+        "end": 214.7
+      },
+      {
+        "text": "them",
+        "start": 214.7,
+        "end": 215.04
+      },
+      {
+        "text": "when",
+        "start": 215.04,
+        "end": 215.26
+      },
+      {
+        "text": "they",
+        "start": 215.26,
+        "end": 215.42
+      },
+      {
+        "text": "are",
+        "start": 215.42,
+        "end": 215.6
+      },
+      {
+        "text": "dead",
+        "start": 215.6,
+        "end": 216.0
+      },
+      {
+        "text": "shall",
+        "start": 216.0,
+        "end": 216.5
+      },
+      {
+        "text": "be",
+        "start": 216.5,
+        "end": 216.7
+      },
+      {
+        "text": "unclean",
+        "start": 216.7,
+        "end": 217.4
+      },
+      {
+        "text": "until",
+        "start": 217.4,
+        "end": 217.68
+      },
+      {
+        "text": "evening",
+        "start": 217.68,
+        "end": 218.1
+      }
+    ],
+    "32": [
+      {
+        "text": "When",
+        "start": 218.76,
+        "end": 219.08
+      },
+      {
+        "text": "one",
+        "start": 219.08,
+        "end": 219.32
+      },
+      {
+        "text": "of",
+        "start": 219.32,
+        "end": 219.46
+      },
+      {
+        "text": "them",
+        "start": 219.46,
+        "end": 219.6
+      },
+      {
+        "text": "dies",
+        "start": 219.6,
+        "end": 219.92
+      },
+      {
+        "text": "and",
+        "start": 219.92,
+        "end": 220.38
+      },
+      {
+        "text": "falls",
+        "start": 220.38,
+        "end": 220.68
+      },
+      {
+        "text": "on",
+        "start": 220.68,
+        "end": 220.96
+      },
+      {
+        "text": "something",
+        "start": 220.96,
+        "end": 221.36
+      },
+      {
+        "text": "that",
+        "start": 221.68,
+        "end": 221.98
+      },
+      {
+        "text": "article",
+        "start": 221.98,
+        "end": 222.42
+      },
+      {
+        "text": "becomes",
+        "start": 222.42,
+        "end": 222.96
+      },
+      {
+        "text": "unclean",
+        "start": 222.96,
+        "end": 223.84
+      },
+      {
+        "text": "any",
+        "start": 224.38,
+        "end": 224.7
+      },
+      {
+        "text": "article",
+        "start": 224.7,
+        "end": 225.16
+      },
+      {
+        "text": "of",
+        "start": 225.16,
+        "end": 225.36
+      },
+      {
+        "text": "wood",
+        "start": 225.36,
+        "end": 225.68
+      },
+      {
+        "text": "clothing",
+        "start": 226.04,
+        "end": 226.34
+      },
+      {
+        "text": "leather",
+        "start": 226.66,
+        "end": 226.84
+      },
+      {
+        "text": "sackcloth",
+        "start": 227.4,
+        "end": 227.72
+      },
+      {
+        "text": "or",
+        "start": 228.06,
+        "end": 228.3
+      },
+      {
+        "text": "any",
+        "start": 228.3,
+        "end": 228.62
+      },
+      {
+        "text": "implement",
+        "start": 228.62,
+        "end": 229.08
+      },
+      {
+        "text": "used",
+        "start": 229.08,
+        "end": 229.38
+      },
+      {
+        "text": "for",
+        "start": 229.38,
+        "end": 229.66
+      },
+      {
+        "text": "work",
+        "start": 229.66,
+        "end": 229.98
+      },
+      {
+        "text": "must",
+        "start": 229.98,
+        "end": 230.44
+      },
+      {
+        "text": "be",
+        "start": 230.44,
+        "end": 230.7
+      },
+      {
+        "text": "rinsed",
+        "start": 230.7,
+        "end": 231.06
+      },
+      {
+        "text": "with",
+        "start": 231.06,
+        "end": 231.2
+      },
+      {
+        "text": "water",
+        "start": 231.2,
+        "end": 231.56
+      },
+      {
+        "text": "and",
+        "start": 231.56,
+        "end": 232.08
+      },
+      {
+        "text": "will",
+        "start": 232.08,
+        "end": 232.26
+      },
+      {
+        "text": "remain",
+        "start": 232.26,
+        "end": 232.66
+      },
+      {
+        "text": "unclean",
+        "start": 232.66,
+        "end": 233.44
+      },
+      {
+        "text": "until",
+        "start": 233.44,
+        "end": 233.8
+      },
+      {
+        "text": "evening",
+        "start": 233.8,
+        "end": 234.2
+      },
+      {
+        "text": "then",
+        "start": 234.8,
+        "end": 235.2
+      },
+      {
+        "text": "it",
+        "start": 235.2,
+        "end": 235.5
+      },
+      {
+        "text": "will",
+        "start": 235.5,
+        "end": 235.66
+      },
+      {
+        "text": "be",
+        "start": 235.66,
+        "end": 235.84
+      },
+      {
+        "text": "clean",
+        "start": 235.84,
+        "end": 236.18
+      }
+    ],
+    "33": [
+      {
+        "text": "If",
+        "start": 236.88,
+        "end": 237.2
+      },
+      {
+        "text": "any",
+        "start": 237.2,
+        "end": 237.44
+      },
+      {
+        "text": "of",
+        "start": 237.44,
+        "end": 237.58
+      },
+      {
+        "text": "them",
+        "start": 237.58,
+        "end": 237.76
+      },
+      {
+        "text": "falls",
+        "start": 237.76,
+        "end": 238.04
+      },
+      {
+        "text": "into",
+        "start": 238.04,
+        "end": 238.46
+      },
+      {
+        "text": "a",
+        "start": 238.46,
+        "end": 238.62
+      },
+      {
+        "text": "clay",
+        "start": 238.62,
+        "end": 238.82
+      },
+      {
+        "text": "pot",
+        "start": 238.82,
+        "end": 239.22
+      },
+      {
+        "text": "everything",
+        "start": 239.68,
+        "end": 240.1
+      },
+      {
+        "text": "in",
+        "start": 240.1,
+        "end": 240.42
+      },
+      {
+        "text": "it",
+        "start": 240.42,
+        "end": 240.6
+      },
+      {
+        "text": "will",
+        "start": 240.6,
+        "end": 240.78
+      },
+      {
+        "text": "be",
+        "start": 240.78,
+        "end": 240.96
+      },
+      {
+        "text": "unclean",
+        "start": 240.96,
+        "end": 241.62
+      },
+      {
+        "text": "you",
+        "start": 241.88,
+        "end": 242.2
+      },
+      {
+        "text": "must",
+        "start": 242.2,
+        "end": 242.44
+      },
+      {
+        "text": "break",
+        "start": 242.44,
+        "end": 242.86
+      },
+      {
+        "text": "the",
+        "start": 242.86,
+        "end": 243.16
+      },
+      {
+        "text": "pot",
+        "start": 243.16,
+        "end": 243.46
+      }
+    ],
+    "34": [
+      {
+        "text": "Any",
+        "start": 244.32,
+        "end": 244.54
+      },
+      {
+        "text": "food",
+        "start": 244.54,
+        "end": 244.9
+      },
+      {
+        "text": "coming",
+        "start": 244.9,
+        "end": 245.2
+      },
+      {
+        "text": "into",
+        "start": 245.2,
+        "end": 245.5
+      },
+      {
+        "text": "contact",
+        "start": 245.5,
+        "end": 246.0
+      },
+      {
+        "text": "with",
+        "start": 246.0,
+        "end": 246.26
+      },
+      {
+        "text": "water",
+        "start": 246.26,
+        "end": 246.58
+      },
+      {
+        "text": "from",
+        "start": 246.58,
+        "end": 246.84
+      },
+      {
+        "text": "that",
+        "start": 246.84,
+        "end": 247.04
+      },
+      {
+        "text": "pot",
+        "start": 247.04,
+        "end": 247.36
+      },
+      {
+        "text": "will",
+        "start": 247.36,
+        "end": 247.84
+      },
+      {
+        "text": "be",
+        "start": 247.84,
+        "end": 248.04
+      },
+      {
+        "text": "unclean",
+        "start": 248.04,
+        "end": 248.68
+      },
+      {
+        "text": "and",
+        "start": 248.68,
+        "end": 249.32
+      },
+      {
+        "text": "any",
+        "start": 249.32,
+        "end": 249.7
+      },
+      {
+        "text": "drink",
+        "start": 249.7,
+        "end": 249.98
+      },
+      {
+        "text": "in",
+        "start": 249.98,
+        "end": 250.3
+      },
+      {
+        "text": "such",
+        "start": 250.3,
+        "end": 250.48
+      },
+      {
+        "text": "a",
+        "start": 250.48,
+        "end": 250.66
+      },
+      {
+        "text": "container",
+        "start": 250.66,
+        "end": 251.04
+      },
+      {
+        "text": "will",
+        "start": 251.04,
+        "end": 251.6
+      },
+      {
+        "text": "be",
+        "start": 251.6,
+        "end": 251.84
+      },
+      {
+        "text": "unclean",
+        "start": 251.84,
+        "end": 252.62
+      }
+    ],
+    "35": [
+      {
+        "text": "Anything",
+        "start": 253.26,
+        "end": 253.78
+      },
+      {
+        "text": "upon",
+        "start": 253.78,
+        "end": 254.24
+      },
+      {
+        "text": "which",
+        "start": 254.24,
+        "end": 254.54
+      },
+      {
+        "text": "one",
+        "start": 254.54,
+        "end": 254.74
+      },
+      {
+        "text": "of",
+        "start": 254.74,
+        "end": 254.86
+      },
+      {
+        "text": "their",
+        "start": 254.86,
+        "end": 255.02
+      },
+      {
+        "text": "carcasses",
+        "start": 255.02,
+        "end": 255.48
+      },
+      {
+        "text": "falls",
+        "start": 255.48,
+        "end": 255.92
+      },
+      {
+        "text": "will",
+        "start": 255.92,
+        "end": 256.52
+      },
+      {
+        "text": "be",
+        "start": 256.52,
+        "end": 256.74
+      },
+      {
+        "text": "unclean",
+        "start": 256.74,
+        "end": 257.44
+      },
+      {
+        "text": "If",
+        "start": 257.78,
+        "end": 258.2
+      },
+      {
+        "text": "it",
+        "start": 258.2,
+        "end": 258.32
+      },
+      {
+        "text": "is",
+        "start": 258.32,
+        "end": 258.52
+      },
+      {
+        "text": "an",
+        "start": 258.52,
+        "end": 258.78
+      },
+      {
+        "text": "oven",
+        "start": 258.78,
+        "end": 259.0
+      },
+      {
+        "text": "or",
+        "start": 259.0,
+        "end": 259.34
+      },
+      {
+        "text": "cooking",
+        "start": 259.34,
+        "end": 259.7
+      },
+      {
+        "text": "pot",
+        "start": 259.7,
+        "end": 260.06
+      },
+      {
+        "text": "it",
+        "start": 260.34,
+        "end": 260.56
+      },
+      {
+        "text": "must",
+        "start": 260.56,
+        "end": 260.7
+      },
+      {
+        "text": "be",
+        "start": 260.7,
+        "end": 260.94
+      },
+      {
+        "text": "smashed",
+        "start": 260.94,
+        "end": 261.36
+      },
+      {
+        "text": "it",
+        "start": 261.9,
+        "end": 262.16
+      },
+      {
+        "text": "is",
+        "start": 262.16,
+        "end": 262.32
+      },
+      {
+        "text": "unclean",
+        "start": 262.32,
+        "end": 263.12
+      },
+      {
+        "text": "and",
+        "start": 263.12,
+        "end": 263.54
+      },
+      {
+        "text": "will",
+        "start": 263.54,
+        "end": 263.72
+      },
+      {
+        "text": "remain",
+        "start": 263.72,
+        "end": 264.1
+      },
+      {
+        "text": "unclean",
+        "start": 264.1,
+        "end": 264.84
+      },
+      {
+        "text": "for",
+        "start": 264.84,
+        "end": 265.04
+      },
+      {
+        "text": "you",
+        "start": 265.04,
+        "end": 265.34
+      }
+    ],
+    "36": [
+      {
+        "text": "Nevertheless",
+        "start": 266.06,
+        "end": 266.42
+      },
+      {
+        "text": "a",
+        "start": 267.16,
+        "end": 267.24
+      },
+      {
+        "text": "spring",
+        "start": 267.24,
+        "end": 267.54
+      },
+      {
+        "text": "or",
+        "start": 267.54,
+        "end": 267.84
+      },
+      {
+        "text": "cistern",
+        "start": 267.84,
+        "end": 268.38
+      },
+      {
+        "text": "containing",
+        "start": 268.38,
+        "end": 268.84
+      },
+      {
+        "text": "water",
+        "start": 268.84,
+        "end": 269.34
+      },
+      {
+        "text": "will",
+        "start": 269.34,
+        "end": 269.86
+      },
+      {
+        "text": "remain",
+        "start": 269.86,
+        "end": 270.22
+      },
+      {
+        "text": "clean",
+        "start": 270.22,
+        "end": 270.66
+      },
+      {
+        "text": "but",
+        "start": 271.06,
+        "end": 271.38
+      },
+      {
+        "text": "one",
+        "start": 271.38,
+        "end": 271.6
+      },
+      {
+        "text": "who",
+        "start": 271.6,
+        "end": 271.8
+      },
+      {
+        "text": "touches",
+        "start": 271.8,
+        "end": 272.12
+      },
+      {
+        "text": "a",
+        "start": 272.12,
+        "end": 272.36
+      },
+      {
+        "text": "carcass",
+        "start": 272.36,
+        "end": 272.72
+      },
+      {
+        "text": "in",
+        "start": 272.72,
+        "end": 273.0
+      },
+      {
+        "text": "it",
+        "start": 273.0,
+        "end": 273.28
+      },
+      {
+        "text": "will",
+        "start": 273.28,
+        "end": 273.7
+      },
+      {
+        "text": "be",
+        "start": 273.7,
+        "end": 273.92
+      },
+      {
+        "text": "unclean",
+        "start": 273.92,
+        "end": 274.7
+      }
+    ],
+    "37": [
+      {
+        "text": "If",
+        "start": 275.28,
+        "end": 275.68
+      },
+      {
+        "text": "a",
+        "start": 275.68,
+        "end": 275.86
+      },
+      {
+        "text": "carcass",
+        "start": 275.86,
+        "end": 276.22
+      },
+      {
+        "text": "falls",
+        "start": 276.22,
+        "end": 276.48
+      },
+      {
+        "text": "on",
+        "start": 276.48,
+        "end": 276.8
+      },
+      {
+        "text": "any",
+        "start": 276.8,
+        "end": 277.14
+      },
+      {
+        "text": "seed",
+        "start": 277.14,
+        "end": 277.52
+      },
+      {
+        "text": "for",
+        "start": 277.52,
+        "end": 277.74
+      },
+      {
+        "text": "sowing",
+        "start": 277.74,
+        "end": 278.14
+      },
+      {
+        "text": "the",
+        "start": 278.5,
+        "end": 278.68
+      },
+      {
+        "text": "seed",
+        "start": 278.68,
+        "end": 278.98
+      },
+      {
+        "text": "is",
+        "start": 278.98,
+        "end": 279.2
+      },
+      {
+        "text": "clean",
+        "start": 279.2,
+        "end": 279.58
+      }
+    ],
+    "38": [
+      {
+        "text": "but",
+        "start": 280.06,
+        "end": 280.4
+      },
+      {
+        "text": "if",
+        "start": 280.4,
+        "end": 280.6
+      },
+      {
+        "text": "water",
+        "start": 280.6,
+        "end": 280.92
+      },
+      {
+        "text": "has",
+        "start": 280.92,
+        "end": 281.18
+      },
+      {
+        "text": "been",
+        "start": 281.18,
+        "end": 281.38
+      },
+      {
+        "text": "put",
+        "start": 281.38,
+        "end": 281.56
+      },
+      {
+        "text": "on",
+        "start": 281.56,
+        "end": 281.82
+      },
+      {
+        "text": "the",
+        "start": 281.82,
+        "end": 281.96
+      },
+      {
+        "text": "seed",
+        "start": 281.96,
+        "end": 282.28
+      },
+      {
+        "text": "and",
+        "start": 282.28,
+        "end": 282.68
+      },
+      {
+        "text": "a",
+        "start": 282.68,
+        "end": 282.84
+      },
+      {
+        "text": "carcass",
+        "start": 282.84,
+        "end": 283.2
+      },
+      {
+        "text": "falls",
+        "start": 283.2,
+        "end": 283.46
+      },
+      {
+        "text": "on",
+        "start": 283.46,
+        "end": 283.72
+      },
+      {
+        "text": "it",
+        "start": 283.72,
+        "end": 284.02
+      },
+      {
+        "text": "it",
+        "start": 284.22,
+        "end": 284.4
+      },
+      {
+        "text": "is",
+        "start": 284.4,
+        "end": 284.64
+      },
+      {
+        "text": "unclean",
+        "start": 284.64,
+        "end": 285.36
+      },
+      {
+        "text": "for",
+        "start": 285.36,
+        "end": 285.58
+      },
+      {
+        "text": "you",
+        "start": 285.58,
+        "end": 285.9
+      }
+    ],
+    "39": [
+      {
+        "text": "If",
+        "start": 286.9,
+        "end": 287.12
+      },
+      {
+        "text": "an",
+        "start": 287.12,
+        "end": 287.3
+      },
+      {
+        "text": "animal",
+        "start": 287.3,
+        "end": 287.66
+      },
+      {
+        "text": "that",
+        "start": 287.66,
+        "end": 287.86
+      },
+      {
+        "text": "you",
+        "start": 287.86,
+        "end": 288.02
+      },
+      {
+        "text": "may",
+        "start": 288.02,
+        "end": 288.2
+      },
+      {
+        "text": "eat",
+        "start": 288.2,
+        "end": 288.54
+      },
+      {
+        "text": "dies",
+        "start": 288.54,
+        "end": 288.96
+      },
+      {
+        "text": "anyone",
+        "start": 289.56,
+        "end": 289.82
+      },
+      {
+        "text": "who",
+        "start": 289.82,
+        "end": 290.16
+      },
+      {
+        "text": "touches",
+        "start": 290.16,
+        "end": 290.46
+      },
+      {
+        "text": "the",
+        "start": 290.46,
+        "end": 290.72
+      },
+      {
+        "text": "carcass",
+        "start": 290.72,
+        "end": 291.16
+      },
+      {
+        "text": "will",
+        "start": 291.16,
+        "end": 291.34
+      },
+      {
+        "text": "be",
+        "start": 291.34,
+        "end": 291.5
+      },
+      {
+        "text": "unclean",
+        "start": 291.5,
+        "end": 292.18
+      },
+      {
+        "text": "until",
+        "start": 292.18,
+        "end": 292.48
+      },
+      {
+        "text": "evening",
+        "start": 292.48,
+        "end": 292.92
+      }
+    ],
+    "40": [
+      {
+        "text": "Whoever",
+        "start": 293.5,
+        "end": 293.8
+      },
+      {
+        "text": "eats",
+        "start": 293.8,
+        "end": 294.32
+      },
+      {
+        "text": "from",
+        "start": 294.32,
+        "end": 294.6
+      },
+      {
+        "text": "the",
+        "start": 294.6,
+        "end": 294.8
+      },
+      {
+        "text": "carcass",
+        "start": 294.8,
+        "end": 295.18
+      },
+      {
+        "text": "must",
+        "start": 295.18,
+        "end": 295.44
+      },
+      {
+        "text": "wash",
+        "start": 295.44,
+        "end": 295.74
+      },
+      {
+        "text": "his",
+        "start": 295.74,
+        "end": 295.96
+      },
+      {
+        "text": "clothes",
+        "start": 295.96,
+        "end": 296.38
+      },
+      {
+        "text": "and",
+        "start": 296.38,
+        "end": 296.68
+      },
+      {
+        "text": "will",
+        "start": 296.68,
+        "end": 296.84
+      },
+      {
+        "text": "be",
+        "start": 296.84,
+        "end": 296.98
+      },
+      {
+        "text": "unclean",
+        "start": 296.98,
+        "end": 297.6
+      },
+      {
+        "text": "until",
+        "start": 297.6,
+        "end": 297.86
+      },
+      {
+        "text": "evening",
+        "start": 297.86,
+        "end": 298.28
+      },
+      {
+        "text": "and",
+        "start": 298.78,
+        "end": 299.08
+      },
+      {
+        "text": "anyone",
+        "start": 299.08,
+        "end": 299.58
+      },
+      {
+        "text": "who",
+        "start": 299.58,
+        "end": 299.86
+      },
+      {
+        "text": "picks",
+        "start": 299.86,
+        "end": 300.06
+      },
+      {
+        "text": "up",
+        "start": 300.06,
+        "end": 300.3
+      },
+      {
+        "text": "the",
+        "start": 300.3,
+        "end": 300.48
+      },
+      {
+        "text": "carcass",
+        "start": 300.48,
+        "end": 300.94
+      },
+      {
+        "text": "must",
+        "start": 300.94,
+        "end": 301.38
+      },
+      {
+        "text": "wash",
+        "start": 301.38,
+        "end": 301.68
+      },
+      {
+        "text": "his",
+        "start": 301.68,
+        "end": 301.94
+      },
+      {
+        "text": "clothes",
+        "start": 301.94,
+        "end": 302.34
+      },
+      {
+        "text": "and",
+        "start": 302.34,
+        "end": 302.66
+      },
+      {
+        "text": "will",
+        "start": 302.66,
+        "end": 302.82
+      },
+      {
+        "text": "be",
+        "start": 302.82,
+        "end": 302.98
+      },
+      {
+        "text": "unclean",
+        "start": 302.98,
+        "end": 303.68
+      },
+      {
+        "text": "until",
+        "start": 303.68,
+        "end": 304.06
+      },
+      {
+        "text": "evening",
+        "start": 304.06,
+        "end": 304.52
+      }
+    ],
+    "41": [
+      {
+        "text": "Every",
+        "start": 305.44,
+        "end": 305.8
+      },
+      {
+        "text": "creature",
+        "start": 305.8,
+        "end": 306.22
+      },
+      {
+        "text": "that",
+        "start": 306.22,
+        "end": 306.5
+      },
+      {
+        "text": "moves",
+        "start": 306.5,
+        "end": 306.8
+      },
+      {
+        "text": "along",
+        "start": 306.8,
+        "end": 307.1
+      },
+      {
+        "text": "the",
+        "start": 307.1,
+        "end": 307.3
+      },
+      {
+        "text": "ground",
+        "start": 307.3,
+        "end": 307.6
+      },
+      {
+        "text": "is",
+        "start": 307.6,
+        "end": 307.96
+      },
+      {
+        "text": "detestable",
+        "start": 307.96,
+        "end": 308.64
+      },
+      {
+        "text": "it",
+        "start": 308.94,
+        "end": 309.36
+      },
+      {
+        "text": "must",
+        "start": 309.36,
+        "end": 309.5
+      },
+      {
+        "text": "not",
+        "start": 309.5,
+        "end": 309.82
+      },
+      {
+        "text": "be",
+        "start": 309.82,
+        "end": 310.06
+      },
+      {
+        "text": "eaten",
+        "start": 310.06,
+        "end": 310.4
+      }
+    ],
+    "42": [
+      {
+        "text": "Do",
+        "start": 311.26,
+        "end": 311.4
+      },
+      {
+        "text": "not",
+        "start": 311.4,
+        "end": 311.6
+      },
+      {
+        "text": "eat",
+        "start": 311.6,
+        "end": 311.84
+      },
+      {
+        "text": "any",
+        "start": 311.84,
+        "end": 312.18
+      },
+      {
+        "text": "creature",
+        "start": 312.18,
+        "end": 312.6
+      },
+      {
+        "text": "that",
+        "start": 312.6,
+        "end": 312.84
+      },
+      {
+        "text": "moves",
+        "start": 312.84,
+        "end": 313.16
+      },
+      {
+        "text": "along",
+        "start": 313.16,
+        "end": 313.5
+      },
+      {
+        "text": "the",
+        "start": 313.5,
+        "end": 313.7
+      },
+      {
+        "text": "ground",
+        "start": 313.7,
+        "end": 314.14
+      },
+      {
+        "text": "whether",
+        "start": 314.5,
+        "end": 314.68
+      },
+      {
+        "text": "it",
+        "start": 314.68,
+        "end": 314.9
+      },
+      {
+        "text": "crawls",
+        "start": 314.9,
+        "end": 315.28
+      },
+      {
+        "text": "on",
+        "start": 315.28,
+        "end": 315.48
+      },
+      {
+        "text": "its",
+        "start": 315.48,
+        "end": 315.68
+      },
+      {
+        "text": "belly",
+        "start": 315.68,
+        "end": 315.98
+      },
+      {
+        "text": "or",
+        "start": 315.98,
+        "end": 316.54
+      },
+      {
+        "text": "walks",
+        "start": 316.54,
+        "end": 316.82
+      },
+      {
+        "text": "on",
+        "start": 316.82,
+        "end": 317.12
+      },
+      {
+        "text": "four",
+        "start": 317.12,
+        "end": 317.44
+      },
+      {
+        "text": "or",
+        "start": 317.44,
+        "end": 317.66
+      },
+      {
+        "text": "more",
+        "start": 317.66,
+        "end": 317.92
+      },
+      {
+        "text": "feet",
+        "start": 317.92,
+        "end": 318.24
+      },
+      {
+        "text": "for",
+        "start": 318.74,
+        "end": 319.08
+      },
+      {
+        "text": "such",
+        "start": 319.08,
+        "end": 319.36
+      },
+      {
+        "text": "creatures",
+        "start": 319.36,
+        "end": 319.86
+      },
+      {
+        "text": "are",
+        "start": 319.86,
+        "end": 320.26
+      },
+      {
+        "text": "detestable",
+        "start": 320.26,
+        "end": 320.96
+      }
+    ],
+    "43": [
+      {
+        "text": "Do",
+        "start": 321.76,
+        "end": 322.1
+      },
+      {
+        "text": "not",
+        "start": 322.1,
+        "end": 322.3
+      },
+      {
+        "text": "defile",
+        "start": 322.3,
+        "end": 322.8
+      },
+      {
+        "text": "yourselves",
+        "start": 322.8,
+        "end": 323.38
+      },
+      {
+        "text": "by",
+        "start": 323.38,
+        "end": 323.72
+      },
+      {
+        "text": "any",
+        "start": 323.72,
+        "end": 324.06
+      },
+      {
+        "text": "crawling",
+        "start": 324.06,
+        "end": 324.42
+      },
+      {
+        "text": "creature",
+        "start": 324.42,
+        "end": 324.88
+      },
+      {
+        "text": "do",
+        "start": 325.5,
+        "end": 325.72
+      },
+      {
+        "text": "not",
+        "start": 325.72,
+        "end": 325.92
+      },
+      {
+        "text": "become",
+        "start": 325.92,
+        "end": 326.28
+      },
+      {
+        "text": "unclean",
+        "start": 326.28,
+        "end": 327.0
+      },
+      {
+        "text": "or",
+        "start": 327.0,
+        "end": 327.18
+      },
+      {
+        "text": "defiled",
+        "start": 327.18,
+        "end": 327.66
+      },
+      {
+        "text": "by",
+        "start": 327.66,
+        "end": 327.96
+      },
+      {
+        "text": "them",
+        "start": 327.96,
+        "end": 328.3
+      }
+    ],
+    "44": [
+      {
+        "text": "For",
+        "start": 328.92,
+        "end": 329.12
+      },
+      {
+        "text": "I",
+        "start": 329.12,
+        "end": 329.5
+      },
+      {
+        "text": "am",
+        "start": 329.5,
+        "end": 329.76
+      },
+      {
+        "text": "the",
+        "start": 329.76,
+        "end": 329.96
+      },
+      {
+        "text": "LORD",
+        "start": 329.96,
+        "end": 330.14
+      },
+      {
+        "text": "your",
+        "start": 330.14,
+        "end": 330.38
+      },
+      {
+        "text": "God",
+        "start": 330.38,
+        "end": 330.8
+      },
+      {
+        "text": "consecrate",
+        "start": 331.62,
+        "end": 332.06
+      },
+      {
+        "text": "yourselves",
+        "start": 332.06,
+        "end": 332.54
+      },
+      {
+        "text": "therefore",
+        "start": 332.54,
+        "end": 332.92
+      },
+      {
+        "text": "and",
+        "start": 332.92,
+        "end": 333.32
+      },
+      {
+        "text": "be",
+        "start": 333.32,
+        "end": 333.58
+      },
+      {
+        "text": "holy",
+        "start": 333.58,
+        "end": 333.98
+      },
+      {
+        "text": "because",
+        "start": 334.34,
+        "end": 334.72
+      },
+      {
+        "text": "I",
+        "start": 334.72,
+        "end": 335.38
+      },
+      {
+        "text": "am",
+        "start": 335.38,
+        "end": 335.7
+      },
+      {
+        "text": "holy",
+        "start": 335.7,
+        "end": 336.06
+      },
+      {
+        "text": "You",
+        "start": 337.06,
+        "end": 337.3
+      },
+      {
+        "text": "must",
+        "start": 337.3,
+        "end": 337.46
+      },
+      {
+        "text": "not",
+        "start": 337.46,
+        "end": 337.78
+      },
+      {
+        "text": "defile",
+        "start": 337.78,
+        "end": 338.28
+      },
+      {
+        "text": "yourselves",
+        "start": 338.28,
+        "end": 338.82
+      },
+      {
+        "text": "by",
+        "start": 338.82,
+        "end": 339.16
+      },
+      {
+        "text": "any",
+        "start": 339.16,
+        "end": 339.5
+      },
+      {
+        "text": "creature",
+        "start": 339.5,
+        "end": 339.88
+      },
+      {
+        "text": "that",
+        "start": 339.88,
+        "end": 340.16
+      },
+      {
+        "text": "crawls",
+        "start": 340.16,
+        "end": 340.64
+      },
+      {
+        "text": "along",
+        "start": 340.64,
+        "end": 341.0
+      },
+      {
+        "text": "the",
+        "start": 341.0,
+        "end": 341.22
+      },
+      {
+        "text": "ground",
+        "start": 341.22,
+        "end": 341.58
+      }
+    ],
+    "45": [
+      {
+        "text": "For",
+        "start": 342.58,
+        "end": 342.76
+      },
+      {
+        "text": "I",
+        "start": 342.76,
+        "end": 343.08
+      },
+      {
+        "text": "am",
+        "start": 343.08,
+        "end": 343.32
+      },
+      {
+        "text": "the",
+        "start": 343.32,
+        "end": 343.52
+      },
+      {
+        "text": "LORD",
+        "start": 343.52,
+        "end": 343.74
+      },
+      {
+        "text": "who",
+        "start": 343.74,
+        "end": 344.04
+      },
+      {
+        "text": "brought",
+        "start": 344.04,
+        "end": 344.2
+      },
+      {
+        "text": "you",
+        "start": 344.2,
+        "end": 344.44
+      },
+      {
+        "text": "up",
+        "start": 344.44,
+        "end": 344.74
+      },
+      {
+        "text": "out",
+        "start": 344.74,
+        "end": 345.02
+      },
+      {
+        "text": "of",
+        "start": 345.02,
+        "end": 345.2
+      },
+      {
+        "text": "the",
+        "start": 345.2,
+        "end": 345.28
+      },
+      {
+        "text": "land",
+        "start": 345.28,
+        "end": 345.5
+      },
+      {
+        "text": "of",
+        "start": 345.5,
+        "end": 345.7
+      },
+      {
+        "text": "Egypt",
+        "start": 345.7,
+        "end": 346.1
+      },
+      {
+        "text": "so",
+        "start": 346.1,
+        "end": 346.76
+      },
+      {
+        "text": "that",
+        "start": 346.76,
+        "end": 346.92
+      },
+      {
+        "text": "I",
+        "start": 346.92,
+        "end": 347.18
+      },
+      {
+        "text": "would",
+        "start": 347.18,
+        "end": 347.38
+      },
+      {
+        "text": "be",
+        "start": 347.38,
+        "end": 347.58
+      },
+      {
+        "text": "your",
+        "start": 347.58,
+        "end": 347.8
+      },
+      {
+        "text": "God",
+        "start": 347.8,
+        "end": 348.18
+      },
+      {
+        "text": "therefore",
+        "start": 348.66,
+        "end": 349.08
+      },
+      {
+        "text": "be",
+        "start": 349.08,
+        "end": 349.52
+      },
+      {
+        "text": "holy",
+        "start": 349.52,
+        "end": 349.96
+      },
+      {
+        "text": "because",
+        "start": 350.34,
+        "end": 350.8
+      },
+      {
+        "text": "I",
+        "start": 350.8,
+        "end": 351.26
+      },
+      {
+        "text": "am",
+        "start": 351.26,
+        "end": 351.56
+      },
+      {
+        "text": "holy",
+        "start": 351.56,
+        "end": 351.94
+      }
+    ],
+    "46": [
+      {
+        "text": "This",
+        "start": 352.9,
+        "end": 353.2
+      },
+      {
+        "text": "is",
+        "start": 353.2,
+        "end": 353.38
+      },
+      {
+        "text": "the",
+        "start": 353.38,
+        "end": 353.58
+      },
+      {
+        "text": "law",
+        "start": 353.58,
+        "end": 353.8
+      },
+      {
+        "text": "regarding",
+        "start": 353.8,
+        "end": 354.3
+      },
+      {
+        "text": "animals",
+        "start": 354.3,
+        "end": 354.9
+      },
+      {
+        "text": "birds",
+        "start": 355.14,
+        "end": 355.46
+      },
+      {
+        "text": "all",
+        "start": 355.76,
+        "end": 355.98
+      },
+      {
+        "text": "living",
+        "start": 355.98,
+        "end": 356.28
+      },
+      {
+        "text": "creatures",
+        "start": 356.28,
+        "end": 356.66
+      },
+      {
+        "text": "that",
+        "start": 356.66,
+        "end": 356.94
+      },
+      {
+        "text": "move",
+        "start": 356.94,
+        "end": 357.12
+      },
+      {
+        "text": "in",
+        "start": 357.12,
+        "end": 357.28
+      },
+      {
+        "text": "the",
+        "start": 357.28,
+        "end": 357.42
+      },
+      {
+        "text": "water",
+        "start": 357.42,
+        "end": 357.72
+      },
+      {
+        "text": "and",
+        "start": 358.06,
+        "end": 358.34
+      },
+      {
+        "text": "all",
+        "start": 358.34,
+        "end": 358.64
+      },
+      {
+        "text": "creatures",
+        "start": 358.64,
+        "end": 359.06
+      },
+      {
+        "text": "that",
+        "start": 359.06,
+        "end": 359.42
+      },
+      {
+        "text": "crawl",
+        "start": 359.42,
+        "end": 359.72
+      },
+      {
+        "text": "along",
+        "start": 359.72,
+        "end": 360.16
+      },
+      {
+        "text": "the",
+        "start": 360.16,
+        "end": 360.38
+      },
+      {
+        "text": "ground",
+        "start": 360.38,
+        "end": 360.66
+      }
+    ],
+    "47": [
+      {
+        "text": "You",
+        "start": 361.4,
+        "end": 361.6
+      },
+      {
+        "text": "must",
+        "start": 361.6,
+        "end": 361.82
+      },
+      {
+        "text": "distinguish",
+        "start": 361.82,
+        "end": 362.46
+      },
+      {
+        "text": "between",
+        "start": 362.46,
+        "end": 362.96
+      },
+      {
+        "text": "the",
+        "start": 362.96,
+        "end": 363.24
+      },
+      {
+        "text": "unclean",
+        "start": 363.24,
+        "end": 363.92
+      },
+      {
+        "text": "and",
+        "start": 363.92,
+        "end": 364.16
+      },
+      {
+        "text": "the",
+        "start": 364.16,
+        "end": 364.32
+      },
+      {
+        "text": "clean",
+        "start": 364.32,
+        "end": 364.66
+      },
+      {
+        "text": "between",
+        "start": 365.24,
+        "end": 365.54
+      },
+      {
+        "text": "animals",
+        "start": 365.54,
+        "end": 366.02
+      },
+      {
+        "text": "that",
+        "start": 366.02,
+        "end": 366.28
+      },
+      {
+        "text": "may",
+        "start": 366.28,
+        "end": 366.48
+      },
+      {
+        "text": "be",
+        "start": 366.48,
+        "end": 366.66
+      },
+      {
+        "text": "eaten",
+        "start": 366.66,
+        "end": 366.98
+      },
+      {
+        "text": "and",
+        "start": 366.98,
+        "end": 367.58
+      },
+      {
+        "text": "those",
+        "start": 367.58,
+        "end": 367.84
+      },
+      {
+        "text": "that",
+        "start": 367.84,
+        "end": 368.26
+      },
+      {
+        "text": "may",
+        "start": 368.26,
+        "end": 368.44
+      },
+      {
+        "text": "not",
+        "start": 368.44,
+        "end": 368.74
+      }
+    ]
+  }
+}

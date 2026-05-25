@@ -1,0 +1,4947 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB Hays audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 420.185,
+  "matchRatio": 0.9887,
+  "verses": {
+    "1": 3.72,
+    "2": 20.24,
+    "3": 26.34,
+    "4": 32.76,
+    "5": 39.8,
+    "6": 50.0,
+    "7": 58.52,
+    "8": 66.82,
+    "9": 72.48,
+    "10": 80.98,
+    "11": 89.18,
+    "12": 93.8,
+    "13": 106.64,
+    "14": 113.7,
+    "15": 132.24,
+    "16": 142.1,
+    "17": 151.0,
+    "18": 160.28,
+    "19": 168.06,
+    "20": 179.96,
+    "21": 185.52,
+    "22": 195.06,
+    "23": 202.2,
+    "24": 209.44,
+    "25": 217.74,
+    "26": 227.0,
+    "27": 240.52,
+    "28": 247.62,
+    "29": 259.68,
+    "30": 268.5,
+    "31": 276.94,
+    "32": 285.44,
+    "33": 295.34,
+    "34": 309.2,
+    "35": 321.88,
+    "36": 330.42,
+    "37": 343.28,
+    "38": 353.66,
+    "39": 364.0,
+    "40": 370.92,
+    "41": 380.96,
+    "42": 391.62,
+    "43": 400.52,
+    "44": 409.74
+  },
+  "words": {
+    "1": [
+      {
+        "text": "Then",
+        "start": 3.72,
+        "end": 4.32
+      },
+      {
+        "text": "Jesus",
+        "start": 4.32,
+        "end": 4.62
+      },
+      {
+        "text": "began",
+        "start": 4.62,
+        "end": 5.08
+      },
+      {
+        "text": "to",
+        "start": 5.08,
+        "end": 5.34
+      },
+      {
+        "text": "speak",
+        "start": 5.34,
+        "end": 5.6
+      },
+      {
+        "text": "to",
+        "start": 5.6,
+        "end": 5.82
+      },
+      {
+        "text": "them",
+        "start": 5.82,
+        "end": 6.1
+      },
+      {
+        "text": "in",
+        "start": 6.1,
+        "end": 6.4
+      },
+      {
+        "text": "parables",
+        "start": 6.4,
+        "end": 6.96
+      },
+      {
+        "text": "A",
+        "start": 8.14,
+        "end": 8.19
+      },
+      {
+        "text": "man",
+        "start": 8.14,
+        "end": 8.42
+      },
+      {
+        "text": "planted",
+        "start": 8.42,
+        "end": 8.94
+      },
+      {
+        "text": "a",
+        "start": 8.94,
+        "end": 9.16
+      },
+      {
+        "text": "vineyard",
+        "start": 9.16,
+        "end": 9.58
+      },
+      {
+        "text": "He",
+        "start": 10.04,
+        "end": 10.16
+      },
+      {
+        "text": "put",
+        "start": 10.16,
+        "end": 10.32
+      },
+      {
+        "text": "a",
+        "start": 10.32,
+        "end": 10.46
+      },
+      {
+        "text": "wall",
+        "start": 10.46,
+        "end": 10.68
+      },
+      {
+        "text": "around",
+        "start": 10.68,
+        "end": 11.04
+      },
+      {
+        "text": "it",
+        "start": 11.04,
+        "end": 11.3
+      },
+      {
+        "text": "dug",
+        "start": 11.64,
+        "end": 11.72
+      },
+      {
+        "text": "a",
+        "start": 11.72,
+        "end": 11.88
+      },
+      {
+        "text": "wine",
+        "start": 11.88,
+        "end": 12.2
+      },
+      {
+        "text": "vat",
+        "start": 12.2,
+        "end": 12.56
+      },
+      {
+        "text": "and",
+        "start": 12.9,
+        "end": 13.08
+      },
+      {
+        "text": "built",
+        "start": 13.08,
+        "end": 13.3
+      },
+      {
+        "text": "a",
+        "start": 13.3,
+        "end": 13.5
+      },
+      {
+        "text": "watchtower",
+        "start": 13.5,
+        "end": 14.06
+      },
+      {
+        "text": "Then",
+        "start": 15.12,
+        "end": 15.32
+      },
+      {
+        "text": "he",
+        "start": 15.32,
+        "end": 15.6
+      },
+      {
+        "text": "rented",
+        "start": 15.6,
+        "end": 15.86
+      },
+      {
+        "text": "it",
+        "start": 15.86,
+        "end": 16.1
+      },
+      {
+        "text": "out",
+        "start": 16.1,
+        "end": 16.34
+      },
+      {
+        "text": "to",
+        "start": 16.34,
+        "end": 16.62
+      },
+      {
+        "text": "some",
+        "start": 16.62,
+        "end": 16.88
+      },
+      {
+        "text": "tenants",
+        "start": 16.88,
+        "end": 17.2
+      },
+      {
+        "text": "and",
+        "start": 17.2,
+        "end": 17.9
+      },
+      {
+        "text": "went",
+        "start": 17.9,
+        "end": 18.12
+      },
+      {
+        "text": "away",
+        "start": 18.12,
+        "end": 18.46
+      },
+      {
+        "text": "on",
+        "start": 18.46,
+        "end": 18.8
+      },
+      {
+        "text": "a",
+        "start": 18.8,
+        "end": 18.96
+      },
+      {
+        "text": "journey",
+        "start": 18.96,
+        "end": 19.28
+      }
+    ],
+    "2": [
+      {
+        "text": "At",
+        "start": 20.24,
+        "end": 20.44
+      },
+      {
+        "text": "harvest",
+        "start": 20.44,
+        "end": 20.78
+      },
+      {
+        "text": "time",
+        "start": 20.78,
+        "end": 21.24
+      },
+      {
+        "text": "he",
+        "start": 21.6,
+        "end": 21.78
+      },
+      {
+        "text": "sent",
+        "start": 21.78,
+        "end": 22.0
+      },
+      {
+        "text": "a",
+        "start": 22.0,
+        "end": 22.22
+      },
+      {
+        "text": "servant",
+        "start": 22.22,
+        "end": 22.52
+      },
+      {
+        "text": "to",
+        "start": 22.52,
+        "end": 22.84
+      },
+      {
+        "text": "the",
+        "start": 22.84,
+        "end": 23.0
+      },
+      {
+        "text": "tenants",
+        "start": 23.0,
+        "end": 23.38
+      },
+      {
+        "text": "to",
+        "start": 23.38,
+        "end": 23.94
+      },
+      {
+        "text": "collect",
+        "start": 23.94,
+        "end": 24.3
+      },
+      {
+        "text": "his",
+        "start": 24.3,
+        "end": 24.64
+      },
+      {
+        "text": "share",
+        "start": 24.64,
+        "end": 24.96
+      },
+      {
+        "text": "of",
+        "start": 24.96,
+        "end": 25.26
+      },
+      {
+        "text": "the",
+        "start": 25.26,
+        "end": 25.38
+      },
+      {
+        "text": "fruit",
+        "start": 25.38,
+        "end": 25.58
+      },
+      {
+        "text": "of",
+        "start": 25.58,
+        "end": 25.74
+      },
+      {
+        "text": "the",
+        "start": 25.74,
+        "end": 25.88
+      },
+      {
+        "text": "vineyard",
+        "start": 25.88,
+        "end": 26.34
+      }
+    ],
+    "3": [
+      {
+        "text": "But",
+        "start": 26.34,
+        "end": 27.24
+      },
+      {
+        "text": "they",
+        "start": 27.24,
+        "end": 27.48
+      },
+      {
+        "text": "seized",
+        "start": 27.48,
+        "end": 27.92
+      },
+      {
+        "text": "the",
+        "start": 27.92,
+        "end": 28.22
+      },
+      {
+        "text": "servant",
+        "start": 28.22,
+        "end": 28.6
+      },
+      {
+        "text": "beat",
+        "start": 29.06,
+        "end": 29.16
+      },
+      {
+        "text": "him",
+        "start": 29.16,
+        "end": 29.5
+      },
+      {
+        "text": "and",
+        "start": 29.9,
+        "end": 30.02
+      },
+      {
+        "text": "sent",
+        "start": 30.02,
+        "end": 30.24
+      },
+      {
+        "text": "him",
+        "start": 30.24,
+        "end": 30.44
+      },
+      {
+        "text": "away",
+        "start": 30.44,
+        "end": 30.78
+      },
+      {
+        "text": "empty",
+        "start": 30.78,
+        "end": 31.24
+      },
+      {
+        "text": "handed",
+        "start": 31.24,
+        "end": 31.62
+      }
+    ],
+    "4": [
+      {
+        "text": "Then",
+        "start": 32.76,
+        "end": 33.02
+      },
+      {
+        "text": "he",
+        "start": 33.02,
+        "end": 33.44
+      },
+      {
+        "text": "sent",
+        "start": 33.44,
+        "end": 33.66
+      },
+      {
+        "text": "them",
+        "start": 33.66,
+        "end": 33.86
+      },
+      {
+        "text": "another",
+        "start": 33.86,
+        "end": 34.16
+      },
+      {
+        "text": "servant",
+        "start": 34.16,
+        "end": 34.6
+      },
+      {
+        "text": "and",
+        "start": 35.1,
+        "end": 35.3
+      },
+      {
+        "text": "they",
+        "start": 35.3,
+        "end": 35.48
+      },
+      {
+        "text": "struck",
+        "start": 35.48,
+        "end": 35.78
+      },
+      {
+        "text": "him",
+        "start": 35.78,
+        "end": 36.18
+      },
+      {
+        "text": "over",
+        "start": 36.18,
+        "end": 36.52
+      },
+      {
+        "text": "the",
+        "start": 36.52,
+        "end": 36.74
+      },
+      {
+        "text": "head",
+        "start": 36.74,
+        "end": 37.1
+      },
+      {
+        "text": "and",
+        "start": 37.1,
+        "end": 37.7
+      },
+      {
+        "text": "treated",
+        "start": 37.7,
+        "end": 38.0
+      },
+      {
+        "text": "him",
+        "start": 38.0,
+        "end": 38.34
+      },
+      {
+        "text": "shamefully",
+        "start": 38.34,
+        "end": 38.92
+      }
+    ],
+    "5": [
+      {
+        "text": "He",
+        "start": 39.8,
+        "end": 40.02
+      },
+      {
+        "text": "sent",
+        "start": 40.02,
+        "end": 40.26
+      },
+      {
+        "text": "still",
+        "start": 40.26,
+        "end": 40.56
+      },
+      {
+        "text": "another",
+        "start": 40.56,
+        "end": 40.92
+      },
+      {
+        "text": "and",
+        "start": 41.36,
+        "end": 41.66
+      },
+      {
+        "text": "this",
+        "start": 41.66,
+        "end": 41.96
+      },
+      {
+        "text": "one",
+        "start": 41.96,
+        "end": 42.32
+      },
+      {
+        "text": "they",
+        "start": 42.32,
+        "end": 42.76
+      },
+      {
+        "text": "killed",
+        "start": 42.76,
+        "end": 43.16
+      },
+      {
+        "text": "He",
+        "start": 44.06,
+        "end": 44.3
+      },
+      {
+        "text": "sent",
+        "start": 44.3,
+        "end": 44.62
+      },
+      {
+        "text": "many",
+        "start": 44.62,
+        "end": 45.08
+      },
+      {
+        "text": "others",
+        "start": 45.08,
+        "end": 45.64
+      },
+      {
+        "text": "some",
+        "start": 46.26,
+        "end": 46.52
+      },
+      {
+        "text": "they",
+        "start": 46.52,
+        "end": 46.82
+      },
+      {
+        "text": "beat",
+        "start": 46.82,
+        "end": 47.2
+      },
+      {
+        "text": "and",
+        "start": 47.2,
+        "end": 47.72
+      },
+      {
+        "text": "others",
+        "start": 47.72,
+        "end": 48.1
+      },
+      {
+        "text": "they",
+        "start": 48.1,
+        "end": 48.42
+      },
+      {
+        "text": "killed",
+        "start": 48.42,
+        "end": 48.82
+      }
+    ],
+    "6": [
+      {
+        "text": "Finally",
+        "start": 50.0,
+        "end": 50.4
+      },
+      {
+        "text": "having",
+        "start": 50.82,
+        "end": 51.06
+      },
+      {
+        "text": "one",
+        "start": 51.06,
+        "end": 51.56
+      },
+      {
+        "text": "beloved",
+        "start": 51.56,
+        "end": 52.0
+      },
+      {
+        "text": "son",
+        "start": 52.0,
+        "end": 52.52
+      },
+      {
+        "text": "he",
+        "start": 52.88,
+        "end": 53.08
+      },
+      {
+        "text": "sent",
+        "start": 53.08,
+        "end": 53.36
+      },
+      {
+        "text": "him",
+        "start": 53.36,
+        "end": 53.74
+      },
+      {
+        "text": "to",
+        "start": 53.74,
+        "end": 54.08
+      },
+      {
+        "text": "them",
+        "start": 54.08,
+        "end": 54.44
+      },
+      {
+        "text": "They",
+        "start": 54.44,
+        "end": 55.32
+      },
+      {
+        "text": "will",
+        "start": 55.32,
+        "end": 55.52
+      },
+      {
+        "text": "respect",
+        "start": 55.52,
+        "end": 55.98
+      },
+      {
+        "text": "my",
+        "start": 55.98,
+        "end": 56.38
+      },
+      {
+        "text": "son",
+        "start": 56.38,
+        "end": 56.72
+      },
+      {
+        "text": "he",
+        "start": 56.84,
+        "end": 57.12
+      },
+      {
+        "text": "said",
+        "start": 57.12,
+        "end": 57.48
+      }
+    ],
+    "7": [
+      {
+        "text": "But",
+        "start": 58.52,
+        "end": 58.57
+      },
+      {
+        "text": "the",
+        "start": 58.52,
+        "end": 58.7
+      },
+      {
+        "text": "tenants",
+        "start": 58.7,
+        "end": 58.98
+      },
+      {
+        "text": "said",
+        "start": 58.98,
+        "end": 59.5
+      },
+      {
+        "text": "to",
+        "start": 59.5,
+        "end": 59.72
+      },
+      {
+        "text": "one",
+        "start": 59.72,
+        "end": 59.9
+      },
+      {
+        "text": "another",
+        "start": 59.9,
+        "end": 60.24
+      },
+      {
+        "text": "This",
+        "start": 60.9,
+        "end": 60.95
+      },
+      {
+        "text": "is",
+        "start": 60.94,
+        "end": 61.26
+      },
+      {
+        "text": "the",
+        "start": 61.26,
+        "end": 61.44
+      },
+      {
+        "text": "heir",
+        "start": 61.44,
+        "end": 61.8
+      },
+      {
+        "text": "Come",
+        "start": 62.2,
+        "end": 62.46
+      },
+      {
+        "text": "let",
+        "start": 62.86,
+        "end": 63.0
+      },
+      {
+        "text": "us",
+        "start": 63.0,
+        "end": 63.24
+      },
+      {
+        "text": "kill",
+        "start": 63.24,
+        "end": 63.52
+      },
+      {
+        "text": "him",
+        "start": 63.52,
+        "end": 63.96
+      },
+      {
+        "text": "and",
+        "start": 64.22,
+        "end": 64.42
+      },
+      {
+        "text": "the",
+        "start": 64.42,
+        "end": 64.56
+      },
+      {
+        "text": "inheritance",
+        "start": 64.56,
+        "end": 65.06
+      },
+      {
+        "text": "will",
+        "start": 65.06,
+        "end": 65.4
+      },
+      {
+        "text": "be",
+        "start": 65.4,
+        "end": 65.64
+      },
+      {
+        "text": "ours",
+        "start": 65.64,
+        "end": 66.02
+      }
+    ],
+    "8": [
+      {
+        "text": "So",
+        "start": 66.82,
+        "end": 67.1
+      },
+      {
+        "text": "they",
+        "start": 67.1,
+        "end": 67.3
+      },
+      {
+        "text": "seized",
+        "start": 67.3,
+        "end": 67.74
+      },
+      {
+        "text": "the",
+        "start": 67.74,
+        "end": 68.04
+      },
+      {
+        "text": "son",
+        "start": 68.04,
+        "end": 68.32
+      },
+      {
+        "text": "killed",
+        "start": 68.78,
+        "end": 68.98
+      },
+      {
+        "text": "him",
+        "start": 68.98,
+        "end": 69.32
+      },
+      {
+        "text": "and",
+        "start": 69.7,
+        "end": 69.9
+      },
+      {
+        "text": "threw",
+        "start": 69.9,
+        "end": 70.14
+      },
+      {
+        "text": "him",
+        "start": 70.14,
+        "end": 70.4
+      },
+      {
+        "text": "out",
+        "start": 70.4,
+        "end": 70.7
+      },
+      {
+        "text": "of",
+        "start": 70.7,
+        "end": 70.9
+      },
+      {
+        "text": "the",
+        "start": 70.9,
+        "end": 71.04
+      },
+      {
+        "text": "vineyard",
+        "start": 71.04,
+        "end": 71.46
+      }
+    ],
+    "9": [
+      {
+        "text": "What",
+        "start": 72.48,
+        "end": 72.74
+      },
+      {
+        "text": "then",
+        "start": 72.74,
+        "end": 73.04
+      },
+      {
+        "text": "will",
+        "start": 73.04,
+        "end": 73.28
+      },
+      {
+        "text": "the",
+        "start": 73.28,
+        "end": 73.48
+      },
+      {
+        "text": "owner",
+        "start": 73.48,
+        "end": 73.72
+      },
+      {
+        "text": "of",
+        "start": 73.72,
+        "end": 73.96
+      },
+      {
+        "text": "the",
+        "start": 73.96,
+        "end": 74.1
+      },
+      {
+        "text": "vineyard",
+        "start": 74.1,
+        "end": 74.44
+      },
+      {
+        "text": "do",
+        "start": 74.44,
+        "end": 74.82
+      },
+      {
+        "text": "He",
+        "start": 75.54,
+        "end": 75.84
+      },
+      {
+        "text": "will",
+        "start": 75.84,
+        "end": 76.1
+      },
+      {
+        "text": "come",
+        "start": 76.1,
+        "end": 76.42
+      },
+      {
+        "text": "and",
+        "start": 76.42,
+        "end": 76.8
+      },
+      {
+        "text": "kill",
+        "start": 76.8,
+        "end": 77.16
+      },
+      {
+        "text": "those",
+        "start": 77.16,
+        "end": 77.56
+      },
+      {
+        "text": "tenants",
+        "start": 77.56,
+        "end": 77.92
+      },
+      {
+        "text": "and",
+        "start": 77.92,
+        "end": 78.56
+      },
+      {
+        "text": "give",
+        "start": 78.56,
+        "end": 78.78
+      },
+      {
+        "text": "the",
+        "start": 78.78,
+        "end": 79.04
+      },
+      {
+        "text": "vineyard",
+        "start": 79.04,
+        "end": 79.44
+      },
+      {
+        "text": "to",
+        "start": 79.44,
+        "end": 79.64
+      },
+      {
+        "text": "others",
+        "start": 79.64,
+        "end": 79.98
+      }
+    ],
+    "10": [
+      {
+        "text": "Have",
+        "start": 80.98,
+        "end": 81.16
+      },
+      {
+        "text": "you",
+        "start": 81.16,
+        "end": 81.36
+      },
+      {
+        "text": "never",
+        "start": 81.36,
+        "end": 81.68
+      },
+      {
+        "text": "read",
+        "start": 81.68,
+        "end": 82.0
+      },
+      {
+        "text": "this",
+        "start": 82.0,
+        "end": 82.34
+      },
+      {
+        "text": "Scripture",
+        "start": 82.34,
+        "end": 82.68
+      },
+      {
+        "text": "The",
+        "start": 82.68,
+        "end": 83.92
+      },
+      {
+        "text": "stone",
+        "start": 83.92,
+        "end": 84.38
+      },
+      {
+        "text": "the",
+        "start": 84.38,
+        "end": 84.76
+      },
+      {
+        "text": "builders",
+        "start": 84.76,
+        "end": 85.14
+      },
+      {
+        "text": "rejected",
+        "start": 85.14,
+        "end": 85.8
+      },
+      {
+        "text": "has",
+        "start": 85.8,
+        "end": 86.46
+      },
+      {
+        "text": "become",
+        "start": 86.46,
+        "end": 86.92
+      },
+      {
+        "text": "the",
+        "start": 86.92,
+        "end": 87.32
+      },
+      {
+        "text": "cornerstone",
+        "start": 87.32,
+        "end": 88.0
+      }
+    ],
+    "11": [
+      {
+        "text": "This",
+        "start": 89.18,
+        "end": 89.28
+      },
+      {
+        "text": "is",
+        "start": 89.28,
+        "end": 89.44
+      },
+      {
+        "text": "from",
+        "start": 89.44,
+        "end": 89.64
+      },
+      {
+        "text": "the",
+        "start": 89.64,
+        "end": 89.84
+      },
+      {
+        "text": "Lord",
+        "start": 89.84,
+        "end": 90.08
+      },
+      {
+        "text": "and",
+        "start": 90.5,
+        "end": 90.58
+      },
+      {
+        "text": "it",
+        "start": 90.58,
+        "end": 90.72
+      },
+      {
+        "text": "is",
+        "start": 90.72,
+        "end": 90.9
+      },
+      {
+        "text": "marvelous",
+        "start": 90.9,
+        "end": 91.38
+      },
+      {
+        "text": "in",
+        "start": 91.38,
+        "end": 91.82
+      },
+      {
+        "text": "our",
+        "start": 91.82,
+        "end": 92.06
+      },
+      {
+        "text": "eyes",
+        "start": 92.06,
+        "end": 92.66
+      }
+    ],
+    "12": [
+      {
+        "text": "At",
+        "start": 93.8,
+        "end": 93.92
+      },
+      {
+        "text": "this",
+        "start": 93.92,
+        "end": 94.34
+      },
+      {
+        "text": "the",
+        "start": 94.68,
+        "end": 94.86
+      },
+      {
+        "text": "leaders",
+        "start": 94.86,
+        "end": 95.06
+      },
+      {
+        "text": "sought",
+        "start": 95.06,
+        "end": 95.52
+      },
+      {
+        "text": "to",
+        "start": 95.52,
+        "end": 95.78
+      },
+      {
+        "text": "arrest",
+        "start": 95.78,
+        "end": 96.26
+      },
+      {
+        "text": "Jesus",
+        "start": 96.26,
+        "end": 96.8
+      },
+      {
+        "text": "for",
+        "start": 97.38,
+        "end": 97.6
+      },
+      {
+        "text": "they",
+        "start": 97.6,
+        "end": 97.82
+      },
+      {
+        "text": "knew",
+        "start": 97.82,
+        "end": 98.08
+      },
+      {
+        "text": "that",
+        "start": 98.08,
+        "end": 98.32
+      },
+      {
+        "text": "He",
+        "start": 98.32,
+        "end": 98.5
+      },
+      {
+        "text": "had",
+        "start": 98.5,
+        "end": 98.68
+      },
+      {
+        "text": "spoken",
+        "start": 98.68,
+        "end": 99.02
+      },
+      {
+        "text": "this",
+        "start": 99.02,
+        "end": 99.5
+      },
+      {
+        "text": "parable",
+        "start": 99.5,
+        "end": 100.04
+      },
+      {
+        "text": "against",
+        "start": 100.04,
+        "end": 100.5
+      },
+      {
+        "text": "them",
+        "start": 100.5,
+        "end": 101.08
+      },
+      {
+        "text": "But",
+        "start": 101.84,
+        "end": 102.12
+      },
+      {
+        "text": "fearing",
+        "start": 102.12,
+        "end": 102.42
+      },
+      {
+        "text": "the",
+        "start": 102.42,
+        "end": 102.76
+      },
+      {
+        "text": "crowd",
+        "start": 102.76,
+        "end": 103.08
+      },
+      {
+        "text": "they",
+        "start": 103.54,
+        "end": 103.72
+      },
+      {
+        "text": "left",
+        "start": 103.72,
+        "end": 104.04
+      },
+      {
+        "text": "Him",
+        "start": 104.04,
+        "end": 104.36
+      },
+      {
+        "text": "and",
+        "start": 104.36,
+        "end": 104.8
+      },
+      {
+        "text": "went",
+        "start": 104.8,
+        "end": 105.02
+      },
+      {
+        "text": "away",
+        "start": 105.02,
+        "end": 105.42
+      }
+    ],
+    "13": [
+      {
+        "text": "Later",
+        "start": 106.64,
+        "end": 107.3
+      },
+      {
+        "text": "they",
+        "start": 107.72,
+        "end": 107.8
+      },
+      {
+        "text": "sent",
+        "start": 107.8,
+        "end": 108.06
+      },
+      {
+        "text": "some",
+        "start": 108.06,
+        "end": 108.32
+      },
+      {
+        "text": "of",
+        "start": 108.32,
+        "end": 108.44
+      },
+      {
+        "text": "the",
+        "start": 108.44,
+        "end": 108.62
+      },
+      {
+        "text": "Pharisees",
+        "start": 108.62,
+        "end": 109.2
+      },
+      {
+        "text": "and",
+        "start": 109.2,
+        "end": 109.46
+      },
+      {
+        "text": "Herodians",
+        "start": 109.46,
+        "end": 110.16
+      },
+      {
+        "text": "to",
+        "start": 110.16,
+        "end": 110.72
+      },
+      {
+        "text": "catch",
+        "start": 110.72,
+        "end": 111.12
+      },
+      {
+        "text": "Jesus",
+        "start": 111.12,
+        "end": 111.6
+      },
+      {
+        "text": "in",
+        "start": 111.6,
+        "end": 111.9
+      },
+      {
+        "text": "His",
+        "start": 111.9,
+        "end": 112.08
+      },
+      {
+        "text": "words",
+        "start": 112.08,
+        "end": 112.64
+      }
+    ],
+    "14": [
+      {
+        "text": "Teacher",
+        "start": 113.7,
+        "end": 113.96
+      },
+      {
+        "text": "they",
+        "start": 114.34,
+        "end": 114.44
+      },
+      {
+        "text": "said",
+        "start": 114.44,
+        "end": 114.78
+      },
+      {
+        "text": "we",
+        "start": 115.54,
+        "end": 115.59
+      },
+      {
+        "text": "know",
+        "start": 115.56,
+        "end": 115.8
+      },
+      {
+        "text": "that",
+        "start": 115.8,
+        "end": 116.06
+      },
+      {
+        "text": "You",
+        "start": 116.06,
+        "end": 116.26
+      },
+      {
+        "text": "are",
+        "start": 116.26,
+        "end": 116.44
+      },
+      {
+        "text": "honest",
+        "start": 116.44,
+        "end": 116.9
+      },
+      {
+        "text": "and",
+        "start": 116.9,
+        "end": 117.42
+      },
+      {
+        "text": "seek",
+        "start": 117.42,
+        "end": 117.72
+      },
+      {
+        "text": "favor",
+        "start": 117.72,
+        "end": 118.06
+      },
+      {
+        "text": "from",
+        "start": 118.06,
+        "end": 118.44
+      },
+      {
+        "text": "no",
+        "start": 118.44,
+        "end": 118.68
+      },
+      {
+        "text": "one",
+        "start": 118.68,
+        "end": 119.14
+      },
+      {
+        "text": "Indeed",
+        "start": 119.84,
+        "end": 120.16
+      },
+      {
+        "text": "You",
+        "start": 120.7,
+        "end": 120.78
+      },
+      {
+        "text": "are",
+        "start": 120.78,
+        "end": 121.0
+      },
+      {
+        "text": "impartial",
+        "start": 121.0,
+        "end": 121.64
+      },
+      {
+        "text": "and",
+        "start": 121.64,
+        "end": 122.48
+      },
+      {
+        "text": "teach",
+        "start": 122.48,
+        "end": 122.7
+      },
+      {
+        "text": "the",
+        "start": 122.7,
+        "end": 122.98
+      },
+      {
+        "text": "way",
+        "start": 122.98,
+        "end": 123.18
+      },
+      {
+        "text": "of",
+        "start": 123.18,
+        "end": 123.34
+      },
+      {
+        "text": "God",
+        "start": 123.34,
+        "end": 123.6
+      },
+      {
+        "text": "in",
+        "start": 123.6,
+        "end": 124.0
+      },
+      {
+        "text": "accordance",
+        "start": 124.0,
+        "end": 124.38
+      },
+      {
+        "text": "with",
+        "start": 124.38,
+        "end": 124.78
+      },
+      {
+        "text": "the",
+        "start": 124.78,
+        "end": 124.98
+      },
+      {
+        "text": "truth",
+        "start": 124.98,
+        "end": 125.32
+      },
+      {
+        "text": "Is",
+        "start": 126.5,
+        "end": 126.68
+      },
+      {
+        "text": "it",
+        "start": 126.68,
+        "end": 126.88
+      },
+      {
+        "text": "lawful",
+        "start": 126.88,
+        "end": 127.28
+      },
+      {
+        "text": "to",
+        "start": 127.28,
+        "end": 127.66
+      },
+      {
+        "text": "pay",
+        "start": 127.66,
+        "end": 127.9
+      },
+      {
+        "text": "taxes",
+        "start": 127.9,
+        "end": 128.36
+      },
+      {
+        "text": "to",
+        "start": 128.36,
+        "end": 128.62
+      },
+      {
+        "text": "Caesar",
+        "start": 128.62,
+        "end": 129.0
+      },
+      {
+        "text": "or",
+        "start": 129.0,
+        "end": 129.5
+      },
+      {
+        "text": "not",
+        "start": 129.5,
+        "end": 129.84
+      },
+      {
+        "text": "Should",
+        "start": 130.68,
+        "end": 130.78
+      },
+      {
+        "text": "we",
+        "start": 130.78,
+        "end": 131.0
+      },
+      {
+        "text": "pay",
+        "start": 131.0,
+        "end": 131.24
+      },
+      {
+        "text": "them",
+        "start": 131.24,
+        "end": 131.5
+      },
+      {
+        "text": "or",
+        "start": 131.5,
+        "end": 131.8
+      },
+      {
+        "text": "not",
+        "start": 131.8,
+        "end": 132.24
+      }
+    ],
+    "15": [
+      {
+        "text": "But",
+        "start": 132.24,
+        "end": 133.38
+      },
+      {
+        "text": "Jesus",
+        "start": 133.38,
+        "end": 133.68
+      },
+      {
+        "text": "saw",
+        "start": 133.68,
+        "end": 134.16
+      },
+      {
+        "text": "through",
+        "start": 134.16,
+        "end": 134.42
+      },
+      {
+        "text": "their",
+        "start": 134.42,
+        "end": 134.64
+      },
+      {
+        "text": "hypocrisy",
+        "start": 134.64,
+        "end": 135.26
+      },
+      {
+        "text": "and",
+        "start": 135.26,
+        "end": 136.06
+      },
+      {
+        "text": "said",
+        "start": 136.06,
+        "end": 136.36
+      },
+      {
+        "text": "Why",
+        "start": 137.16,
+        "end": 137.21
+      },
+      {
+        "text": "are",
+        "start": 137.16,
+        "end": 137.36
+      },
+      {
+        "text": "you",
+        "start": 137.36,
+        "end": 137.54
+      },
+      {
+        "text": "testing",
+        "start": 137.54,
+        "end": 137.94
+      },
+      {
+        "text": "Me",
+        "start": 137.94,
+        "end": 138.44
+      },
+      {
+        "text": "Bring",
+        "start": 139.06,
+        "end": 139.16
+      },
+      {
+        "text": "Me",
+        "start": 139.16,
+        "end": 139.4
+      },
+      {
+        "text": "a",
+        "start": 139.4,
+        "end": 139.64
+      },
+      {
+        "text": "denarius",
+        "start": 139.64,
+        "end": 140.18
+      },
+      {
+        "text": "to",
+        "start": 140.18,
+        "end": 140.48
+      },
+      {
+        "text": "inspect",
+        "start": 140.48,
+        "end": 140.96
+      }
+    ],
+    "16": [
+      {
+        "text": "So",
+        "start": 142.1,
+        "end": 142.18
+      },
+      {
+        "text": "they",
+        "start": 142.18,
+        "end": 142.38
+      },
+      {
+        "text": "brought",
+        "start": 142.38,
+        "end": 142.58
+      },
+      {
+        "text": "it",
+        "start": 142.58,
+        "end": 142.82
+      },
+      {
+        "text": "and",
+        "start": 143.12,
+        "end": 143.17
+      },
+      {
+        "text": "He",
+        "start": 143.16,
+        "end": 143.36
+      },
+      {
+        "text": "asked",
+        "start": 143.36,
+        "end": 143.7
+      },
+      {
+        "text": "them",
+        "start": 143.7,
+        "end": 144.12
+      },
+      {
+        "text": "Whose",
+        "start": 144.66,
+        "end": 144.82
+      },
+      {
+        "text": "image",
+        "start": 144.82,
+        "end": 145.28
+      },
+      {
+        "text": "is",
+        "start": 145.28,
+        "end": 145.68
+      },
+      {
+        "text": "this",
+        "start": 145.68,
+        "end": 146.02
+      },
+      {
+        "text": "And",
+        "start": 146.44,
+        "end": 146.66
+      },
+      {
+        "text": "whose",
+        "start": 146.66,
+        "end": 146.88
+      },
+      {
+        "text": "inscription",
+        "start": 146.88,
+        "end": 147.42
+      },
+      {
+        "text": "Caesar",
+        "start": 148.62,
+        "end": 149.14
+      },
+      {
+        "text": "they",
+        "start": 149.26,
+        "end": 149.36
+      },
+      {
+        "text": "answered",
+        "start": 149.36,
+        "end": 149.86
+      }
+    ],
+    "17": [
+      {
+        "text": "Then",
+        "start": 151.0,
+        "end": 151.18
+      },
+      {
+        "text": "Jesus",
+        "start": 151.18,
+        "end": 151.48
+      },
+      {
+        "text": "told",
+        "start": 151.48,
+        "end": 151.86
+      },
+      {
+        "text": "them",
+        "start": 151.86,
+        "end": 152.24
+      },
+      {
+        "text": "Give",
+        "start": 152.78,
+        "end": 152.9
+      },
+      {
+        "text": "to",
+        "start": 152.9,
+        "end": 153.2
+      },
+      {
+        "text": "Caesar",
+        "start": 153.2,
+        "end": 153.7
+      },
+      {
+        "text": "what",
+        "start": 153.7,
+        "end": 154.18
+      },
+      {
+        "text": "is",
+        "start": 154.18,
+        "end": 154.4
+      },
+      {
+        "text": "Caesar",
+        "start": 154.4,
+        "end": 155.14
+      },
+      {
+        "text": "and",
+        "start": 155.36,
+        "end": 155.6
+      },
+      {
+        "text": "to",
+        "start": 155.6,
+        "end": 155.76
+      },
+      {
+        "text": "God",
+        "start": 155.76,
+        "end": 156.14
+      },
+      {
+        "text": "what",
+        "start": 156.14,
+        "end": 156.64
+      },
+      {
+        "text": "is",
+        "start": 156.64,
+        "end": 156.86
+      },
+      {
+        "text": "And",
+        "start": 158.1,
+        "end": 158.34
+      },
+      {
+        "text": "they",
+        "start": 158.34,
+        "end": 158.52
+      },
+      {
+        "text": "marveled",
+        "start": 158.52,
+        "end": 159.02
+      },
+      {
+        "text": "at",
+        "start": 159.02,
+        "end": 159.14
+      },
+      {
+        "text": "Him",
+        "start": 159.14,
+        "end": 159.46
+      }
+    ],
+    "18": [
+      {
+        "text": "Then",
+        "start": 160.28,
+        "end": 160.88
+      },
+      {
+        "text": "the",
+        "start": 160.88,
+        "end": 161.28
+      },
+      {
+        "text": "Sadducees",
+        "start": 161.28,
+        "end": 162.16
+      },
+      {
+        "text": "who",
+        "start": 162.34,
+        "end": 162.52
+      },
+      {
+        "text": "say",
+        "start": 162.52,
+        "end": 162.76
+      },
+      {
+        "text": "there",
+        "start": 162.76,
+        "end": 162.96
+      },
+      {
+        "text": "is",
+        "start": 162.96,
+        "end": 163.18
+      },
+      {
+        "text": "no",
+        "start": 163.18,
+        "end": 163.44
+      },
+      {
+        "text": "resurrection",
+        "start": 163.44,
+        "end": 164.04
+      },
+      {
+        "text": "came",
+        "start": 164.62,
+        "end": 164.8
+      },
+      {
+        "text": "to",
+        "start": 164.8,
+        "end": 165.1
+      },
+      {
+        "text": "Jesus",
+        "start": 165.1,
+        "end": 165.5
+      },
+      {
+        "text": "and",
+        "start": 165.5,
+        "end": 166.0
+      },
+      {
+        "text": "questioned",
+        "start": 166.0,
+        "end": 166.44
+      },
+      {
+        "text": "Him",
+        "start": 166.44,
+        "end": 167.12
+      }
+    ],
+    "19": [
+      {
+        "text": "Teacher",
+        "start": 168.06,
+        "end": 168.11
+      },
+      {
+        "text": "Moses",
+        "start": 168.62,
+        "end": 168.8
+      },
+      {
+        "text": "wrote",
+        "start": 168.8,
+        "end": 169.18
+      },
+      {
+        "text": "for",
+        "start": 169.18,
+        "end": 169.48
+      },
+      {
+        "text": "us",
+        "start": 169.48,
+        "end": 169.86
+      },
+      {
+        "text": "that",
+        "start": 169.86,
+        "end": 170.1
+      },
+      {
+        "text": "if",
+        "start": 170.1,
+        "end": 170.32
+      },
+      {
+        "text": "a",
+        "start": 170.32,
+        "end": 170.48
+      },
+      {
+        "text": "brother",
+        "start": 170.82,
+        "end": 171.02
+      },
+      {
+        "text": "dies",
+        "start": 171.02,
+        "end": 171.48
+      },
+      {
+        "text": "and",
+        "start": 171.48,
+        "end": 171.94
+      },
+      {
+        "text": "leaves",
+        "start": 171.94,
+        "end": 172.22
+      },
+      {
+        "text": "a",
+        "start": 172.22,
+        "end": 172.44
+      },
+      {
+        "text": "wife",
+        "start": 172.44,
+        "end": 172.74
+      },
+      {
+        "text": "but",
+        "start": 172.74,
+        "end": 173.06
+      },
+      {
+        "text": "no",
+        "start": 173.06,
+        "end": 173.32
+      },
+      {
+        "text": "children",
+        "start": 173.32,
+        "end": 173.76
+      },
+      {
+        "text": "the",
+        "start": 174.36,
+        "end": 174.48
+      },
+      {
+        "text": "man",
+        "start": 174.48,
+        "end": 174.76
+      },
+      {
+        "text": "is",
+        "start": 174.76,
+        "end": 175.08
+      },
+      {
+        "text": "to",
+        "start": 175.08,
+        "end": 175.28
+      },
+      {
+        "text": "marry",
+        "start": 175.28,
+        "end": 175.56
+      },
+      {
+        "text": "his",
+        "start": 175.56,
+        "end": 175.82
+      },
+      {
+        "text": "brother",
+        "start": 175.82,
+        "end": 176.28
+      },
+      {
+        "text": "widow",
+        "start": 176.28,
+        "end": 176.56
+      },
+      {
+        "text": "and",
+        "start": 176.56,
+        "end": 177.14
+      },
+      {
+        "text": "raise",
+        "start": 177.14,
+        "end": 177.42
+      },
+      {
+        "text": "up",
+        "start": 177.42,
+        "end": 177.7
+      },
+      {
+        "text": "offspring",
+        "start": 177.7,
+        "end": 178.24
+      },
+      {
+        "text": "for",
+        "start": 178.24,
+        "end": 178.64
+      },
+      {
+        "text": "him",
+        "start": 178.64,
+        "end": 178.92
+      }
+    ],
+    "20": [
+      {
+        "text": "Now",
+        "start": 179.96,
+        "end": 180.16
+      },
+      {
+        "text": "there",
+        "start": 180.32,
+        "end": 180.52
+      },
+      {
+        "text": "were",
+        "start": 180.52,
+        "end": 180.7
+      },
+      {
+        "text": "seven",
+        "start": 180.7,
+        "end": 181.06
+      },
+      {
+        "text": "brothers",
+        "start": 181.06,
+        "end": 181.48
+      },
+      {
+        "text": "The",
+        "start": 182.22,
+        "end": 182.38
+      },
+      {
+        "text": "first",
+        "start": 182.38,
+        "end": 182.64
+      },
+      {
+        "text": "one",
+        "start": 182.64,
+        "end": 182.94
+      },
+      {
+        "text": "married",
+        "start": 182.94,
+        "end": 183.32
+      },
+      {
+        "text": "and",
+        "start": 183.32,
+        "end": 183.74
+      },
+      {
+        "text": "died",
+        "start": 183.74,
+        "end": 184.2
+      },
+      {
+        "text": "leaving",
+        "start": 184.5,
+        "end": 184.82
+      },
+      {
+        "text": "no",
+        "start": 184.82,
+        "end": 185.12
+      },
+      {
+        "text": "children",
+        "start": 185.12,
+        "end": 185.52
+      }
+    ],
+    "21": [
+      {
+        "text": "Then",
+        "start": 185.52,
+        "end": 186.58
+      },
+      {
+        "text": "the",
+        "start": 186.58,
+        "end": 186.98
+      },
+      {
+        "text": "second",
+        "start": 186.98,
+        "end": 187.26
+      },
+      {
+        "text": "one",
+        "start": 187.26,
+        "end": 187.68
+      },
+      {
+        "text": "married",
+        "start": 187.68,
+        "end": 188.02
+      },
+      {
+        "text": "the",
+        "start": 188.02,
+        "end": 188.3
+      },
+      {
+        "text": "widow",
+        "start": 188.3,
+        "end": 188.64
+      },
+      {
+        "text": "but",
+        "start": 189.18,
+        "end": 189.28
+      },
+      {
+        "text": "he",
+        "start": 189.28,
+        "end": 189.5
+      },
+      {
+        "text": "also",
+        "start": 189.5,
+        "end": 190.02
+      },
+      {
+        "text": "died",
+        "start": 190.02,
+        "end": 190.46
+      },
+      {
+        "text": "and",
+        "start": 190.46,
+        "end": 190.9
+      },
+      {
+        "text": "left",
+        "start": 190.9,
+        "end": 191.16
+      },
+      {
+        "text": "no",
+        "start": 191.16,
+        "end": 191.5
+      },
+      {
+        "text": "children",
+        "start": 191.5,
+        "end": 191.96
+      },
+      {
+        "text": "And",
+        "start": 192.76,
+        "end": 192.86
+      },
+      {
+        "text": "the",
+        "start": 192.86,
+        "end": 193.04
+      },
+      {
+        "text": "third",
+        "start": 193.04,
+        "end": 193.28
+      },
+      {
+        "text": "did",
+        "start": 193.28,
+        "end": 193.58
+      },
+      {
+        "text": "likewise",
+        "start": 193.58,
+        "end": 194.12
+      }
+    ],
+    "22": [
+      {
+        "text": "In",
+        "start": 195.06,
+        "end": 195.24
+      },
+      {
+        "text": "this",
+        "start": 195.24,
+        "end": 195.44
+      },
+      {
+        "text": "way",
+        "start": 195.44,
+        "end": 195.8
+      },
+      {
+        "text": "none",
+        "start": 196.08,
+        "end": 196.34
+      },
+      {
+        "text": "of",
+        "start": 196.34,
+        "end": 196.52
+      },
+      {
+        "text": "the",
+        "start": 196.52,
+        "end": 196.68
+      },
+      {
+        "text": "seven",
+        "start": 196.68,
+        "end": 196.98
+      },
+      {
+        "text": "left",
+        "start": 196.98,
+        "end": 197.44
+      },
+      {
+        "text": "any",
+        "start": 197.44,
+        "end": 197.84
+      },
+      {
+        "text": "children",
+        "start": 197.84,
+        "end": 198.3
+      },
+      {
+        "text": "And",
+        "start": 198.98,
+        "end": 199.2
+      },
+      {
+        "text": "last",
+        "start": 199.2,
+        "end": 199.5
+      },
+      {
+        "text": "of",
+        "start": 199.5,
+        "end": 199.76
+      },
+      {
+        "text": "all",
+        "start": 199.76,
+        "end": 200.06
+      },
+      {
+        "text": "the",
+        "start": 200.4,
+        "end": 200.54
+      },
+      {
+        "text": "woman",
+        "start": 200.54,
+        "end": 200.78
+      },
+      {
+        "text": "died",
+        "start": 200.78,
+        "end": 201.34
+      }
+    ],
+    "23": [
+      {
+        "text": "In",
+        "start": 202.2,
+        "end": 202.36
+      },
+      {
+        "text": "the",
+        "start": 202.36,
+        "end": 202.54
+      },
+      {
+        "text": "resurrection",
+        "start": 202.54,
+        "end": 203.04
+      },
+      {
+        "text": "then",
+        "start": 203.36,
+        "end": 203.52
+      },
+      {
+        "text": "whose",
+        "start": 204.04,
+        "end": 204.18
+      },
+      {
+        "text": "wife",
+        "start": 204.18,
+        "end": 204.64
+      },
+      {
+        "text": "will",
+        "start": 204.64,
+        "end": 204.94
+      },
+      {
+        "text": "she",
+        "start": 204.94,
+        "end": 205.16
+      },
+      {
+        "text": "be",
+        "start": 205.16,
+        "end": 205.58
+      },
+      {
+        "text": "For",
+        "start": 206.16,
+        "end": 206.4
+      },
+      {
+        "text": "all",
+        "start": 206.4,
+        "end": 206.72
+      },
+      {
+        "text": "seven",
+        "start": 206.72,
+        "end": 207.2
+      },
+      {
+        "text": "were",
+        "start": 207.2,
+        "end": 207.6
+      },
+      {
+        "text": "married",
+        "start": 207.6,
+        "end": 208.04
+      },
+      {
+        "text": "to",
+        "start": 208.04,
+        "end": 208.38
+      },
+      {
+        "text": "her",
+        "start": 208.38,
+        "end": 208.66
+      }
+    ],
+    "24": [
+      {
+        "text": "Jesus",
+        "start": 209.44,
+        "end": 210.06
+      },
+      {
+        "text": "said",
+        "start": 210.06,
+        "end": 210.46
+      },
+      {
+        "text": "to",
+        "start": 210.46,
+        "end": 210.6
+      },
+      {
+        "text": "them",
+        "start": 210.6,
+        "end": 210.96
+      },
+      {
+        "text": "you",
+        "start": 211.58,
+        "end": 211.8
+      },
+      {
+        "text": "mistaken",
+        "start": 211.8,
+        "end": 212.26
+      },
+      {
+        "text": "because",
+        "start": 212.86,
+        "end": 213.12
+      },
+      {
+        "text": "you",
+        "start": 213.12,
+        "end": 213.54
+      },
+      {
+        "text": "do",
+        "start": 213.54,
+        "end": 213.7
+      },
+      {
+        "text": "not",
+        "start": 213.7,
+        "end": 213.94
+      },
+      {
+        "text": "know",
+        "start": 213.94,
+        "end": 214.24
+      },
+      {
+        "text": "the",
+        "start": 214.24,
+        "end": 214.48
+      },
+      {
+        "text": "Scriptures",
+        "start": 214.48,
+        "end": 214.78
+      },
+      {
+        "text": "or",
+        "start": 214.78,
+        "end": 215.64
+      },
+      {
+        "text": "the",
+        "start": 215.64,
+        "end": 215.86
+      },
+      {
+        "text": "power",
+        "start": 215.86,
+        "end": 216.14
+      },
+      {
+        "text": "of",
+        "start": 216.14,
+        "end": 216.38
+      },
+      {
+        "text": "God",
+        "start": 216.38,
+        "end": 216.76
+      }
+    ],
+    "25": [
+      {
+        "text": "When",
+        "start": 217.74,
+        "end": 217.86
+      },
+      {
+        "text": "the",
+        "start": 217.86,
+        "end": 218.06
+      },
+      {
+        "text": "dead",
+        "start": 218.06,
+        "end": 218.3
+      },
+      {
+        "text": "rise",
+        "start": 218.3,
+        "end": 218.82
+      },
+      {
+        "text": "they",
+        "start": 219.2,
+        "end": 219.28
+      },
+      {
+        "text": "will",
+        "start": 219.28,
+        "end": 219.48
+      },
+      {
+        "text": "neither",
+        "start": 219.48,
+        "end": 219.84
+      },
+      {
+        "text": "marry",
+        "start": 219.84,
+        "end": 220.32
+      },
+      {
+        "text": "nor",
+        "start": 220.32,
+        "end": 220.74
+      },
+      {
+        "text": "be",
+        "start": 220.74,
+        "end": 220.94
+      },
+      {
+        "text": "given",
+        "start": 220.94,
+        "end": 221.28
+      },
+      {
+        "text": "in",
+        "start": 221.28,
+        "end": 221.62
+      },
+      {
+        "text": "marriage",
+        "start": 221.62,
+        "end": 222.02
+      },
+      {
+        "text": "Instead",
+        "start": 222.68,
+        "end": 223.1
+      },
+      {
+        "text": "they",
+        "start": 223.62,
+        "end": 223.82
+      },
+      {
+        "text": "will",
+        "start": 223.82,
+        "end": 224.02
+      },
+      {
+        "text": "be",
+        "start": 224.02,
+        "end": 224.26
+      },
+      {
+        "text": "like",
+        "start": 224.26,
+        "end": 224.52
+      },
+      {
+        "text": "the",
+        "start": 224.52,
+        "end": 224.76
+      },
+      {
+        "text": "angels",
+        "start": 224.76,
+        "end": 225.12
+      },
+      {
+        "text": "in",
+        "start": 225.12,
+        "end": 225.48
+      },
+      {
+        "text": "heaven",
+        "start": 225.48,
+        "end": 225.78
+      }
+    ],
+    "26": [
+      {
+        "text": "But",
+        "start": 227.0,
+        "end": 227.1
+      },
+      {
+        "text": "concerning",
+        "start": 227.1,
+        "end": 227.52
+      },
+      {
+        "text": "the",
+        "start": 227.52,
+        "end": 227.86
+      },
+      {
+        "text": "dead",
+        "start": 227.86,
+        "end": 228.14
+      },
+      {
+        "text": "rising",
+        "start": 228.14,
+        "end": 228.66
+      },
+      {
+        "text": "have",
+        "start": 229.24,
+        "end": 229.36
+      },
+      {
+        "text": "you",
+        "start": 229.36,
+        "end": 229.54
+      },
+      {
+        "text": "not",
+        "start": 229.54,
+        "end": 229.78
+      },
+      {
+        "text": "read",
+        "start": 229.78,
+        "end": 230.1
+      },
+      {
+        "text": "about",
+        "start": 230.1,
+        "end": 230.52
+      },
+      {
+        "text": "the",
+        "start": 230.52,
+        "end": 230.74
+      },
+      {
+        "text": "burning",
+        "start": 230.74,
+        "end": 231.04
+      },
+      {
+        "text": "bush",
+        "start": 231.04,
+        "end": 231.36
+      },
+      {
+        "text": "in",
+        "start": 231.36,
+        "end": 231.76
+      },
+      {
+        "text": "the",
+        "start": 231.76,
+        "end": 231.88
+      },
+      {
+        "text": "Book",
+        "start": 231.88,
+        "end": 232.0
+      },
+      {
+        "text": "of",
+        "start": 232.0,
+        "end": 232.18
+      },
+      {
+        "text": "Moses",
+        "start": 232.18,
+        "end": 232.58
+      },
+      {
+        "text": "how",
+        "start": 232.58,
+        "end": 233.54
+      },
+      {
+        "text": "God",
+        "start": 233.54,
+        "end": 233.9
+      },
+      {
+        "text": "told",
+        "start": 233.9,
+        "end": 234.16
+      },
+      {
+        "text": "him",
+        "start": 234.16,
+        "end": 234.46
+      },
+      {
+        "text": "I",
+        "start": 235.12,
+        "end": 235.17
+      },
+      {
+        "text": "am",
+        "start": 235.12,
+        "end": 235.54
+      },
+      {
+        "text": "the",
+        "start": 235.54,
+        "end": 235.86
+      },
+      {
+        "text": "God",
+        "start": 235.86,
+        "end": 236.06
+      },
+      {
+        "text": "of",
+        "start": 236.06,
+        "end": 236.26
+      },
+      {
+        "text": "Abraham",
+        "start": 236.26,
+        "end": 236.8
+      },
+      {
+        "text": "the",
+        "start": 237.32,
+        "end": 237.46
+      },
+      {
+        "text": "God",
+        "start": 237.46,
+        "end": 237.66
+      },
+      {
+        "text": "of",
+        "start": 237.66,
+        "end": 237.84
+      },
+      {
+        "text": "Isaac",
+        "start": 237.84,
+        "end": 238.28
+      },
+      {
+        "text": "and",
+        "start": 238.64,
+        "end": 238.86
+      },
+      {
+        "text": "the",
+        "start": 238.86,
+        "end": 238.98
+      },
+      {
+        "text": "God",
+        "start": 238.98,
+        "end": 239.16
+      },
+      {
+        "text": "of",
+        "start": 239.16,
+        "end": 239.3
+      },
+      {
+        "text": "Jacob",
+        "start": 239.3,
+        "end": 239.7
+      }
+    ],
+    "27": [
+      {
+        "text": "He",
+        "start": 240.52,
+        "end": 240.84
+      },
+      {
+        "text": "is",
+        "start": 240.84,
+        "end": 241.02
+      },
+      {
+        "text": "not",
+        "start": 241.02,
+        "end": 241.26
+      },
+      {
+        "text": "the",
+        "start": 241.26,
+        "end": 241.48
+      },
+      {
+        "text": "God",
+        "start": 241.48,
+        "end": 241.7
+      },
+      {
+        "text": "of",
+        "start": 241.7,
+        "end": 241.86
+      },
+      {
+        "text": "the",
+        "start": 241.86,
+        "end": 242.08
+      },
+      {
+        "text": "dead",
+        "start": 242.08,
+        "end": 242.38
+      },
+      {
+        "text": "but",
+        "start": 242.86,
+        "end": 243.1
+      },
+      {
+        "text": "of",
+        "start": 243.1,
+        "end": 243.24
+      },
+      {
+        "text": "the",
+        "start": 243.24,
+        "end": 243.38
+      },
+      {
+        "text": "living",
+        "start": 243.38,
+        "end": 243.7
+      },
+      {
+        "text": "You",
+        "start": 244.54,
+        "end": 244.78
+      },
+      {
+        "text": "are",
+        "start": 244.78,
+        "end": 245.02
+      },
+      {
+        "text": "badly",
+        "start": 245.02,
+        "end": 245.54
+      },
+      {
+        "text": "mistaken",
+        "start": 245.54,
+        "end": 246.12
+      }
+    ],
+    "28": [
+      {
+        "text": "Now",
+        "start": 247.62,
+        "end": 247.94
+      },
+      {
+        "text": "one",
+        "start": 247.94,
+        "end": 248.22
+      },
+      {
+        "text": "of",
+        "start": 248.22,
+        "end": 248.38
+      },
+      {
+        "text": "the",
+        "start": 248.38,
+        "end": 248.54
+      },
+      {
+        "text": "scribes",
+        "start": 248.54,
+        "end": 248.9
+      },
+      {
+        "text": "had",
+        "start": 248.9,
+        "end": 249.16
+      },
+      {
+        "text": "come",
+        "start": 249.16,
+        "end": 249.4
+      },
+      {
+        "text": "up",
+        "start": 249.4,
+        "end": 249.62
+      },
+      {
+        "text": "and",
+        "start": 249.62,
+        "end": 249.94
+      },
+      {
+        "text": "heard",
+        "start": 249.94,
+        "end": 250.22
+      },
+      {
+        "text": "their",
+        "start": 250.22,
+        "end": 250.44
+      },
+      {
+        "text": "debate",
+        "start": 250.44,
+        "end": 250.9
+      },
+      {
+        "text": "Noticing",
+        "start": 251.82,
+        "end": 252.16
+      },
+      {
+        "text": "how",
+        "start": 252.16,
+        "end": 252.52
+      },
+      {
+        "text": "well",
+        "start": 252.52,
+        "end": 252.86
+      },
+      {
+        "text": "Jesus",
+        "start": 252.86,
+        "end": 253.16
+      },
+      {
+        "text": "had",
+        "start": 253.16,
+        "end": 253.52
+      },
+      {
+        "text": "answered",
+        "start": 253.52,
+        "end": 253.94
+      },
+      {
+        "text": "them",
+        "start": 253.94,
+        "end": 254.32
+      },
+      {
+        "text": "he",
+        "start": 254.7,
+        "end": 254.84
+      },
+      {
+        "text": "asked",
+        "start": 254.84,
+        "end": 255.22
+      },
+      {
+        "text": "Him",
+        "start": 255.22,
+        "end": 255.52
+      },
+      {
+        "text": "Which",
+        "start": 256.16,
+        "end": 256.28
+      },
+      {
+        "text": "commandment",
+        "start": 256.28,
+        "end": 256.98
+      },
+      {
+        "text": "is",
+        "start": 256.98,
+        "end": 257.26
+      },
+      {
+        "text": "the",
+        "start": 257.26,
+        "end": 257.42
+      },
+      {
+        "text": "most",
+        "start": 257.42,
+        "end": 257.64
+      },
+      {
+        "text": "important",
+        "start": 257.64,
+        "end": 258.18
+      },
+      {
+        "text": "of",
+        "start": 258.18,
+        "end": 258.44
+      },
+      {
+        "text": "all",
+        "start": 258.44,
+        "end": 258.92
+      }
+    ],
+    "29": [
+      {
+        "text": "Jesus",
+        "start": 259.68,
+        "end": 260.02
+      },
+      {
+        "text": "replied",
+        "start": 260.02,
+        "end": 260.58
+      },
+      {
+        "text": "This",
+        "start": 261.28,
+        "end": 261.33
+      },
+      {
+        "text": "is",
+        "start": 261.3,
+        "end": 261.72
+      },
+      {
+        "text": "the",
+        "start": 261.72,
+        "end": 261.88
+      },
+      {
+        "text": "most",
+        "start": 261.88,
+        "end": 262.08
+      },
+      {
+        "text": "important",
+        "start": 262.08,
+        "end": 262.64
+      },
+      {
+        "text": "O",
+        "start": 263.84,
+        "end": 263.92
+      },
+      {
+        "text": "Israel",
+        "start": 263.92,
+        "end": 264.4
+      },
+      {
+        "text": "the",
+        "start": 264.92,
+        "end": 265.02
+      },
+      {
+        "text": "Lord",
+        "start": 265.02,
+        "end": 265.34
+      },
+      {
+        "text": "our",
+        "start": 265.34,
+        "end": 265.72
+      },
+      {
+        "text": "God",
+        "start": 265.72,
+        "end": 266.16
+      },
+      {
+        "text": "the",
+        "start": 266.6,
+        "end": 266.72
+      },
+      {
+        "text": "Lord",
+        "start": 266.72,
+        "end": 266.96
+      },
+      {
+        "text": "is",
+        "start": 266.96,
+        "end": 267.22
+      },
+      {
+        "text": "One",
+        "start": 267.22,
+        "end": 267.62
+      }
+    ],
+    "30": [
+      {
+        "text": "Love",
+        "start": 268.5,
+        "end": 268.74
+      },
+      {
+        "text": "the",
+        "start": 268.74,
+        "end": 269.0
+      },
+      {
+        "text": "Lord",
+        "start": 269.0,
+        "end": 269.28
+      },
+      {
+        "text": "your",
+        "start": 269.28,
+        "end": 269.52
+      },
+      {
+        "text": "God",
+        "start": 269.52,
+        "end": 269.9
+      },
+      {
+        "text": "with",
+        "start": 269.9,
+        "end": 270.26
+      },
+      {
+        "text": "all",
+        "start": 270.26,
+        "end": 270.54
+      },
+      {
+        "text": "your",
+        "start": 270.54,
+        "end": 270.82
+      },
+      {
+        "text": "heart",
+        "start": 270.82,
+        "end": 271.18
+      },
+      {
+        "text": "and",
+        "start": 271.18,
+        "end": 271.52
+      },
+      {
+        "text": "with",
+        "start": 271.52,
+        "end": 271.68
+      },
+      {
+        "text": "all",
+        "start": 271.68,
+        "end": 271.92
+      },
+      {
+        "text": "your",
+        "start": 271.92,
+        "end": 272.16
+      },
+      {
+        "text": "soul",
+        "start": 272.16,
+        "end": 272.58
+      },
+      {
+        "text": "and",
+        "start": 272.58,
+        "end": 273.12
+      },
+      {
+        "text": "with",
+        "start": 273.12,
+        "end": 273.28
+      },
+      {
+        "text": "all",
+        "start": 273.28,
+        "end": 273.58
+      },
+      {
+        "text": "your",
+        "start": 273.58,
+        "end": 273.8
+      },
+      {
+        "text": "mind",
+        "start": 273.8,
+        "end": 274.2
+      },
+      {
+        "text": "and",
+        "start": 274.2,
+        "end": 274.58
+      },
+      {
+        "text": "with",
+        "start": 274.58,
+        "end": 274.76
+      },
+      {
+        "text": "all",
+        "start": 274.76,
+        "end": 275.12
+      },
+      {
+        "text": "your",
+        "start": 275.12,
+        "end": 275.38
+      },
+      {
+        "text": "strength",
+        "start": 275.38,
+        "end": 275.88
+      }
+    ],
+    "31": [
+      {
+        "text": "The",
+        "start": 276.94,
+        "end": 277.2
+      },
+      {
+        "text": "second",
+        "start": 277.2,
+        "end": 277.44
+      },
+      {
+        "text": "is",
+        "start": 277.44,
+        "end": 277.84
+      },
+      {
+        "text": "this",
+        "start": 277.84,
+        "end": 278.32
+      },
+      {
+        "text": "Love",
+        "start": 279.0,
+        "end": 279.1
+      },
+      {
+        "text": "your",
+        "start": 279.1,
+        "end": 279.36
+      },
+      {
+        "text": "neighbor",
+        "start": 279.36,
+        "end": 279.7
+      },
+      {
+        "text": "as",
+        "start": 279.7,
+        "end": 280.38
+      },
+      {
+        "text": "yourself",
+        "start": 280.38,
+        "end": 280.94
+      },
+      {
+        "text": "No",
+        "start": 281.86,
+        "end": 282.14
+      },
+      {
+        "text": "other",
+        "start": 282.14,
+        "end": 282.52
+      },
+      {
+        "text": "commandment",
+        "start": 282.52,
+        "end": 283.16
+      },
+      {
+        "text": "is",
+        "start": 283.16,
+        "end": 283.48
+      },
+      {
+        "text": "greater",
+        "start": 283.48,
+        "end": 283.82
+      },
+      {
+        "text": "than",
+        "start": 283.82,
+        "end": 284.14
+      },
+      {
+        "text": "these",
+        "start": 284.14,
+        "end": 284.64
+      }
+    ],
+    "32": [
+      {
+        "text": "Right",
+        "start": 285.44,
+        "end": 286.12
+      },
+      {
+        "text": "Teacher",
+        "start": 286.12,
+        "end": 286.8
+      },
+      {
+        "text": "the",
+        "start": 287.14,
+        "end": 287.22
+      },
+      {
+        "text": "scribe",
+        "start": 287.22,
+        "end": 287.56
+      },
+      {
+        "text": "replied",
+        "start": 287.56,
+        "end": 288.18
+      },
+      {
+        "text": "You",
+        "start": 289.12,
+        "end": 289.17
+      },
+      {
+        "text": "have",
+        "start": 289.12,
+        "end": 289.4
+      },
+      {
+        "text": "stated",
+        "start": 289.4,
+        "end": 289.76
+      },
+      {
+        "text": "correctly",
+        "start": 289.76,
+        "end": 290.46
+      },
+      {
+        "text": "that",
+        "start": 290.46,
+        "end": 291.08
+      },
+      {
+        "text": "God",
+        "start": 291.08,
+        "end": 291.44
+      },
+      {
+        "text": "is",
+        "start": 291.44,
+        "end": 291.8
+      },
+      {
+        "text": "One",
+        "start": 291.8,
+        "end": 292.24
+      },
+      {
+        "text": "and",
+        "start": 292.24,
+        "end": 292.8
+      },
+      {
+        "text": "there",
+        "start": 292.8,
+        "end": 292.96
+      },
+      {
+        "text": "is",
+        "start": 292.96,
+        "end": 293.16
+      },
+      {
+        "text": "no",
+        "start": 293.16,
+        "end": 293.48
+      },
+      {
+        "text": "other",
+        "start": 293.48,
+        "end": 293.86
+      },
+      {
+        "text": "but",
+        "start": 293.86,
+        "end": 294.12
+      },
+      {
+        "text": "Him",
+        "start": 294.12,
+        "end": 294.52
+      }
+    ],
+    "33": [
+      {
+        "text": "and",
+        "start": 295.34,
+        "end": 295.39
+      },
+      {
+        "text": "to",
+        "start": 295.36,
+        "end": 295.62
+      },
+      {
+        "text": "love",
+        "start": 295.62,
+        "end": 295.96
+      },
+      {
+        "text": "Him",
+        "start": 295.96,
+        "end": 296.28
+      },
+      {
+        "text": "with",
+        "start": 296.28,
+        "end": 296.68
+      },
+      {
+        "text": "all",
+        "start": 296.68,
+        "end": 296.98
+      },
+      {
+        "text": "your",
+        "start": 296.98,
+        "end": 297.2
+      },
+      {
+        "text": "heart",
+        "start": 297.2,
+        "end": 297.56
+      },
+      {
+        "text": "and",
+        "start": 297.56,
+        "end": 297.78
+      },
+      {
+        "text": "with",
+        "start": 297.78,
+        "end": 297.94
+      },
+      {
+        "text": "all",
+        "start": 297.94,
+        "end": 298.18
+      },
+      {
+        "text": "your",
+        "start": 298.18,
+        "end": 298.36
+      },
+      {
+        "text": "understanding",
+        "start": 298.36,
+        "end": 299.06
+      },
+      {
+        "text": "and",
+        "start": 299.06,
+        "end": 299.56
+      },
+      {
+        "text": "with",
+        "start": 299.56,
+        "end": 299.7
+      },
+      {
+        "text": "all",
+        "start": 299.7,
+        "end": 299.98
+      },
+      {
+        "text": "your",
+        "start": 299.98,
+        "end": 300.22
+      },
+      {
+        "text": "strength",
+        "start": 300.22,
+        "end": 300.66
+      },
+      {
+        "text": "and",
+        "start": 300.66,
+        "end": 301.42
+      },
+      {
+        "text": "to",
+        "start": 301.42,
+        "end": 301.7
+      },
+      {
+        "text": "love",
+        "start": 301.7,
+        "end": 302.0
+      },
+      {
+        "text": "your",
+        "start": 302.0,
+        "end": 302.22
+      },
+      {
+        "text": "neighbor",
+        "start": 302.22,
+        "end": 302.52
+      },
+      {
+        "text": "as",
+        "start": 302.52,
+        "end": 302.94
+      },
+      {
+        "text": "yourself",
+        "start": 302.94,
+        "end": 303.54
+      },
+      {
+        "text": "This",
+        "start": 304.44,
+        "end": 304.72
+      },
+      {
+        "text": "is",
+        "start": 304.72,
+        "end": 304.94
+      },
+      {
+        "text": "more",
+        "start": 304.94,
+        "end": 305.26
+      },
+      {
+        "text": "important",
+        "start": 305.26,
+        "end": 305.8
+      },
+      {
+        "text": "than",
+        "start": 305.8,
+        "end": 306.08
+      },
+      {
+        "text": "all",
+        "start": 306.08,
+        "end": 306.42
+      },
+      {
+        "text": "burnt",
+        "start": 306.42,
+        "end": 306.76
+      },
+      {
+        "text": "offerings",
+        "start": 306.76,
+        "end": 307.3
+      },
+      {
+        "text": "and",
+        "start": 307.3,
+        "end": 307.7
+      },
+      {
+        "text": "sacrifices",
+        "start": 307.7,
+        "end": 308.46
+      }
+    ],
+    "34": [
+      {
+        "text": "When",
+        "start": 309.2,
+        "end": 309.84
+      },
+      {
+        "text": "Jesus",
+        "start": 309.84,
+        "end": 310.1
+      },
+      {
+        "text": "saw",
+        "start": 310.1,
+        "end": 310.6
+      },
+      {
+        "text": "that",
+        "start": 310.6,
+        "end": 310.8
+      },
+      {
+        "text": "the",
+        "start": 310.8,
+        "end": 310.94
+      },
+      {
+        "text": "man",
+        "start": 310.94,
+        "end": 311.2
+      },
+      {
+        "text": "had",
+        "start": 311.2,
+        "end": 311.46
+      },
+      {
+        "text": "answered",
+        "start": 311.46,
+        "end": 311.86
+      },
+      {
+        "text": "wisely",
+        "start": 311.86,
+        "end": 312.48
+      },
+      {
+        "text": "He",
+        "start": 313.14,
+        "end": 313.19
+      },
+      {
+        "text": "said",
+        "start": 313.16,
+        "end": 313.44
+      },
+      {
+        "text": "You",
+        "start": 314.12,
+        "end": 314.17
+      },
+      {
+        "text": "are",
+        "start": 314.12,
+        "end": 314.44
+      },
+      {
+        "text": "not",
+        "start": 314.44,
+        "end": 314.74
+      },
+      {
+        "text": "far",
+        "start": 314.74,
+        "end": 315.14
+      },
+      {
+        "text": "from",
+        "start": 315.14,
+        "end": 315.44
+      },
+      {
+        "text": "the",
+        "start": 315.44,
+        "end": 315.64
+      },
+      {
+        "text": "kingdom",
+        "start": 315.64,
+        "end": 315.84
+      },
+      {
+        "text": "of",
+        "start": 315.84,
+        "end": 316.1
+      },
+      {
+        "text": "God",
+        "start": 316.1,
+        "end": 316.44
+      },
+      {
+        "text": "And",
+        "start": 316.44,
+        "end": 317.56
+      },
+      {
+        "text": "no",
+        "start": 317.56,
+        "end": 317.86
+      },
+      {
+        "text": "one",
+        "start": 317.86,
+        "end": 318.14
+      },
+      {
+        "text": "dared",
+        "start": 318.14,
+        "end": 318.42
+      },
+      {
+        "text": "to",
+        "start": 318.42,
+        "end": 318.74
+      },
+      {
+        "text": "question",
+        "start": 318.74,
+        "end": 319.08
+      },
+      {
+        "text": "Him",
+        "start": 319.08,
+        "end": 319.52
+      },
+      {
+        "text": "any",
+        "start": 319.52,
+        "end": 319.88
+      },
+      {
+        "text": "further",
+        "start": 319.88,
+        "end": 320.3
+      }
+    ],
+    "35": [
+      {
+        "text": "While",
+        "start": 321.88,
+        "end": 322.2
+      },
+      {
+        "text": "Jesus",
+        "start": 322.2,
+        "end": 322.46
+      },
+      {
+        "text": "was",
+        "start": 322.46,
+        "end": 322.84
+      },
+      {
+        "text": "teaching",
+        "start": 322.84,
+        "end": 323.22
+      },
+      {
+        "text": "in",
+        "start": 323.22,
+        "end": 323.54
+      },
+      {
+        "text": "the",
+        "start": 323.54,
+        "end": 323.68
+      },
+      {
+        "text": "temple",
+        "start": 323.68,
+        "end": 323.94
+      },
+      {
+        "text": "courts",
+        "start": 323.94,
+        "end": 324.46
+      },
+      {
+        "text": "He",
+        "start": 325.02,
+        "end": 325.07
+      },
+      {
+        "text": "asked",
+        "start": 325.06,
+        "end": 325.46
+      },
+      {
+        "text": "How",
+        "start": 326.12,
+        "end": 326.17
+      },
+      {
+        "text": "can",
+        "start": 326.16,
+        "end": 326.42
+      },
+      {
+        "text": "the",
+        "start": 326.42,
+        "end": 326.58
+      },
+      {
+        "text": "scribes",
+        "start": 326.58,
+        "end": 327.02
+      },
+      {
+        "text": "say",
+        "start": 327.02,
+        "end": 327.54
+      },
+      {
+        "text": "that",
+        "start": 327.54,
+        "end": 327.92
+      },
+      {
+        "text": "the",
+        "start": 327.92,
+        "end": 328.12
+      },
+      {
+        "text": "Christ",
+        "start": 328.12,
+        "end": 328.36
+      },
+      {
+        "text": "is",
+        "start": 328.36,
+        "end": 328.76
+      },
+      {
+        "text": "the",
+        "start": 328.76,
+        "end": 328.98
+      },
+      {
+        "text": "Son",
+        "start": 328.98,
+        "end": 329.16
+      },
+      {
+        "text": "of",
+        "start": 329.16,
+        "end": 329.34
+      },
+      {
+        "text": "David",
+        "start": 329.34,
+        "end": 329.72
+      }
+    ],
+    "36": [
+      {
+        "text": "Speaking",
+        "start": 330.42,
+        "end": 330.8
+      },
+      {
+        "text": "by",
+        "start": 330.8,
+        "end": 331.4
+      },
+      {
+        "text": "the",
+        "start": 331.4,
+        "end": 331.6
+      },
+      {
+        "text": "Holy",
+        "start": 331.6,
+        "end": 331.9
+      },
+      {
+        "text": "Spirit",
+        "start": 331.9,
+        "end": 332.48
+      },
+      {
+        "text": "David",
+        "start": 333.16,
+        "end": 333.21
+      },
+      {
+        "text": "himself",
+        "start": 333.16,
+        "end": 333.7
+      },
+      {
+        "text": "declared",
+        "start": 333.7,
+        "end": 334.44
+      },
+      {
+        "text": "The",
+        "start": 335.22,
+        "end": 335.27
+      },
+      {
+        "text": "Lord",
+        "start": 335.22,
+        "end": 335.5
+      },
+      {
+        "text": "said",
+        "start": 335.5,
+        "end": 335.94
+      },
+      {
+        "text": "to",
+        "start": 335.94,
+        "end": 336.24
+      },
+      {
+        "text": "my",
+        "start": 336.24,
+        "end": 336.58
+      },
+      {
+        "text": "Lord",
+        "start": 336.58,
+        "end": 337.04
+      },
+      {
+        "text": "Sit",
+        "start": 337.64,
+        "end": 337.69
+      },
+      {
+        "text": "at",
+        "start": 337.66,
+        "end": 337.96
+      },
+      {
+        "text": "My",
+        "start": 337.96,
+        "end": 338.26
+      },
+      {
+        "text": "right",
+        "start": 338.26,
+        "end": 338.58
+      },
+      {
+        "text": "hand",
+        "start": 338.58,
+        "end": 339.1
+      },
+      {
+        "text": "until",
+        "start": 339.1,
+        "end": 339.66
+      },
+      {
+        "text": "I",
+        "start": 339.66,
+        "end": 340.02
+      },
+      {
+        "text": "put",
+        "start": 340.02,
+        "end": 340.26
+      },
+      {
+        "text": "Your",
+        "start": 340.26,
+        "end": 340.52
+      },
+      {
+        "text": "enemies",
+        "start": 340.52,
+        "end": 340.96
+      },
+      {
+        "text": "under",
+        "start": 340.96,
+        "end": 341.4
+      },
+      {
+        "text": "Your",
+        "start": 341.4,
+        "end": 341.7
+      },
+      {
+        "text": "feet",
+        "start": 341.7,
+        "end": 342.08
+      }
+    ],
+    "37": [
+      {
+        "text": "David",
+        "start": 343.28,
+        "end": 343.52
+      },
+      {
+        "text": "himself",
+        "start": 343.52,
+        "end": 344.1
+      },
+      {
+        "text": "calls",
+        "start": 344.1,
+        "end": 344.62
+      },
+      {
+        "text": "Him",
+        "start": 344.62,
+        "end": 345.02
+      },
+      {
+        "text": "Lord",
+        "start": 345.02,
+        "end": 345.46
+      },
+      {
+        "text": "So",
+        "start": 346.3,
+        "end": 346.36
+      },
+      {
+        "text": "how",
+        "start": 346.36,
+        "end": 346.62
+      },
+      {
+        "text": "can",
+        "start": 346.62,
+        "end": 346.86
+      },
+      {
+        "text": "He",
+        "start": 346.86,
+        "end": 347.06
+      },
+      {
+        "text": "be",
+        "start": 347.06,
+        "end": 347.34
+      },
+      {
+        "text": "David",
+        "start": 347.34,
+        "end": 348.04
+      },
+      {
+        "text": "son",
+        "start": 348.04,
+        "end": 348.26
+      },
+      {
+        "text": "And",
+        "start": 349.3,
+        "end": 349.56
+      },
+      {
+        "text": "the",
+        "start": 349.56,
+        "end": 349.74
+      },
+      {
+        "text": "large",
+        "start": 349.74,
+        "end": 350.02
+      },
+      {
+        "text": "crowd",
+        "start": 350.02,
+        "end": 350.42
+      },
+      {
+        "text": "listened",
+        "start": 350.42,
+        "end": 350.88
+      },
+      {
+        "text": "to",
+        "start": 350.88,
+        "end": 351.24
+      },
+      {
+        "text": "Him",
+        "start": 351.24,
+        "end": 351.52
+      },
+      {
+        "text": "with",
+        "start": 351.52,
+        "end": 351.84
+      },
+      {
+        "text": "delight",
+        "start": 351.84,
+        "end": 352.3
+      }
+    ],
+    "38": [
+      {
+        "text": "In",
+        "start": 353.66,
+        "end": 353.96
+      },
+      {
+        "text": "His",
+        "start": 353.96,
+        "end": 354.16
+      },
+      {
+        "text": "teaching",
+        "start": 354.16,
+        "end": 354.6
+      },
+      {
+        "text": "Jesus",
+        "start": 355.1,
+        "end": 355.18
+      },
+      {
+        "text": "also",
+        "start": 355.18,
+        "end": 355.8
+      },
+      {
+        "text": "said",
+        "start": 355.8,
+        "end": 356.24
+      },
+      {
+        "text": "Watch",
+        "start": 356.82,
+        "end": 356.94
+      },
+      {
+        "text": "out",
+        "start": 356.94,
+        "end": 357.26
+      },
+      {
+        "text": "for",
+        "start": 357.26,
+        "end": 357.52
+      },
+      {
+        "text": "the",
+        "start": 357.52,
+        "end": 357.72
+      },
+      {
+        "text": "scribes",
+        "start": 357.72,
+        "end": 358.26
+      },
+      {
+        "text": "They",
+        "start": 358.26,
+        "end": 359.12
+      },
+      {
+        "text": "like",
+        "start": 359.12,
+        "end": 359.36
+      },
+      {
+        "text": "to",
+        "start": 359.36,
+        "end": 359.6
+      },
+      {
+        "text": "walk",
+        "start": 359.6,
+        "end": 359.82
+      },
+      {
+        "text": "around",
+        "start": 359.82,
+        "end": 360.2
+      },
+      {
+        "text": "in",
+        "start": 360.2,
+        "end": 360.54
+      },
+      {
+        "text": "long",
+        "start": 360.54,
+        "end": 360.84
+      },
+      {
+        "text": "robes",
+        "start": 360.84,
+        "end": 361.42
+      },
+      {
+        "text": "to",
+        "start": 361.42,
+        "end": 361.86
+      },
+      {
+        "text": "receive",
+        "start": 361.86,
+        "end": 362.34
+      },
+      {
+        "text": "greetings",
+        "start": 362.34,
+        "end": 362.92
+      },
+      {
+        "text": "in",
+        "start": 362.92,
+        "end": 363.1
+      },
+      {
+        "text": "the",
+        "start": 363.1,
+        "end": 363.2
+      },
+      {
+        "text": "marketplaces",
+        "start": 363.2,
+        "end": 364.0
+      }
+    ],
+    "39": [
+      {
+        "text": "and",
+        "start": 364.0,
+        "end": 364.68
+      },
+      {
+        "text": "to",
+        "start": 364.68,
+        "end": 364.92
+      },
+      {
+        "text": "have",
+        "start": 364.92,
+        "end": 365.2
+      },
+      {
+        "text": "the",
+        "start": 365.2,
+        "end": 365.46
+      },
+      {
+        "text": "chief",
+        "start": 365.46,
+        "end": 365.74
+      },
+      {
+        "text": "seats",
+        "start": 365.74,
+        "end": 366.2
+      },
+      {
+        "text": "in",
+        "start": 366.2,
+        "end": 366.52
+      },
+      {
+        "text": "the",
+        "start": 366.52,
+        "end": 366.66
+      },
+      {
+        "text": "synagogues",
+        "start": 366.66,
+        "end": 367.4
+      },
+      {
+        "text": "and",
+        "start": 367.4,
+        "end": 367.78
+      },
+      {
+        "text": "the",
+        "start": 367.78,
+        "end": 367.94
+      },
+      {
+        "text": "places",
+        "start": 367.94,
+        "end": 368.26
+      },
+      {
+        "text": "of",
+        "start": 368.26,
+        "end": 368.58
+      },
+      {
+        "text": "honor",
+        "start": 368.58,
+        "end": 368.92
+      },
+      {
+        "text": "at",
+        "start": 368.92,
+        "end": 369.3
+      },
+      {
+        "text": "banquets",
+        "start": 369.3,
+        "end": 369.92
+      }
+    ],
+    "40": [
+      {
+        "text": "They",
+        "start": 370.92,
+        "end": 370.98
+      },
+      {
+        "text": "defraud",
+        "start": 370.98,
+        "end": 371.56
+      },
+      {
+        "text": "widows",
+        "start": 371.56,
+        "end": 372.12
+      },
+      {
+        "text": "of",
+        "start": 372.12,
+        "end": 372.36
+      },
+      {
+        "text": "their",
+        "start": 372.36,
+        "end": 372.56
+      },
+      {
+        "text": "houses",
+        "start": 372.56,
+        "end": 373.0
+      },
+      {
+        "text": "and",
+        "start": 373.0,
+        "end": 373.6
+      },
+      {
+        "text": "for",
+        "start": 373.6,
+        "end": 373.88
+      },
+      {
+        "text": "a",
+        "start": 373.88,
+        "end": 374.06
+      },
+      {
+        "text": "show",
+        "start": 374.06,
+        "end": 374.36
+      },
+      {
+        "text": "make",
+        "start": 374.36,
+        "end": 374.98
+      },
+      {
+        "text": "lengthy",
+        "start": 374.98,
+        "end": 375.48
+      },
+      {
+        "text": "prayers",
+        "start": 375.48,
+        "end": 376.1
+      },
+      {
+        "text": "These",
+        "start": 376.9,
+        "end": 377.14
+      },
+      {
+        "text": "men",
+        "start": 377.14,
+        "end": 377.46
+      },
+      {
+        "text": "will",
+        "start": 377.46,
+        "end": 377.78
+      },
+      {
+        "text": "receive",
+        "start": 377.78,
+        "end": 378.24
+      },
+      {
+        "text": "greater",
+        "start": 378.24,
+        "end": 378.78
+      },
+      {
+        "text": "condemnation",
+        "start": 378.78,
+        "end": 379.58
+      }
+    ],
+    "41": [
+      {
+        "text": "As",
+        "start": 380.96,
+        "end": 381.72
+      },
+      {
+        "text": "Jesus",
+        "start": 381.72,
+        "end": 382.0
+      },
+      {
+        "text": "was",
+        "start": 382.0,
+        "end": 382.36
+      },
+      {
+        "text": "sitting",
+        "start": 382.36,
+        "end": 382.68
+      },
+      {
+        "text": "opposite",
+        "start": 382.68,
+        "end": 383.1
+      },
+      {
+        "text": "the",
+        "start": 383.1,
+        "end": 383.44
+      },
+      {
+        "text": "treasury",
+        "start": 383.44,
+        "end": 383.78
+      },
+      {
+        "text": "He",
+        "start": 384.54,
+        "end": 384.59
+      },
+      {
+        "text": "watched",
+        "start": 384.56,
+        "end": 384.9
+      },
+      {
+        "text": "the",
+        "start": 384.9,
+        "end": 385.26
+      },
+      {
+        "text": "crowd",
+        "start": 385.26,
+        "end": 385.56
+      },
+      {
+        "text": "putting",
+        "start": 385.56,
+        "end": 385.96
+      },
+      {
+        "text": "money",
+        "start": 385.96,
+        "end": 386.34
+      },
+      {
+        "text": "into",
+        "start": 386.34,
+        "end": 386.76
+      },
+      {
+        "text": "it",
+        "start": 386.76,
+        "end": 387.2
+      },
+      {
+        "text": "And",
+        "start": 387.2,
+        "end": 387.9
+      },
+      {
+        "text": "many",
+        "start": 387.9,
+        "end": 388.16
+      },
+      {
+        "text": "rich",
+        "start": 388.16,
+        "end": 388.56
+      },
+      {
+        "text": "people",
+        "start": 388.56,
+        "end": 388.98
+      },
+      {
+        "text": "put",
+        "start": 388.98,
+        "end": 389.24
+      },
+      {
+        "text": "in",
+        "start": 389.24,
+        "end": 389.48
+      },
+      {
+        "text": "large",
+        "start": 389.48,
+        "end": 389.9
+      },
+      {
+        "text": "amounts",
+        "start": 389.9,
+        "end": 390.5
+      }
+    ],
+    "42": [
+      {
+        "text": "Then",
+        "start": 391.62,
+        "end": 391.76
+      },
+      {
+        "text": "one",
+        "start": 391.76,
+        "end": 392.28
+      },
+      {
+        "text": "poor",
+        "start": 392.28,
+        "end": 392.66
+      },
+      {
+        "text": "widow",
+        "start": 392.66,
+        "end": 393.08
+      },
+      {
+        "text": "came",
+        "start": 393.08,
+        "end": 393.54
+      },
+      {
+        "text": "and",
+        "start": 393.54,
+        "end": 393.9
+      },
+      {
+        "text": "put",
+        "start": 393.9,
+        "end": 394.12
+      },
+      {
+        "text": "in",
+        "start": 394.12,
+        "end": 394.38
+      },
+      {
+        "text": "two",
+        "start": 394.38,
+        "end": 394.66
+      },
+      {
+        "text": "small",
+        "start": 394.66,
+        "end": 395.12
+      },
+      {
+        "text": "copper",
+        "start": 395.12,
+        "end": 395.52
+      },
+      {
+        "text": "coins",
+        "start": 395.52,
+        "end": 396.2
+      },
+      {
+        "text": "which",
+        "start": 396.5,
+        "end": 396.76
+      },
+      {
+        "text": "amounted",
+        "start": 396.76,
+        "end": 397.08
+      },
+      {
+        "text": "to",
+        "start": 397.08,
+        "end": 397.44
+      },
+      {
+        "text": "a",
+        "start": 397.44,
+        "end": 397.6
+      },
+      {
+        "text": "small",
+        "start": 397.6,
+        "end": 397.98
+      },
+      {
+        "text": "fraction",
+        "start": 397.98,
+        "end": 398.54
+      },
+      {
+        "text": "of",
+        "start": 398.54,
+        "end": 398.92
+      },
+      {
+        "text": "a",
+        "start": 398.92,
+        "end": 399.04
+      },
+      {
+        "text": "denarius",
+        "start": 399.04,
+        "end": 399.54
+      }
+    ],
+    "43": [
+      {
+        "text": "Jesus",
+        "start": 400.52,
+        "end": 400.86
+      },
+      {
+        "text": "called",
+        "start": 400.86,
+        "end": 401.38
+      },
+      {
+        "text": "His",
+        "start": 401.38,
+        "end": 401.66
+      },
+      {
+        "text": "disciples",
+        "start": 401.66,
+        "end": 402.16
+      },
+      {
+        "text": "to",
+        "start": 402.16,
+        "end": 402.5
+      },
+      {
+        "text": "Him",
+        "start": 402.5,
+        "end": 402.76
+      },
+      {
+        "text": "and",
+        "start": 402.76,
+        "end": 403.08
+      },
+      {
+        "text": "said",
+        "start": 403.08,
+        "end": 403.38
+      },
+      {
+        "text": "Truly",
+        "start": 404.28,
+        "end": 404.33
+      },
+      {
+        "text": "I",
+        "start": 404.28,
+        "end": 404.68
+      },
+      {
+        "text": "tell",
+        "start": 404.68,
+        "end": 404.94
+      },
+      {
+        "text": "you",
+        "start": 404.94,
+        "end": 405.22
+      },
+      {
+        "text": "this",
+        "start": 405.62,
+        "end": 405.8
+      },
+      {
+        "text": "poor",
+        "start": 405.8,
+        "end": 406.16
+      },
+      {
+        "text": "widow",
+        "start": 406.16,
+        "end": 406.58
+      },
+      {
+        "text": "has",
+        "start": 406.58,
+        "end": 406.88
+      },
+      {
+        "text": "put",
+        "start": 406.88,
+        "end": 407.12
+      },
+      {
+        "text": "more",
+        "start": 407.12,
+        "end": 407.44
+      },
+      {
+        "text": "than",
+        "start": 407.44,
+        "end": 407.7
+      },
+      {
+        "text": "all",
+        "start": 407.7,
+        "end": 408.06
+      },
+      {
+        "text": "the",
+        "start": 408.06,
+        "end": 408.26
+      },
+      {
+        "text": "others",
+        "start": 408.26,
+        "end": 408.62
+      },
+      {
+        "text": "into",
+        "start": 408.62,
+        "end": 409.08
+      },
+      {
+        "text": "the",
+        "start": 409.08,
+        "end": 409.3
+      },
+      {
+        "text": "treasury",
+        "start": 409.3,
+        "end": 409.74
+      }
+    ],
+    "44": [
+      {
+        "text": "For",
+        "start": 409.74,
+        "end": 410.88
+      },
+      {
+        "text": "they",
+        "start": 410.88,
+        "end": 411.16
+      },
+      {
+        "text": "all",
+        "start": 411.16,
+        "end": 411.54
+      },
+      {
+        "text": "contributed",
+        "start": 411.54,
+        "end": 412.14
+      },
+      {
+        "text": "out",
+        "start": 412.14,
+        "end": 412.56
+      },
+      {
+        "text": "of",
+        "start": 412.56,
+        "end": 412.72
+      },
+      {
+        "text": "their",
+        "start": 412.72,
+        "end": 412.88
+      },
+      {
+        "text": "surplus",
+        "start": 412.88,
+        "end": 413.38
+      },
+      {
+        "text": "but",
+        "start": 414.24,
+        "end": 414.32
+      },
+      {
+        "text": "she",
+        "start": 414.32,
+        "end": 414.68
+      },
+      {
+        "text": "out",
+        "start": 414.68,
+        "end": 415.08
+      },
+      {
+        "text": "of",
+        "start": 415.08,
+        "end": 415.28
+      },
+      {
+        "text": "her",
+        "start": 415.28,
+        "end": 415.44
+      },
+      {
+        "text": "poverty",
+        "start": 415.44,
+        "end": 415.98
+      },
+      {
+        "text": "has",
+        "start": 415.98,
+        "end": 416.58
+      },
+      {
+        "text": "put",
+        "start": 416.58,
+        "end": 416.84
+      },
+      {
+        "text": "in",
+        "start": 416.84,
+        "end": 417.06
+      },
+      {
+        "text": "all",
+        "start": 417.06,
+        "end": 417.4
+      },
+      {
+        "text": "she",
+        "start": 417.4,
+        "end": 417.68
+      },
+      {
+        "text": "had",
+        "start": 417.68,
+        "end": 417.94
+      },
+      {
+        "text": "to",
+        "start": 417.94,
+        "end": 418.16
+      },
+      {
+        "text": "live",
+        "start": 418.16,
+        "end": 418.36
+      },
+      {
+        "text": "on",
+        "start": 418.36,
+        "end": 418.72
+      }
+    ]
+  }
+}

@@ -83,6 +83,75 @@ BOOK_CODES = {
     "revelation": "REV",
 }
 
+KJV_AUDIO_TREASURE_PATHS = {
+    "genesis": ("01_Genesis", False),
+    "exodus": ("02_Exodus", False),
+    "leviticus": ("03_Leviticus", False),
+    "numbers": ("04_Numbers", False),
+    "deuteronomy": ("05_Deuteronomy", False),
+    "joshua": ("06_Joshua", False),
+    "judges": ("07_Judges", False),
+    "ruth": ("08_Ruth", False),
+    "1_samuel": ("09_1Samuel", False),
+    "2_samuel": ("10_2Samuel", False),
+    "1_kings": ("11_1Kings", False),
+    "2_kings": ("12_2Kings", False),
+    "1_chronicles": ("13_1Chronicles", False),
+    "2_chronicles": ("14_2Chronicles", False),
+    "ezra": ("15_Ezra", False),
+    "nehemiah": ("16_Nehemiah", False),
+    "esther": ("17_Esther", False),
+    "job": ("18_Job", False),
+    "psalms": ("19_Psalms", False),
+    "proverbs": ("20_Proverbs", False),
+    "ecclesiastes": ("21_Ecclesiastes", False),
+    "song_of_solomon": ("22_Song_of_Soloman", False),
+    "isaiah": ("23_Isaiah", False),
+    "jeremiah": ("24_Jeremiah", False),
+    "lamentations": ("25_Lamentations", False),
+    "ezekiel": ("26_Ezekiel", False),
+    "daniel": ("27_Daniel", False),
+    "hosea": ("28_Hosea", False),
+    "joel": ("29_Joel", False),
+    "amos": ("30_Amos", False),
+    "obadiah": ("31_Obadiah", False),
+    "jonah": ("32_Jonah", False),
+    "micah": ("33_Micah", False),
+    "nahum": ("34_Nahum", False),
+    "habakkuk": ("35_Habakkuk", False),
+    "zephaniah": ("36_Zephaniah", False),
+    "haggai": ("37_Haggai", False),
+    "zechariah": ("38_Zechariah", False),
+    "malachi": ("39_Malachi", False),
+    "matthew": ("40_Matthew", False),
+    "mark": ("41_Mark", False),
+    "luke": ("42_Luke", False),
+    "john": ("43_John", False),
+    "acts": ("44_Acts", False),
+    "romans": ("45_Romans", False),
+    "1_corinthians": ("46_1Corinthians", False),
+    "2_corinthians": ("47_2Corinthians", False),
+    "galatians": ("48_Galatians", False),
+    "ephesians": ("49_Ephesians", False),
+    "philippians": ("50_Philippians", False),
+    "colossians": ("51_Colossians", False),
+    "1_thessalonians": ("52_1Thessalonians", False),
+    "2_thessalonians": ("53_2Thessalonians", False),
+    "1_timothy": ("54_1Timothy", False),
+    "2_timothy": ("55_2Timothy", False),
+    "titus": ("56_Titus", False),
+    "philemon": ("57_Philemon", True),
+    "hebrews": ("58_Hebrews", False),
+    "james": ("59_James", False),
+    "1_peter": ("60_1Peter", False),
+    "2_peter": ("61_2Peter", False),
+    "1_john": ("62_1John", False),
+    "2_john": ("63_2John", True),
+    "3_john": ("64_3John", True),
+    "jude": ("65_Jude", True),
+    "revelation": ("66_Revelation", False),
+}
+
 WORD_RE = re.compile(r"[A-Za-z0-9]+(?:[''][A-Za-z0-9]+)?")
 
 
@@ -190,12 +259,12 @@ def align_words(bible: list[dict], audio: list[dict]) -> dict[int, int]:
     return assignments
 
 
-def build_sidecar(task: ChapterTask, transcript: dict, minimum_match_ratio: float) -> tuple[dict, dict]:
+def build_sidecar(task: ChapterTask, transcript: dict, args: argparse.Namespace) -> tuple[dict, dict]:
     bible = bible_words(task.bible_json)
     audio = audio_words(transcript["segments"])
     assignments = align_words(bible, audio)
     match_ratio = len(assignments) / max(1, len(bible))
-    if match_ratio < minimum_match_ratio:
+    if match_ratio < args.minimum_match_ratio:
         return {}, {
             "book": task.book_id,
             "chapter": task.chapter,
@@ -232,7 +301,7 @@ def build_sidecar(task: ChapterTask, transcript: dict, minimum_match_ratio: floa
             )
 
     payload = {
-        "source": "machine-generated alignment from HelloAO BSB David audio using faster-whisper small.en",
+        "source": source_description(args),
         "quality": "machine-generated",
         "audioDuration": round(float(transcript.get("duration", 0.0)), 3),
         "matchRatio": round(match_ratio, 4),
@@ -255,6 +324,8 @@ def discover_tasks(args: argparse.Namespace) -> list[ChapterTask]:
     output_root = Path(args.output_root)
     cache_root = Path(args.cache_root)
     only = set(args.only or [])
+    only_chapters = set(args.chapter or [])
+    only_pairs = parse_only_chapters(args.only_chapter or [])
     tasks = []
     for book_id, code in BOOK_CODES.items():
         if only and book_id not in only:
@@ -264,6 +335,10 @@ def discover_tasks(args: argparse.Namespace) -> list[ChapterTask]:
             continue
         for chapter_file in sorted(book_root.glob("*.json")):
             chapter = int(chapter_file.stem)
+            if only_pairs and (book_id, chapter) not in only_pairs:
+                continue
+            if only_chapters and chapter not in only_chapters:
+                continue
             output_json = output_root / book_id / f"{book_id}_{chapter:03}.timestamps.json"
             mp3_path = cache_root / "mp3" / book_id / f"{book_id}_{chapter:03}.mp3"
             wav_path = cache_root / "wav" / book_id / f"{book_id}_{chapter:03}.wav"
@@ -271,6 +346,16 @@ def discover_tasks(args: argparse.Namespace) -> list[ChapterTask]:
                 continue
             tasks.append(ChapterTask(book_id, code, chapter, chapter_file, output_json, mp3_path, wav_path))
     return tasks
+
+
+def parse_only_chapters(values: list[str]) -> set[tuple[str, int]]:
+    pairs = set()
+    for value in values:
+        book_id, separator, chapter = value.partition(":")
+        if not separator:
+            raise ValueError(f"--only-chapter must use book_id:chapter, got {value!r}")
+        pairs.add((book_id, int(chapter)))
+    return pairs
 
 
 def download(url: str, destination: Path, retries: int) -> None:
@@ -288,8 +373,19 @@ def download(url: str, destination: Path, retries: int) -> None:
             time.sleep(min(10, attempt * 2))
 
 
+def audio_url(task: ChapterTask, args: argparse.Namespace) -> str:
+    base_uri = args.base_uri.rstrip("/")
+    if args.audio_strategy == "helloao-bsb":
+        return f"{base_uri}/{task.code}/{task.chapter}/audio/{args.narrator}.mp3"
+    if args.audio_strategy == "audiotreasure-kjv":
+        prefix, chapterless_single = KJV_AUDIO_TREASURE_PATHS[task.book_id]
+        file_name = f"{prefix}.mp3" if chapterless_single else f"{prefix}{task.chapter:03}.mp3"
+        return f"{base_uri}/{file_name}"
+    raise ValueError(f"Unsupported audio strategy: {args.audio_strategy}")
+
+
 def prepare_audio(task: ChapterTask, args: argparse.Namespace) -> ChapterTask:
-    url = f"{args.base_uri.rstrip('/')}/{task.code}/{task.chapter}/audio/{args.narrator}.mp3"
+    url = audio_url(task, args)
     if not task.mp3_path.exists() or task.mp3_path.stat().st_size == 0:
         download(url, task.mp3_path, args.retries)
     if not task.wav_path.exists() or task.wav_path.stat().st_size == 0:
@@ -394,7 +490,7 @@ def run_batch(args: argparse.Namespace) -> int:
                 try:
                     prepared_task = future.result()
                     transcript = transcribe(model, prepared_task, args)
-                    sidecar, result = build_sidecar(prepared_task, transcript, args.minimum_match_ratio)
+                    sidecar, result = build_sidecar(prepared_task, transcript, args)
                     if sidecar:
                         write_json(prepared_task.output_json, sidecar)
                     results.append(result)
@@ -437,14 +533,26 @@ def run_batch(args: argparse.Namespace) -> int:
     return 1 if failed else 0
 
 
+def source_description(args: argparse.Namespace) -> str:
+    if args.source_description:
+        return args.source_description
+    if args.audio_strategy == "helloao-bsb":
+        return f"machine-generated alignment from HelloAO BSB {args.narrator.title()} audio using faster-whisper {args.model}"
+    if args.audio_strategy == "audiotreasure-kjv":
+        return f"machine-generated alignment from AudioTreasure KJV voice audio using faster-whisper {args.model}"
+    return f"machine-generated alignment using faster-whisper {args.model}"
+
+
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Generate BSB David timing sidecars.")
+    parser = argparse.ArgumentParser(description="Generate audio timing sidecars.")
     parser.add_argument("--bible-root", default="src/main/resources/data/livingword/bible/bsb/books")
     parser.add_argument("--output-root", default="src/main/resources/data/livingword/audio/bsb/default")
     parser.add_argument("--cache-root", default=str(Path(os.environ.get("TEMP", ".")) / "livingword-bsb-timing-cache"))
     parser.add_argument("--report", default="build/timing-generation/bsb-default-report.json")
     parser.add_argument("--base-uri", default="https://audio.bible.helloao.org/api/BSB")
+    parser.add_argument("--audio-strategy", choices=["helloao-bsb", "audiotreasure-kjv"], default="helloao-bsb")
     parser.add_argument("--narrator", default="david")
+    parser.add_argument("--source-description", default="")
     parser.add_argument("--model", default="small.en")
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--compute-type", default="float16")
@@ -456,6 +564,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--minimum-match-ratio", type=float, default=0.85)
     parser.add_argument("--limit", type=int)
     parser.add_argument("--only", action="append")
+    parser.add_argument("--chapter", type=int, action="append")
+    parser.add_argument("--only-chapter", action="append")
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--keep-wav", action="store_true")
     return parser.parse_args()

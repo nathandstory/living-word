@@ -1,0 +1,2463 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB Souer audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 154.672,
+  "matchRatio": 0.9979,
+  "verses": {
+    "1": 3.5,
+    "2": 12.52,
+    "3": 18.7,
+    "4": 26.74,
+    "5": 32.94,
+    "6": 37.82,
+    "7": 42.14,
+    "8": 48.64,
+    "9": 54.82,
+    "10": 63.68,
+    "11": 69.5,
+    "12": 78.58,
+    "13": 84.76,
+    "14": 89.6,
+    "15": 94.26,
+    "16": 100.06,
+    "17": 109.82,
+    "18": 116.0,
+    "19": 125.48,
+    "20": 133.82,
+    "21": 140.68
+  },
+  "words": {
+    "1": [
+      {
+        "text": "You",
+        "start": 3.5,
+        "end": 4.76
+      },
+      {
+        "text": "are",
+        "start": 4.76,
+        "end": 4.88
+      },
+      {
+        "text": "to",
+        "start": 4.88,
+        "end": 5.0
+      },
+      {
+        "text": "build",
+        "start": 5.0,
+        "end": 5.18
+      },
+      {
+        "text": "an",
+        "start": 5.18,
+        "end": 5.44
+      },
+      {
+        "text": "altar",
+        "start": 5.44,
+        "end": 5.64
+      },
+      {
+        "text": "of",
+        "start": 5.64,
+        "end": 5.88
+      },
+      {
+        "text": "acacia",
+        "start": 5.88,
+        "end": 6.24
+      },
+      {
+        "text": "wood",
+        "start": 6.24,
+        "end": 6.5
+      },
+      {
+        "text": "The",
+        "start": 6.92,
+        "end": 7.12
+      },
+      {
+        "text": "altar",
+        "start": 7.12,
+        "end": 7.44
+      },
+      {
+        "text": "must",
+        "start": 7.44,
+        "end": 7.7
+      },
+      {
+        "text": "be",
+        "start": 7.7,
+        "end": 7.94
+      },
+      {
+        "text": "square",
+        "start": 7.94,
+        "end": 8.3
+      },
+      {
+        "text": "five",
+        "start": 8.68,
+        "end": 8.94
+      },
+      {
+        "text": "cubits",
+        "start": 8.94,
+        "end": 9.28
+      },
+      {
+        "text": "long",
+        "start": 9.28,
+        "end": 9.56
+      },
+      {
+        "text": "five",
+        "start": 9.86,
+        "end": 10.1
+      },
+      {
+        "text": "cubits",
+        "start": 10.1,
+        "end": 10.48
+      },
+      {
+        "text": "wide",
+        "start": 10.48,
+        "end": 10.78
+      },
+      {
+        "text": "and",
+        "start": 10.96,
+        "end": 11.1
+      },
+      {
+        "text": "three",
+        "start": 11.1,
+        "end": 11.36
+      },
+      {
+        "text": "cubits",
+        "start": 11.36,
+        "end": 11.78
+      },
+      {
+        "text": "high",
+        "start": 11.78,
+        "end": 12.04
+      }
+    ],
+    "2": [
+      {
+        "text": "Make",
+        "start": 12.52,
+        "end": 12.74
+      },
+      {
+        "text": "a",
+        "start": 12.74,
+        "end": 12.9
+      },
+      {
+        "text": "horn",
+        "start": 12.9,
+        "end": 13.14
+      },
+      {
+        "text": "on",
+        "start": 13.14,
+        "end": 13.4
+      },
+      {
+        "text": "each",
+        "start": 13.4,
+        "end": 13.66
+      },
+      {
+        "text": "of",
+        "start": 13.66,
+        "end": 13.84
+      },
+      {
+        "text": "its",
+        "start": 13.84,
+        "end": 13.98
+      },
+      {
+        "text": "four",
+        "start": 13.98,
+        "end": 14.22
+      },
+      {
+        "text": "corners",
+        "start": 14.22,
+        "end": 14.62
+      },
+      {
+        "text": "so",
+        "start": 14.82,
+        "end": 15.06
+      },
+      {
+        "text": "that",
+        "start": 15.06,
+        "end": 15.22
+      },
+      {
+        "text": "the",
+        "start": 15.22,
+        "end": 15.38
+      },
+      {
+        "text": "horns",
+        "start": 15.38,
+        "end": 15.66
+      },
+      {
+        "text": "are",
+        "start": 15.66,
+        "end": 15.9
+      },
+      {
+        "text": "of",
+        "start": 15.9,
+        "end": 16.02
+      },
+      {
+        "text": "one",
+        "start": 16.02,
+        "end": 16.26
+      },
+      {
+        "text": "piece",
+        "start": 16.26,
+        "end": 16.58
+      },
+      {
+        "text": "and",
+        "start": 16.58,
+        "end": 16.9
+      },
+      {
+        "text": "overlay",
+        "start": 16.9,
+        "end": 17.3
+      },
+      {
+        "text": "it",
+        "start": 17.3,
+        "end": 17.5
+      },
+      {
+        "text": "with",
+        "start": 17.5,
+        "end": 17.68
+      },
+      {
+        "text": "bronze",
+        "start": 17.68,
+        "end": 17.98
+      }
+    ],
+    "3": [
+      {
+        "text": "Make",
+        "start": 18.7,
+        "end": 18.88
+      },
+      {
+        "text": "all",
+        "start": 18.88,
+        "end": 19.08
+      },
+      {
+        "text": "its",
+        "start": 19.08,
+        "end": 19.28
+      },
+      {
+        "text": "utensils",
+        "start": 19.28,
+        "end": 19.86
+      },
+      {
+        "text": "of",
+        "start": 19.86,
+        "end": 20.06
+      },
+      {
+        "text": "bronze",
+        "start": 20.06,
+        "end": 20.36
+      },
+      {
+        "text": "its",
+        "start": 20.66,
+        "end": 20.8
+      },
+      {
+        "text": "pots",
+        "start": 20.8,
+        "end": 21.12
+      },
+      {
+        "text": "for",
+        "start": 21.12,
+        "end": 21.44
+      },
+      {
+        "text": "removing",
+        "start": 21.44,
+        "end": 21.82
+      },
+      {
+        "text": "ashes",
+        "start": 21.82,
+        "end": 22.14
+      },
+      {
+        "text": "its",
+        "start": 22.48,
+        "end": 22.68
+      },
+      {
+        "text": "shovels",
+        "start": 22.68,
+        "end": 23.24
+      },
+      {
+        "text": "its",
+        "start": 23.32,
+        "end": 23.44
+      },
+      {
+        "text": "sprinkling",
+        "start": 23.44,
+        "end": 23.92
+      },
+      {
+        "text": "bowls",
+        "start": 23.92,
+        "end": 24.18
+      },
+      {
+        "text": "its",
+        "start": 24.4,
+        "end": 24.58
+      },
+      {
+        "text": "meat",
+        "start": 24.58,
+        "end": 24.8
+      },
+      {
+        "text": "forks",
+        "start": 24.8,
+        "end": 25.04
+      },
+      {
+        "text": "and",
+        "start": 25.18,
+        "end": 25.34
+      },
+      {
+        "text": "its",
+        "start": 25.34,
+        "end": 25.48
+      },
+      {
+        "text": "firepans",
+        "start": 25.48,
+        "end": 26.08
+      }
+    ],
+    "4": [
+      {
+        "text": "Construct",
+        "start": 26.74,
+        "end": 27.22
+      },
+      {
+        "text": "for",
+        "start": 27.22,
+        "end": 27.56
+      },
+      {
+        "text": "it",
+        "start": 27.56,
+        "end": 27.72
+      },
+      {
+        "text": "a",
+        "start": 27.72,
+        "end": 27.98
+      },
+      {
+        "text": "grate",
+        "start": 27.98,
+        "end": 28.2
+      },
+      {
+        "text": "of",
+        "start": 28.2,
+        "end": 28.48
+      },
+      {
+        "text": "bronze",
+        "start": 28.48,
+        "end": 28.84
+      },
+      {
+        "text": "mesh",
+        "start": 28.84,
+        "end": 29.22
+      },
+      {
+        "text": "and",
+        "start": 29.22,
+        "end": 29.46
+      },
+      {
+        "text": "make",
+        "start": 29.46,
+        "end": 29.58
+      },
+      {
+        "text": "a",
+        "start": 29.58,
+        "end": 29.74
+      },
+      {
+        "text": "bronze",
+        "start": 29.74,
+        "end": 30.0
+      },
+      {
+        "text": "ring",
+        "start": 30.0,
+        "end": 30.36
+      },
+      {
+        "text": "at",
+        "start": 30.36,
+        "end": 30.64
+      },
+      {
+        "text": "each",
+        "start": 30.64,
+        "end": 30.9
+      },
+      {
+        "text": "of",
+        "start": 30.9,
+        "end": 31.1
+      },
+      {
+        "text": "the",
+        "start": 31.1,
+        "end": 31.22
+      },
+      {
+        "text": "four",
+        "start": 31.22,
+        "end": 31.46
+      },
+      {
+        "text": "corners",
+        "start": 31.46,
+        "end": 31.8
+      },
+      {
+        "text": "of",
+        "start": 31.8,
+        "end": 32.0
+      },
+      {
+        "text": "the",
+        "start": 32.0,
+        "end": 32.12
+      },
+      {
+        "text": "mesh",
+        "start": 32.12,
+        "end": 32.38
+      }
+    ],
+    "5": [
+      {
+        "text": "Set",
+        "start": 32.94,
+        "end": 33.14
+      },
+      {
+        "text": "the",
+        "start": 33.14,
+        "end": 33.3
+      },
+      {
+        "text": "grate",
+        "start": 33.3,
+        "end": 33.52
+      },
+      {
+        "text": "beneath",
+        "start": 33.52,
+        "end": 33.8
+      },
+      {
+        "text": "the",
+        "start": 33.8,
+        "end": 34.04
+      },
+      {
+        "text": "ledge",
+        "start": 34.04,
+        "end": 34.22
+      },
+      {
+        "text": "of",
+        "start": 34.22,
+        "end": 34.38
+      },
+      {
+        "text": "the",
+        "start": 34.38,
+        "end": 34.52
+      },
+      {
+        "text": "altar",
+        "start": 34.52,
+        "end": 34.78
+      },
+      {
+        "text": "so",
+        "start": 34.78,
+        "end": 35.08
+      },
+      {
+        "text": "that",
+        "start": 35.08,
+        "end": 35.26
+      },
+      {
+        "text": "the",
+        "start": 35.26,
+        "end": 35.38
+      },
+      {
+        "text": "mesh",
+        "start": 35.38,
+        "end": 35.6
+      },
+      {
+        "text": "comes",
+        "start": 35.6,
+        "end": 35.9
+      },
+      {
+        "text": "halfway",
+        "start": 35.9,
+        "end": 36.24
+      },
+      {
+        "text": "up",
+        "start": 36.24,
+        "end": 36.5
+      },
+      {
+        "text": "the",
+        "start": 36.5,
+        "end": 36.64
+      },
+      {
+        "text": "altar",
+        "start": 36.64,
+        "end": 36.94
+      }
+    ],
+    "6": [
+      {
+        "text": "Additionally",
+        "start": 37.82,
+        "end": 38.06
+      },
+      {
+        "text": "make",
+        "start": 38.38,
+        "end": 38.44
+      },
+      {
+        "text": "poles",
+        "start": 38.44,
+        "end": 38.7
+      },
+      {
+        "text": "of",
+        "start": 38.7,
+        "end": 38.92
+      },
+      {
+        "text": "acacia",
+        "start": 38.92,
+        "end": 39.28
+      },
+      {
+        "text": "wood",
+        "start": 39.28,
+        "end": 39.46
+      },
+      {
+        "text": "for",
+        "start": 39.46,
+        "end": 39.64
+      },
+      {
+        "text": "the",
+        "start": 39.64,
+        "end": 39.78
+      },
+      {
+        "text": "altar",
+        "start": 39.78,
+        "end": 40.06
+      },
+      {
+        "text": "and",
+        "start": 40.06,
+        "end": 40.38
+      },
+      {
+        "text": "overlay",
+        "start": 40.38,
+        "end": 40.74
+      },
+      {
+        "text": "them",
+        "start": 40.74,
+        "end": 41.02
+      },
+      {
+        "text": "with",
+        "start": 41.02,
+        "end": 41.22
+      },
+      {
+        "text": "bronze",
+        "start": 41.22,
+        "end": 41.54
+      }
+    ],
+    "7": [
+      {
+        "text": "The",
+        "start": 42.14,
+        "end": 42.32
+      },
+      {
+        "text": "poles",
+        "start": 42.32,
+        "end": 42.58
+      },
+      {
+        "text": "are",
+        "start": 42.58,
+        "end": 42.82
+      },
+      {
+        "text": "to",
+        "start": 42.82,
+        "end": 42.92
+      },
+      {
+        "text": "be",
+        "start": 42.92,
+        "end": 43.02
+      },
+      {
+        "text": "inserted",
+        "start": 43.02,
+        "end": 43.4
+      },
+      {
+        "text": "into",
+        "start": 43.4,
+        "end": 43.8
+      },
+      {
+        "text": "the",
+        "start": 43.8,
+        "end": 44.0
+      },
+      {
+        "text": "rings",
+        "start": 44.0,
+        "end": 44.34
+      },
+      {
+        "text": "so",
+        "start": 44.34,
+        "end": 44.76
+      },
+      {
+        "text": "that",
+        "start": 44.76,
+        "end": 44.96
+      },
+      {
+        "text": "the",
+        "start": 44.96,
+        "end": 45.08
+      },
+      {
+        "text": "poles",
+        "start": 45.08,
+        "end": 45.34
+      },
+      {
+        "text": "are",
+        "start": 45.34,
+        "end": 45.56
+      },
+      {
+        "text": "on",
+        "start": 45.56,
+        "end": 45.74
+      },
+      {
+        "text": "two",
+        "start": 45.74,
+        "end": 46.04
+      },
+      {
+        "text": "sides",
+        "start": 46.04,
+        "end": 46.4
+      },
+      {
+        "text": "of",
+        "start": 46.4,
+        "end": 46.58
+      },
+      {
+        "text": "the",
+        "start": 46.58,
+        "end": 46.7
+      },
+      {
+        "text": "altar",
+        "start": 46.7,
+        "end": 47.02
+      },
+      {
+        "text": "when",
+        "start": 47.02,
+        "end": 47.28
+      },
+      {
+        "text": "it",
+        "start": 47.28,
+        "end": 47.44
+      },
+      {
+        "text": "is",
+        "start": 47.44,
+        "end": 47.58
+      },
+      {
+        "text": "carried",
+        "start": 47.58,
+        "end": 47.88
+      }
+    ],
+    "8": [
+      {
+        "text": "Construct",
+        "start": 48.64,
+        "end": 48.7
+      },
+      {
+        "text": "the",
+        "start": 48.7,
+        "end": 48.94
+      },
+      {
+        "text": "altar",
+        "start": 48.94,
+        "end": 49.2
+      },
+      {
+        "text": "with",
+        "start": 49.2,
+        "end": 49.44
+      },
+      {
+        "text": "boards",
+        "start": 49.44,
+        "end": 49.82
+      },
+      {
+        "text": "so",
+        "start": 49.82,
+        "end": 50.26
+      },
+      {
+        "text": "that",
+        "start": 50.26,
+        "end": 50.4
+      },
+      {
+        "text": "it",
+        "start": 50.4,
+        "end": 50.54
+      },
+      {
+        "text": "is",
+        "start": 50.54,
+        "end": 50.72
+      },
+      {
+        "text": "hollow",
+        "start": 50.72,
+        "end": 50.98
+      },
+      {
+        "text": "It",
+        "start": 51.5,
+        "end": 51.66
+      },
+      {
+        "text": "is",
+        "start": 51.66,
+        "end": 51.8
+      },
+      {
+        "text": "to",
+        "start": 51.8,
+        "end": 51.94
+      },
+      {
+        "text": "be",
+        "start": 51.94,
+        "end": 52.06
+      },
+      {
+        "text": "made",
+        "start": 52.06,
+        "end": 52.34
+      },
+      {
+        "text": "just",
+        "start": 52.34,
+        "end": 52.64
+      },
+      {
+        "text": "as",
+        "start": 52.64,
+        "end": 53.0
+      },
+      {
+        "text": "you",
+        "start": 53.0,
+        "end": 53.14
+      },
+      {
+        "text": "shown",
+        "start": 53.24,
+        "end": 53.42
+      },
+      {
+        "text": "on",
+        "start": 53.42,
+        "end": 53.6
+      },
+      {
+        "text": "the",
+        "start": 53.6,
+        "end": 53.7
+      },
+      {
+        "text": "mountain",
+        "start": 53.7,
+        "end": 54.04
+      }
+    ],
+    "9": [
+      {
+        "text": "You",
+        "start": 54.82,
+        "end": 55.12
+      },
+      {
+        "text": "are",
+        "start": 55.12,
+        "end": 55.26
+      },
+      {
+        "text": "also",
+        "start": 55.26,
+        "end": 55.64
+      },
+      {
+        "text": "to",
+        "start": 55.64,
+        "end": 55.9
+      },
+      {
+        "text": "make",
+        "start": 55.9,
+        "end": 56.04
+      },
+      {
+        "text": "a",
+        "start": 56.04,
+        "end": 56.24
+      },
+      {
+        "text": "courtyard",
+        "start": 56.24,
+        "end": 56.64
+      },
+      {
+        "text": "for",
+        "start": 56.64,
+        "end": 56.94
+      },
+      {
+        "text": "the",
+        "start": 56.94,
+        "end": 57.1
+      },
+      {
+        "text": "tabernacle",
+        "start": 57.1,
+        "end": 57.58
+      },
+      {
+        "text": "On",
+        "start": 57.9,
+        "end": 58.02
+      },
+      {
+        "text": "the",
+        "start": 58.02,
+        "end": 58.2
+      },
+      {
+        "text": "south",
+        "start": 58.2,
+        "end": 58.4
+      },
+      {
+        "text": "side",
+        "start": 58.4,
+        "end": 58.74
+      },
+      {
+        "text": "of",
+        "start": 58.74,
+        "end": 58.88
+      },
+      {
+        "text": "the",
+        "start": 58.88,
+        "end": 59.0
+      },
+      {
+        "text": "courtyard",
+        "start": 59.0,
+        "end": 59.4
+      },
+      {
+        "text": "make",
+        "start": 59.4,
+        "end": 59.7
+      },
+      {
+        "text": "curtains",
+        "start": 59.7,
+        "end": 60.06
+      },
+      {
+        "text": "of",
+        "start": 60.06,
+        "end": 60.34
+      },
+      {
+        "text": "finely",
+        "start": 60.34,
+        "end": 60.6
+      },
+      {
+        "text": "spun",
+        "start": 60.6,
+        "end": 61.06
+      },
+      {
+        "text": "linen",
+        "start": 61.06,
+        "end": 61.42
+      },
+      {
+        "text": "a",
+        "start": 61.94,
+        "end": 61.99
+      },
+      {
+        "text": "hundred",
+        "start": 61.96,
+        "end": 62.26
+      },
+      {
+        "text": "cubits",
+        "start": 62.26,
+        "end": 62.64
+      },
+      {
+        "text": "long",
+        "start": 62.64,
+        "end": 62.86
+      },
+      {
+        "text": "on",
+        "start": 62.86,
+        "end": 63.08
+      },
+      {
+        "text": "one",
+        "start": 63.08,
+        "end": 63.3
+      },
+      {
+        "text": "side",
+        "start": 63.3,
+        "end": 63.68
+      }
+    ],
+    "10": [
+      {
+        "text": "with",
+        "start": 63.68,
+        "end": 64.0
+      },
+      {
+        "text": "twenty",
+        "start": 64.0,
+        "end": 64.38
+      },
+      {
+        "text": "posts",
+        "start": 64.38,
+        "end": 64.8
+      },
+      {
+        "text": "and",
+        "start": 64.8,
+        "end": 65.16
+      },
+      {
+        "text": "twenty",
+        "start": 65.16,
+        "end": 65.5
+      },
+      {
+        "text": "bronze",
+        "start": 65.5,
+        "end": 65.94
+      },
+      {
+        "text": "bases",
+        "start": 65.94,
+        "end": 66.3
+      },
+      {
+        "text": "and",
+        "start": 66.3,
+        "end": 66.8
+      },
+      {
+        "text": "silver",
+        "start": 66.8,
+        "end": 67.12
+      },
+      {
+        "text": "hooks",
+        "start": 67.12,
+        "end": 67.36
+      },
+      {
+        "text": "and",
+        "start": 67.36,
+        "end": 67.66
+      },
+      {
+        "text": "bands",
+        "start": 67.66,
+        "end": 67.94
+      },
+      {
+        "text": "on",
+        "start": 67.94,
+        "end": 68.22
+      },
+      {
+        "text": "the",
+        "start": 68.22,
+        "end": 68.36
+      },
+      {
+        "text": "posts",
+        "start": 68.36,
+        "end": 68.68
+      }
+    ],
+    "11": [
+      {
+        "text": "Likewise",
+        "start": 69.5,
+        "end": 69.84
+      },
+      {
+        "text": "there",
+        "start": 69.84,
+        "end": 70.28
+      },
+      {
+        "text": "are",
+        "start": 70.28,
+        "end": 70.38
+      },
+      {
+        "text": "to",
+        "start": 70.38,
+        "end": 70.5
+      },
+      {
+        "text": "be",
+        "start": 70.5,
+        "end": 70.68
+      },
+      {
+        "text": "curtains",
+        "start": 70.68,
+        "end": 70.98
+      },
+      {
+        "text": "on",
+        "start": 70.98,
+        "end": 71.22
+      },
+      {
+        "text": "the",
+        "start": 71.22,
+        "end": 71.36
+      },
+      {
+        "text": "north",
+        "start": 71.36,
+        "end": 71.5
+      },
+      {
+        "text": "side",
+        "start": 71.5,
+        "end": 71.92
+      },
+      {
+        "text": "a",
+        "start": 72.16,
+        "end": 72.21
+      },
+      {
+        "text": "hundred",
+        "start": 72.16,
+        "end": 72.46
+      },
+      {
+        "text": "cubits",
+        "start": 72.46,
+        "end": 72.88
+      },
+      {
+        "text": "long",
+        "start": 72.88,
+        "end": 73.16
+      },
+      {
+        "text": "with",
+        "start": 73.16,
+        "end": 73.46
+      },
+      {
+        "text": "twenty",
+        "start": 73.46,
+        "end": 73.78
+      },
+      {
+        "text": "posts",
+        "start": 73.78,
+        "end": 74.16
+      },
+      {
+        "text": "and",
+        "start": 74.16,
+        "end": 74.42
+      },
+      {
+        "text": "twenty",
+        "start": 74.42,
+        "end": 74.76
+      },
+      {
+        "text": "bronze",
+        "start": 74.76,
+        "end": 75.14
+      },
+      {
+        "text": "bases",
+        "start": 75.14,
+        "end": 75.56
+      },
+      {
+        "text": "and",
+        "start": 75.56,
+        "end": 76.24
+      },
+      {
+        "text": "with",
+        "start": 76.24,
+        "end": 76.42
+      },
+      {
+        "text": "silver",
+        "start": 76.42,
+        "end": 76.72
+      },
+      {
+        "text": "hooks",
+        "start": 76.72,
+        "end": 76.96
+      },
+      {
+        "text": "and",
+        "start": 76.96,
+        "end": 77.2
+      },
+      {
+        "text": "bands",
+        "start": 77.2,
+        "end": 77.44
+      },
+      {
+        "text": "on",
+        "start": 77.44,
+        "end": 77.68
+      },
+      {
+        "text": "the",
+        "start": 77.68,
+        "end": 77.8
+      },
+      {
+        "text": "posts",
+        "start": 77.8,
+        "end": 78.1
+      }
+    ],
+    "12": [
+      {
+        "text": "The",
+        "start": 78.58,
+        "end": 78.82
+      },
+      {
+        "text": "curtains",
+        "start": 78.82,
+        "end": 79.04
+      },
+      {
+        "text": "on",
+        "start": 79.04,
+        "end": 79.3
+      },
+      {
+        "text": "the",
+        "start": 79.3,
+        "end": 79.42
+      },
+      {
+        "text": "west",
+        "start": 79.42,
+        "end": 79.62
+      },
+      {
+        "text": "side",
+        "start": 79.62,
+        "end": 79.96
+      },
+      {
+        "text": "of",
+        "start": 79.96,
+        "end": 80.1
+      },
+      {
+        "text": "the",
+        "start": 80.1,
+        "end": 80.24
+      },
+      {
+        "text": "courtyard",
+        "start": 80.24,
+        "end": 80.62
+      },
+      {
+        "text": "shall",
+        "start": 80.62,
+        "end": 80.98
+      },
+      {
+        "text": "be",
+        "start": 80.98,
+        "end": 81.16
+      },
+      {
+        "text": "fifty",
+        "start": 81.16,
+        "end": 81.46
+      },
+      {
+        "text": "cubits",
+        "start": 81.46,
+        "end": 81.86
+      },
+      {
+        "text": "wide",
+        "start": 81.86,
+        "end": 82.14
+      },
+      {
+        "text": "with",
+        "start": 82.14,
+        "end": 82.44
+      },
+      {
+        "text": "ten",
+        "start": 82.44,
+        "end": 82.74
+      },
+      {
+        "text": "posts",
+        "start": 82.74,
+        "end": 83.2
+      },
+      {
+        "text": "and",
+        "start": 83.2,
+        "end": 83.44
+      },
+      {
+        "text": "ten",
+        "start": 83.44,
+        "end": 83.74
+      },
+      {
+        "text": "bases",
+        "start": 83.74,
+        "end": 84.14
+      }
+    ],
+    "13": [
+      {
+        "text": "The",
+        "start": 84.76,
+        "end": 85.02
+      },
+      {
+        "text": "east",
+        "start": 85.02,
+        "end": 85.32
+      },
+      {
+        "text": "side",
+        "start": 85.32,
+        "end": 85.66
+      },
+      {
+        "text": "of",
+        "start": 85.66,
+        "end": 85.8
+      },
+      {
+        "text": "the",
+        "start": 85.8,
+        "end": 85.92
+      },
+      {
+        "text": "courtyard",
+        "start": 85.92,
+        "end": 86.32
+      },
+      {
+        "text": "toward",
+        "start": 86.32,
+        "end": 86.68
+      },
+      {
+        "text": "the",
+        "start": 86.68,
+        "end": 86.88
+      },
+      {
+        "text": "sunrise",
+        "start": 86.88,
+        "end": 87.28
+      },
+      {
+        "text": "is",
+        "start": 87.28,
+        "end": 87.68
+      },
+      {
+        "text": "to",
+        "start": 87.68,
+        "end": 87.84
+      },
+      {
+        "text": "be",
+        "start": 87.84,
+        "end": 88.02
+      },
+      {
+        "text": "fifty",
+        "start": 88.02,
+        "end": 88.34
+      },
+      {
+        "text": "cubits",
+        "start": 88.34,
+        "end": 88.72
+      },
+      {
+        "text": "wide",
+        "start": 88.72,
+        "end": 89.04
+      }
+    ],
+    "14": [
+      {
+        "text": "Make",
+        "start": 89.6,
+        "end": 89.74
+      },
+      {
+        "text": "the",
+        "start": 89.74,
+        "end": 89.94
+      },
+      {
+        "text": "curtains",
+        "start": 89.94,
+        "end": 90.22
+      },
+      {
+        "text": "on",
+        "start": 90.22,
+        "end": 90.52
+      },
+      {
+        "text": "one",
+        "start": 90.52,
+        "end": 90.8
+      },
+      {
+        "text": "side",
+        "start": 90.8,
+        "end": 91.22
+      },
+      {
+        "text": "fifteen",
+        "start": 91.22,
+        "end": 91.72
+      },
+      {
+        "text": "cubits",
+        "start": 91.72,
+        "end": 92.16
+      },
+      {
+        "text": "long",
+        "start": 92.16,
+        "end": 92.42
+      },
+      {
+        "text": "with",
+        "start": 92.42,
+        "end": 92.7
+      },
+      {
+        "text": "three",
+        "start": 92.7,
+        "end": 92.98
+      },
+      {
+        "text": "posts",
+        "start": 92.98,
+        "end": 93.32
+      },
+      {
+        "text": "and",
+        "start": 93.32,
+        "end": 93.6
+      },
+      {
+        "text": "three",
+        "start": 93.6,
+        "end": 93.86
+      },
+      {
+        "text": "bases",
+        "start": 93.86,
+        "end": 94.26
+      }
+    ],
+    "15": [
+      {
+        "text": "and",
+        "start": 94.26,
+        "end": 94.98
+      },
+      {
+        "text": "the",
+        "start": 94.98,
+        "end": 95.1
+      },
+      {
+        "text": "curtains",
+        "start": 95.1,
+        "end": 95.38
+      },
+      {
+        "text": "on",
+        "start": 95.38,
+        "end": 95.68
+      },
+      {
+        "text": "the",
+        "start": 95.68,
+        "end": 95.82
+      },
+      {
+        "text": "other",
+        "start": 95.82,
+        "end": 96.06
+      },
+      {
+        "text": "side",
+        "start": 96.06,
+        "end": 96.4
+      },
+      {
+        "text": "fifteen",
+        "start": 96.4,
+        "end": 96.88
+      },
+      {
+        "text": "cubits",
+        "start": 96.88,
+        "end": 97.34
+      },
+      {
+        "text": "long",
+        "start": 97.34,
+        "end": 97.6
+      },
+      {
+        "text": "with",
+        "start": 97.6,
+        "end": 97.86
+      },
+      {
+        "text": "three",
+        "start": 97.86,
+        "end": 98.12
+      },
+      {
+        "text": "posts",
+        "start": 98.12,
+        "end": 98.48
+      },
+      {
+        "text": "and",
+        "start": 98.48,
+        "end": 98.74
+      },
+      {
+        "text": "three",
+        "start": 98.74,
+        "end": 99.0
+      },
+      {
+        "text": "bases",
+        "start": 99.0,
+        "end": 99.38
+      }
+    ],
+    "16": [
+      {
+        "text": "The",
+        "start": 100.06,
+        "end": 100.42
+      },
+      {
+        "text": "gate",
+        "start": 100.42,
+        "end": 100.62
+      },
+      {
+        "text": "of",
+        "start": 100.62,
+        "end": 100.82
+      },
+      {
+        "text": "the",
+        "start": 100.82,
+        "end": 100.98
+      },
+      {
+        "text": "courtyard",
+        "start": 100.98,
+        "end": 101.34
+      },
+      {
+        "text": "shall",
+        "start": 101.34,
+        "end": 101.62
+      },
+      {
+        "text": "be",
+        "start": 101.62,
+        "end": 101.8
+      },
+      {
+        "text": "twenty",
+        "start": 101.8,
+        "end": 102.1
+      },
+      {
+        "text": "cubits",
+        "start": 102.1,
+        "end": 102.52
+      },
+      {
+        "text": "long",
+        "start": 102.52,
+        "end": 102.8
+      },
+      {
+        "text": "with",
+        "start": 102.8,
+        "end": 103.04
+      },
+      {
+        "text": "a",
+        "start": 103.04,
+        "end": 103.2
+      },
+      {
+        "text": "curtain",
+        "start": 103.2,
+        "end": 103.44
+      },
+      {
+        "text": "embroidered",
+        "start": 103.44,
+        "end": 103.94
+      },
+      {
+        "text": "with",
+        "start": 103.94,
+        "end": 104.2
+      },
+      {
+        "text": "blue",
+        "start": 104.2,
+        "end": 104.5
+      },
+      {
+        "text": "purple",
+        "start": 104.68,
+        "end": 104.9
+      },
+      {
+        "text": "and",
+        "start": 105.12,
+        "end": 105.22
+      },
+      {
+        "text": "scarlet",
+        "start": 105.22,
+        "end": 105.6
+      },
+      {
+        "text": "yarn",
+        "start": 105.6,
+        "end": 105.9
+      },
+      {
+        "text": "and",
+        "start": 105.9,
+        "end": 106.16
+      },
+      {
+        "text": "finely",
+        "start": 106.16,
+        "end": 106.6
+      },
+      {
+        "text": "spun",
+        "start": 106.6,
+        "end": 106.92
+      },
+      {
+        "text": "linen",
+        "start": 106.92,
+        "end": 107.2
+      },
+      {
+        "text": "It",
+        "start": 107.86,
+        "end": 108.04
+      },
+      {
+        "text": "shall",
+        "start": 108.04,
+        "end": 108.18
+      },
+      {
+        "text": "have",
+        "start": 108.18,
+        "end": 108.36
+      },
+      {
+        "text": "four",
+        "start": 108.36,
+        "end": 108.6
+      },
+      {
+        "text": "posts",
+        "start": 108.6,
+        "end": 108.98
+      },
+      {
+        "text": "and",
+        "start": 108.98,
+        "end": 109.22
+      },
+      {
+        "text": "four",
+        "start": 109.22,
+        "end": 109.46
+      },
+      {
+        "text": "bases",
+        "start": 109.46,
+        "end": 109.82
+      }
+    ],
+    "17": [
+      {
+        "text": "All",
+        "start": 109.82,
+        "end": 110.74
+      },
+      {
+        "text": "the",
+        "start": 110.74,
+        "end": 110.92
+      },
+      {
+        "text": "posts",
+        "start": 110.92,
+        "end": 111.2
+      },
+      {
+        "text": "around",
+        "start": 111.2,
+        "end": 111.6
+      },
+      {
+        "text": "the",
+        "start": 111.6,
+        "end": 111.8
+      },
+      {
+        "text": "courtyard",
+        "start": 111.8,
+        "end": 112.18
+      },
+      {
+        "text": "shall",
+        "start": 112.18,
+        "end": 112.46
+      },
+      {
+        "text": "have",
+        "start": 112.46,
+        "end": 112.68
+      },
+      {
+        "text": "silver",
+        "start": 112.68,
+        "end": 113.02
+      },
+      {
+        "text": "bands",
+        "start": 113.02,
+        "end": 113.48
+      },
+      {
+        "text": "silver",
+        "start": 113.78,
+        "end": 113.96
+      },
+      {
+        "text": "hooks",
+        "start": 113.96,
+        "end": 114.24
+      },
+      {
+        "text": "and",
+        "start": 114.48,
+        "end": 114.6
+      },
+      {
+        "text": "bronze",
+        "start": 114.6,
+        "end": 114.82
+      },
+      {
+        "text": "bases",
+        "start": 114.82,
+        "end": 115.28
+      }
+    ],
+    "18": [
+      {
+        "text": "The",
+        "start": 116.0,
+        "end": 116.16
+      },
+      {
+        "text": "entire",
+        "start": 116.16,
+        "end": 116.56
+      },
+      {
+        "text": "courtyard",
+        "start": 116.56,
+        "end": 117.06
+      },
+      {
+        "text": "shall",
+        "start": 117.06,
+        "end": 117.36
+      },
+      {
+        "text": "be",
+        "start": 117.36,
+        "end": 117.5
+      },
+      {
+        "text": "a",
+        "start": 117.5,
+        "end": 117.62
+      },
+      {
+        "text": "hundred",
+        "start": 117.62,
+        "end": 117.94
+      },
+      {
+        "text": "cubits",
+        "start": 117.94,
+        "end": 118.28
+      },
+      {
+        "text": "long",
+        "start": 118.28,
+        "end": 118.54
+      },
+      {
+        "text": "and",
+        "start": 118.54,
+        "end": 118.82
+      },
+      {
+        "text": "fifty",
+        "start": 118.82,
+        "end": 119.16
+      },
+      {
+        "text": "cubits",
+        "start": 119.16,
+        "end": 119.58
+      },
+      {
+        "text": "wide",
+        "start": 119.58,
+        "end": 119.92
+      },
+      {
+        "text": "with",
+        "start": 119.92,
+        "end": 120.48
+      },
+      {
+        "text": "curtains",
+        "start": 120.48,
+        "end": 120.86
+      },
+      {
+        "text": "of",
+        "start": 120.86,
+        "end": 121.2
+      },
+      {
+        "text": "finely",
+        "start": 121.2,
+        "end": 121.52
+      },
+      {
+        "text": "spun",
+        "start": 121.52,
+        "end": 121.96
+      },
+      {
+        "text": "linen",
+        "start": 121.96,
+        "end": 122.32
+      },
+      {
+        "text": "five",
+        "start": 122.32,
+        "end": 122.72
+      },
+      {
+        "text": "cubits",
+        "start": 122.72,
+        "end": 123.14
+      },
+      {
+        "text": "high",
+        "start": 123.14,
+        "end": 123.42
+      },
+      {
+        "text": "and",
+        "start": 123.42,
+        "end": 123.72
+      },
+      {
+        "text": "with",
+        "start": 123.72,
+        "end": 123.92
+      },
+      {
+        "text": "bronze",
+        "start": 123.92,
+        "end": 124.26
+      },
+      {
+        "text": "bases",
+        "start": 124.26,
+        "end": 124.72
+      }
+    ],
+    "19": [
+      {
+        "text": "All",
+        "start": 125.48,
+        "end": 125.72
+      },
+      {
+        "text": "the",
+        "start": 125.72,
+        "end": 125.92
+      },
+      {
+        "text": "utensils",
+        "start": 125.92,
+        "end": 126.42
+      },
+      {
+        "text": "of",
+        "start": 126.42,
+        "end": 126.68
+      },
+      {
+        "text": "the",
+        "start": 126.68,
+        "end": 126.84
+      },
+      {
+        "text": "tabernacle",
+        "start": 126.84,
+        "end": 127.28
+      },
+      {
+        "text": "for",
+        "start": 127.28,
+        "end": 127.6
+      },
+      {
+        "text": "every",
+        "start": 127.6,
+        "end": 127.96
+      },
+      {
+        "text": "use",
+        "start": 127.96,
+        "end": 128.28
+      },
+      {
+        "text": "including",
+        "start": 128.28,
+        "end": 128.78
+      },
+      {
+        "text": "all",
+        "start": 128.78,
+        "end": 129.18
+      },
+      {
+        "text": "its",
+        "start": 129.18,
+        "end": 129.48
+      },
+      {
+        "text": "tent",
+        "start": 129.48,
+        "end": 129.74
+      },
+      {
+        "text": "pegs",
+        "start": 129.74,
+        "end": 130.2
+      },
+      {
+        "text": "and",
+        "start": 130.2,
+        "end": 130.42
+      },
+      {
+        "text": "the",
+        "start": 130.42,
+        "end": 130.54
+      },
+      {
+        "text": "tent",
+        "start": 130.54,
+        "end": 130.8
+      },
+      {
+        "text": "pegs",
+        "start": 130.8,
+        "end": 131.12
+      },
+      {
+        "text": "of",
+        "start": 131.12,
+        "end": 131.26
+      },
+      {
+        "text": "the",
+        "start": 131.26,
+        "end": 131.4
+      },
+      {
+        "text": "courtyard",
+        "start": 131.4,
+        "end": 131.78
+      },
+      {
+        "text": "shall",
+        "start": 131.78,
+        "end": 132.08
+      },
+      {
+        "text": "be",
+        "start": 132.08,
+        "end": 132.2
+      },
+      {
+        "text": "made",
+        "start": 132.2,
+        "end": 132.38
+      },
+      {
+        "text": "of",
+        "start": 132.38,
+        "end": 132.52
+      },
+      {
+        "text": "bronze",
+        "start": 132.52,
+        "end": 132.8
+      }
+    ],
+    "20": [
+      {
+        "text": "And",
+        "start": 133.82,
+        "end": 134.0
+      },
+      {
+        "text": "you",
+        "start": 134.0,
+        "end": 134.14
+      },
+      {
+        "text": "are",
+        "start": 134.14,
+        "end": 134.24
+      },
+      {
+        "text": "to",
+        "start": 134.24,
+        "end": 134.36
+      },
+      {
+        "text": "command",
+        "start": 134.36,
+        "end": 134.6
+      },
+      {
+        "text": "the",
+        "start": 134.6,
+        "end": 134.8
+      },
+      {
+        "text": "Israelites",
+        "start": 134.8,
+        "end": 135.32
+      },
+      {
+        "text": "to",
+        "start": 135.32,
+        "end": 135.52
+      },
+      {
+        "text": "bring",
+        "start": 135.52,
+        "end": 135.66
+      },
+      {
+        "text": "you",
+        "start": 135.66,
+        "end": 135.88
+      },
+      {
+        "text": "pure",
+        "start": 135.88,
+        "end": 136.16
+      },
+      {
+        "text": "oil",
+        "start": 136.16,
+        "end": 136.52
+      },
+      {
+        "text": "of",
+        "start": 136.52,
+        "end": 136.78
+      },
+      {
+        "text": "pressed",
+        "start": 136.78,
+        "end": 137.04
+      },
+      {
+        "text": "olives",
+        "start": 137.04,
+        "end": 137.42
+      },
+      {
+        "text": "for",
+        "start": 137.42,
+        "end": 137.68
+      },
+      {
+        "text": "the",
+        "start": 137.68,
+        "end": 137.84
+      },
+      {
+        "text": "light",
+        "start": 137.84,
+        "end": 138.02
+      },
+      {
+        "text": "to",
+        "start": 138.02,
+        "end": 138.22
+      },
+      {
+        "text": "keep",
+        "start": 138.22,
+        "end": 138.42
+      },
+      {
+        "text": "the",
+        "start": 138.42,
+        "end": 138.58
+      },
+      {
+        "text": "lamps",
+        "start": 138.58,
+        "end": 138.82
+      },
+      {
+        "text": "burning",
+        "start": 138.82,
+        "end": 139.18
+      },
+      {
+        "text": "continually",
+        "start": 139.18,
+        "end": 139.76
+      }
+    ],
+    "21": [
+      {
+        "text": "In",
+        "start": 140.68,
+        "end": 140.84
+      },
+      {
+        "text": "the",
+        "start": 140.84,
+        "end": 140.98
+      },
+      {
+        "text": "Tent",
+        "start": 140.98,
+        "end": 141.18
+      },
+      {
+        "text": "of",
+        "start": 141.18,
+        "end": 141.38
+      },
+      {
+        "text": "Meeting",
+        "start": 141.38,
+        "end": 141.64
+      },
+      {
+        "text": "outside",
+        "start": 141.64,
+        "end": 142.18
+      },
+      {
+        "text": "the",
+        "start": 142.18,
+        "end": 142.4
+      },
+      {
+        "text": "veil",
+        "start": 142.4,
+        "end": 142.58
+      },
+      {
+        "text": "that",
+        "start": 142.58,
+        "end": 142.84
+      },
+      {
+        "text": "is",
+        "start": 142.84,
+        "end": 142.98
+      },
+      {
+        "text": "in",
+        "start": 142.98,
+        "end": 143.18
+      },
+      {
+        "text": "front",
+        "start": 143.18,
+        "end": 143.34
+      },
+      {
+        "text": "of",
+        "start": 143.34,
+        "end": 143.52
+      },
+      {
+        "text": "the",
+        "start": 143.52,
+        "end": 143.64
+      },
+      {
+        "text": "Testimony",
+        "start": 143.64,
+        "end": 144.12
+      },
+      {
+        "text": "Aaron",
+        "start": 144.5,
+        "end": 144.64
+      },
+      {
+        "text": "and",
+        "start": 144.64,
+        "end": 144.92
+      },
+      {
+        "text": "his",
+        "start": 144.92,
+        "end": 145.14
+      },
+      {
+        "text": "sons",
+        "start": 145.14,
+        "end": 145.34
+      },
+      {
+        "text": "are",
+        "start": 145.34,
+        "end": 145.6
+      },
+      {
+        "text": "to",
+        "start": 145.6,
+        "end": 145.74
+      },
+      {
+        "text": "tend",
+        "start": 145.74,
+        "end": 145.98
+      },
+      {
+        "text": "the",
+        "start": 145.98,
+        "end": 146.16
+      },
+      {
+        "text": "lamps",
+        "start": 146.16,
+        "end": 146.42
+      },
+      {
+        "text": "before",
+        "start": 146.42,
+        "end": 146.74
+      },
+      {
+        "text": "the",
+        "start": 146.74,
+        "end": 146.94
+      },
+      {
+        "text": "LORD",
+        "start": 146.94,
+        "end": 147.1
+      },
+      {
+        "text": "from",
+        "start": 147.1,
+        "end": 147.4
+      },
+      {
+        "text": "evening",
+        "start": 147.4,
+        "end": 147.7
+      },
+      {
+        "text": "until",
+        "start": 147.7,
+        "end": 148.1
+      },
+      {
+        "text": "morning",
+        "start": 148.1,
+        "end": 148.44
+      },
+      {
+        "text": "This",
+        "start": 148.92,
+        "end": 149.22
+      },
+      {
+        "text": "is",
+        "start": 149.22,
+        "end": 149.36
+      },
+      {
+        "text": "to",
+        "start": 149.36,
+        "end": 149.5
+      },
+      {
+        "text": "be",
+        "start": 149.5,
+        "end": 149.62
+      },
+      {
+        "text": "a",
+        "start": 149.62,
+        "end": 149.74
+      },
+      {
+        "text": "permanent",
+        "start": 149.74,
+        "end": 150.04
+      },
+      {
+        "text": "statute",
+        "start": 150.04,
+        "end": 150.54
+      },
+      {
+        "text": "for",
+        "start": 150.54,
+        "end": 150.82
+      },
+      {
+        "text": "the",
+        "start": 150.82,
+        "end": 150.92
+      },
+      {
+        "text": "Israelites",
+        "start": 150.92,
+        "end": 151.5
+      },
+      {
+        "text": "for",
+        "start": 151.5,
+        "end": 151.74
+      },
+      {
+        "text": "the",
+        "start": 151.74,
+        "end": 151.88
+      },
+      {
+        "text": "generations",
+        "start": 151.88,
+        "end": 152.34
+      },
+      {
+        "text": "to",
+        "start": 152.34,
+        "end": 152.7
+      },
+      {
+        "text": "come",
+        "start": 152.7,
+        "end": 152.96
+      }
+    ]
+  }
+}

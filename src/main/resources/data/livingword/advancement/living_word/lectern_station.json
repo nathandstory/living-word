@@ -1,0 +1,43 @@
+{
+  "parent": "livingword:living_word/root",
+  "criteria": {
+    "use_bible_on_lectern": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "minecraft:lectern"
+              }
+            }
+          },
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "items": "livingword:bible"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:item_used_on_block"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.livingword.lectern_station.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:lectern"
+    },
+    "title": {
+      "translate": "advancements.livingword.lectern_station.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_bible_on_lectern"
+    ]
+  ]
+}

@@ -89,4 +89,32 @@ final class AudioTimingRepositoryTest {
         assertTrue(timestampMap.startMillis(36).orElseThrow() < 420_000L);
         assertEquals("For", timestampMap.wordAt(16, timestampMap.startMillis(16).orElseThrow() + 100L).orElseThrow().text());
     }
+
+    @Test
+    void includesBundledKjvJohnThreeTimings() {
+        Optional<VerseTimestampMap> timings = new AudioTimingRepository(getClass().getClassLoader())
+            .timestamps(new AudioChapterId("kjv", "john", 3), "default");
+
+        VerseTimestampMap timestampMap = timings.orElseThrow();
+        assertTrue(timestampMap.startMillis(1).orElseThrow() > 1_000L);
+        assertTrue(timestampMap.startMillis(36).orElseThrow() > timestampMap.startMillis(1).orElseThrow());
+        assertEquals("For", timestampMap.wordAt(16, timestampMap.startMillis(16).orElseThrow() + 100L).orElseThrow().text());
+    }
+
+    @Test
+    void includesBundledBsbAlternateNarratorTimings() {
+        AudioTimingRepository repository = new AudioTimingRepository(getClass().getClassLoader());
+
+        VerseTimestampMap souer = repository
+            .timestamps(new AudioChapterId("bsb", "john", 3), "souer")
+            .orElseThrow();
+        VerseTimestampMap hays = repository
+            .timestamps(new AudioChapterId("bsb", "john", 3), "hays")
+            .orElseThrow();
+
+        assertTrue(souer.startMillis(16).orElseThrow() > souer.startMillis(1).orElseThrow());
+        assertTrue(hays.startMillis(16).orElseThrow() > hays.startMillis(1).orElseThrow());
+        assertEquals("For", souer.wordAt(16, souer.startMillis(16).orElseThrow() + 100L).orElseThrow().text());
+        assertEquals("For", hays.wordAt(16, hays.startMillis(16).orElseThrow() + 100L).orElseThrow().text());
+    }
 }

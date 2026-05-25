@@ -4,6 +4,7 @@
   "baseUri": "https://www.audiotreasure.com/content/KJV_AT/",
   "fileExtension": "mp3",
   "pathStrategy": "audiotreasure-kjv",
+  "verseTimings": true,
   "sourceName": "AudioTreasure KJV voice-only narration",
   "license": "Free legal audio; Rev Dan Wagner recording used by AudioTreasure by permission",
   "attribution": "KJV voice-only narration from AudioTreasure.com"

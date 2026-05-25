@@ -30,4 +30,14 @@ final class LecternEventsContractTest {
         assertTrue(lang.contains("Lectern reset"));
         assertTrue(lang.contains("Sneak empty-hand use removes the Bible"));
     }
+
+    @Test
+    void lecternPlaybackPausesOtherWorldSourceSessionsForThePlayer() throws Exception {
+        String source = Files.readString(Path.of("src/main/java/com/livingword/lectern/LecternEvents.java"));
+
+        assertTrue(source.contains("ScriptureDiscEvents.pauseSessionsForParticipant(player);"));
+        assertTrue(source.contains("pauseSessionsForParticipant(ServerPlayer player)"));
+        assertTrue(source.contains("LivingWordNetwork.stopListeningSession(snapshot.sessionId())"));
+        assertTrue(source.contains("syncDisplayEntities(level, paused, resumePosition)"));
+    }
 }

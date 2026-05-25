@@ -1,0 +1,34 @@
+{
+  "criteria": {
+    "has_bible": {
+      "conditions": {
+        "items": [
+          {
+            "items": "livingword:bible"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancements.livingword.root.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "livingword:bible"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.livingword.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_bible"
+    ]
+  ]
+}

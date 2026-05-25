@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -40,6 +41,17 @@ final class JukeboxListeningSessionRegistry {
         return Optional.empty();
     }
 
+    List<PlayingSessionSnapshot> playingSessions() {
+        return sessions.entrySet().stream()
+            .filter(entry -> entry.getValue().playing())
+            .map(entry -> {
+                Key key = entry.getKey();
+                Entry session = entry.getValue();
+                return new PlayingSessionSnapshot(key.dimension(), key.pos(), session.selection(), session.sessionId());
+            })
+            .toList();
+    }
+
     long resumePosition(ResourceLocation dimension, BlockPos pos, ScriptureDiscSelection selection) {
         Entry entry = sessions.get(new Key(dimension, pos.immutable()));
         if (entry == null || !entry.selection().equals(selection)) {
@@ -67,5 +79,8 @@ final class JukeboxListeningSessionRegistry {
     }
 
     record SessionSnapshot(ResourceLocation dimension, BlockPos pos, ScriptureDiscSelection selection) {
+    }
+
+    record PlayingSessionSnapshot(ResourceLocation dimension, BlockPos pos, ScriptureDiscSelection selection, UUID sessionId) {
     }
 }

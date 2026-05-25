@@ -1,0 +1,509 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB Hays audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 50.181,
+  "matchRatio": 0.9794,
+  "verses": {
+    "1": 5.02,
+    "2": 11.3,
+    "3": 16.46,
+    "4": 21.0,
+    "5": 25.28,
+    "6": 31.3,
+    "7": 37.38,
+    "8": 43.42
+  },
+  "words": {
+    "1": [
+      {
+        "text": "When",
+        "start": 5.02,
+        "end": 5.07
+      },
+      {
+        "text": "Israel",
+        "start": 5.06,
+        "end": 5.62
+      },
+      {
+        "text": "departed",
+        "start": 5.62,
+        "end": 6.16
+      },
+      {
+        "text": "from",
+        "start": 6.16,
+        "end": 6.46
+      },
+      {
+        "text": "Egypt",
+        "start": 6.46,
+        "end": 6.96
+      },
+      {
+        "text": "the",
+        "start": 7.4,
+        "end": 7.52
+      },
+      {
+        "text": "house",
+        "start": 7.52,
+        "end": 7.76
+      },
+      {
+        "text": "of",
+        "start": 7.76,
+        "end": 8.02
+      },
+      {
+        "text": "Jacob",
+        "start": 8.02,
+        "end": 8.44
+      },
+      {
+        "text": "from",
+        "start": 8.68,
+        "end": 8.86
+      },
+      {
+        "text": "a",
+        "start": 8.86,
+        "end": 9.02
+      },
+      {
+        "text": "people",
+        "start": 9.02,
+        "end": 9.32
+      },
+      {
+        "text": "of",
+        "start": 9.32,
+        "end": 9.54
+      },
+      {
+        "text": "foreign",
+        "start": 9.54,
+        "end": 9.94
+      },
+      {
+        "text": "tongue",
+        "start": 9.94,
+        "end": 10.36
+      }
+    ],
+    "2": [
+      {
+        "text": "Judah",
+        "start": 11.3,
+        "end": 11.38
+      },
+      {
+        "text": "became",
+        "start": 11.38,
+        "end": 11.96
+      },
+      {
+        "text": "sanctuary",
+        "start": 12.62,
+        "end": 13.02
+      },
+      {
+        "text": "Israel",
+        "start": 13.8,
+        "end": 14.22
+      },
+      {
+        "text": "His",
+        "start": 14.22,
+        "end": 14.74
+      },
+      {
+        "text": "dominion",
+        "start": 14.74,
+        "end": 15.26
+      }
+    ],
+    "3": [
+      {
+        "text": "The",
+        "start": 16.46,
+        "end": 16.54
+      },
+      {
+        "text": "sea",
+        "start": 16.54,
+        "end": 16.84
+      },
+      {
+        "text": "observed",
+        "start": 16.84,
+        "end": 17.4
+      },
+      {
+        "text": "and",
+        "start": 17.4,
+        "end": 17.84
+      },
+      {
+        "text": "fled",
+        "start": 17.84,
+        "end": 18.22
+      },
+      {
+        "text": "the",
+        "start": 18.84,
+        "end": 19.04
+      },
+      {
+        "text": "Jordan",
+        "start": 19.04,
+        "end": 19.4
+      },
+      {
+        "text": "turned",
+        "start": 19.4,
+        "end": 19.82
+      },
+      {
+        "text": "back",
+        "start": 19.82,
+        "end": 20.28
+      }
+    ],
+    "4": [
+      {
+        "text": "the",
+        "start": 21.0,
+        "end": 21.18
+      },
+      {
+        "text": "mountains",
+        "start": 21.18,
+        "end": 21.64
+      },
+      {
+        "text": "skipped",
+        "start": 21.64,
+        "end": 22.18
+      },
+      {
+        "text": "like",
+        "start": 22.18,
+        "end": 22.6
+      },
+      {
+        "text": "rams",
+        "start": 22.6,
+        "end": 23.1
+      },
+      {
+        "text": "the",
+        "start": 23.52,
+        "end": 23.62
+      },
+      {
+        "text": "hills",
+        "start": 23.62,
+        "end": 23.98
+      },
+      {
+        "text": "like",
+        "start": 23.98,
+        "end": 24.54
+      },
+      {
+        "text": "lambs",
+        "start": 24.54,
+        "end": 25.28
+      }
+    ],
+    "5": [
+      {
+        "text": "Why",
+        "start": 25.28,
+        "end": 26.34
+      },
+      {
+        "text": "was",
+        "start": 26.34,
+        "end": 26.66
+      },
+      {
+        "text": "it",
+        "start": 26.66,
+        "end": 26.92
+      },
+      {
+        "text": "O",
+        "start": 26.98,
+        "end": 27.12
+      },
+      {
+        "text": "sea",
+        "start": 27.12,
+        "end": 27.42
+      },
+      {
+        "text": "that",
+        "start": 27.56,
+        "end": 27.66
+      },
+      {
+        "text": "you",
+        "start": 27.66,
+        "end": 27.88
+      },
+      {
+        "text": "fled",
+        "start": 27.88,
+        "end": 28.18
+      },
+      {
+        "text": "O",
+        "start": 28.66,
+        "end": 28.92
+      },
+      {
+        "text": "Jordan",
+        "start": 28.92,
+        "end": 29.28
+      },
+      {
+        "text": "that",
+        "start": 29.72,
+        "end": 29.84
+      },
+      {
+        "text": "you",
+        "start": 29.84,
+        "end": 30.12
+      },
+      {
+        "text": "turned",
+        "start": 30.12,
+        "end": 30.42
+      },
+      {
+        "text": "back",
+        "start": 30.42,
+        "end": 30.82
+      }
+    ],
+    "6": [
+      {
+        "text": "O",
+        "start": 31.3,
+        "end": 31.52
+      },
+      {
+        "text": "mountains",
+        "start": 31.52,
+        "end": 31.92
+      },
+      {
+        "text": "that",
+        "start": 32.26,
+        "end": 32.46
+      },
+      {
+        "text": "you",
+        "start": 32.46,
+        "end": 32.7
+      },
+      {
+        "text": "skipped",
+        "start": 32.7,
+        "end": 33.02
+      },
+      {
+        "text": "like",
+        "start": 33.02,
+        "end": 33.4
+      },
+      {
+        "text": "rams",
+        "start": 33.4,
+        "end": 33.92
+      },
+      {
+        "text": "O",
+        "start": 34.4,
+        "end": 34.56
+      },
+      {
+        "text": "hills",
+        "start": 34.56,
+        "end": 34.94
+      },
+      {
+        "text": "like",
+        "start": 34.94,
+        "end": 35.6
+      },
+      {
+        "text": "lambs",
+        "start": 35.6,
+        "end": 36.44
+      }
+    ],
+    "7": [
+      {
+        "text": "Tremble",
+        "start": 37.38,
+        "end": 37.74
+      },
+      {
+        "text": "O",
+        "start": 37.94,
+        "end": 38.06
+      },
+      {
+        "text": "earth",
+        "start": 38.06,
+        "end": 38.36
+      },
+      {
+        "text": "at",
+        "start": 38.62,
+        "end": 38.78
+      },
+      {
+        "text": "the",
+        "start": 38.78,
+        "end": 39.02
+      },
+      {
+        "text": "presence",
+        "start": 39.02,
+        "end": 39.28
+      },
+      {
+        "text": "of",
+        "start": 39.28,
+        "end": 39.76
+      },
+      {
+        "text": "the",
+        "start": 39.76,
+        "end": 39.94
+      },
+      {
+        "text": "Lord",
+        "start": 39.94,
+        "end": 40.22
+      },
+      {
+        "text": "at",
+        "start": 40.82,
+        "end": 41.04
+      },
+      {
+        "text": "the",
+        "start": 41.04,
+        "end": 41.2
+      },
+      {
+        "text": "presence",
+        "start": 41.2,
+        "end": 41.46
+      },
+      {
+        "text": "of",
+        "start": 41.46,
+        "end": 41.78
+      },
+      {
+        "text": "the",
+        "start": 41.78,
+        "end": 41.92
+      },
+      {
+        "text": "God",
+        "start": 41.92,
+        "end": 42.2
+      },
+      {
+        "text": "of",
+        "start": 42.2,
+        "end": 42.52
+      },
+      {
+        "text": "Jacob",
+        "start": 42.52,
+        "end": 42.88
+      }
+    ],
+    "8": [
+      {
+        "text": "who",
+        "start": 43.42,
+        "end": 43.7
+      },
+      {
+        "text": "turned",
+        "start": 43.7,
+        "end": 44.04
+      },
+      {
+        "text": "the",
+        "start": 44.04,
+        "end": 44.3
+      },
+      {
+        "text": "rock",
+        "start": 44.3,
+        "end": 44.6
+      },
+      {
+        "text": "into",
+        "start": 44.6,
+        "end": 45.02
+      },
+      {
+        "text": "a",
+        "start": 45.02,
+        "end": 45.24
+      },
+      {
+        "text": "pool",
+        "start": 45.24,
+        "end": 45.52
+      },
+      {
+        "text": "the",
+        "start": 46.1,
+        "end": 46.28
+      },
+      {
+        "text": "flint",
+        "start": 46.28,
+        "end": 46.72
+      },
+      {
+        "text": "into",
+        "start": 46.72,
+        "end": 47.24
+      },
+      {
+        "text": "a",
+        "start": 47.24,
+        "end": 47.5
+      },
+      {
+        "text": "fountain",
+        "start": 47.5,
+        "end": 47.84
+      },
+      {
+        "text": "of",
+        "start": 47.84,
+        "end": 48.18
+      },
+      {
+        "text": "water",
+        "start": 48.18,
+        "end": 48.54
+      }
+    ]
+  }
+}

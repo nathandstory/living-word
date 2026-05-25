@@ -1,0 +1,59 @@
+{
+  "parent": "livingword:living_word/root",
+  "criteria": {
+    "has_bible": {
+      "conditions": {
+        "items": [
+          {
+            "items": "livingword:bible"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_scripture_disc": {
+      "conditions": {
+        "items": [
+          {
+            "items": "livingword:scripture_disc_john"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_shofar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "livingword:shofar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.livingword.complete_set.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:lectern"
+    },
+    "title": {
+      "translate": "advancements.livingword.complete_set.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_bible"
+    ],
+    [
+      "has_scripture_disc"
+    ],
+    [
+      "has_shofar"
+    ]
+  ]
+}

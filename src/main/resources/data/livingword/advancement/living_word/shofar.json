@@ -1,0 +1,32 @@
+{
+  "parent": "livingword:living_word/root",
+  "criteria": {
+    "has_shofar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "livingword:shofar"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.livingword.shofar.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "livingword:shofar"
+    },
+    "title": {
+      "translate": "advancements.livingword.shofar.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_shofar"
+    ]
+  ]
+}
