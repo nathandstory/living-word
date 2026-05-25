@@ -1,0 +1,24 @@
+name: Feature request
+description: Suggest a respectful addition or improvement.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: request
+    attributes:
+      label: What would you like added?
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why does it fit Living Word?
+      description: Explain how it supports scripture reading, listening, study, ambience, or multiplayer fellowship.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Notes or constraints
+      description: Include licensing, translation, audio, server, or compatibility concerns if any.

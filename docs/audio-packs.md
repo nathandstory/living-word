@@ -1,6 +1,6 @@
 # Audio Packs
 
-Audio is intentionally not bundled in the mod jar. Clients fetch or stream chapter audio independently while the server synchronizes only metadata and playback timestamps.
+Full chapter audio is intentionally not bundled in the mod jar. Clients fetch or stream chapter audio independently while the server synchronizes only metadata and playback timestamps.
 
 Chapter audio should be one compressed file per chapter. OGG Vorbis is preferred for first-party or custom packs, but bundled remote providers may expose MP3 when that is the legal public source:
 
@@ -28,9 +28,11 @@ Verse timestamps should map verse numbers to seconds:
 
 Bundled provider policy:
 
-- `bsb/default`: Berean Standard Bible, David narrator from HelloAO/OpenBible. This is the polished default because the BSB text is public domain and the David narration is the closest match to the requested natural voice.
-- `webp/default`: World English Bible, David Williams narration from PublicDomainAudioBibles. This remains a legally clean public-domain option.
-- `kjv/default`: King James Version narration from AudioTreasure. This remains available as a KJV human-narration fallback, but it is less ideal than BSB David for voice quality.
+- `bsb/default`: Berean Standard Bible, David narrator from HelloAO/OpenBible.
+- `bsb/souer`: Berean Standard Bible, Souer narrator from HelloAO/OpenBible.
+- `bsb/hays`: Berean Standard Bible, Hays narrator from HelloAO/OpenBible.
+- `webp/default`: World English Bible, David Williams narration from PublicDomainAudioBibles.
+- `kjv/default`: King James Version narration from AudioTreasure.
 - NKJV, NIV, ESV, and similar copyrighted translations must not be bundled or silently auto-streamed from consumer sites. They should be added only through a licensed provider or a player/server configured bring-your-own audio pack.
 
 Restricted provider manifests should use:
@@ -55,5 +57,6 @@ The current build includes:
 - `AudioDownloadService`
 - `AudioPlaybackService`
 - `DownloadState`
+- generated verse/word timing sidecars for supported KJV and BSB provider manifests
 
-Future work should add resumable downloads, hash verification, stream-and-save playback, corrupt-file recovery, progress UI, and real OGG playback integration with the Minecraft client sound engine.
+Future work should add resumable downloads, hash verification, corrupt-file recovery, richer progress UI, and more licensed narrator packs.

@@ -8,3 +8,11 @@ logs/
 *.class
 __pycache__/
 *.pyc
+.idea/
+.vscode/
+*.iml
+*.log
+.env
+.env.*
+*.local
+repo/

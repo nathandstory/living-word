@@ -30,5 +30,18 @@ Current automated coverage focuses on pure Java behavior:
 - GUI state bookkeeping
 - listening session timestamp math
 - audio cache path generation
+- Scripture Disc and lectern session conflict behavior
+- generated asset and timing data contracts
 
-Manual client checks should verify that the Bible item appears, right-click opens the Bible screen, sample KJV verses render, the copy button writes to the clipboard, and the prototype Scripture Disc item registers.
+Manual client checks should verify:
+
+- `/give @p livingword:bible` gives the Bible item.
+- Right-clicking the Bible opens the Bible screen.
+- Search finds expected verses across translations.
+- Highlighted verses appear in the highlighted tab across translations.
+- The Bible audio button starts and stops playback cleanly.
+- `/give @p livingword:scripture_disc` gives the Scripture Disc.
+- Scripture Disc selection, jukebox playback, pause/resume, distance falloff, and chapter continuation work.
+- Lectern playback starts, pauses, resets, and updates floating verse display.
+- `/give @p livingword:shofar` gives the shofar and the sound plays for nearby players.
+- A dedicated server can run with the same jar.

@@ -1,13 +1,16 @@
 modLoader="javafml"
 loaderVersion="${loader_version_range}"
 license="${mod_license}"
+issueTrackerURL="https://github.com/nathandstory/living-word/issues"
 
 [[mods]]
 modId="${mod_id}"
 version="${mod_version}"
 displayName="${mod_name}"
 logoFile="logo.png"
+displayURL="https://github.com/nathandstory/living-word"
 authors="${mod_authors}"
+credits="Bible text, audio provider, timing data, and asset notices are listed in NOTICE.md."
 description='''${mod_description}'''
 
 [[dependencies.${mod_id}]]

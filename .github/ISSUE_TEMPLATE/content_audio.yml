@@ -1,0 +1,38 @@
+name: Content or audio issue
+description: Report Bible text, narrator, timing, cache, or audio playback problems.
+title: "[Content/Audio]: "
+labels:
+  - content
+  - audio
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Describe the text, audio, timing, or provider issue.
+    validations:
+      required: true
+  - type: input
+    id: translation
+    attributes:
+      label: Translation
+      placeholder: "BSB, KJV, WEBP"
+    validations:
+      required: true
+  - type: input
+    id: narrator
+    attributes:
+      label: Narrator or provider
+      placeholder: "David, Souer, Hays, AudioTreasure, WEBP"
+  - type: input
+    id: reference
+    attributes:
+      label: Scripture reference
+      placeholder: "John 3:16"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Extra details
+      description: Include whether this happened in the Bible GUI, lectern, Scripture Disc, or jukebox.
