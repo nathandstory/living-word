@@ -30,7 +30,7 @@ Install the built jar into the client `mods` folder. Dedicated servers also need
 The current development artifact is:
 
 ```text
-build/libs/livingword-0.1.0-all.jar
+build/libs/living-word-0.1.0.jar
 ```
 
 ## Quick Test Commands

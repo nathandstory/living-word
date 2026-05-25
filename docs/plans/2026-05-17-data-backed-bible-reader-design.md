@@ -4,7 +4,7 @@ Date: 2026-05-17
 
 ## Purpose
 
-This slice replaces the first-build hardcoded John 3 GUI sample with a resource-backed reader. The player should open the Bible item and see content loaded from bundled translation files, with the same path usable later by full KJV imports and non-KJV translation packs.
+This slice replaces the initial hardcoded John 3 GUI sample with a resource-backed reader. The player should open the Bible item and see content loaded from bundled translation files, with the same path usable later by full KJV imports and non-KJV translation packs.
 
 ## Scope
 

@@ -6,6 +6,7 @@ Use this before uploading Living Word to Modrinth, CurseForge, or making the rep
 
 - Run `.\gradlew.bat test`.
 - Run `.\gradlew.bat build`.
+- Confirm the upload jar is `build/libs/living-word-0.1.0.jar`.
 - Test the built jar in a clean client profile.
 - Test the built jar on a dedicated NeoForge server.
 - Confirm the Bible, Scripture Disc, lectern playback, shofar, and advancements work in-game.

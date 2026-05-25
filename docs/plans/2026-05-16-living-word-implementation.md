@@ -73,7 +73,7 @@ mod_name=Living Word
 mod_license=MIT
 mod_version=0.1.0
 mod_group_id=com.livingword
-mod_authors=nateh
+mod_authors=Nathan Story
 mod_description=Peaceful in-game Bible reading and synchronized scripture listening for NeoForge.
 ```
 
@@ -547,7 +547,7 @@ Use a client packet or client-only handler as appropriate so right-click opens `
 
 **Step 4: Add copy-to-chat behavior**
 
-Implement a GUI button/action that copies the selected verse text into the chat input or clipboard. Prefer clipboard for first build if chat insertion is unstable.
+Implement a GUI button/action that copies the selected verse text into the chat input or clipboard. Prefer clipboard for the initial implementation if chat insertion is unstable.
 
 **Step 5: Run client compile**
 
@@ -822,7 +822,7 @@ git commit -m "docs: document Living Word extension points"
 
 ## Completion Checklist
 
-Before calling the first build complete:
+Before calling the initial implementation complete:
 
 - `git status --short` only shows intentional changes or is clean.
 - `./gradlew.bat test` passes.

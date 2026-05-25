@@ -4,11 +4,11 @@ Date: 2026-05-16
 
 ## Purpose
 
-Living Word is a NeoForge 1.21.1 Minecraft Java mod focused on peaceful, respectful, multiplayer-friendly Bible reading and synchronized scripture listening. The first build will produce a compile-ready foundation with one usable player path while keeping audio, lectern, disc, and synchronization systems architecturally ready for later production hardening.
+Living Word is a NeoForge 1.21.1 Minecraft Java mod focused on peaceful, respectful, multiplayer-friendly Bible reading and synchronized scripture listening. The initial implementation produces a compile-ready foundation with one usable player path while keeping audio, lectern, disc, and synchronization systems architecturally ready for later production hardening.
 
 ## Scope
 
-The first build will prioritize a stable foundation over attempting every feature at full depth immediately. It will include:
+The initial implementation prioritizes a stable foundation over attempting every feature at full depth immediately. It includes:
 
 - A craftable Bible item that opens a custom Bible GUI.
 - Data-driven Bible translation loading with bundled KJV sample/default content.
@@ -98,13 +98,13 @@ Example cache path:
 .minecraft/livingword/cache/audio/kjv/john/john_003.timestamps.json
 ```
 
-The first build will define the cache manager, URL resolver, download task model, progress states, hash validation hooks, corrupted-file recovery behavior, and async execution boundaries. Full streaming playback will be implemented after the foundation compiles.
+The initial implementation defines the cache manager, URL resolver, download task model, progress states, hash validation hooks, corrupted-file recovery behavior, and async execution boundaries. Full streaming playback is implemented after the foundation compiles.
 
 ## GUI Direction
 
 The Bible GUI should feel modern, calm, and vanilla-adjacent rather than like a basic inventory screen. It will use a dark parchment style, compact navigation, readable text, smooth scroll-ready layout, keyboard search entry, verse highlighting hooks, and minimal clutter.
 
-The first build will make the GUI structurally usable and ready for polish. It will avoid embedding copyrighted text beyond public-domain sample KJV content.
+The initial implementation makes the GUI structurally usable and ready for polish. It avoids embedding copyrighted text beyond public-domain sample KJV content.
 
 ## Config
 

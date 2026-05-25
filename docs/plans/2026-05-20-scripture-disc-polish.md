@@ -88,7 +88,7 @@
 ### Task 6: Verification And Packaging
 
 **Files:**
-- Generated jar: `build/libs/livingword-0.1.0-all.jar`
+- Generated jar: `build/libs/living-word-0.1.0.jar`
 
 **Steps:**
 1. Run focused tests.

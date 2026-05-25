@@ -13,8 +13,10 @@ tasks.named('wrapper', Wrapper).configure {
 version = mod_version
 group = mod_group_id
 
+def releaseArchiveName = 'living-word'
+
 base {
-    archivesName = mod_id
+    archivesName = releaseArchiveName
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -79,6 +81,15 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.named('jar', Jar).configure {
+    archiveClassifier = 'thin'
+}
+
+tasks.named('jarJar').configure {
+    archiveBaseName = releaseArchiveName
+    archiveClassifier = ''
 }
 
 tasks.withType(ProcessResources).configureEach {

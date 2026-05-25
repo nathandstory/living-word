@@ -2,7 +2,7 @@
 
 ## 0.1.0 - Unreleased
 
-Initial public release candidate.
+Initial public release.
 
 ### Added
 
@@ -23,4 +23,4 @@ Initial public release candidate.
 ### Notes
 
 - Chapter audio is streamed and cached by clients; large chapter audio files are not bundled in the mod jar.
-- This is still an early release candidate. Test on a backup world before using it on a public server.
+- This is an early public release. Test on a backup world before using it on a public server.
