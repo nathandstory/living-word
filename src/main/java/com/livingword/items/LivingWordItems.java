@@ -26,6 +26,12 @@ public final class LivingWordItems {
         new net.minecraft.world.item.Item.Properties().stacksTo(1).rarity(Rarity.RARE)
     );
 
+    public static final DeferredItem<ShofarItem> SHOFAR = ITEMS.registerItem(
+        "shofar",
+        ShofarItem::new,
+        new net.minecraft.world.item.Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)
+    );
+
     private LivingWordItems() {
     }
 
@@ -38,6 +44,7 @@ public final class LivingWordItems {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(BIBLE.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.accept(SCRIPTURE_DISC_JOHN.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.accept(SHOFAR.get(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 }

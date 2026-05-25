@@ -1,0 +1,4850 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB David audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 373.185,
+  "matchRatio": 0.9937,
+  "verses": {
+    "1": 5.84,
+    "2": 23.5,
+    "3": 28.58,
+    "4": 33.94,
+    "5": 39.86,
+    "6": 45.5,
+    "7": 51.64,
+    "8": 56.56,
+    "9": 72.48,
+    "10": 80.62,
+    "11": 101.52,
+    "12": 112.3,
+    "13": 121.32,
+    "14": 137.88,
+    "15": 146.12,
+    "16": 159.32,
+    "17": 174.92,
+    "18": 189.14,
+    "19": 204.26,
+    "20": 208.46,
+    "21": 220.46,
+    "22": 249.48,
+    "23": 261.28,
+    "24": 268.7,
+    "25": 274.4,
+    "26": 279.7,
+    "27": 284.76,
+    "28": 289.88,
+    "29": 301.28,
+    "30": 310.9,
+    "31": 318.6,
+    "32": 330.02,
+    "33": 341.68,
+    "34": 353.32,
+    "35": 364.58
+  },
+  "words": {
+    "1": [
+      {
+        "text": "Now",
+        "start": 5.84,
+        "end": 5.89
+      },
+      {
+        "text": "these",
+        "start": 5.86,
+        "end": 6.16
+      },
+      {
+        "text": "are",
+        "start": 6.16,
+        "end": 6.32
+      },
+      {
+        "text": "the",
+        "start": 6.32,
+        "end": 6.44
+      },
+      {
+        "text": "names",
+        "start": 6.44,
+        "end": 6.62
+      },
+      {
+        "text": "of",
+        "start": 6.62,
+        "end": 6.86
+      },
+      {
+        "text": "the",
+        "start": 6.86,
+        "end": 7.0
+      },
+      {
+        "text": "tribes",
+        "start": 7.0,
+        "end": 7.38
+      },
+      {
+        "text": "At",
+        "start": 8.2,
+        "end": 8.34
+      },
+      {
+        "text": "the",
+        "start": 8.34,
+        "end": 8.5
+      },
+      {
+        "text": "northern",
+        "start": 8.5,
+        "end": 8.74
+      },
+      {
+        "text": "frontier",
+        "start": 8.74,
+        "end": 9.44
+      },
+      {
+        "text": "Dan",
+        "start": 10.08,
+        "end": 10.13
+      },
+      {
+        "text": "will",
+        "start": 10.12,
+        "end": 10.3
+      },
+      {
+        "text": "have",
+        "start": 10.3,
+        "end": 10.48
+      },
+      {
+        "text": "one",
+        "start": 10.48,
+        "end": 10.76
+      },
+      {
+        "text": "portion",
+        "start": 10.76,
+        "end": 11.12
+      },
+      {
+        "text": "bordering",
+        "start": 11.12,
+        "end": 11.56
+      },
+      {
+        "text": "the",
+        "start": 11.56,
+        "end": 11.82
+      },
+      {
+        "text": "road",
+        "start": 11.82,
+        "end": 12.02
+      },
+      {
+        "text": "of",
+        "start": 12.02,
+        "end": 12.24
+      },
+      {
+        "text": "Hethlon",
+        "start": 12.24,
+        "end": 12.68
+      },
+      {
+        "text": "to",
+        "start": 12.68,
+        "end": 13.24
+      },
+      {
+        "text": "hamath",
+        "start": 13.6,
+        "end": 14.16
+      },
+      {
+        "text": "and",
+        "start": 14.16,
+        "end": 14.62
+      },
+      {
+        "text": "running",
+        "start": 14.62,
+        "end": 14.9
+      },
+      {
+        "text": "on",
+        "start": 14.9,
+        "end": 15.1
+      },
+      {
+        "text": "to",
+        "start": 15.1,
+        "end": 15.26
+      },
+      {
+        "text": "Hazar",
+        "start": 15.26,
+        "end": 15.76
+      },
+      {
+        "text": "enan",
+        "start": 15.76,
+        "end": 16.14
+      },
+      {
+        "text": "on",
+        "start": 16.14,
+        "end": 16.72
+      },
+      {
+        "text": "the",
+        "start": 16.72,
+        "end": 16.84
+      },
+      {
+        "text": "border",
+        "start": 16.84,
+        "end": 17.06
+      },
+      {
+        "text": "of",
+        "start": 17.06,
+        "end": 17.36
+      },
+      {
+        "text": "Damascus",
+        "start": 17.36,
+        "end": 17.74
+      },
+      {
+        "text": "with",
+        "start": 17.74,
+        "end": 18.36
+      },
+      {
+        "text": "Hamath",
+        "start": 18.36,
+        "end": 18.84
+      },
+      {
+        "text": "to",
+        "start": 18.84,
+        "end": 19.04
+      },
+      {
+        "text": "the",
+        "start": 19.04,
+        "end": 19.18
+      },
+      {
+        "text": "north",
+        "start": 19.18,
+        "end": 19.48
+      },
+      {
+        "text": "and",
+        "start": 19.48,
+        "end": 20.12
+      },
+      {
+        "text": "extending",
+        "start": 20.12,
+        "end": 20.52
+      },
+      {
+        "text": "from",
+        "start": 20.52,
+        "end": 20.78
+      },
+      {
+        "text": "the",
+        "start": 20.78,
+        "end": 20.92
+      },
+      {
+        "text": "east",
+        "start": 20.92,
+        "end": 21.2
+      },
+      {
+        "text": "side",
+        "start": 21.2,
+        "end": 21.58
+      },
+      {
+        "text": "to",
+        "start": 21.58,
+        "end": 21.82
+      },
+      {
+        "text": "the",
+        "start": 21.82,
+        "end": 21.94
+      },
+      {
+        "text": "west",
+        "start": 21.94,
+        "end": 22.14
+      },
+      {
+        "text": "side",
+        "start": 22.14,
+        "end": 22.72
+      }
+    ],
+    "2": [
+      {
+        "text": "Asher",
+        "start": 23.5,
+        "end": 23.66
+      },
+      {
+        "text": "will",
+        "start": 23.66,
+        "end": 23.8
+      },
+      {
+        "text": "have",
+        "start": 23.8,
+        "end": 23.94
+      },
+      {
+        "text": "one",
+        "start": 23.94,
+        "end": 24.2
+      },
+      {
+        "text": "portion",
+        "start": 24.2,
+        "end": 24.66
+      },
+      {
+        "text": "bordering",
+        "start": 24.66,
+        "end": 25.12
+      },
+      {
+        "text": "the",
+        "start": 25.12,
+        "end": 25.4
+      },
+      {
+        "text": "territory",
+        "start": 25.4,
+        "end": 25.76
+      },
+      {
+        "text": "of",
+        "start": 25.76,
+        "end": 26.04
+      },
+      {
+        "text": "Dan",
+        "start": 26.04,
+        "end": 26.32
+      },
+      {
+        "text": "from",
+        "start": 26.32,
+        "end": 26.6
+      },
+      {
+        "text": "east",
+        "start": 26.6,
+        "end": 26.8
+      },
+      {
+        "text": "to",
+        "start": 26.8,
+        "end": 27.06
+      },
+      {
+        "text": "west",
+        "start": 27.06,
+        "end": 27.34
+      }
+    ],
+    "3": [
+      {
+        "text": "will",
+        "start": 28.58,
+        "end": 28.86
+      },
+      {
+        "text": "have",
+        "start": 28.86,
+        "end": 29.04
+      },
+      {
+        "text": "one",
+        "start": 29.04,
+        "end": 29.34
+      },
+      {
+        "text": "portion",
+        "start": 29.34,
+        "end": 29.84
+      },
+      {
+        "text": "bordering",
+        "start": 29.84,
+        "end": 30.62
+      },
+      {
+        "text": "the",
+        "start": 30.62,
+        "end": 30.9
+      },
+      {
+        "text": "territory",
+        "start": 30.9,
+        "end": 31.26
+      },
+      {
+        "text": "of",
+        "start": 31.26,
+        "end": 31.56
+      },
+      {
+        "text": "Asher",
+        "start": 31.56,
+        "end": 31.8
+      },
+      {
+        "text": "from",
+        "start": 31.8,
+        "end": 32.02
+      },
+      {
+        "text": "east",
+        "start": 32.02,
+        "end": 32.32
+      },
+      {
+        "text": "to",
+        "start": 32.32,
+        "end": 32.62
+      },
+      {
+        "text": "west",
+        "start": 32.62,
+        "end": 32.98
+      }
+    ],
+    "4": [
+      {
+        "text": "Manasseh",
+        "start": 33.94,
+        "end": 34.24
+      },
+      {
+        "text": "will",
+        "start": 34.24,
+        "end": 34.38
+      },
+      {
+        "text": "have",
+        "start": 34.38,
+        "end": 34.58
+      },
+      {
+        "text": "one",
+        "start": 34.58,
+        "end": 34.84
+      },
+      {
+        "text": "portion",
+        "start": 34.84,
+        "end": 35.32
+      },
+      {
+        "text": "bordering",
+        "start": 35.32,
+        "end": 35.98
+      },
+      {
+        "text": "the",
+        "start": 35.98,
+        "end": 36.3
+      },
+      {
+        "text": "territory",
+        "start": 36.3,
+        "end": 36.64
+      },
+      {
+        "text": "of",
+        "start": 36.64,
+        "end": 36.84
+      },
+      {
+        "text": "from",
+        "start": 37.4,
+        "end": 37.86
+      },
+      {
+        "text": "east",
+        "start": 37.86,
+        "end": 38.18
+      },
+      {
+        "text": "to",
+        "start": 38.18,
+        "end": 38.48
+      },
+      {
+        "text": "west",
+        "start": 38.48,
+        "end": 38.88
+      }
+    ],
+    "5": [
+      {
+        "text": "Ephraim",
+        "start": 39.86,
+        "end": 40.1
+      },
+      {
+        "text": "will",
+        "start": 40.1,
+        "end": 40.26
+      },
+      {
+        "text": "have",
+        "start": 40.26,
+        "end": 40.42
+      },
+      {
+        "text": "one",
+        "start": 40.42,
+        "end": 40.7
+      },
+      {
+        "text": "portion",
+        "start": 40.7,
+        "end": 41.18
+      },
+      {
+        "text": "bordering",
+        "start": 41.18,
+        "end": 41.58
+      },
+      {
+        "text": "the",
+        "start": 41.58,
+        "end": 41.86
+      },
+      {
+        "text": "territory",
+        "start": 41.86,
+        "end": 42.18
+      },
+      {
+        "text": "of",
+        "start": 42.18,
+        "end": 42.46
+      },
+      {
+        "text": "Manasseh",
+        "start": 42.46,
+        "end": 43.12
+      },
+      {
+        "text": "from",
+        "start": 43.12,
+        "end": 43.24
+      },
+      {
+        "text": "east",
+        "start": 43.24,
+        "end": 43.66
+      },
+      {
+        "text": "to",
+        "start": 43.66,
+        "end": 44.04
+      },
+      {
+        "text": "west",
+        "start": 44.04,
+        "end": 44.52
+      }
+    ],
+    "6": [
+      {
+        "text": "Reuben",
+        "start": 45.5,
+        "end": 45.68
+      },
+      {
+        "text": "will",
+        "start": 45.68,
+        "end": 46.2
+      },
+      {
+        "text": "have",
+        "start": 46.2,
+        "end": 46.38
+      },
+      {
+        "text": "one",
+        "start": 46.38,
+        "end": 46.72
+      },
+      {
+        "text": "portion",
+        "start": 46.72,
+        "end": 47.2
+      },
+      {
+        "text": "bordering",
+        "start": 47.2,
+        "end": 47.66
+      },
+      {
+        "text": "the",
+        "start": 47.66,
+        "end": 47.96
+      },
+      {
+        "text": "territory",
+        "start": 47.96,
+        "end": 48.32
+      },
+      {
+        "text": "of",
+        "start": 48.32,
+        "end": 48.66
+      },
+      {
+        "text": "Ephraim",
+        "start": 48.66,
+        "end": 49.16
+      },
+      {
+        "text": "from",
+        "start": 49.16,
+        "end": 49.66
+      },
+      {
+        "text": "east",
+        "start": 49.66,
+        "end": 49.96
+      },
+      {
+        "text": "to",
+        "start": 49.96,
+        "end": 50.24
+      },
+      {
+        "text": "west",
+        "start": 50.24,
+        "end": 50.66
+      }
+    ],
+    "7": [
+      {
+        "text": "Judah",
+        "start": 51.64,
+        "end": 51.72
+      },
+      {
+        "text": "will",
+        "start": 51.72,
+        "end": 51.94
+      },
+      {
+        "text": "have",
+        "start": 51.94,
+        "end": 52.1
+      },
+      {
+        "text": "one",
+        "start": 52.1,
+        "end": 52.44
+      },
+      {
+        "text": "portion",
+        "start": 52.44,
+        "end": 52.88
+      },
+      {
+        "text": "bordering",
+        "start": 52.88,
+        "end": 53.28
+      },
+      {
+        "text": "the",
+        "start": 53.28,
+        "end": 53.54
+      },
+      {
+        "text": "territory",
+        "start": 53.54,
+        "end": 53.86
+      },
+      {
+        "text": "of",
+        "start": 53.86,
+        "end": 54.12
+      },
+      {
+        "text": "Reuben",
+        "start": 54.12,
+        "end": 54.48
+      },
+      {
+        "text": "from",
+        "start": 54.48,
+        "end": 54.72
+      },
+      {
+        "text": "east",
+        "start": 54.72,
+        "end": 55.06
+      },
+      {
+        "text": "to",
+        "start": 55.06,
+        "end": 55.4
+      },
+      {
+        "text": "west",
+        "start": 55.4,
+        "end": 55.82
+      }
+    ],
+    "8": [
+      {
+        "text": "Bordering",
+        "start": 56.56,
+        "end": 56.74
+      },
+      {
+        "text": "the",
+        "start": 56.74,
+        "end": 57.08
+      },
+      {
+        "text": "territory",
+        "start": 57.08,
+        "end": 57.36
+      },
+      {
+        "text": "of",
+        "start": 57.36,
+        "end": 57.76
+      },
+      {
+        "text": "Judah",
+        "start": 57.76,
+        "end": 58.2
+      },
+      {
+        "text": "from",
+        "start": 58.2,
+        "end": 58.62
+      },
+      {
+        "text": "east",
+        "start": 58.62,
+        "end": 58.94
+      },
+      {
+        "text": "to",
+        "start": 58.94,
+        "end": 59.18
+      },
+      {
+        "text": "west",
+        "start": 59.18,
+        "end": 59.6
+      },
+      {
+        "text": "will",
+        "start": 59.6,
+        "end": 60.28
+      },
+      {
+        "text": "be",
+        "start": 60.28,
+        "end": 60.44
+      },
+      {
+        "text": "the",
+        "start": 60.44,
+        "end": 60.62
+      },
+      {
+        "text": "portion",
+        "start": 60.62,
+        "end": 60.96
+      },
+      {
+        "text": "you",
+        "start": 60.96,
+        "end": 61.22
+      },
+      {
+        "text": "are",
+        "start": 61.22,
+        "end": 61.38
+      },
+      {
+        "text": "to",
+        "start": 61.38,
+        "end": 61.54
+      },
+      {
+        "text": "set",
+        "start": 61.54,
+        "end": 61.74
+      },
+      {
+        "text": "apart",
+        "start": 61.74,
+        "end": 62.2
+      },
+      {
+        "text": "It",
+        "start": 62.98,
+        "end": 63.2
+      },
+      {
+        "text": "will",
+        "start": 63.2,
+        "end": 63.34
+      },
+      {
+        "text": "be",
+        "start": 63.34,
+        "end": 63.54
+      },
+      {
+        "text": "25",
+        "start": 63.54,
+        "end": 64.16
+      },
+      {
+        "text": "000",
+        "start": 64.16,
+        "end": 64.84
+      },
+      {
+        "text": "cubits",
+        "start": 64.84,
+        "end": 65.22
+      },
+      {
+        "text": "wide",
+        "start": 65.22,
+        "end": 65.6
+      },
+      {
+        "text": "and",
+        "start": 65.6,
+        "end": 66.28
+      },
+      {
+        "text": "the",
+        "start": 66.28,
+        "end": 66.42
+      },
+      {
+        "text": "length",
+        "start": 66.42,
+        "end": 66.62
+      },
+      {
+        "text": "of",
+        "start": 66.62,
+        "end": 66.82
+      },
+      {
+        "text": "a",
+        "start": 66.82,
+        "end": 67.0
+      },
+      {
+        "text": "tribal",
+        "start": 67.0,
+        "end": 67.28
+      },
+      {
+        "text": "portion",
+        "start": 67.28,
+        "end": 67.78
+      },
+      {
+        "text": "from",
+        "start": 67.78,
+        "end": 68.04
+      },
+      {
+        "text": "east",
+        "start": 68.04,
+        "end": 68.32
+      },
+      {
+        "text": "to",
+        "start": 68.32,
+        "end": 68.56
+      },
+      {
+        "text": "west",
+        "start": 68.56,
+        "end": 69.06
+      },
+      {
+        "text": "In",
+        "start": 69.68,
+        "end": 69.94
+      },
+      {
+        "text": "the",
+        "start": 69.94,
+        "end": 70.1
+      },
+      {
+        "text": "center",
+        "start": 70.1,
+        "end": 70.32
+      },
+      {
+        "text": "will",
+        "start": 70.32,
+        "end": 70.58
+      },
+      {
+        "text": "be",
+        "start": 70.58,
+        "end": 70.74
+      },
+      {
+        "text": "the",
+        "start": 70.74,
+        "end": 70.9
+      },
+      {
+        "text": "sanctuary",
+        "start": 70.9,
+        "end": 71.5
+      }
+    ],
+    "9": [
+      {
+        "text": "The",
+        "start": 72.48,
+        "end": 72.66
+      },
+      {
+        "text": "special",
+        "start": 72.66,
+        "end": 73.02
+      },
+      {
+        "text": "portion",
+        "start": 73.02,
+        "end": 73.38
+      },
+      {
+        "text": "you",
+        "start": 73.38,
+        "end": 73.64
+      },
+      {
+        "text": "set",
+        "start": 73.64,
+        "end": 73.86
+      },
+      {
+        "text": "apart",
+        "start": 73.86,
+        "end": 74.12
+      },
+      {
+        "text": "to",
+        "start": 74.12,
+        "end": 74.32
+      },
+      {
+        "text": "the",
+        "start": 74.32,
+        "end": 74.52
+      },
+      {
+        "text": "LORD",
+        "start": 74.52,
+        "end": 74.86
+      },
+      {
+        "text": "shall",
+        "start": 74.86,
+        "end": 75.52
+      },
+      {
+        "text": "be",
+        "start": 75.52,
+        "end": 75.76
+      },
+      {
+        "text": "25",
+        "start": 75.76,
+        "end": 76.44
+      },
+      {
+        "text": "000",
+        "start": 76.44,
+        "end": 77.1
+      },
+      {
+        "text": "cubits",
+        "start": 77.1,
+        "end": 77.52
+      },
+      {
+        "text": "long",
+        "start": 77.52,
+        "end": 77.92
+      },
+      {
+        "text": "and",
+        "start": 77.92,
+        "end": 78.56
+      },
+      {
+        "text": "10",
+        "start": 78.56,
+        "end": 78.88
+      },
+      {
+        "text": "000",
+        "start": 78.88,
+        "end": 79.42
+      },
+      {
+        "text": "cubits",
+        "start": 79.42,
+        "end": 79.8
+      },
+      {
+        "text": "wide",
+        "start": 79.8,
+        "end": 80.18
+      }
+    ],
+    "10": [
+      {
+        "text": "This",
+        "start": 80.62,
+        "end": 80.92
+      },
+      {
+        "text": "will",
+        "start": 80.92,
+        "end": 81.12
+      },
+      {
+        "text": "be",
+        "start": 81.12,
+        "end": 81.28
+      },
+      {
+        "text": "the",
+        "start": 81.28,
+        "end": 81.4
+      },
+      {
+        "text": "holy",
+        "start": 81.4,
+        "end": 81.68
+      },
+      {
+        "text": "portion",
+        "start": 81.68,
+        "end": 82.02
+      },
+      {
+        "text": "for",
+        "start": 82.02,
+        "end": 82.3
+      },
+      {
+        "text": "the",
+        "start": 82.3,
+        "end": 82.46
+      },
+      {
+        "text": "priests",
+        "start": 82.46,
+        "end": 82.84
+      },
+      {
+        "text": "It",
+        "start": 83.7,
+        "end": 83.8
+      },
+      {
+        "text": "will",
+        "start": 83.8,
+        "end": 83.96
+      },
+      {
+        "text": "be",
+        "start": 83.96,
+        "end": 84.16
+      },
+      {
+        "text": "25",
+        "start": 84.16,
+        "end": 84.7
+      },
+      {
+        "text": "000",
+        "start": 84.7,
+        "end": 85.38
+      },
+      {
+        "text": "cubits",
+        "start": 85.38,
+        "end": 85.8
+      },
+      {
+        "text": "long",
+        "start": 85.8,
+        "end": 86.08
+      },
+      {
+        "text": "on",
+        "start": 86.08,
+        "end": 86.26
+      },
+      {
+        "text": "the",
+        "start": 86.26,
+        "end": 86.4
+      },
+      {
+        "text": "north",
+        "start": 86.4,
+        "end": 86.56
+      },
+      {
+        "text": "side",
+        "start": 86.56,
+        "end": 87.1
+      },
+      {
+        "text": "10",
+        "start": 87.88,
+        "end": 88.12
+      },
+      {
+        "text": "000",
+        "start": 88.12,
+        "end": 88.6
+      },
+      {
+        "text": "cubits",
+        "start": 88.6,
+        "end": 89.04
+      },
+      {
+        "text": "wide",
+        "start": 89.04,
+        "end": 89.34
+      },
+      {
+        "text": "on",
+        "start": 89.34,
+        "end": 89.5
+      },
+      {
+        "text": "the",
+        "start": 89.5,
+        "end": 89.62
+      },
+      {
+        "text": "west",
+        "start": 89.62,
+        "end": 89.82
+      },
+      {
+        "text": "side",
+        "start": 89.82,
+        "end": 90.34
+      },
+      {
+        "text": "10",
+        "start": 90.98,
+        "end": 91.16
+      },
+      {
+        "text": "000",
+        "start": 91.16,
+        "end": 91.6
+      },
+      {
+        "text": "cubits",
+        "start": 91.6,
+        "end": 91.98
+      },
+      {
+        "text": "wide",
+        "start": 91.98,
+        "end": 92.26
+      },
+      {
+        "text": "on",
+        "start": 92.26,
+        "end": 92.42
+      },
+      {
+        "text": "the",
+        "start": 92.42,
+        "end": 92.56
+      },
+      {
+        "text": "east",
+        "start": 92.56,
+        "end": 92.82
+      },
+      {
+        "text": "side",
+        "start": 92.82,
+        "end": 93.38
+      },
+      {
+        "text": "and",
+        "start": 93.9,
+        "end": 94.16
+      },
+      {
+        "text": "25",
+        "start": 94.16,
+        "end": 94.82
+      },
+      {
+        "text": "000",
+        "start": 94.82,
+        "end": 95.46
+      },
+      {
+        "text": "cubits",
+        "start": 95.46,
+        "end": 95.96
+      },
+      {
+        "text": "long",
+        "start": 95.96,
+        "end": 96.24
+      },
+      {
+        "text": "on",
+        "start": 96.24,
+        "end": 96.44
+      },
+      {
+        "text": "the",
+        "start": 96.44,
+        "end": 96.62
+      },
+      {
+        "text": "south",
+        "start": 96.62,
+        "end": 96.82
+      },
+      {
+        "text": "side",
+        "start": 96.82,
+        "end": 97.4
+      },
+      {
+        "text": "In",
+        "start": 98.08,
+        "end": 98.3
+      },
+      {
+        "text": "the",
+        "start": 98.3,
+        "end": 98.44
+      },
+      {
+        "text": "center",
+        "start": 98.44,
+        "end": 98.68
+      },
+      {
+        "text": "will",
+        "start": 98.68,
+        "end": 98.92
+      },
+      {
+        "text": "be",
+        "start": 98.92,
+        "end": 99.1
+      },
+      {
+        "text": "the",
+        "start": 99.1,
+        "end": 99.28
+      },
+      {
+        "text": "sanctuary",
+        "start": 99.28,
+        "end": 99.74
+      },
+      {
+        "text": "of",
+        "start": 99.74,
+        "end": 100.14
+      },
+      {
+        "text": "the",
+        "start": 100.14,
+        "end": 100.34
+      },
+      {
+        "text": "LORD",
+        "start": 100.34,
+        "end": 100.62
+      }
+    ],
+    "11": [
+      {
+        "text": "It",
+        "start": 101.52,
+        "end": 101.7
+      },
+      {
+        "text": "will",
+        "start": 101.7,
+        "end": 101.88
+      },
+      {
+        "text": "be",
+        "start": 101.88,
+        "end": 102.06
+      },
+      {
+        "text": "for",
+        "start": 102.06,
+        "end": 102.24
+      },
+      {
+        "text": "the",
+        "start": 102.24,
+        "end": 102.46
+      },
+      {
+        "text": "consecrated",
+        "start": 102.46,
+        "end": 103.04
+      },
+      {
+        "text": "priests",
+        "start": 103.04,
+        "end": 103.52
+      },
+      {
+        "text": "the",
+        "start": 104.12,
+        "end": 104.3
+      },
+      {
+        "text": "descendants",
+        "start": 104.3,
+        "end": 104.68
+      },
+      {
+        "text": "of",
+        "start": 104.68,
+        "end": 105.1
+      },
+      {
+        "text": "Zadok",
+        "start": 105.1,
+        "end": 105.56
+      },
+      {
+        "text": "who",
+        "start": 105.56,
+        "end": 106.24
+      },
+      {
+        "text": "kept",
+        "start": 106.24,
+        "end": 106.48
+      },
+      {
+        "text": "My",
+        "start": 106.48,
+        "end": 106.82
+      },
+      {
+        "text": "charge",
+        "start": 106.82,
+        "end": 107.18
+      },
+      {
+        "text": "and",
+        "start": 107.18,
+        "end": 107.44
+      },
+      {
+        "text": "did",
+        "start": 107.44,
+        "end": 107.58
+      },
+      {
+        "text": "not",
+        "start": 107.58,
+        "end": 107.8
+      },
+      {
+        "text": "go",
+        "start": 107.8,
+        "end": 108.04
+      },
+      {
+        "text": "astray",
+        "start": 108.04,
+        "end": 108.54
+      },
+      {
+        "text": "as",
+        "start": 108.54,
+        "end": 108.74
+      },
+      {
+        "text": "the",
+        "start": 108.74,
+        "end": 108.96
+      },
+      {
+        "text": "Levites",
+        "start": 108.96,
+        "end": 109.38
+      },
+      {
+        "text": "did",
+        "start": 109.38,
+        "end": 109.7
+      },
+      {
+        "text": "when",
+        "start": 109.7,
+        "end": 109.92
+      },
+      {
+        "text": "the",
+        "start": 109.92,
+        "end": 110.06
+      },
+      {
+        "text": "Israelites",
+        "start": 110.06,
+        "end": 110.72
+      },
+      {
+        "text": "went",
+        "start": 110.72,
+        "end": 110.92
+      },
+      {
+        "text": "astray",
+        "start": 110.92,
+        "end": 111.48
+      }
+    ],
+    "12": [
+      {
+        "text": "It",
+        "start": 112.3,
+        "end": 112.54
+      },
+      {
+        "text": "will",
+        "start": 112.54,
+        "end": 112.68
+      },
+      {
+        "text": "be",
+        "start": 112.68,
+        "end": 112.82
+      },
+      {
+        "text": "a",
+        "start": 112.82,
+        "end": 112.98
+      },
+      {
+        "text": "special",
+        "start": 112.98,
+        "end": 113.3
+      },
+      {
+        "text": "portion",
+        "start": 113.3,
+        "end": 113.76
+      },
+      {
+        "text": "for",
+        "start": 113.76,
+        "end": 114.04
+      },
+      {
+        "text": "them",
+        "start": 114.04,
+        "end": 114.24
+      },
+      {
+        "text": "set",
+        "start": 114.24,
+        "end": 114.44
+      },
+      {
+        "text": "apart",
+        "start": 114.44,
+        "end": 114.74
+      },
+      {
+        "text": "from",
+        "start": 114.74,
+        "end": 114.96
+      },
+      {
+        "text": "the",
+        "start": 114.96,
+        "end": 115.12
+      },
+      {
+        "text": "land",
+        "start": 115.12,
+        "end": 115.44
+      },
+      {
+        "text": "a",
+        "start": 115.88,
+        "end": 116.0
+      },
+      {
+        "text": "most",
+        "start": 116.0,
+        "end": 116.22
+      },
+      {
+        "text": "holy",
+        "start": 116.22,
+        "end": 116.6
+      },
+      {
+        "text": "portion",
+        "start": 116.6,
+        "end": 117.14
+      },
+      {
+        "text": "adjacent",
+        "start": 117.14,
+        "end": 117.8
+      },
+      {
+        "text": "to",
+        "start": 117.8,
+        "end": 118.24
+      },
+      {
+        "text": "the",
+        "start": 118.24,
+        "end": 118.4
+      },
+      {
+        "text": "territory",
+        "start": 118.4,
+        "end": 118.72
+      },
+      {
+        "text": "of",
+        "start": 118.72,
+        "end": 119.1
+      },
+      {
+        "text": "the",
+        "start": 119.1,
+        "end": 119.24
+      },
+      {
+        "text": "Levites",
+        "start": 119.24,
+        "end": 119.8
+      }
+    ],
+    "13": [
+      {
+        "text": "Bordering",
+        "start": 121.32,
+        "end": 121.48
+      },
+      {
+        "text": "the",
+        "start": 121.48,
+        "end": 121.82
+      },
+      {
+        "text": "territory",
+        "start": 121.82,
+        "end": 122.24
+      },
+      {
+        "text": "of",
+        "start": 122.24,
+        "end": 122.62
+      },
+      {
+        "text": "the",
+        "start": 122.62,
+        "end": 122.78
+      },
+      {
+        "text": "priests",
+        "start": 122.78,
+        "end": 123.16
+      },
+      {
+        "text": "the",
+        "start": 123.98,
+        "end": 124.03
+      },
+      {
+        "text": "Levites",
+        "start": 124.0,
+        "end": 124.5
+      },
+      {
+        "text": "shall",
+        "start": 124.5,
+        "end": 124.72
+      },
+      {
+        "text": "have",
+        "start": 124.72,
+        "end": 124.92
+      },
+      {
+        "text": "an",
+        "start": 124.92,
+        "end": 125.1
+      },
+      {
+        "text": "area",
+        "start": 125.1,
+        "end": 125.48
+      },
+      {
+        "text": "25",
+        "start": 125.48,
+        "end": 126.26
+      },
+      {
+        "text": "000",
+        "start": 126.26,
+        "end": 126.9
+      },
+      {
+        "text": "cubits",
+        "start": 126.9,
+        "end": 127.38
+      },
+      {
+        "text": "long",
+        "start": 127.38,
+        "end": 127.72
+      },
+      {
+        "text": "and",
+        "start": 127.72,
+        "end": 128.5
+      },
+      {
+        "text": "10",
+        "start": 128.5,
+        "end": 128.78
+      },
+      {
+        "text": "000",
+        "start": 128.78,
+        "end": 129.3
+      },
+      {
+        "text": "cubits",
+        "start": 129.3,
+        "end": 129.76
+      },
+      {
+        "text": "wide",
+        "start": 129.76,
+        "end": 130.24
+      },
+      {
+        "text": "The",
+        "start": 131.16,
+        "end": 131.48
+      },
+      {
+        "text": "whole",
+        "start": 131.48,
+        "end": 131.74
+      },
+      {
+        "text": "length",
+        "start": 131.74,
+        "end": 132.14
+      },
+      {
+        "text": "will",
+        "start": 132.14,
+        "end": 132.36
+      },
+      {
+        "text": "be",
+        "start": 132.36,
+        "end": 132.54
+      },
+      {
+        "text": "25",
+        "start": 132.54,
+        "end": 133.14
+      },
+      {
+        "text": "000",
+        "start": 133.14,
+        "end": 133.78
+      },
+      {
+        "text": "cubits",
+        "start": 133.78,
+        "end": 134.28
+      },
+      {
+        "text": "and",
+        "start": 134.28,
+        "end": 135.16
+      },
+      {
+        "text": "the",
+        "start": 135.16,
+        "end": 135.3
+      },
+      {
+        "text": "width",
+        "start": 135.3,
+        "end": 135.58
+      },
+      {
+        "text": "10",
+        "start": 135.58,
+        "end": 136.12
+      },
+      {
+        "text": "000",
+        "start": 136.12,
+        "end": 136.68
+      },
+      {
+        "text": "cubits",
+        "start": 136.68,
+        "end": 137.26
+      }
+    ],
+    "14": [
+      {
+        "text": "They",
+        "start": 137.88,
+        "end": 137.98
+      },
+      {
+        "text": "must",
+        "start": 137.98,
+        "end": 138.16
+      },
+      {
+        "text": "not",
+        "start": 138.16,
+        "end": 138.4
+      },
+      {
+        "text": "sell",
+        "start": 138.4,
+        "end": 138.72
+      },
+      {
+        "text": "or",
+        "start": 138.72,
+        "end": 138.92
+      },
+      {
+        "text": "exchange",
+        "start": 138.92,
+        "end": 139.32
+      },
+      {
+        "text": "any",
+        "start": 139.32,
+        "end": 139.6
+      },
+      {
+        "text": "of",
+        "start": 139.6,
+        "end": 139.78
+      },
+      {
+        "text": "it",
+        "start": 139.78,
+        "end": 140.0
+      },
+      {
+        "text": "and",
+        "start": 140.48,
+        "end": 140.6
+      },
+      {
+        "text": "they",
+        "start": 140.6,
+        "end": 140.74
+      },
+      {
+        "text": "must",
+        "start": 140.74,
+        "end": 140.9
+      },
+      {
+        "text": "not",
+        "start": 140.9,
+        "end": 141.18
+      },
+      {
+        "text": "transfer",
+        "start": 141.18,
+        "end": 141.66
+      },
+      {
+        "text": "this",
+        "start": 141.66,
+        "end": 141.88
+      },
+      {
+        "text": "best",
+        "start": 141.88,
+        "end": 142.2
+      },
+      {
+        "text": "part",
+        "start": 142.2,
+        "end": 142.4
+      },
+      {
+        "text": "of",
+        "start": 142.4,
+        "end": 142.52
+      },
+      {
+        "text": "the",
+        "start": 142.52,
+        "end": 142.66
+      },
+      {
+        "text": "land",
+        "start": 142.66,
+        "end": 143.06
+      },
+      {
+        "text": "for",
+        "start": 143.54,
+        "end": 143.78
+      },
+      {
+        "text": "it",
+        "start": 143.78,
+        "end": 143.9
+      },
+      {
+        "text": "is",
+        "start": 143.9,
+        "end": 144.04
+      },
+      {
+        "text": "holy",
+        "start": 144.04,
+        "end": 144.34
+      },
+      {
+        "text": "to",
+        "start": 144.34,
+        "end": 144.62
+      },
+      {
+        "text": "the",
+        "start": 144.62,
+        "end": 144.76
+      },
+      {
+        "text": "LORD",
+        "start": 144.76,
+        "end": 145.06
+      }
+    ],
+    "15": [
+      {
+        "text": "The",
+        "start": 146.12,
+        "end": 146.3
+      },
+      {
+        "text": "remaining",
+        "start": 146.3,
+        "end": 146.6
+      },
+      {
+        "text": "area",
+        "start": 146.6,
+        "end": 147.12
+      },
+      {
+        "text": "5",
+        "start": 147.6,
+        "end": 147.82
+      },
+      {
+        "text": "000",
+        "start": 147.82,
+        "end": 148.32
+      },
+      {
+        "text": "cubits",
+        "start": 148.32,
+        "end": 148.72
+      },
+      {
+        "text": "wide",
+        "start": 148.72,
+        "end": 149.08
+      },
+      {
+        "text": "and",
+        "start": 149.08,
+        "end": 149.64
+      },
+      {
+        "text": "25",
+        "start": 149.64,
+        "end": 150.18
+      },
+      {
+        "text": "000",
+        "start": 150.18,
+        "end": 150.74
+      },
+      {
+        "text": "cubits",
+        "start": 150.74,
+        "end": 151.18
+      },
+      {
+        "text": "long",
+        "start": 151.18,
+        "end": 151.52
+      },
+      {
+        "text": "will",
+        "start": 151.88,
+        "end": 152.1
+      },
+      {
+        "text": "be",
+        "start": 152.1,
+        "end": 152.24
+      },
+      {
+        "text": "for",
+        "start": 152.24,
+        "end": 152.44
+      },
+      {
+        "text": "common",
+        "start": 152.44,
+        "end": 152.76
+      },
+      {
+        "text": "use",
+        "start": 152.76,
+        "end": 153.1
+      },
+      {
+        "text": "by",
+        "start": 153.1,
+        "end": 153.36
+      },
+      {
+        "text": "the",
+        "start": 153.36,
+        "end": 153.52
+      },
+      {
+        "text": "city",
+        "start": 153.52,
+        "end": 153.76
+      },
+      {
+        "text": "for",
+        "start": 154.1,
+        "end": 154.3
+      },
+      {
+        "text": "houses",
+        "start": 154.3,
+        "end": 154.7
+      },
+      {
+        "text": "and",
+        "start": 155.18,
+        "end": 155.66
+      },
+      {
+        "text": "for",
+        "start": 155.66,
+        "end": 156.1
+      },
+      {
+        "text": "The",
+        "start": 156.8,
+        "end": 157.74
+      },
+      {
+        "text": "city",
+        "start": 157.74,
+        "end": 157.92
+      },
+      {
+        "text": "will",
+        "start": 157.92,
+        "end": 158.16
+      },
+      {
+        "text": "be",
+        "start": 158.16,
+        "end": 158.32
+      },
+      {
+        "text": "in",
+        "start": 158.32,
+        "end": 158.44
+      },
+      {
+        "text": "the",
+        "start": 158.44,
+        "end": 158.58
+      },
+      {
+        "text": "center",
+        "start": 158.58,
+        "end": 158.84
+      },
+      {
+        "text": "of",
+        "start": 158.84,
+        "end": 159.08
+      },
+      {
+        "text": "it",
+        "start": 159.08,
+        "end": 159.32
+      }
+    ],
+    "16": [
+      {
+        "text": "and",
+        "start": 159.32,
+        "end": 159.66
+      },
+      {
+        "text": "will",
+        "start": 159.66,
+        "end": 159.78
+      },
+      {
+        "text": "have",
+        "start": 159.78,
+        "end": 160.02
+      },
+      {
+        "text": "these",
+        "start": 160.02,
+        "end": 160.26
+      },
+      {
+        "text": "measurements",
+        "start": 160.26,
+        "end": 160.76
+      },
+      {
+        "text": "4",
+        "start": 161.54,
+        "end": 161.62
+      },
+      {
+        "text": "500",
+        "start": 161.62,
+        "end": 162.56
+      },
+      {
+        "text": "cubits",
+        "start": 162.56,
+        "end": 163.08
+      },
+      {
+        "text": "on",
+        "start": 163.08,
+        "end": 163.24
+      },
+      {
+        "text": "the",
+        "start": 163.24,
+        "end": 163.38
+      },
+      {
+        "text": "north",
+        "start": 163.38,
+        "end": 163.54
+      },
+      {
+        "text": "side",
+        "start": 163.54,
+        "end": 163.98
+      },
+      {
+        "text": "4",
+        "start": 164.46,
+        "end": 164.72
+      },
+      {
+        "text": "500",
+        "start": 164.72,
+        "end": 165.54
+      },
+      {
+        "text": "cubits",
+        "start": 165.54,
+        "end": 166.16
+      },
+      {
+        "text": "on",
+        "start": 166.16,
+        "end": 166.32
+      },
+      {
+        "text": "the",
+        "start": 166.32,
+        "end": 166.46
+      },
+      {
+        "text": "south",
+        "start": 166.46,
+        "end": 166.68
+      },
+      {
+        "text": "side",
+        "start": 166.68,
+        "end": 167.14
+      },
+      {
+        "text": "4",
+        "start": 167.6,
+        "end": 167.82
+      },
+      {
+        "text": "500",
+        "start": 167.82,
+        "end": 168.6
+      },
+      {
+        "text": "cubits",
+        "start": 168.6,
+        "end": 169.3
+      },
+      {
+        "text": "on",
+        "start": 169.3,
+        "end": 169.46
+      },
+      {
+        "text": "the",
+        "start": 169.46,
+        "end": 169.6
+      },
+      {
+        "text": "east",
+        "start": 169.6,
+        "end": 169.86
+      },
+      {
+        "text": "side",
+        "start": 169.86,
+        "end": 170.3
+      },
+      {
+        "text": "and",
+        "start": 170.84,
+        "end": 171.02
+      },
+      {
+        "text": "4",
+        "start": 171.02,
+        "end": 171.36
+      },
+      {
+        "text": "500",
+        "start": 171.36,
+        "end": 172.18
+      },
+      {
+        "text": "cubits",
+        "start": 172.18,
+        "end": 172.96
+      },
+      {
+        "text": "on",
+        "start": 172.96,
+        "end": 173.38
+      },
+      {
+        "text": "the",
+        "start": 173.38,
+        "end": 173.54
+      },
+      {
+        "text": "west",
+        "start": 173.54,
+        "end": 173.74
+      },
+      {
+        "text": "side",
+        "start": 173.74,
+        "end": 174.26
+      }
+    ],
+    "17": [
+      {
+        "text": "The",
+        "start": 174.92,
+        "end": 175.2
+      },
+      {
+        "text": "of",
+        "start": 175.86,
+        "end": 176.04
+      },
+      {
+        "text": "the",
+        "start": 176.04,
+        "end": 176.2
+      },
+      {
+        "text": "city",
+        "start": 176.2,
+        "end": 176.54
+      },
+      {
+        "text": "will",
+        "start": 176.54,
+        "end": 177.12
+      },
+      {
+        "text": "extend",
+        "start": 177.12,
+        "end": 177.48
+      },
+      {
+        "text": "250",
+        "start": 177.48,
+        "end": 178.46
+      },
+      {
+        "text": "cubits",
+        "start": 178.46,
+        "end": 179.12
+      },
+      {
+        "text": "to",
+        "start": 179.12,
+        "end": 179.28
+      },
+      {
+        "text": "the",
+        "start": 179.28,
+        "end": 179.42
+      },
+      {
+        "text": "north",
+        "start": 179.42,
+        "end": 179.74
+      },
+      {
+        "text": "250",
+        "start": 180.5,
+        "end": 181.12
+      },
+      {
+        "text": "cubits",
+        "start": 181.12,
+        "end": 181.72
+      },
+      {
+        "text": "to",
+        "start": 181.72,
+        "end": 181.88
+      },
+      {
+        "text": "the",
+        "start": 181.88,
+        "end": 182.04
+      },
+      {
+        "text": "south",
+        "start": 182.04,
+        "end": 182.32
+      },
+      {
+        "text": "250",
+        "start": 183.1,
+        "end": 183.94
+      },
+      {
+        "text": "cubits",
+        "start": 183.94,
+        "end": 184.6
+      },
+      {
+        "text": "to",
+        "start": 184.6,
+        "end": 184.76
+      },
+      {
+        "text": "the",
+        "start": 184.76,
+        "end": 184.9
+      },
+      {
+        "text": "east",
+        "start": 184.9,
+        "end": 185.22
+      },
+      {
+        "text": "and",
+        "start": 185.8,
+        "end": 186.04
+      },
+      {
+        "text": "250",
+        "start": 186.04,
+        "end": 186.8
+      },
+      {
+        "text": "cubits",
+        "start": 186.8,
+        "end": 187.48
+      },
+      {
+        "text": "to",
+        "start": 187.48,
+        "end": 187.66
+      },
+      {
+        "text": "the",
+        "start": 187.66,
+        "end": 187.8
+      },
+      {
+        "text": "west",
+        "start": 187.8,
+        "end": 188.14
+      }
+    ],
+    "18": [
+      {
+        "text": "The",
+        "start": 189.14,
+        "end": 189.24
+      },
+      {
+        "text": "remainder",
+        "start": 189.24,
+        "end": 189.56
+      },
+      {
+        "text": "of",
+        "start": 189.56,
+        "end": 189.88
+      },
+      {
+        "text": "the",
+        "start": 189.88,
+        "end": 190.0
+      },
+      {
+        "text": "length",
+        "start": 190.0,
+        "end": 190.3
+      },
+      {
+        "text": "bordering",
+        "start": 190.3,
+        "end": 190.72
+      },
+      {
+        "text": "the",
+        "start": 190.72,
+        "end": 191.04
+      },
+      {
+        "text": "holy",
+        "start": 191.04,
+        "end": 191.32
+      },
+      {
+        "text": "portion",
+        "start": 191.32,
+        "end": 191.76
+      },
+      {
+        "text": "and",
+        "start": 191.76,
+        "end": 192.32
+      },
+      {
+        "text": "running",
+        "start": 192.32,
+        "end": 192.62
+      },
+      {
+        "text": "adjacent",
+        "start": 192.62,
+        "end": 193.06
+      },
+      {
+        "text": "to",
+        "start": 193.06,
+        "end": 193.4
+      },
+      {
+        "text": "it",
+        "start": 193.4,
+        "end": 193.74
+      },
+      {
+        "text": "will",
+        "start": 193.74,
+        "end": 194.18
+      },
+      {
+        "text": "be",
+        "start": 194.18,
+        "end": 194.38
+      },
+      {
+        "text": "10",
+        "start": 194.38,
+        "end": 194.64
+      },
+      {
+        "text": "000",
+        "start": 194.64,
+        "end": 195.1
+      },
+      {
+        "text": "cubits",
+        "start": 195.1,
+        "end": 195.6
+      },
+      {
+        "text": "on",
+        "start": 195.6,
+        "end": 195.76
+      },
+      {
+        "text": "the",
+        "start": 195.76,
+        "end": 195.88
+      },
+      {
+        "text": "east",
+        "start": 195.88,
+        "end": 196.16
+      },
+      {
+        "text": "side",
+        "start": 196.16,
+        "end": 196.62
+      },
+      {
+        "text": "and",
+        "start": 196.62,
+        "end": 197.2
+      },
+      {
+        "text": "10",
+        "start": 197.2,
+        "end": 197.48
+      },
+      {
+        "text": "000",
+        "start": 197.48,
+        "end": 197.9
+      },
+      {
+        "text": "cubits",
+        "start": 197.9,
+        "end": 198.4
+      },
+      {
+        "text": "on",
+        "start": 198.4,
+        "end": 198.58
+      },
+      {
+        "text": "the",
+        "start": 198.58,
+        "end": 198.74
+      },
+      {
+        "text": "west",
+        "start": 198.74,
+        "end": 198.96
+      },
+      {
+        "text": "side",
+        "start": 198.96,
+        "end": 199.56
+      },
+      {
+        "text": "Its",
+        "start": 200.34,
+        "end": 200.5
+      },
+      {
+        "text": "produce",
+        "start": 200.5,
+        "end": 201.0
+      },
+      {
+        "text": "will",
+        "start": 201.0,
+        "end": 201.38
+      },
+      {
+        "text": "supply",
+        "start": 201.38,
+        "end": 201.84
+      },
+      {
+        "text": "food",
+        "start": 201.84,
+        "end": 202.2
+      },
+      {
+        "text": "for",
+        "start": 202.2,
+        "end": 202.48
+      },
+      {
+        "text": "the",
+        "start": 202.48,
+        "end": 202.62
+      },
+      {
+        "text": "workers",
+        "start": 202.62,
+        "end": 202.88
+      },
+      {
+        "text": "of",
+        "start": 202.88,
+        "end": 203.12
+      },
+      {
+        "text": "the",
+        "start": 203.12,
+        "end": 203.26
+      },
+      {
+        "text": "city",
+        "start": 203.26,
+        "end": 203.58
+      }
+    ],
+    "19": [
+      {
+        "text": "The",
+        "start": 204.26,
+        "end": 204.46
+      },
+      {
+        "text": "workers",
+        "start": 204.46,
+        "end": 204.72
+      },
+      {
+        "text": "of",
+        "start": 204.72,
+        "end": 205.0
+      },
+      {
+        "text": "the",
+        "start": 205.0,
+        "end": 205.14
+      },
+      {
+        "text": "city",
+        "start": 205.14,
+        "end": 205.36
+      },
+      {
+        "text": "who",
+        "start": 205.36,
+        "end": 205.64
+      },
+      {
+        "text": "cultivate",
+        "start": 205.64,
+        "end": 206.0
+      },
+      {
+        "text": "it",
+        "start": 206.0,
+        "end": 206.34
+      },
+      {
+        "text": "will",
+        "start": 206.34,
+        "end": 206.68
+      },
+      {
+        "text": "come",
+        "start": 206.68,
+        "end": 206.9
+      },
+      {
+        "text": "from",
+        "start": 206.9,
+        "end": 207.08
+      },
+      {
+        "text": "all",
+        "start": 207.08,
+        "end": 207.38
+      },
+      {
+        "text": "the",
+        "start": 207.38,
+        "end": 207.6
+      },
+      {
+        "text": "tribes",
+        "start": 207.6,
+        "end": 207.84
+      },
+      {
+        "text": "of",
+        "start": 207.84,
+        "end": 208.14
+      },
+      {
+        "text": "Israel",
+        "start": 208.14,
+        "end": 208.46
+      }
+    ],
+    "20": [
+      {
+        "text": "The",
+        "start": 208.46,
+        "end": 209.36
+      },
+      {
+        "text": "entire",
+        "start": 209.36,
+        "end": 209.72
+      },
+      {
+        "text": "portion",
+        "start": 209.72,
+        "end": 210.1
+      },
+      {
+        "text": "will",
+        "start": 210.1,
+        "end": 210.32
+      },
+      {
+        "text": "be",
+        "start": 210.32,
+        "end": 210.46
+      },
+      {
+        "text": "a",
+        "start": 210.46,
+        "end": 210.58
+      },
+      {
+        "text": "square",
+        "start": 210.58,
+        "end": 210.94
+      },
+      {
+        "text": "25",
+        "start": 211.56,
+        "end": 212.02
+      },
+      {
+        "text": "000",
+        "start": 212.02,
+        "end": 212.58
+      },
+      {
+        "text": "cubits",
+        "start": 212.58,
+        "end": 213.08
+      },
+      {
+        "text": "by",
+        "start": 213.08,
+        "end": 213.52
+      },
+      {
+        "text": "25",
+        "start": 213.52,
+        "end": 213.98
+      },
+      {
+        "text": "000",
+        "start": 213.98,
+        "end": 214.7
+      },
+      {
+        "text": "cubits",
+        "start": 214.7,
+        "end": 215.32
+      },
+      {
+        "text": "You",
+        "start": 215.94,
+        "end": 216.22
+      },
+      {
+        "text": "are",
+        "start": 216.22,
+        "end": 216.38
+      },
+      {
+        "text": "to",
+        "start": 216.38,
+        "end": 216.54
+      },
+      {
+        "text": "set",
+        "start": 216.54,
+        "end": 216.74
+      },
+      {
+        "text": "apart",
+        "start": 216.74,
+        "end": 217.04
+      },
+      {
+        "text": "the",
+        "start": 217.04,
+        "end": 217.28
+      },
+      {
+        "text": "holy",
+        "start": 217.28,
+        "end": 217.58
+      },
+      {
+        "text": "portion",
+        "start": 217.58,
+        "end": 218.08
+      },
+      {
+        "text": "along",
+        "start": 218.08,
+        "end": 218.66
+      },
+      {
+        "text": "with",
+        "start": 218.66,
+        "end": 218.88
+      },
+      {
+        "text": "the",
+        "start": 218.88,
+        "end": 219.04
+      },
+      {
+        "text": "city",
+        "start": 219.04,
+        "end": 219.3
+      },
+      {
+        "text": "property",
+        "start": 219.3,
+        "end": 219.72
+      }
+    ],
+    "21": [
+      {
+        "text": "The",
+        "start": 220.46,
+        "end": 220.72
+      },
+      {
+        "text": "remaining",
+        "start": 220.72,
+        "end": 221.02
+      },
+      {
+        "text": "area",
+        "start": 221.02,
+        "end": 221.4
+      },
+      {
+        "text": "on",
+        "start": 221.4,
+        "end": 221.7
+      },
+      {
+        "text": "both",
+        "start": 221.7,
+        "end": 221.92
+      },
+      {
+        "text": "sides",
+        "start": 221.92,
+        "end": 222.34
+      },
+      {
+        "text": "of",
+        "start": 222.34,
+        "end": 222.54
+      },
+      {
+        "text": "the",
+        "start": 222.54,
+        "end": 222.68
+      },
+      {
+        "text": "holy",
+        "start": 222.68,
+        "end": 222.94
+      },
+      {
+        "text": "portion",
+        "start": 222.94,
+        "end": 223.36
+      },
+      {
+        "text": "and",
+        "start": 223.36,
+        "end": 224.0
+      },
+      {
+        "text": "of",
+        "start": 224.0,
+        "end": 224.14
+      },
+      {
+        "text": "the",
+        "start": 224.14,
+        "end": 224.3
+      },
+      {
+        "text": "property",
+        "start": 224.3,
+        "end": 224.62
+      },
+      {
+        "text": "of",
+        "start": 224.62,
+        "end": 224.8
+      },
+      {
+        "text": "the",
+        "start": 224.8,
+        "end": 224.94
+      },
+      {
+        "text": "city",
+        "start": 224.94,
+        "end": 225.3
+      },
+      {
+        "text": "will",
+        "start": 225.3,
+        "end": 225.96
+      },
+      {
+        "text": "belong",
+        "start": 225.96,
+        "end": 226.26
+      },
+      {
+        "text": "to",
+        "start": 226.26,
+        "end": 226.5
+      },
+      {
+        "text": "the",
+        "start": 226.5,
+        "end": 226.64
+      },
+      {
+        "text": "prince",
+        "start": 226.64,
+        "end": 226.98
+      },
+      {
+        "text": "He",
+        "start": 227.92,
+        "end": 228.12
+      },
+      {
+        "text": "will",
+        "start": 228.12,
+        "end": 228.28
+      },
+      {
+        "text": "own",
+        "start": 228.28,
+        "end": 228.5
+      },
+      {
+        "text": "the",
+        "start": 228.5,
+        "end": 228.68
+      },
+      {
+        "text": "land",
+        "start": 228.68,
+        "end": 228.96
+      },
+      {
+        "text": "adjacent",
+        "start": 228.96,
+        "end": 229.36
+      },
+      {
+        "text": "to",
+        "start": 229.36,
+        "end": 229.7
+      },
+      {
+        "text": "the",
+        "start": 229.7,
+        "end": 229.88
+      },
+      {
+        "text": "tribal",
+        "start": 229.88,
+        "end": 230.14
+      },
+      {
+        "text": "portions",
+        "start": 230.14,
+        "end": 230.84
+      },
+      {
+        "text": "extending",
+        "start": 231.62,
+        "end": 232.02
+      },
+      {
+        "text": "eastward",
+        "start": 232.02,
+        "end": 232.66
+      },
+      {
+        "text": "from",
+        "start": 232.66,
+        "end": 233.3
+      },
+      {
+        "text": "the",
+        "start": 233.3,
+        "end": 233.46
+      },
+      {
+        "text": "25",
+        "start": 233.46,
+        "end": 234.04
+      },
+      {
+        "text": "000",
+        "start": 234.04,
+        "end": 234.56
+      },
+      {
+        "text": "cubits",
+        "start": 234.56,
+        "end": 235.06
+      },
+      {
+        "text": "of",
+        "start": 235.06,
+        "end": 235.18
+      },
+      {
+        "text": "the",
+        "start": 235.18,
+        "end": 235.32
+      },
+      {
+        "text": "holy",
+        "start": 235.32,
+        "end": 235.6
+      },
+      {
+        "text": "district",
+        "start": 235.6,
+        "end": 236.08
+      },
+      {
+        "text": "toward",
+        "start": 236.08,
+        "end": 236.82
+      },
+      {
+        "text": "the",
+        "start": 236.82,
+        "end": 237.02
+      },
+      {
+        "text": "eastern",
+        "start": 237.02,
+        "end": 237.34
+      },
+      {
+        "text": "border",
+        "start": 237.34,
+        "end": 237.78
+      },
+      {
+        "text": "and",
+        "start": 237.78,
+        "end": 238.52
+      },
+      {
+        "text": "westward",
+        "start": 238.52,
+        "end": 239.08
+      },
+      {
+        "text": "from",
+        "start": 239.08,
+        "end": 239.64
+      },
+      {
+        "text": "the",
+        "start": 239.64,
+        "end": 239.8
+      },
+      {
+        "text": "25",
+        "start": 239.8,
+        "end": 240.36
+      },
+      {
+        "text": "000",
+        "start": 240.36,
+        "end": 240.9
+      },
+      {
+        "text": "cubits",
+        "start": 240.9,
+        "end": 241.34
+      },
+      {
+        "text": "to",
+        "start": 241.34,
+        "end": 241.72
+      },
+      {
+        "text": "the",
+        "start": 241.72,
+        "end": 241.86
+      },
+      {
+        "text": "western",
+        "start": 241.86,
+        "end": 242.16
+      },
+      {
+        "text": "border",
+        "start": 242.16,
+        "end": 242.66
+      },
+      {
+        "text": "And",
+        "start": 243.5,
+        "end": 243.74
+      },
+      {
+        "text": "in",
+        "start": 243.74,
+        "end": 243.88
+      },
+      {
+        "text": "the",
+        "start": 243.88,
+        "end": 244.02
+      },
+      {
+        "text": "center",
+        "start": 244.02,
+        "end": 244.26
+      },
+      {
+        "text": "of",
+        "start": 244.26,
+        "end": 244.48
+      },
+      {
+        "text": "them",
+        "start": 244.48,
+        "end": 244.8
+      },
+      {
+        "text": "will",
+        "start": 244.8,
+        "end": 245.28
+      },
+      {
+        "text": "be",
+        "start": 245.28,
+        "end": 245.46
+      },
+      {
+        "text": "the",
+        "start": 245.46,
+        "end": 245.62
+      },
+      {
+        "text": "holy",
+        "start": 245.62,
+        "end": 245.96
+      },
+      {
+        "text": "portion",
+        "start": 245.96,
+        "end": 246.4
+      },
+      {
+        "text": "and",
+        "start": 246.4,
+        "end": 247.06
+      },
+      {
+        "text": "the",
+        "start": 247.06,
+        "end": 247.2
+      },
+      {
+        "text": "sanctuary",
+        "start": 247.2,
+        "end": 247.72
+      },
+      {
+        "text": "of",
+        "start": 247.72,
+        "end": 248.2
+      },
+      {
+        "text": "the",
+        "start": 248.2,
+        "end": 248.36
+      },
+      {
+        "text": "temple",
+        "start": 248.36,
+        "end": 248.68
+      }
+    ],
+    "22": [
+      {
+        "text": "So",
+        "start": 249.48,
+        "end": 249.8
+      },
+      {
+        "text": "the",
+        "start": 249.8,
+        "end": 250.3
+      },
+      {
+        "text": "Levitical",
+        "start": 250.3,
+        "end": 250.78
+      },
+      {
+        "text": "property",
+        "start": 250.78,
+        "end": 251.12
+      },
+      {
+        "text": "and",
+        "start": 251.12,
+        "end": 251.84
+      },
+      {
+        "text": "the",
+        "start": 251.84,
+        "end": 251.98
+      },
+      {
+        "text": "city",
+        "start": 251.98,
+        "end": 252.24
+      },
+      {
+        "text": "property",
+        "start": 252.24,
+        "end": 252.76
+      },
+      {
+        "text": "will",
+        "start": 252.76,
+        "end": 253.44
+      },
+      {
+        "text": "lie",
+        "start": 253.44,
+        "end": 253.72
+      },
+      {
+        "text": "in",
+        "start": 253.72,
+        "end": 253.9
+      },
+      {
+        "text": "the",
+        "start": 253.9,
+        "end": 254.04
+      },
+      {
+        "text": "center",
+        "start": 254.04,
+        "end": 254.26
+      },
+      {
+        "text": "of",
+        "start": 254.26,
+        "end": 254.5
+      },
+      {
+        "text": "the",
+        "start": 254.5,
+        "end": 254.64
+      },
+      {
+        "text": "area",
+        "start": 254.64,
+        "end": 254.98
+      },
+      {
+        "text": "belonging",
+        "start": 254.98,
+        "end": 255.38
+      },
+      {
+        "text": "to",
+        "start": 255.38,
+        "end": 255.7
+      },
+      {
+        "text": "the",
+        "start": 255.7,
+        "end": 255.88
+      },
+      {
+        "text": "prince",
+        "start": 255.88,
+        "end": 256.18
+      },
+      {
+        "text": "the",
+        "start": 256.98,
+        "end": 257.2
+      },
+      {
+        "text": "area",
+        "start": 257.2,
+        "end": 257.6
+      },
+      {
+        "text": "between",
+        "start": 257.6,
+        "end": 258.04
+      },
+      {
+        "text": "the",
+        "start": 258.04,
+        "end": 258.24
+      },
+      {
+        "text": "borders",
+        "start": 258.24,
+        "end": 258.48
+      },
+      {
+        "text": "of",
+        "start": 258.48,
+        "end": 258.8
+      },
+      {
+        "text": "Judah",
+        "start": 258.8,
+        "end": 259.1
+      },
+      {
+        "text": "and",
+        "start": 259.1,
+        "end": 259.64
+      },
+      {
+        "text": "Benjamin",
+        "start": 259.64,
+        "end": 260.06
+      }
+    ],
+    "23": [
+      {
+        "text": "As",
+        "start": 261.28,
+        "end": 261.54
+      },
+      {
+        "text": "for",
+        "start": 261.54,
+        "end": 261.72
+      },
+      {
+        "text": "the",
+        "start": 261.72,
+        "end": 261.84
+      },
+      {
+        "text": "rest",
+        "start": 261.84,
+        "end": 262.06
+      },
+      {
+        "text": "of",
+        "start": 262.06,
+        "end": 262.26
+      },
+      {
+        "text": "the",
+        "start": 262.26,
+        "end": 262.4
+      },
+      {
+        "text": "tribes",
+        "start": 262.4,
+        "end": 262.72
+      },
+      {
+        "text": "Benjamin",
+        "start": 262.72,
+        "end": 263.68
+      },
+      {
+        "text": "will",
+        "start": 263.68,
+        "end": 263.98
+      },
+      {
+        "text": "have",
+        "start": 263.98,
+        "end": 264.16
+      },
+      {
+        "text": "one",
+        "start": 264.16,
+        "end": 264.44
+      },
+      {
+        "text": "portion",
+        "start": 264.44,
+        "end": 264.88
+      },
+      {
+        "text": "extending",
+        "start": 264.88,
+        "end": 265.32
+      },
+      {
+        "text": "from",
+        "start": 265.32,
+        "end": 265.7
+      },
+      {
+        "text": "the",
+        "start": 265.7,
+        "end": 265.84
+      },
+      {
+        "text": "east",
+        "start": 265.84,
+        "end": 266.14
+      },
+      {
+        "text": "side",
+        "start": 266.14,
+        "end": 266.56
+      },
+      {
+        "text": "to",
+        "start": 266.56,
+        "end": 266.8
+      },
+      {
+        "text": "the",
+        "start": 266.8,
+        "end": 266.92
+      },
+      {
+        "text": "west",
+        "start": 266.92,
+        "end": 267.18
+      },
+      {
+        "text": "side",
+        "start": 267.18,
+        "end": 267.8
+      }
+    ],
+    "24": [
+      {
+        "text": "Simeon",
+        "start": 268.7,
+        "end": 268.96
+      },
+      {
+        "text": "will",
+        "start": 268.96,
+        "end": 269.12
+      },
+      {
+        "text": "have",
+        "start": 269.12,
+        "end": 269.3
+      },
+      {
+        "text": "one",
+        "start": 269.3,
+        "end": 269.58
+      },
+      {
+        "text": "portion",
+        "start": 269.58,
+        "end": 270.06
+      },
+      {
+        "text": "bordering",
+        "start": 270.06,
+        "end": 270.44
+      },
+      {
+        "text": "the",
+        "start": 270.44,
+        "end": 270.76
+      },
+      {
+        "text": "territory",
+        "start": 270.76,
+        "end": 271.02
+      },
+      {
+        "text": "of",
+        "start": 271.02,
+        "end": 271.44
+      },
+      {
+        "text": "Benjamin",
+        "start": 271.44,
+        "end": 271.86
+      },
+      {
+        "text": "from",
+        "start": 271.86,
+        "end": 272.34
+      },
+      {
+        "text": "east",
+        "start": 272.34,
+        "end": 272.68
+      },
+      {
+        "text": "to",
+        "start": 272.68,
+        "end": 273.04
+      },
+      {
+        "text": "west",
+        "start": 273.04,
+        "end": 273.44
+      }
+    ],
+    "25": [
+      {
+        "text": "Issachar",
+        "start": 274.4,
+        "end": 274.82
+      },
+      {
+        "text": "will",
+        "start": 274.82,
+        "end": 274.98
+      },
+      {
+        "text": "have",
+        "start": 274.98,
+        "end": 275.16
+      },
+      {
+        "text": "one",
+        "start": 275.16,
+        "end": 275.44
+      },
+      {
+        "text": "portion",
+        "start": 275.44,
+        "end": 275.82
+      },
+      {
+        "text": "bordering",
+        "start": 275.82,
+        "end": 276.22
+      },
+      {
+        "text": "the",
+        "start": 276.22,
+        "end": 276.48
+      },
+      {
+        "text": "territory",
+        "start": 276.48,
+        "end": 276.84
+      },
+      {
+        "text": "of",
+        "start": 276.84,
+        "end": 277.12
+      },
+      {
+        "text": "Simeon",
+        "start": 277.12,
+        "end": 277.6
+      },
+      {
+        "text": "from",
+        "start": 277.6,
+        "end": 277.82
+      },
+      {
+        "text": "east",
+        "start": 277.82,
+        "end": 278.12
+      },
+      {
+        "text": "to",
+        "start": 278.12,
+        "end": 278.3
+      },
+      {
+        "text": "west",
+        "start": 278.3,
+        "end": 278.68
+      }
+    ],
+    "26": [
+      {
+        "text": "Zebulun",
+        "start": 279.7,
+        "end": 279.98
+      },
+      {
+        "text": "will",
+        "start": 279.98,
+        "end": 280.2
+      },
+      {
+        "text": "have",
+        "start": 280.2,
+        "end": 280.38
+      },
+      {
+        "text": "one",
+        "start": 280.38,
+        "end": 280.68
+      },
+      {
+        "text": "portion",
+        "start": 280.68,
+        "end": 281.08
+      },
+      {
+        "text": "bordering",
+        "start": 281.08,
+        "end": 281.56
+      },
+      {
+        "text": "the",
+        "start": 281.56,
+        "end": 281.92
+      },
+      {
+        "text": "territory",
+        "start": 281.92,
+        "end": 282.26
+      },
+      {
+        "text": "of",
+        "start": 282.26,
+        "end": 282.5
+      },
+      {
+        "text": "Issachar",
+        "start": 282.5,
+        "end": 283.04
+      },
+      {
+        "text": "from",
+        "start": 283.04,
+        "end": 283.22
+      },
+      {
+        "text": "east",
+        "start": 283.22,
+        "end": 283.44
+      },
+      {
+        "text": "to",
+        "start": 283.44,
+        "end": 283.6
+      },
+      {
+        "text": "west",
+        "start": 283.6,
+        "end": 283.94
+      }
+    ],
+    "27": [
+      {
+        "text": "And",
+        "start": 284.76,
+        "end": 285.0
+      },
+      {
+        "text": "Gad",
+        "start": 285.0,
+        "end": 285.2
+      },
+      {
+        "text": "will",
+        "start": 285.2,
+        "end": 285.44
+      },
+      {
+        "text": "have",
+        "start": 285.44,
+        "end": 285.64
+      },
+      {
+        "text": "one",
+        "start": 285.64,
+        "end": 285.92
+      },
+      {
+        "text": "portion",
+        "start": 285.92,
+        "end": 286.32
+      },
+      {
+        "text": "bordering",
+        "start": 286.32,
+        "end": 287.12
+      },
+      {
+        "text": "the",
+        "start": 287.12,
+        "end": 287.44
+      },
+      {
+        "text": "territory",
+        "start": 287.44,
+        "end": 287.84
+      },
+      {
+        "text": "of",
+        "start": 287.84,
+        "end": 288.12
+      },
+      {
+        "text": "Zebulun",
+        "start": 288.12,
+        "end": 288.6
+      },
+      {
+        "text": "from",
+        "start": 288.6,
+        "end": 288.8
+      },
+      {
+        "text": "east",
+        "start": 288.8,
+        "end": 289.18
+      },
+      {
+        "text": "to",
+        "start": 289.18,
+        "end": 289.58
+      },
+      {
+        "text": "west",
+        "start": 289.58,
+        "end": 289.88
+      }
+    ],
+    "28": [
+      {
+        "text": "The",
+        "start": 289.88,
+        "end": 290.86
+      },
+      {
+        "text": "southern",
+        "start": 290.86,
+        "end": 291.14
+      },
+      {
+        "text": "border",
+        "start": 291.14,
+        "end": 291.46
+      },
+      {
+        "text": "of",
+        "start": 291.46,
+        "end": 291.7
+      },
+      {
+        "text": "Gad",
+        "start": 291.7,
+        "end": 292.02
+      },
+      {
+        "text": "will",
+        "start": 292.02,
+        "end": 292.3
+      },
+      {
+        "text": "run",
+        "start": 292.3,
+        "end": 292.54
+      },
+      {
+        "text": "from",
+        "start": 292.54,
+        "end": 292.8
+      },
+      {
+        "text": "Tamar",
+        "start": 292.8,
+        "end": 293.4
+      },
+      {
+        "text": "to",
+        "start": 293.4,
+        "end": 293.96
+      },
+      {
+        "text": "the",
+        "start": 293.96,
+        "end": 294.08
+      },
+      {
+        "text": "waters",
+        "start": 294.08,
+        "end": 294.38
+      },
+      {
+        "text": "of",
+        "start": 294.38,
+        "end": 294.66
+      },
+      {
+        "text": "Meribath",
+        "start": 294.66,
+        "end": 295.26
+      },
+      {
+        "text": "kadesh",
+        "start": 295.26,
+        "end": 295.74
+      },
+      {
+        "text": "then",
+        "start": 296.5,
+        "end": 296.66
+      },
+      {
+        "text": "along",
+        "start": 296.66,
+        "end": 296.96
+      },
+      {
+        "text": "the",
+        "start": 296.96,
+        "end": 297.18
+      },
+      {
+        "text": "Brook",
+        "start": 297.18,
+        "end": 297.34
+      },
+      {
+        "text": "of",
+        "start": 297.34,
+        "end": 297.54
+      },
+      {
+        "text": "Egypt",
+        "start": 297.54,
+        "end": 297.88
+      },
+      {
+        "text": "and",
+        "start": 297.88,
+        "end": 298.66
+      },
+      {
+        "text": "out",
+        "start": 298.66,
+        "end": 298.88
+      },
+      {
+        "text": "to",
+        "start": 298.88,
+        "end": 299.1
+      },
+      {
+        "text": "the",
+        "start": 299.1,
+        "end": 299.22
+      },
+      {
+        "text": "Great",
+        "start": 299.22,
+        "end": 299.42
+      },
+      {
+        "text": "Sea",
+        "start": 299.42,
+        "end": 299.82
+      }
+    ],
+    "29": [
+      {
+        "text": "This",
+        "start": 301.28,
+        "end": 301.4
+      },
+      {
+        "text": "is",
+        "start": 301.4,
+        "end": 301.56
+      },
+      {
+        "text": "the",
+        "start": 301.56,
+        "end": 301.72
+      },
+      {
+        "text": "land",
+        "start": 301.72,
+        "end": 302.04
+      },
+      {
+        "text": "you",
+        "start": 302.04,
+        "end": 302.26
+      },
+      {
+        "text": "are",
+        "start": 302.26,
+        "end": 302.4
+      },
+      {
+        "text": "to",
+        "start": 302.4,
+        "end": 302.58
+      },
+      {
+        "text": "allot",
+        "start": 302.58,
+        "end": 302.94
+      },
+      {
+        "text": "as",
+        "start": 302.94,
+        "end": 303.6
+      },
+      {
+        "text": "an",
+        "start": 303.6,
+        "end": 303.76
+      },
+      {
+        "text": "inheritance",
+        "start": 303.76,
+        "end": 304.22
+      },
+      {
+        "text": "to",
+        "start": 304.22,
+        "end": 304.64
+      },
+      {
+        "text": "the",
+        "start": 304.64,
+        "end": 304.78
+      },
+      {
+        "text": "tribes",
+        "start": 304.78,
+        "end": 305.02
+      },
+      {
+        "text": "of",
+        "start": 305.02,
+        "end": 305.32
+      },
+      {
+        "text": "Israel",
+        "start": 305.32,
+        "end": 305.76
+      },
+      {
+        "text": "and",
+        "start": 306.36,
+        "end": 306.48
+      },
+      {
+        "text": "these",
+        "start": 306.48,
+        "end": 306.86
+      },
+      {
+        "text": "will",
+        "start": 306.86,
+        "end": 307.06
+      },
+      {
+        "text": "be",
+        "start": 307.06,
+        "end": 307.24
+      },
+      {
+        "text": "their",
+        "start": 307.24,
+        "end": 307.46
+      },
+      {
+        "text": "portions",
+        "start": 307.46,
+        "end": 308.02
+      },
+      {
+        "text": "declares",
+        "start": 308.6,
+        "end": 308.98
+      },
+      {
+        "text": "the",
+        "start": 308.98,
+        "end": 309.26
+      },
+      {
+        "text": "Lord",
+        "start": 309.26,
+        "end": 309.48
+      },
+      {
+        "text": "GOD",
+        "start": 309.48,
+        "end": 309.9
+      }
+    ],
+    "30": [
+      {
+        "text": "These",
+        "start": 310.9,
+        "end": 311.08
+      },
+      {
+        "text": "will",
+        "start": 311.08,
+        "end": 311.26
+      },
+      {
+        "text": "be",
+        "start": 311.26,
+        "end": 311.42
+      },
+      {
+        "text": "the",
+        "start": 311.42,
+        "end": 311.6
+      },
+      {
+        "text": "exits",
+        "start": 311.6,
+        "end": 311.96
+      },
+      {
+        "text": "of",
+        "start": 311.96,
+        "end": 312.22
+      },
+      {
+        "text": "the",
+        "start": 312.22,
+        "end": 312.38
+      },
+      {
+        "text": "city",
+        "start": 312.38,
+        "end": 312.68
+      },
+      {
+        "text": "Beginning",
+        "start": 313.44,
+        "end": 313.64
+      },
+      {
+        "text": "on",
+        "start": 313.64,
+        "end": 313.88
+      },
+      {
+        "text": "the",
+        "start": 313.88,
+        "end": 314.02
+      },
+      {
+        "text": "north",
+        "start": 314.02,
+        "end": 314.22
+      },
+      {
+        "text": "side",
+        "start": 314.22,
+        "end": 314.7
+      },
+      {
+        "text": "which",
+        "start": 315.0,
+        "end": 315.16
+      },
+      {
+        "text": "will",
+        "start": 315.16,
+        "end": 315.36
+      },
+      {
+        "text": "be",
+        "start": 315.36,
+        "end": 315.58
+      },
+      {
+        "text": "4",
+        "start": 315.58,
+        "end": 315.86
+      },
+      {
+        "text": "500",
+        "start": 315.86,
+        "end": 316.94
+      },
+      {
+        "text": "cubits",
+        "start": 316.94,
+        "end": 317.58
+      },
+      {
+        "text": "long",
+        "start": 317.58,
+        "end": 317.94
+      }
+    ],
+    "31": [
+      {
+        "text": "the",
+        "start": 318.6,
+        "end": 318.84
+      },
+      {
+        "text": "gates",
+        "start": 318.84,
+        "end": 319.06
+      },
+      {
+        "text": "of",
+        "start": 319.06,
+        "end": 319.32
+      },
+      {
+        "text": "the",
+        "start": 319.32,
+        "end": 319.46
+      },
+      {
+        "text": "city",
+        "start": 319.46,
+        "end": 319.66
+      },
+      {
+        "text": "will",
+        "start": 319.66,
+        "end": 319.88
+      },
+      {
+        "text": "be",
+        "start": 319.88,
+        "end": 320.08
+      },
+      {
+        "text": "named",
+        "start": 320.08,
+        "end": 320.34
+      },
+      {
+        "text": "after",
+        "start": 320.34,
+        "end": 320.68
+      },
+      {
+        "text": "the",
+        "start": 320.68,
+        "end": 320.94
+      },
+      {
+        "text": "tribes",
+        "start": 320.94,
+        "end": 321.2
+      },
+      {
+        "text": "of",
+        "start": 321.2,
+        "end": 321.48
+      },
+      {
+        "text": "Israel",
+        "start": 321.48,
+        "end": 321.88
+      },
+      {
+        "text": "On",
+        "start": 322.74,
+        "end": 322.82
+      },
+      {
+        "text": "the",
+        "start": 322.82,
+        "end": 322.94
+      },
+      {
+        "text": "north",
+        "start": 322.94,
+        "end": 323.16
+      },
+      {
+        "text": "side",
+        "start": 323.16,
+        "end": 323.66
+      },
+      {
+        "text": "there",
+        "start": 324.04,
+        "end": 324.22
+      },
+      {
+        "text": "will",
+        "start": 324.22,
+        "end": 324.32
+      },
+      {
+        "text": "be",
+        "start": 324.32,
+        "end": 324.48
+      },
+      {
+        "text": "three",
+        "start": 324.48,
+        "end": 324.68
+      },
+      {
+        "text": "gates",
+        "start": 324.68,
+        "end": 325.02
+      },
+      {
+        "text": "the",
+        "start": 325.7,
+        "end": 325.8
+      },
+      {
+        "text": "gate",
+        "start": 325.8,
+        "end": 325.94
+      },
+      {
+        "text": "of",
+        "start": 325.94,
+        "end": 326.1
+      },
+      {
+        "text": "Reuben",
+        "start": 326.1,
+        "end": 326.4
+      },
+      {
+        "text": "the",
+        "start": 327.02,
+        "end": 327.07
+      },
+      {
+        "text": "gate",
+        "start": 327.06,
+        "end": 327.22
+      },
+      {
+        "text": "of",
+        "start": 327.22,
+        "end": 327.36
+      },
+      {
+        "text": "Judah",
+        "start": 327.36,
+        "end": 327.62
+      },
+      {
+        "text": "and",
+        "start": 327.98,
+        "end": 328.36
+      },
+      {
+        "text": "the",
+        "start": 328.36,
+        "end": 328.48
+      },
+      {
+        "text": "gate",
+        "start": 328.48,
+        "end": 328.64
+      },
+      {
+        "text": "of",
+        "start": 328.64,
+        "end": 328.82
+      },
+      {
+        "text": "Levi",
+        "start": 328.82,
+        "end": 329.1
+      }
+    ],
+    "32": [
+      {
+        "text": "On",
+        "start": 330.02,
+        "end": 330.22
+      },
+      {
+        "text": "the",
+        "start": 330.22,
+        "end": 330.38
+      },
+      {
+        "text": "east",
+        "start": 330.38,
+        "end": 330.6
+      },
+      {
+        "text": "side",
+        "start": 330.6,
+        "end": 331.12
+      },
+      {
+        "text": "which",
+        "start": 331.48,
+        "end": 331.58
+      },
+      {
+        "text": "will",
+        "start": 331.58,
+        "end": 331.74
+      },
+      {
+        "text": "be",
+        "start": 331.74,
+        "end": 332.02
+      },
+      {
+        "text": "4",
+        "start": 332.02,
+        "end": 332.3
+      },
+      {
+        "text": "500",
+        "start": 332.3,
+        "end": 333.3
+      },
+      {
+        "text": "cubits",
+        "start": 333.3,
+        "end": 333.94
+      },
+      {
+        "text": "long",
+        "start": 333.94,
+        "end": 334.26
+      },
+      {
+        "text": "there",
+        "start": 334.6,
+        "end": 334.92
+      },
+      {
+        "text": "will",
+        "start": 334.92,
+        "end": 335.1
+      },
+      {
+        "text": "be",
+        "start": 335.1,
+        "end": 335.34
+      },
+      {
+        "text": "three",
+        "start": 335.34,
+        "end": 335.64
+      },
+      {
+        "text": "gates",
+        "start": 335.64,
+        "end": 336.08
+      },
+      {
+        "text": "the",
+        "start": 336.7,
+        "end": 336.92
+      },
+      {
+        "text": "gate",
+        "start": 336.92,
+        "end": 337.1
+      },
+      {
+        "text": "of",
+        "start": 337.1,
+        "end": 337.3
+      },
+      {
+        "text": "Joseph",
+        "start": 337.3,
+        "end": 337.68
+      },
+      {
+        "text": "the",
+        "start": 338.32,
+        "end": 338.44
+      },
+      {
+        "text": "gate",
+        "start": 338.44,
+        "end": 338.66
+      },
+      {
+        "text": "of",
+        "start": 338.66,
+        "end": 338.84
+      },
+      {
+        "text": "Benjamin",
+        "start": 338.84,
+        "end": 339.18
+      },
+      {
+        "text": "and",
+        "start": 339.58,
+        "end": 339.92
+      },
+      {
+        "text": "the",
+        "start": 339.92,
+        "end": 340.04
+      },
+      {
+        "text": "gate",
+        "start": 340.04,
+        "end": 340.28
+      },
+      {
+        "text": "of",
+        "start": 340.28,
+        "end": 340.48
+      },
+      {
+        "text": "Dan",
+        "start": 340.48,
+        "end": 340.8
+      }
+    ],
+    "33": [
+      {
+        "text": "On",
+        "start": 341.68,
+        "end": 341.92
+      },
+      {
+        "text": "the",
+        "start": 341.92,
+        "end": 342.1
+      },
+      {
+        "text": "south",
+        "start": 342.1,
+        "end": 342.32
+      },
+      {
+        "text": "side",
+        "start": 342.32,
+        "end": 342.82
+      },
+      {
+        "text": "which",
+        "start": 343.1,
+        "end": 343.3
+      },
+      {
+        "text": "will",
+        "start": 343.3,
+        "end": 343.46
+      },
+      {
+        "text": "be",
+        "start": 343.46,
+        "end": 343.66
+      },
+      {
+        "text": "4",
+        "start": 343.66,
+        "end": 344.02
+      },
+      {
+        "text": "500",
+        "start": 344.02,
+        "end": 344.8
+      },
+      {
+        "text": "cubits",
+        "start": 344.8,
+        "end": 345.5
+      },
+      {
+        "text": "long",
+        "start": 345.5,
+        "end": 345.86
+      },
+      {
+        "text": "there",
+        "start": 346.18,
+        "end": 346.64
+      },
+      {
+        "text": "will",
+        "start": 346.64,
+        "end": 346.76
+      },
+      {
+        "text": "be",
+        "start": 346.76,
+        "end": 346.96
+      },
+      {
+        "text": "three",
+        "start": 346.96,
+        "end": 347.26
+      },
+      {
+        "text": "gates",
+        "start": 347.26,
+        "end": 347.66
+      },
+      {
+        "text": "the",
+        "start": 348.18,
+        "end": 348.42
+      },
+      {
+        "text": "gate",
+        "start": 348.42,
+        "end": 348.6
+      },
+      {
+        "text": "of",
+        "start": 348.6,
+        "end": 348.78
+      },
+      {
+        "text": "Simeon",
+        "start": 348.78,
+        "end": 349.36
+      },
+      {
+        "text": "the",
+        "start": 349.8,
+        "end": 349.86
+      },
+      {
+        "text": "gate",
+        "start": 349.86,
+        "end": 350.04
+      },
+      {
+        "text": "of",
+        "start": 350.04,
+        "end": 350.28
+      },
+      {
+        "text": "Issachar",
+        "start": 350.28,
+        "end": 350.92
+      },
+      {
+        "text": "and",
+        "start": 351.16,
+        "end": 351.42
+      },
+      {
+        "text": "the",
+        "start": 351.42,
+        "end": 351.54
+      },
+      {
+        "text": "gate",
+        "start": 351.54,
+        "end": 351.76
+      },
+      {
+        "text": "of",
+        "start": 351.76,
+        "end": 351.98
+      },
+      {
+        "text": "Zebulun",
+        "start": 351.98,
+        "end": 352.62
+      }
+    ],
+    "34": [
+      {
+        "text": "And",
+        "start": 353.32,
+        "end": 353.44
+      },
+      {
+        "text": "on",
+        "start": 353.44,
+        "end": 353.56
+      },
+      {
+        "text": "the",
+        "start": 353.56,
+        "end": 353.7
+      },
+      {
+        "text": "west",
+        "start": 353.7,
+        "end": 353.86
+      },
+      {
+        "text": "side",
+        "start": 353.86,
+        "end": 354.26
+      },
+      {
+        "text": "which",
+        "start": 354.58,
+        "end": 354.8
+      },
+      {
+        "text": "will",
+        "start": 354.8,
+        "end": 354.98
+      },
+      {
+        "text": "be",
+        "start": 354.98,
+        "end": 355.18
+      },
+      {
+        "text": "4",
+        "start": 355.18,
+        "end": 355.5
+      },
+      {
+        "text": "500",
+        "start": 355.5,
+        "end": 356.6
+      },
+      {
+        "text": "cubits",
+        "start": 356.6,
+        "end": 357.12
+      },
+      {
+        "text": "long",
+        "start": 357.12,
+        "end": 357.5
+      },
+      {
+        "text": "there",
+        "start": 358.0,
+        "end": 358.22
+      },
+      {
+        "text": "will",
+        "start": 358.22,
+        "end": 358.38
+      },
+      {
+        "text": "be",
+        "start": 358.38,
+        "end": 358.6
+      },
+      {
+        "text": "three",
+        "start": 358.6,
+        "end": 358.92
+      },
+      {
+        "text": "gates",
+        "start": 358.92,
+        "end": 359.24
+      },
+      {
+        "text": "the",
+        "start": 359.78,
+        "end": 359.86
+      },
+      {
+        "text": "gate",
+        "start": 359.86,
+        "end": 360.04
+      },
+      {
+        "text": "of",
+        "start": 360.04,
+        "end": 360.38
+      },
+      {
+        "text": "Gad",
+        "start": 360.38,
+        "end": 360.52
+      },
+      {
+        "text": "the",
+        "start": 361.12,
+        "end": 361.34
+      },
+      {
+        "text": "gate",
+        "start": 361.34,
+        "end": 361.54
+      },
+      {
+        "text": "of",
+        "start": 361.54,
+        "end": 361.7
+      },
+      {
+        "text": "Asher",
+        "start": 361.7,
+        "end": 362.08
+      },
+      {
+        "text": "and",
+        "start": 362.58,
+        "end": 362.78
+      },
+      {
+        "text": "the",
+        "start": 362.78,
+        "end": 362.92
+      },
+      {
+        "text": "gate",
+        "start": 362.92,
+        "end": 363.12
+      },
+      {
+        "text": "of",
+        "start": 363.12,
+        "end": 363.28
+      }
+    ],
+    "35": [
+      {
+        "text": "The",
+        "start": 364.58,
+        "end": 364.82
+      },
+      {
+        "text": "perimeter",
+        "start": 364.82,
+        "end": 365.1
+      },
+      {
+        "text": "of",
+        "start": 365.1,
+        "end": 365.48
+      },
+      {
+        "text": "the",
+        "start": 365.48,
+        "end": 365.62
+      },
+      {
+        "text": "city",
+        "start": 365.62,
+        "end": 365.8
+      },
+      {
+        "text": "will",
+        "start": 365.8,
+        "end": 366.04
+      },
+      {
+        "text": "be",
+        "start": 366.04,
+        "end": 366.2
+      },
+      {
+        "text": "18",
+        "start": 366.2,
+        "end": 366.62
+      },
+      {
+        "text": "000",
+        "start": 366.62,
+        "end": 367.16
+      },
+      {
+        "text": "cubits",
+        "start": 367.16,
+        "end": 367.78
+      },
+      {
+        "text": "and",
+        "start": 368.02,
+        "end": 368.28
+      },
+      {
+        "text": "from",
+        "start": 368.28,
+        "end": 368.44
+      },
+      {
+        "text": "that",
+        "start": 368.44,
+        "end": 368.68
+      },
+      {
+        "text": "day",
+        "start": 368.68,
+        "end": 368.86
+      },
+      {
+        "text": "on",
+        "start": 368.86,
+        "end": 369.14
+      },
+      {
+        "text": "the",
+        "start": 369.14,
+        "end": 369.28
+      },
+      {
+        "text": "name",
+        "start": 369.28,
+        "end": 369.46
+      },
+      {
+        "text": "of",
+        "start": 369.46,
+        "end": 369.64
+      },
+      {
+        "text": "the",
+        "start": 369.64,
+        "end": 369.78
+      },
+      {
+        "text": "city",
+        "start": 369.78,
+        "end": 370.04
+      },
+      {
+        "text": "will",
+        "start": 370.04,
+        "end": 370.28
+      },
+      {
+        "text": "be",
+        "start": 370.28,
+        "end": 370.7
+      },
+      {
+        "text": "THE",
+        "start": 370.7,
+        "end": 371.36
+      },
+      {
+        "text": "LORD",
+        "start": 371.36,
+        "end": 371.84
+      },
+      {
+        "text": "IS",
+        "start": 371.84,
+        "end": 372.32
+      },
+      {
+        "text": "THERE",
+        "start": 372.32,
+        "end": 372.76
+      }
+    ]
+  }
+}

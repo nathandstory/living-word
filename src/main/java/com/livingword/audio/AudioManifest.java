@@ -16,10 +16,23 @@ public record AudioManifest(
     String fileExtension,
     String pathStrategy,
     Map<AudioChapterId, String> chapterHashes,
-    Map<AudioChapterId, String> chapterPaths
+    Map<AudioChapterId, String> chapterPaths,
+    boolean verseTimings
 ) {
     public AudioManifest(String id, String translationId, URI baseUri, Map<AudioChapterId, String> chapterHashes) {
-        this(id, translationId, baseUri, "ogg", "direct", chapterHashes, Map.of());
+        this(id, translationId, baseUri, "ogg", "direct", chapterHashes, Map.of(), false);
+    }
+
+    public AudioManifest(
+        String id,
+        String translationId,
+        URI baseUri,
+        String fileExtension,
+        String pathStrategy,
+        Map<AudioChapterId, String> chapterHashes,
+        Map<AudioChapterId, String> chapterPaths
+    ) {
+        this(id, translationId, baseUri, fileExtension, pathStrategy, chapterHashes, chapterPaths, false);
     }
 
     public AudioManifest {

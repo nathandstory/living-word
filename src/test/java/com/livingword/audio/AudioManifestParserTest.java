@@ -70,6 +70,22 @@ final class AudioManifestParserTest {
     }
 
     @Test
+    void parsesVerseTimingAvailability() {
+        String json = """
+            {
+              "id": "webp-default",
+              "translationId": "webp",
+              "baseUri": "https://cdn.example.test/audio/",
+              "verseTimings": true
+            }
+            """;
+
+        AudioManifest manifest = new AudioManifestParser().parse(new StringReader(json));
+
+        assertEquals(true, manifest.verseTimings());
+    }
+
+    @Test
     void preservesAbsoluteExplicitChapterUrls() {
         String json = """
             {

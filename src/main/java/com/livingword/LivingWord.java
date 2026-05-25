@@ -7,6 +7,7 @@ import com.livingword.items.BibleItemEntityProtection;
 import com.livingword.items.LivingWordItems;
 import com.livingword.lectern.LecternEvents;
 import com.livingword.network.LivingWordNetwork;
+import com.livingword.sounds.LivingWordSounds;
 import com.mojang.logging.LogUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -20,6 +21,7 @@ public final class LivingWord {
 
     public LivingWord(IEventBus modEventBus, ModContainer modContainer) {
         LivingWordConfig.register(modContainer);
+        LivingWordSounds.register(modEventBus);
         LivingWordItems.register(modEventBus);
         BibleItemEntityProtection.register();
         LecternEvents.register();

@@ -1,11 +1,13 @@
 package com.livingword.lectern;
 
 import com.livingword.bible.ChapterData;
+import com.livingword.audio.VerseTimestampMap;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeMap;
 
 public final class LecternVerseDisplay {
@@ -47,6 +49,36 @@ public final class LecternVerseDisplay {
         return verseAtAdjustedPosition(chapter, adjustedPositionMillis);
     }
 
+    public static int verseAt(ChapterData chapter, long positionMillis, Optional<VerseTimestampMap> timestamps, String translationId, String audioManifestId) {
+        if (timestamps.isPresent() && !timestamps.orElseThrow().verseStartMillis().isEmpty()) {
+            return timestamps.orElseThrow().verseAt(Math.max(0L, positionMillis)).orElseGet(() -> verseAt(chapter, positionMillis));
+        }
+        return verseAt(chapter, positionMillis, translationId, audioManifestId);
+    }
+
+    public static int activeWordIndex(ChapterData chapter, int verse, long positionMillis, Optional<VerseTimestampMap> timestamps, String translationId, String audioManifestId) {
+        if (!chapter.verses().containsKey(verse)) {
+            return -1;
+        }
+        if (timestamps.isPresent()) {
+            Optional<Integer> exactWord = timestamps.orElseThrow().wordIndexAt(verse, Math.max(0L, positionMillis));
+            if (exactWord.isPresent()) {
+                return exactWord.orElseThrow();
+            }
+        }
+        long adjustedPositionMillis = timestamps.isPresent() && !timestamps.orElseThrow().verseStartMillis().isEmpty()
+            ? Math.max(0L, positionMillis)
+            : Math.max(0L, positionMillis + sourceOffsetMillis(translationId, audioManifestId));
+        long verseStart = timestamps.flatMap(value -> value.startMillis(verse)).orElseGet(() -> estimatedVerseStartMillis(chapter, verse));
+        long verseEnd = timestamps.flatMap(value -> value.nextStartMillis(verse)).orElseGet(() -> verseStart + estimatedDurationMillis(chapter.verseText(verse)));
+        long verseDuration = Math.max(MIN_ESTIMATED_VERSE_MILLIS, verseEnd - verseStart);
+        return estimatedWordIndex(chapter.verseText(verse), Math.max(0L, adjustedPositionMillis - verseStart), verseDuration);
+    }
+
+    public static boolean hasUsableVerseTiming(Optional<VerseTimestampMap> timestamps) {
+        return timestamps.isPresent() && !timestamps.orElseThrow().verseStartMillis().isEmpty();
+    }
+
     private static int verseAtAdjustedPosition(ChapterData chapter, long positionMillis) {
         long elapsed = 0L;
         int activeVerse = new TreeMap<>(chapter.verses()).firstKey();
@@ -65,11 +97,17 @@ public final class LecternVerseDisplay {
     }
 
     public static List<String> lines(String referenceLabel, int verse, String verseText) {
+        return displayLines(referenceLabel, verse, verseText, -1).stream()
+            .map(DisplayLine::plainText)
+            .toList();
+    }
+
+    public static List<DisplayLine> displayLines(String referenceLabel, int verse, String verseText, int activeWordIndex) {
         String prefix = referenceLabel + ":" + verse;
         if (verseText == null || verseText.isBlank()) {
-            return List.of(prefix);
+            return List.of(new DisplayLine(List.of(new DisplayToken(prefix, false))));
         }
-        return wrapLines(prefix + " - " + verseText.strip());
+        return wrapDisplayLines(prefix, verseText.strip(), activeWordIndex);
     }
 
     public static int colorAt(long millis) {
@@ -95,42 +133,79 @@ public final class LecternVerseDisplay {
         return Math.max(MIN_ESTIMATED_VERSE_MILLIS, words * millisPerWord + punctuationPause);
     }
 
-    private static List<String> wrapLines(String text) {
-        List<String> lines = new ArrayList<>();
-        StringBuilder line = new StringBuilder();
+    private static long estimatedVerseStartMillis(ChapterData chapter, int verse) {
+        long elapsed = 0L;
+        for (Map.Entry<Integer, String> entry : new TreeMap<>(chapter.verses()).entrySet()) {
+            if (entry.getKey() >= verse) {
+                break;
+            }
+            elapsed += estimatedDurationMillis(entry.getValue());
+        }
+        return elapsed;
+    }
+
+    private static int estimatedWordIndex(String verseText, long elapsedMillis, long durationMillis) {
+        if (verseText == null || verseText.isBlank()) {
+            return -1;
+        }
+        String[] words = verseText.strip().split("\\s+");
+        if (words.length == 0) {
+            return -1;
+        }
+        double progress = Math.min(0.999D, Math.max(0.0D, elapsedMillis / (double) Math.max(1L, durationMillis)));
+        return Math.max(0, Math.min(words.length - 1, (int) Math.floor(progress * words.length)));
+    }
+
+    private static List<DisplayLine> wrapDisplayLines(String prefix, String verseText, int activeWordIndex) {
+        List<DisplayLine> lines = new ArrayList<>();
+        List<DisplayToken> current = new ArrayList<>();
         int lineLength = 0;
-        for (String word : text.split("\\s+")) {
+        boolean lineHasVerseWord = false;
+
+        current.add(new DisplayToken(prefix + " - ", false));
+        lineLength = prefix.length() + 3;
+
+        String[] words = verseText.split("\\s+");
+        for (int wordIndex = 0; wordIndex < words.length; wordIndex++) {
+            String word = words[wordIndex];
+            boolean active = wordIndex == activeWordIndex;
             String remaining = word;
             while (remaining.length() > MAX_LINE_LENGTH) {
                 if (lineLength > 0) {
-                    lines.add(line.toString());
-                    line.setLength(0);
+                    lines.add(new DisplayLine(List.copyOf(current)));
+                    current.clear();
                     lineLength = 0;
+                    lineHasVerseWord = false;
                 }
-                lines.add(remaining.substring(0, MAX_LINE_LENGTH));
+                lines.add(new DisplayLine(List.of(new DisplayToken(remaining.substring(0, MAX_LINE_LENGTH), active))));
                 remaining = remaining.substring(MAX_LINE_LENGTH);
             }
             if (remaining.isEmpty()) {
                 continue;
             }
-            int separator = lineLength == 0 ? 0 : 1;
-            if (lineLength > 0 && lineLength + separator + remaining.length() > MAX_LINE_LENGTH) {
-                lines.add(line.toString());
-                line.setLength(0);
+            String separator = lineHasVerseWord ? " " : "";
+            if (lineLength > 0 && lineHasVerseWord && lineLength + separator.length() + remaining.length() > MAX_LINE_LENGTH) {
+                lines.add(new DisplayLine(List.copyOf(current)));
+                current.clear();
                 lineLength = 0;
-                separator = 0;
+                lineHasVerseWord = false;
+                separator = "";
             }
-            if (separator == 1) {
-                line.append(' ');
-                lineLength++;
+            String tokenText = separator + remaining;
+            if (lineLength > 0 && !lineHasVerseWord && lineLength + tokenText.length() > MAX_LINE_LENGTH) {
+                lines.add(new DisplayLine(List.copyOf(current)));
+                current.clear();
+                lineLength = 0;
+                tokenText = remaining;
             }
-            line.append(remaining);
-            lineLength += remaining.length();
+            current.add(new DisplayToken(tokenText, active));
+            lineLength += tokenText.length();
+            lineHasVerseWord = true;
         }
-        if (!line.isEmpty()) {
-            lines.add(line.toString());
+        if (!current.isEmpty()) {
+            lines.add(new DisplayLine(List.copyOf(current)));
         }
-        return lines.isEmpty() ? List.of(text) : List.copyOf(lines);
+        return lines.isEmpty() ? List.of(new DisplayLine(List.of(new DisplayToken(prefix, false)))) : List.copyOf(lines);
     }
 
     private static int interpolate(int start, int end, double progress) {
@@ -173,5 +248,25 @@ public final class LecternVerseDisplay {
             }
         }
         return count;
+    }
+
+    public record DisplayToken(String text, boolean active) {
+        public DisplayToken {
+            text = text == null ? "" : text;
+        }
+    }
+
+    public record DisplayLine(List<DisplayToken> tokens) {
+        public DisplayLine {
+            tokens = List.copyOf(tokens == null ? List.of() : tokens);
+        }
+
+        public String plainText() {
+            StringBuilder text = new StringBuilder();
+            for (DisplayToken token : tokens) {
+                text.append(token.text());
+            }
+            return text.toString();
+        }
     }
 }

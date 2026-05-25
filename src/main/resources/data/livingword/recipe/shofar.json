@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " CC",
+    "C G",
+    " G "
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:goat_horn"
+    },
+    "G": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "result": {
+    "id": "livingword:shofar",
+    "count": 1
+  }
+}

@@ -8,6 +8,7 @@ public enum LecternStationAction {
     STOP,
     PLAY,
     PAUSE,
+    RESET,
     TOGGLE_DISPLAY;
 
     public static LecternStationAction fromId(String id) {

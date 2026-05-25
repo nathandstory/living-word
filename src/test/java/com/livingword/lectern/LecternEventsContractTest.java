@@ -18,10 +18,16 @@ final class LecternEventsContractTest {
         assertTrue(source.contains("OpenLecternStationPayload"));
         assertTrue(source.contains("startPositionedListeningSession"));
         assertTrue(source.contains("completeLecternChapter"));
+        assertTrue(source.contains("resetStation"));
+        assertTrue(source.contains("withResumePosition(0L)"));
+        assertTrue(source.contains("hasUsableVerseTiming"));
+        assertTrue(source.contains("return List.of();"));
         assertTrue(source.contains("message.livingword.lectern.station_ready"));
         assertTrue(source.contains("message.livingword.lectern.session_started"));
+        assertTrue(source.contains("message.livingword.lectern.session_reset"));
         assertTrue(lang.contains("Bible placed on lectern"));
         assertTrue(lang.contains("Lectern listening started"));
+        assertTrue(lang.contains("Lectern reset"));
         assertTrue(lang.contains("Sneak empty-hand use removes the Bible"));
     }
 }

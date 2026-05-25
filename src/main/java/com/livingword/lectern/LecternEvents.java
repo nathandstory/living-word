@@ -4,6 +4,9 @@ import com.livingword.bible.BibleDataManager;
 import com.livingword.bible.BibleReference;
 import com.livingword.bible.BibleResourceLoader;
 import com.livingword.bible.ChapterData;
+import com.livingword.audio.AudioChapterId;
+import com.livingword.audio.AudioTimingRepository;
+import com.livingword.audio.VerseTimestampMap;
 import com.livingword.discs.ScriptureDiscPlaybackSequencer;
 import com.livingword.discs.ScriptureDiscSelection;
 import com.livingword.items.LivingWordItems;
@@ -15,6 +18,7 @@ import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -51,6 +55,7 @@ public final class LecternEvents {
     private static final String DISPLAY_LINE_TAG_PREFIX = "livingword_line_";
     private static final LecternListeningStationRegistry STATIONS = new LecternListeningStationRegistry();
     private static BibleDataManager bibleDataManager;
+    private static AudioTimingRepository audioTimingRepository;
     private static int displayUpdateTick;
 
     private LecternEvents() {
@@ -84,6 +89,7 @@ public final class LecternEvents {
             case START, PLAY -> startStation(player, level, savedData, station);
             case STOP -> stopStation(player, level, savedData, station);
             case PAUSE -> pauseStation(player, level, savedData, station);
+            case RESET -> resetStation(player, level, savedData, station);
             case TOGGLE_DISPLAY -> toggleDisplay(player, level, savedData, station);
         }
     }
@@ -274,6 +280,20 @@ public final class LecternEvents {
         player.displayClientMessage(Component.translatable("message.livingword.lectern.session_paused"), true);
     }
 
+    private static void resetStation(ServerPlayer player, ServerLevel level, LecternStationSavedData savedData, LecternListeningStation station) {
+        ResourceLocation dimension = level.dimension().location();
+        STATIONS.removeSession(dimension, station.sourcePos()).ifPresent(LivingWordNetwork::stopListeningSession);
+
+        ScriptureDiscSelection resetSelection = firstChapterSelection(station.selection());
+        LecternListeningStation resetStation = saveStationWithDisplay(
+            level,
+            savedData,
+            station.withSelection(resetSelection).withResumePosition(0L)
+        );
+        STATIONS.remember(dimension, resetStation);
+        player.displayClientMessage(Component.translatable("message.livingword.lectern.session_reset", formatSelection(resetSelection)), true);
+    }
+
     private static void toggleDisplay(ServerPlayer player, ServerLevel level, LecternStationSavedData savedData, LecternListeningStation station) {
         LecternListeningStation nextStation;
         if (station.displayEnabled()) {
@@ -459,16 +479,37 @@ public final class LecternEvents {
 
     private static List<Component> displayComponents(ScriptureDiscSelection selection, long positionMillis) {
         Optional<ChapterData> chapter = dataManager().getChapter(selection.translationId(), selection.bookId(), selection.chapter());
-        int verse = chapter.map(value -> LecternVerseDisplay.verseAt(value, positionMillis, selection.translationId(), selection.audioManifestId())).orElse(1);
+        Optional<VerseTimestampMap> timings = timingRepository().timestamps(
+            new AudioChapterId(selection.translationId(), selection.bookId(), selection.chapter()),
+            selection.audioManifestId()
+        );
+        if (!LecternVerseDisplay.hasUsableVerseTiming(timings)) {
+            return List.of();
+        }
+        int verse = chapter.map(value -> LecternVerseDisplay.verseAt(value, positionMillis, timings, selection.translationId(), selection.audioManifestId())).orElse(1);
         String verseText = chapter.map(value -> value.verseText(verse)).orElse("");
-        List<String> lines = LecternVerseDisplay.lines(formatSelection(selection), verse, verseText);
+        int activeWordIndex = chapter.map(value -> LecternVerseDisplay.activeWordIndex(value, verse, positionMillis, timings, selection.translationId(), selection.audioManifestId())).orElse(-1);
+        List<LecternVerseDisplay.DisplayLine> lines = LecternVerseDisplay.displayLines(formatSelection(selection), verse, verseText, activeWordIndex);
         List<Component> components = new ArrayList<>(lines.size());
         long now = Util.getMillis();
         for (int i = 0; i < lines.size(); i++) {
             int color = LecternVerseDisplay.colorAt(now + i * 450L);
-            components.add(Component.literal(lines.get(i)).withStyle(style -> style.withColor(TextColor.fromRgb(color)).withBold(true)));
+            components.add(displayComponent(lines.get(i), color));
         }
         return components;
+    }
+
+    private static Component displayComponent(LecternVerseDisplay.DisplayLine line, int color) {
+        MutableComponent component = Component.empty();
+        for (LecternVerseDisplay.DisplayToken token : line.tokens()) {
+            int tokenColor = token.active() ? 0xFFFFFF : color;
+            component.append(Component.literal(token.text()).withStyle(style -> style
+                .withColor(TextColor.fromRgb(tokenColor))
+                .withBold(true)
+                .withUnderlined(token.active())
+            ));
+        }
+        return component;
     }
 
     private static boolean hasLivingWordBible(Level level, BlockPos pos) {
@@ -490,6 +531,20 @@ public final class LecternEvents {
             .orElse(ScriptureDiscSelection.defaults());
     }
 
+    private static ScriptureDiscSelection firstChapterSelection(ScriptureDiscSelection selection) {
+        int firstChapter = dataManager().chapters(selection.translationId(), selection.bookId())
+            .stream()
+            .findFirst()
+            .orElse(1);
+        return new ScriptureDiscSelection(
+            selection.translationId(),
+            selection.bookId(),
+            firstChapter,
+            selection.audioManifestId(),
+            selection.playbackMode()
+        );
+    }
+
     private static LecternStationSavedData stationData(ServerLevel level) {
         return level.getDataStorage().computeIfAbsent(LecternStationSavedData.factory(), LecternStationSavedData.fileId());
     }
@@ -500,6 +555,13 @@ public final class LecternEvents {
             new BibleResourceLoader(bibleDataManager, LecternEvents.class.getClassLoader()).reload();
         }
         return bibleDataManager;
+    }
+
+    private static AudioTimingRepository timingRepository() {
+        if (audioTimingRepository == null) {
+            audioTimingRepository = new AudioTimingRepository(LecternEvents.class.getClassLoader());
+        }
+        return audioTimingRepository;
     }
 
     private static void consume(PlayerInteractEvent.RightClickBlock event) {

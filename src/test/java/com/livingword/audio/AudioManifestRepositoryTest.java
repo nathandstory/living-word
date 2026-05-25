@@ -56,6 +56,7 @@ final class AudioManifestRepositoryTest {
         assertEquals("webp-david-williams", manifest.id());
         assertEquals("mp3", manifest.fileExtension());
         assertEquals("public-domain-audio-bibles", manifest.pathStrategy());
+        assertTrue(!manifest.verseTimings());
         assertTrue(manifest.baseUri().toString().startsWith("https://publicdomainaudiobibles.com/content/mp3/WEBD/"));
     }
 
@@ -81,6 +82,7 @@ final class AudioManifestRepositoryTest {
         assertEquals("bsb", manifest.translationId());
         assertEquals("mp3", manifest.fileExtension());
         assertEquals("helloao-bsb-david", manifest.pathStrategy());
+        assertTrue(manifest.verseTimings());
         assertEquals(URI.create("https://audio.bible.helloao.org/api/BSB/"), manifest.baseUri());
     }
 

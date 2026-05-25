@@ -17,9 +17,16 @@ final class LecternStationScreenContractTest {
         assertTrue(source.contains("LecternStationAction.SAVE"));
         assertTrue(source.contains("LecternStationAction.PLAY"));
         assertTrue(source.contains("LecternStationAction.PAUSE"));
+        assertTrue(source.contains("LecternStationAction.RESET"));
         assertTrue(source.contains("LecternStationAction.TOGGLE_DISPLAY"));
         assertTrue(source.contains("togglePlayback"));
+        assertTrue(source.contains("resetStation"));
         assertTrue(source.contains("toggleFloatingVerse"));
+        assertTrue(source.contains("AudioTimingRepository"));
+        assertTrue(source.contains("verseTimingAvailable"));
+        assertTrue(source.contains("displayToggleButton.active"));
+        assertTrue(source.contains("gui.livingword.lectern.reset"));
+        assertTrue(source.contains("gui.livingword.lectern.display_unavailable"));
         assertTrue(source.contains("reverseClick"));
         assertFalse(source.contains("toggleListening"));
         assertFalse(source.contains("gui.livingword.lectern.start"));

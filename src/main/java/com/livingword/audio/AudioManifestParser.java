@@ -32,7 +32,8 @@ public final class AudioManifestParser {
             optionalString(root, "fileExtension", "ogg"),
             optionalString(root, "pathStrategy", "direct"),
             hashes,
-            chapterPaths
+            chapterPaths,
+            optionalBoolean(root, "verseTimings", false)
         );
     }
 
@@ -56,5 +57,12 @@ public final class AudioManifestParser {
             return fallback;
         }
         return root.get(name).getAsString();
+    }
+
+    private static boolean optionalBoolean(JsonObject root, String name, boolean fallback) {
+        if (!root.has(name) || root.get(name).isJsonNull()) {
+            return fallback;
+        }
+        return root.get(name).getAsBoolean();
     }
 }

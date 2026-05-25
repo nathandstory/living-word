@@ -2,6 +2,9 @@ package com.livingword.client.gui;
 
 import com.livingword.bible.BibleDataManager;
 import com.livingword.bible.TranslationManifest;
+import com.livingword.audio.AudioChapterId;
+import com.livingword.audio.AudioManifestRepository;
+import com.livingword.audio.AudioTimingRepository;
 import com.livingword.client.BibleClientRepository;
 import com.livingword.client.LivingWordClient;
 import com.livingword.discs.ScriptureDiscAudioSource;
@@ -34,6 +37,8 @@ public final class LecternStationScreen extends Screen {
     private static final int TITLE_TEXT = 0xFFFFE3AD;
 
     private final BibleDataManager dataManager = BibleClientRepository.dataManager();
+    private final AudioManifestRepository audioManifests = new AudioManifestRepository(LecternStationScreen.class.getClassLoader());
+    private final AudioTimingRepository audioTimings = new AudioTimingRepository(LecternStationScreen.class.getClassLoader());
     private final BlockPos sourcePos;
 
     private String translationId;
@@ -92,19 +97,22 @@ public final class LecternStationScreen extends Screen {
         sourceButton = addCycleButton(controlLeft, top + 154, controlWidth, button -> navigateSource(1));
         modeButton = addCycleButton(controlLeft, top + 180, controlWidth, button -> navigateMode(1));
 
-        int bottomY = top + panelHeight - 78;
+        int bottomY = top + panelHeight - 104;
         int actionWidth = (controlWidth - 12) / 3;
         addRenderableWidget(Button.builder(Component.translatable("gui.livingword.lectern.save"), button -> configure(LecternStationAction.SAVE))
             .bounds(controlLeft, bottomY, actionWidth, 20)
             .build());
-        playbackToggleButton = addRenderableWidget(Button.builder(Component.empty(), button -> togglePlayback())
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.lectern.reset"), button -> resetStation())
             .bounds(controlLeft + actionWidth + 6, bottomY, actionWidth, 20)
             .build());
-        displayToggleButton = addRenderableWidget(Button.builder(Component.empty(), button -> toggleFloatingVerse())
+        playbackToggleButton = addRenderableWidget(Button.builder(Component.empty(), button -> togglePlayback())
             .bounds(controlLeft + (actionWidth + 6) * 2, bottomY, actionWidth, 20)
             .build());
-        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.close"), button -> onClose())
+        displayToggleButton = addRenderableWidget(Button.builder(Component.empty(), button -> toggleFloatingVerse())
             .bounds(controlLeft, bottomY + 26, controlWidth, 20)
+            .build());
+        addRenderableWidget(Button.builder(Component.translatable("gui.livingword.bible.close"), button -> onClose())
+            .bounds(controlLeft, bottomY + 52, controlWidth, 20)
             .build());
         refreshLabels();
     }
@@ -146,7 +154,7 @@ public final class LecternStationScreen extends Screen {
     private void renderInstructionPanel(GuiGraphics graphics, int left, int top, int panelWidth, int panelHeight) {
         int controlWidth = Math.min(310, panelWidth - 48);
         int controlLeft = left + (panelWidth - controlWidth) / 2;
-        int bottomY = top + panelHeight - 78;
+        int bottomY = top + panelHeight - 104;
         int infoTop = top + 208;
         int infoBottom = Math.min(infoTop + 58, bottomY - 10);
         if (infoBottom <= infoTop + 18) {
@@ -271,7 +279,21 @@ public final class LecternStationScreen extends Screen {
         configure(stationPlaying ? LecternStationAction.PAUSE : LecternStationAction.PLAY);
     }
 
+    private void resetStation() {
+        chapter = firstChapterOrOne(translationId, bookId);
+        resumePositionMillis = 0L;
+        stationPlaying = false;
+        LivingWordClient.configureLecternStation(sourcePos, selection(), LecternStationAction.RESET);
+        statusLine = Component.translatable("gui.livingword.lectern.status_reset").getString();
+        refreshLabels();
+    }
+
     private void toggleFloatingVerse() {
+        if (!verseTimingAvailable()) {
+            statusLine = Component.translatable("gui.livingword.lectern.status_display_unavailable").getString();
+            refreshPlaybackButtons();
+            return;
+        }
         displayEnabled = !displayEnabled;
         LivingWordClient.configureLecternStation(sourcePos, selection(), LecternStationAction.TOGGLE_DISPLAY);
         statusLine = Component.translatable(displayEnabled ? "gui.livingword.lectern.status_display_on" : "gui.livingword.lectern.status_display_off").getString();
@@ -320,8 +342,22 @@ public final class LecternStationScreen extends Screen {
             playbackToggleButton.setMessage(Component.translatable(stationPlaying ? "gui.livingword.lectern.pause" : "gui.livingword.lectern.play"));
         }
         if (displayToggleButton != null) {
-            displayToggleButton.setMessage(Component.translatable(displayEnabled ? "gui.livingword.lectern.display_on" : "gui.livingword.lectern.display_off"));
+            boolean verseTimingAvailable = verseTimingAvailable();
+            displayToggleButton.active = verseTimingAvailable;
+            displayToggleButton.setMessage(Component.translatable(
+                verseTimingAvailable
+                    ? displayEnabled ? "gui.livingword.lectern.display_on" : "gui.livingword.lectern.display_off"
+                    : "gui.livingword.lectern.display_unavailable"
+            ));
         }
+    }
+
+    private boolean verseTimingAvailable() {
+        return audioManifests.find(translationId, audioManifestId)
+            .filter(manifest -> manifest.verseTimings())
+            .flatMap(manifest -> audioTimings.timestamps(new AudioChapterId(translationId, bookId, chapter), audioManifestId))
+            .filter(timings -> !timings.verseStartMillis().isEmpty())
+            .isPresent();
     }
 
     private void ensureSelectedChapterExists() {

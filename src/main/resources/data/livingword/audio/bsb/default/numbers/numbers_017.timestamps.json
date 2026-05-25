@@ -1,0 +1,1419 @@
+{
+  "source": "machine-generated alignment from HelloAO BSB David audio using faster-whisper small.en",
+  "quality": "machine-generated",
+  "audioDuration": 112.196,
+  "matchRatio": 0.9716,
+  "verses": {
+    "1": 5.98,
+    "2": 7.62,
+    "3": 16.82,
+    "4": 23.32,
+    "5": 29.84,
+    "6": 39.6,
+    "7": 52.8,
+    "8": 59.72,
+    "9": 73.3,
+    "10": 81.78,
+    "11": 95.88,
+    "12": 99.98,
+    "13": 106.12
+  },
+  "words": {
+    "1": [
+      {
+        "text": "And",
+        "start": 5.98,
+        "end": 6.08
+      },
+      {
+        "text": "the",
+        "start": 6.08,
+        "end": 6.2
+      },
+      {
+        "text": "LORD",
+        "start": 6.2,
+        "end": 6.38
+      },
+      {
+        "text": "said",
+        "start": 6.38,
+        "end": 6.64
+      },
+      {
+        "text": "to",
+        "start": 6.64,
+        "end": 6.8
+      },
+      {
+        "text": "Moses",
+        "start": 6.8,
+        "end": 7.14
+      }
+    ],
+    "2": [
+      {
+        "text": "Speak",
+        "start": 7.62,
+        "end": 7.84
+      },
+      {
+        "text": "to",
+        "start": 7.84,
+        "end": 8.06
+      },
+      {
+        "text": "the",
+        "start": 8.06,
+        "end": 8.2
+      },
+      {
+        "text": "Israelites",
+        "start": 8.2,
+        "end": 8.94
+      },
+      {
+        "text": "and",
+        "start": 9.3,
+        "end": 9.48
+      },
+      {
+        "text": "take",
+        "start": 9.48,
+        "end": 9.72
+      },
+      {
+        "text": "from",
+        "start": 9.72,
+        "end": 9.98
+      },
+      {
+        "text": "them",
+        "start": 9.98,
+        "end": 10.28
+      },
+      {
+        "text": "twelve",
+        "start": 10.28,
+        "end": 10.66
+      },
+      {
+        "text": "staffs",
+        "start": 10.66,
+        "end": 11.62
+      },
+      {
+        "text": "one",
+        "start": 11.78,
+        "end": 12.06
+      },
+      {
+        "text": "from",
+        "start": 12.06,
+        "end": 12.36
+      },
+      {
+        "text": "the",
+        "start": 12.36,
+        "end": 12.54
+      },
+      {
+        "text": "leader",
+        "start": 12.54,
+        "end": 12.76
+      },
+      {
+        "text": "of",
+        "start": 12.76,
+        "end": 13.06
+      },
+      {
+        "text": "each",
+        "start": 13.06,
+        "end": 13.3
+      },
+      {
+        "text": "tribe",
+        "start": 13.3,
+        "end": 13.72
+      },
+      {
+        "text": "Write",
+        "start": 14.3,
+        "end": 14.5
+      },
+      {
+        "text": "each",
+        "start": 14.5,
+        "end": 14.8
+      },
+      {
+        "text": "name",
+        "start": 15.3,
+        "end": 15.5
+      },
+      {
+        "text": "on",
+        "start": 15.5,
+        "end": 15.76
+      },
+      {
+        "text": "his",
+        "start": 15.76,
+        "end": 15.96
+      },
+      {
+        "text": "staff",
+        "start": 15.96,
+        "end": 16.38
+      }
+    ],
+    "3": [
+      {
+        "text": "and",
+        "start": 16.82,
+        "end": 17.02
+      },
+      {
+        "text": "write",
+        "start": 17.02,
+        "end": 17.34
+      },
+      {
+        "text": "Aaron",
+        "start": 17.34,
+        "end": 18.02
+      },
+      {
+        "text": "name",
+        "start": 18.02,
+        "end": 18.24
+      },
+      {
+        "text": "on",
+        "start": 18.24,
+        "end": 18.5
+      },
+      {
+        "text": "the",
+        "start": 18.5,
+        "end": 18.66
+      },
+      {
+        "text": "staff",
+        "start": 18.66,
+        "end": 18.94
+      },
+      {
+        "text": "of",
+        "start": 18.94,
+        "end": 19.18
+      },
+      {
+        "text": "Levi",
+        "start": 19.18,
+        "end": 19.6
+      },
+      {
+        "text": "because",
+        "start": 20.28,
+        "end": 20.56
+      },
+      {
+        "text": "there",
+        "start": 20.56,
+        "end": 20.82
+      },
+      {
+        "text": "must",
+        "start": 20.82,
+        "end": 20.98
+      },
+      {
+        "text": "be",
+        "start": 20.98,
+        "end": 21.26
+      },
+      {
+        "text": "one",
+        "start": 21.26,
+        "end": 21.52
+      },
+      {
+        "text": "staff",
+        "start": 21.52,
+        "end": 21.94
+      },
+      {
+        "text": "for",
+        "start": 21.94,
+        "end": 22.22
+      },
+      {
+        "text": "the",
+        "start": 22.22,
+        "end": 22.32
+      },
+      {
+        "text": "head",
+        "start": 22.32,
+        "end": 22.5
+      },
+      {
+        "text": "of",
+        "start": 22.5,
+        "end": 22.64
+      },
+      {
+        "text": "each",
+        "start": 22.64,
+        "end": 22.82
+      },
+      {
+        "text": "tribe",
+        "start": 22.82,
+        "end": 23.32
+      }
+    ],
+    "4": [
+      {
+        "text": "Place",
+        "start": 23.32,
+        "end": 24.5
+      },
+      {
+        "text": "the",
+        "start": 24.5,
+        "end": 24.8
+      },
+      {
+        "text": "staffs",
+        "start": 24.8,
+        "end": 25.26
+      },
+      {
+        "text": "in",
+        "start": 25.26,
+        "end": 25.34
+      },
+      {
+        "text": "the",
+        "start": 25.34,
+        "end": 25.48
+      },
+      {
+        "text": "Tent",
+        "start": 25.48,
+        "end": 25.66
+      },
+      {
+        "text": "of",
+        "start": 25.66,
+        "end": 25.86
+      },
+      {
+        "text": "Meeting",
+        "start": 25.86,
+        "end": 26.12
+      },
+      {
+        "text": "in",
+        "start": 26.12,
+        "end": 26.42
+      },
+      {
+        "text": "front",
+        "start": 26.42,
+        "end": 26.6
+      },
+      {
+        "text": "of",
+        "start": 26.6,
+        "end": 26.8
+      },
+      {
+        "text": "the",
+        "start": 26.8,
+        "end": 26.96
+      },
+      {
+        "text": "Testimony",
+        "start": 26.96,
+        "end": 27.38
+      },
+      {
+        "text": "where",
+        "start": 27.86,
+        "end": 28.14
+      },
+      {
+        "text": "I",
+        "start": 28.14,
+        "end": 28.32
+      },
+      {
+        "text": "meet",
+        "start": 28.32,
+        "end": 28.52
+      },
+      {
+        "text": "with",
+        "start": 28.52,
+        "end": 28.76
+      },
+      {
+        "text": "you",
+        "start": 28.76,
+        "end": 29.08
+      }
+    ],
+    "5": [
+      {
+        "text": "The",
+        "start": 29.84,
+        "end": 30.12
+      },
+      {
+        "text": "staff",
+        "start": 30.12,
+        "end": 30.48
+      },
+      {
+        "text": "belonging",
+        "start": 30.48,
+        "end": 30.92
+      },
+      {
+        "text": "to",
+        "start": 30.92,
+        "end": 31.24
+      },
+      {
+        "text": "the",
+        "start": 31.24,
+        "end": 31.38
+      },
+      {
+        "text": "man",
+        "start": 31.38,
+        "end": 31.58
+      },
+      {
+        "text": "I",
+        "start": 31.58,
+        "end": 31.82
+      },
+      {
+        "text": "choose",
+        "start": 31.82,
+        "end": 32.18
+      },
+      {
+        "text": "will",
+        "start": 32.18,
+        "end": 32.56
+      },
+      {
+        "text": "sprout",
+        "start": 32.56,
+        "end": 33.06
+      },
+      {
+        "text": "and",
+        "start": 33.7,
+        "end": 33.88
+      },
+      {
+        "text": "I",
+        "start": 33.88,
+        "end": 34.02
+      },
+      {
+        "text": "will",
+        "start": 34.02,
+        "end": 34.2
+      },
+      {
+        "text": "rid",
+        "start": 34.2,
+        "end": 34.44
+      },
+      {
+        "text": "Myself",
+        "start": 34.44,
+        "end": 35.0
+      },
+      {
+        "text": "of",
+        "start": 35.0,
+        "end": 35.28
+      },
+      {
+        "text": "the",
+        "start": 35.28,
+        "end": 35.46
+      },
+      {
+        "text": "constant",
+        "start": 35.46,
+        "end": 35.92
+      },
+      {
+        "text": "grumbling",
+        "start": 35.92,
+        "end": 36.46
+      },
+      {
+        "text": "of",
+        "start": 36.46,
+        "end": 36.76
+      },
+      {
+        "text": "the",
+        "start": 36.76,
+        "end": 36.92
+      },
+      {
+        "text": "Israelites",
+        "start": 36.92,
+        "end": 37.58
+      },
+      {
+        "text": "against",
+        "start": 37.58,
+        "end": 37.92
+      },
+      {
+        "text": "you",
+        "start": 37.92,
+        "end": 38.42
+      }
+    ],
+    "6": [
+      {
+        "text": "So",
+        "start": 39.6,
+        "end": 40.12
+      },
+      {
+        "text": "Moses",
+        "start": 40.12,
+        "end": 40.54
+      },
+      {
+        "text": "spoke",
+        "start": 40.54,
+        "end": 40.9
+      },
+      {
+        "text": "to",
+        "start": 40.9,
+        "end": 41.1
+      },
+      {
+        "text": "the",
+        "start": 41.1,
+        "end": 41.22
+      },
+      {
+        "text": "Israelites",
+        "start": 41.22,
+        "end": 41.94
+      },
+      {
+        "text": "and",
+        "start": 42.58,
+        "end": 42.78
+      },
+      {
+        "text": "each",
+        "start": 42.78,
+        "end": 42.96
+      },
+      {
+        "text": "of",
+        "start": 42.96,
+        "end": 43.16
+      },
+      {
+        "text": "their",
+        "start": 43.16,
+        "end": 43.32
+      },
+      {
+        "text": "leaders",
+        "start": 43.32,
+        "end": 43.72
+      },
+      {
+        "text": "gave",
+        "start": 43.72,
+        "end": 44.12
+      },
+      {
+        "text": "him",
+        "start": 44.12,
+        "end": 44.36
+      },
+      {
+        "text": "a",
+        "start": 44.36,
+        "end": 44.54
+      },
+      {
+        "text": "staff",
+        "start": 44.54,
+        "end": 44.96
+      },
+      {
+        "text": "one",
+        "start": 45.58,
+        "end": 45.92
+      },
+      {
+        "text": "for",
+        "start": 45.92,
+        "end": 46.14
+      },
+      {
+        "text": "each",
+        "start": 46.14,
+        "end": 46.32
+      },
+      {
+        "text": "of",
+        "start": 46.32,
+        "end": 46.48
+      },
+      {
+        "text": "the",
+        "start": 46.48,
+        "end": 46.62
+      },
+      {
+        "text": "leaders",
+        "start": 46.62,
+        "end": 46.88
+      },
+      {
+        "text": "of",
+        "start": 46.88,
+        "end": 47.1
+      },
+      {
+        "text": "their",
+        "start": 47.1,
+        "end": 47.32
+      },
+      {
+        "text": "tribes",
+        "start": 47.32,
+        "end": 47.84
+      },
+      {
+        "text": "twelve",
+        "start": 48.48,
+        "end": 48.7
+      },
+      {
+        "text": "staffs",
+        "start": 48.7,
+        "end": 49.38
+      },
+      {
+        "text": "in",
+        "start": 49.38,
+        "end": 49.46
+      },
+      {
+        "text": "all",
+        "start": 49.46,
+        "end": 49.82
+      },
+      {
+        "text": "And",
+        "start": 50.48,
+        "end": 50.92
+      },
+      {
+        "text": "Aaron",
+        "start": 50.92,
+        "end": 51.48
+      },
+      {
+        "text": "staff",
+        "start": 51.48,
+        "end": 51.86
+      },
+      {
+        "text": "was",
+        "start": 51.86,
+        "end": 52.16
+      },
+      {
+        "text": "among",
+        "start": 52.16,
+        "end": 52.44
+      },
+      {
+        "text": "them",
+        "start": 52.44,
+        "end": 52.8
+      }
+    ],
+    "7": [
+      {
+        "text": "Then",
+        "start": 52.8,
+        "end": 53.84
+      },
+      {
+        "text": "Moses",
+        "start": 53.84,
+        "end": 54.32
+      },
+      {
+        "text": "placed",
+        "start": 54.32,
+        "end": 54.74
+      },
+      {
+        "text": "the",
+        "start": 54.74,
+        "end": 55.1
+      },
+      {
+        "text": "staffs",
+        "start": 55.1,
+        "end": 55.58
+      },
+      {
+        "text": "before",
+        "start": 55.58,
+        "end": 55.84
+      },
+      {
+        "text": "the",
+        "start": 55.84,
+        "end": 56.06
+      },
+      {
+        "text": "LORD",
+        "start": 56.06,
+        "end": 56.36
+      },
+      {
+        "text": "in",
+        "start": 56.36,
+        "end": 56.98
+      },
+      {
+        "text": "the",
+        "start": 56.98,
+        "end": 57.16
+      },
+      {
+        "text": "Tent",
+        "start": 57.16,
+        "end": 57.38
+      },
+      {
+        "text": "of",
+        "start": 57.38,
+        "end": 57.58
+      },
+      {
+        "text": "the",
+        "start": 57.58,
+        "end": 57.72
+      },
+      {
+        "text": "Testimony",
+        "start": 57.72,
+        "end": 58.16
+      }
+    ],
+    "8": [
+      {
+        "text": "The",
+        "start": 59.72,
+        "end": 59.94
+      },
+      {
+        "text": "next",
+        "start": 59.94,
+        "end": 60.16
+      },
+      {
+        "text": "day",
+        "start": 60.16,
+        "end": 60.52
+      },
+      {
+        "text": "Moses",
+        "start": 61.16,
+        "end": 61.36
+      },
+      {
+        "text": "entered",
+        "start": 61.36,
+        "end": 61.8
+      },
+      {
+        "text": "the",
+        "start": 61.8,
+        "end": 61.98
+      },
+      {
+        "text": "Tent",
+        "start": 61.98,
+        "end": 62.2
+      },
+      {
+        "text": "of",
+        "start": 62.2,
+        "end": 62.36
+      },
+      {
+        "text": "the",
+        "start": 62.36,
+        "end": 62.48
+      },
+      {
+        "text": "Testimony",
+        "start": 62.48,
+        "end": 63.0
+      },
+      {
+        "text": "and",
+        "start": 63.58,
+        "end": 63.64
+      },
+      {
+        "text": "saw",
+        "start": 63.64,
+        "end": 63.96
+      },
+      {
+        "text": "that",
+        "start": 63.96,
+        "end": 64.18
+      },
+      {
+        "text": "Aaron",
+        "start": 64.18,
+        "end": 64.68
+      },
+      {
+        "text": "staff",
+        "start": 64.68,
+        "end": 65.04
+      },
+      {
+        "text": "representing",
+        "start": 65.48,
+        "end": 65.96
+      },
+      {
+        "text": "the",
+        "start": 65.96,
+        "end": 66.24
+      },
+      {
+        "text": "house",
+        "start": 66.24,
+        "end": 66.44
+      },
+      {
+        "text": "of",
+        "start": 66.44,
+        "end": 66.64
+      },
+      {
+        "text": "Levi",
+        "start": 66.64,
+        "end": 66.98
+      },
+      {
+        "text": "had",
+        "start": 67.72,
+        "end": 67.8
+      },
+      {
+        "text": "sprouted",
+        "start": 67.8,
+        "end": 68.38
+      },
+      {
+        "text": "put",
+        "start": 68.96,
+        "end": 69.1
+      },
+      {
+        "text": "forth",
+        "start": 69.1,
+        "end": 69.4
+      },
+      {
+        "text": "buds",
+        "start": 69.4,
+        "end": 69.78
+      },
+      {
+        "text": "blossomed",
+        "start": 70.6,
+        "end": 70.92
+      },
+      {
+        "text": "and",
+        "start": 71.34,
+        "end": 71.46
+      },
+      {
+        "text": "produced",
+        "start": 71.46,
+        "end": 71.86
+      },
+      {
+        "text": "almonds",
+        "start": 71.86,
+        "end": 72.32
+      }
+    ],
+    "9": [
+      {
+        "text": "Then",
+        "start": 73.3,
+        "end": 73.5
+      },
+      {
+        "text": "Moses",
+        "start": 73.5,
+        "end": 73.96
+      },
+      {
+        "text": "brought",
+        "start": 73.96,
+        "end": 74.28
+      },
+      {
+        "text": "out",
+        "start": 74.28,
+        "end": 74.52
+      },
+      {
+        "text": "all",
+        "start": 74.52,
+        "end": 74.74
+      },
+      {
+        "text": "the",
+        "start": 74.74,
+        "end": 74.9
+      },
+      {
+        "text": "staffs",
+        "start": 74.9,
+        "end": 75.48
+      },
+      {
+        "text": "from",
+        "start": 75.48,
+        "end": 75.58
+      },
+      {
+        "text": "the",
+        "start": 75.58,
+        "end": 75.76
+      },
+      {
+        "text": "presence",
+        "start": 76.24,
+        "end": 76.5
+      },
+      {
+        "text": "to",
+        "start": 76.5,
+        "end": 76.84
+      },
+      {
+        "text": "all",
+        "start": 76.84,
+        "end": 77.16
+      },
+      {
+        "text": "the",
+        "start": 77.16,
+        "end": 77.36
+      },
+      {
+        "text": "Israelites",
+        "start": 77.36,
+        "end": 78.14
+      },
+      {
+        "text": "They",
+        "start": 78.68,
+        "end": 78.9
+      },
+      {
+        "text": "saw",
+        "start": 78.9,
+        "end": 79.18
+      },
+      {
+        "text": "them",
+        "start": 79.18,
+        "end": 79.48
+      },
+      {
+        "text": "and",
+        "start": 79.6,
+        "end": 79.98
+      },
+      {
+        "text": "each",
+        "start": 79.98,
+        "end": 80.16
+      },
+      {
+        "text": "man",
+        "start": 80.16,
+        "end": 80.56
+      },
+      {
+        "text": "took",
+        "start": 80.56,
+        "end": 80.84
+      },
+      {
+        "text": "his",
+        "start": 80.84,
+        "end": 81.06
+      },
+      {
+        "text": "own",
+        "start": 81.06,
+        "end": 81.32
+      },
+      {
+        "text": "staff",
+        "start": 81.32,
+        "end": 81.78
+      }
+    ],
+    "10": [
+      {
+        "text": "The",
+        "start": 81.78,
+        "end": 82.8
+      },
+      {
+        "text": "LORD",
+        "start": 82.8,
+        "end": 83.08
+      },
+      {
+        "text": "said",
+        "start": 83.08,
+        "end": 83.38
+      },
+      {
+        "text": "to",
+        "start": 83.38,
+        "end": 83.58
+      },
+      {
+        "text": "Moses",
+        "start": 83.58,
+        "end": 84.04
+      },
+      {
+        "text": "Put",
+        "start": 84.72,
+        "end": 84.8
+      },
+      {
+        "text": "Aaron",
+        "start": 84.8,
+        "end": 85.4
+      },
+      {
+        "text": "staff",
+        "start": 85.4,
+        "end": 85.64
+      },
+      {
+        "text": "back",
+        "start": 85.64,
+        "end": 86.0
+      },
+      {
+        "text": "in",
+        "start": 86.0,
+        "end": 86.2
+      },
+      {
+        "text": "front",
+        "start": 86.2,
+        "end": 86.4
+      },
+      {
+        "text": "of",
+        "start": 86.4,
+        "end": 86.54
+      },
+      {
+        "text": "the",
+        "start": 86.54,
+        "end": 86.68
+      },
+      {
+        "text": "Testimony",
+        "start": 86.68,
+        "end": 87.2
+      },
+      {
+        "text": "to",
+        "start": 87.74,
+        "end": 87.96
+      },
+      {
+        "text": "be",
+        "start": 87.96,
+        "end": 88.1
+      },
+      {
+        "text": "kept",
+        "start": 88.1,
+        "end": 88.3
+      },
+      {
+        "text": "as",
+        "start": 88.3,
+        "end": 88.56
+      },
+      {
+        "text": "a",
+        "start": 88.56,
+        "end": 88.74
+      },
+      {
+        "text": "sign",
+        "start": 88.74,
+        "end": 89.04
+      },
+      {
+        "text": "for",
+        "start": 89.04,
+        "end": 89.28
+      },
+      {
+        "text": "the",
+        "start": 89.28,
+        "end": 89.4
+      },
+      {
+        "text": "rebellious",
+        "start": 89.4,
+        "end": 89.92
+      },
+      {
+        "text": "so",
+        "start": 90.5,
+        "end": 90.68
+      },
+      {
+        "text": "that",
+        "start": 90.68,
+        "end": 90.84
+      },
+      {
+        "text": "you",
+        "start": 90.84,
+        "end": 91.06
+      },
+      {
+        "text": "may",
+        "start": 91.06,
+        "end": 91.22
+      },
+      {
+        "text": "put",
+        "start": 91.22,
+        "end": 91.44
+      },
+      {
+        "text": "an",
+        "start": 91.44,
+        "end": 91.6
+      },
+      {
+        "text": "end",
+        "start": 91.6,
+        "end": 91.78
+      },
+      {
+        "text": "to",
+        "start": 91.78,
+        "end": 91.96
+      },
+      {
+        "text": "their",
+        "start": 91.96,
+        "end": 92.14
+      },
+      {
+        "text": "grumbling",
+        "start": 92.14,
+        "end": 92.62
+      },
+      {
+        "text": "against",
+        "start": 92.62,
+        "end": 92.98
+      },
+      {
+        "text": "Me",
+        "start": 92.98,
+        "end": 93.5
+      },
+      {
+        "text": "lest",
+        "start": 93.9,
+        "end": 94.1
+      },
+      {
+        "text": "they",
+        "start": 94.1,
+        "end": 94.44
+      },
+      {
+        "text": "die",
+        "start": 94.44,
+        "end": 94.82
+      }
+    ],
+    "11": [
+      {
+        "text": "So",
+        "start": 95.88,
+        "end": 96.18
+      },
+      {
+        "text": "Moses",
+        "start": 96.18,
+        "end": 96.56
+      },
+      {
+        "text": "did",
+        "start": 96.56,
+        "end": 97.0
+      },
+      {
+        "text": "as",
+        "start": 97.48,
+        "end": 97.64
+      },
+      {
+        "text": "the",
+        "start": 97.64,
+        "end": 97.82
+      },
+      {
+        "text": "LORD",
+        "start": 97.82,
+        "end": 98.12
+      },
+      {
+        "text": "had",
+        "start": 98.12,
+        "end": 98.3
+      },
+      {
+        "text": "commanded",
+        "start": 98.3,
+        "end": 98.68
+      },
+      {
+        "text": "him",
+        "start": 98.68,
+        "end": 99.16
+      }
+    ],
+    "12": [
+      {
+        "text": "Then",
+        "start": 99.98,
+        "end": 100.12
+      },
+      {
+        "text": "the",
+        "start": 100.12,
+        "end": 100.28
+      },
+      {
+        "text": "Israelites",
+        "start": 100.28,
+        "end": 100.88
+      },
+      {
+        "text": "declared",
+        "start": 100.88,
+        "end": 101.22
+      },
+      {
+        "text": "to",
+        "start": 101.22,
+        "end": 101.48
+      },
+      {
+        "text": "Moses",
+        "start": 101.48,
+        "end": 101.82
+      },
+      {
+        "text": "Look",
+        "start": 102.42,
+        "end": 102.64
+      },
+      {
+        "text": "we",
+        "start": 102.88,
+        "end": 103.0
+      },
+      {
+        "text": "are",
+        "start": 103.0,
+        "end": 103.16
+      },
+      {
+        "text": "perishing",
+        "start": 103.16,
+        "end": 103.66
+      },
+      {
+        "text": "We",
+        "start": 103.92,
+        "end": 104.18
+      },
+      {
+        "text": "are",
+        "start": 104.18,
+        "end": 104.32
+      },
+      {
+        "text": "lost",
+        "start": 104.32,
+        "end": 104.7
+      },
+      {
+        "text": "we",
+        "start": 105.1,
+        "end": 105.2
+      },
+      {
+        "text": "are",
+        "start": 105.2,
+        "end": 105.36
+      },
+      {
+        "text": "all",
+        "start": 105.36,
+        "end": 105.66
+      },
+      {
+        "text": "lost",
+        "start": 105.66,
+        "end": 106.12
+      }
+    ],
+    "13": [
+      {
+        "text": "Anyone",
+        "start": 106.12,
+        "end": 107.08
+      },
+      {
+        "text": "who",
+        "start": 107.08,
+        "end": 107.42
+      },
+      {
+        "text": "comes",
+        "start": 107.42,
+        "end": 107.68
+      },
+      {
+        "text": "near",
+        "start": 107.68,
+        "end": 107.9
+      },
+      {
+        "text": "the",
+        "start": 107.9,
+        "end": 108.1
+      },
+      {
+        "text": "tabernacle",
+        "start": 108.1,
+        "end": 108.6
+      },
+      {
+        "text": "of",
+        "start": 108.6,
+        "end": 108.76
+      },
+      {
+        "text": "the",
+        "start": 108.76,
+        "end": 108.92
+      },
+      {
+        "text": "LORD",
+        "start": 108.92,
+        "end": 109.16
+      },
+      {
+        "text": "will",
+        "start": 109.16,
+        "end": 109.4
+      },
+      {
+        "text": "die",
+        "start": 109.4,
+        "end": 109.78
+      },
+      {
+        "text": "Are",
+        "start": 110.58,
+        "end": 110.68
+      },
+      {
+        "text": "we",
+        "start": 110.68,
+        "end": 110.82
+      },
+      {
+        "text": "all",
+        "start": 110.82,
+        "end": 111.02
+      },
+      {
+        "text": "going",
+        "start": 111.02,
+        "end": 111.22
+      },
+      {
+        "text": "to",
+        "start": 111.22,
+        "end": 111.4
+      },
+      {
+        "text": "perish",
+        "start": 111.4,
+        "end": 111.64
+      }
+    ]
+  }
+}
