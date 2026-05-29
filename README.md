@@ -1,5 +1,7 @@
 # Living Word
 
+MODRINTH LINK: https://modrinth.com/mod/living-word
+
 Living Word is a NeoForge 1.21.1 Minecraft mod for peaceful in-game Bible reading, synchronized scripture listening, lectern study stations, Scripture Disc playback, and simple devotional tools.
 
 The mod is designed to feel calm, respectful, and vanilla-adjacent. It is not a combat, spellcasting, or magic system.
